@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { @apply scroll-smooth bg-ivory text-ink antialiased; }
+  body { @apply min-h-screen font-sans transition-colors duration-300 dark:bg-slate-950 dark:text-slate-100; }
+  h1,h2,h3 { @apply font-display; }
+  :focus-visible { @apply outline-none ring-2 ring-gold-400 ring-offset-2 ring-offset-white dark:ring-offset-slate-950; }
+}
+@layer components {
+  .shell { @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12; }
+  .eyebrow { @apply mb-3 text-xs font-bold uppercase tracking-[.24em] text-gold-500; }
+  .section-title { @apply text-4xl font-semibold leading-none text-navy-900 sm:text-5xl dark:text-white; }
+  .section-copy { @apply mt-5 max-w-2xl leading-7 text-slate-600 dark:text-slate-300; }
+  .page-hero { @apply relative overflow-hidden bg-navy-950 pb-20 pt-36 text-white; }
+  .page-hero:before { content:''; @apply absolute inset-0 bg-circuit bg-[length:48px_48px] opacity-70; mask-image:linear-gradient(to bottom,black,transparent); }
+  .card { @apply rounded-2xl border border-slate-200/80 bg-white p-6 shadow-lift transition duration-300 hover:-translate-y-1 hover:border-gold-400/60 dark:border-slate-700 dark:bg-slate-900; }
+  .button-primary { @apply inline-flex items-center justify-center gap-2 rounded-full bg-gold-400 px-6 py-3 text-sm font-bold text-navy-950 transition hover:bg-gold-300; }
+  .button-ghost { @apply inline-flex items-center justify-center rounded-full border border-white/30 px-6 py-3 text-sm font-semibold transition hover:border-gold-400 hover:text-gold-300; }
+  .reveal { opacity:0; transform:translateY(18px); transition:opacity .7s ease,transform .7s ease; }
+  .reveal.is-visible { opacity:1; transform:none; }
+  .nav-link { @apply text-sm font-medium text-slate-700 transition hover:text-gold-500 dark:text-slate-200; }
+  .nav-link.active { @apply text-gold-500; }
+}
+@media (prefers-reduced-motion: reduce) { *,*:before,*:after { scroll-behavior:auto!important; transition-duration:.01ms!important; animation-duration:.01ms!important; animation-iteration-count:1!important; } .reveal{opacity:1;transform:none;} }
