@@ -5,6 +5,7 @@ window.SITE_DATA = {
     title: 'IAS Officer, 2010 Batch — Director, Directorate of Information Technology, Electronics and Communication (DITEC), Government of Assam',
     office: 'Directorate of Information Technology, Electronics and Communication (DITEC), Assam Secretariat, Behind I Block (Old CM Block), Dispur, Guwahati-06',
     email: 'ashiascor@gmail.com', phone: '0361-2510237',
+    website: 'https://www.ashwanikumarias.com',
     quote: 'Realization of an Idea can change the trajectory of your life.',
    social: [
   {
@@ -26,8 +27,13 @@ window.SITE_DATA = {
   {
     label: "YouTube",
     url: "https://www.youtube.com/results?search_query=IAS+Ashwani+Kumar"
+  },
+  {
+    label: "Website",
+    url: "https://www.ashwanikumarias.com"
   }
-],
+]
+  },
   positions: [
     'Director, Directorate of Information Technology, Electronics and Communication (DITEC), Assam',
     'Project Director, AITEC & CSD Society', 'Chief Data Officer – Assam State Data Policy, 2022',
@@ -62,10 +68,12 @@ window.SITE_DATA = {
     {year:'2025', title:'Phase 3 Mid-Career Training Programme', body:'Completed the 22nd Round for IAS Officers, 12 May – 6 June 2025, LBSNAA, Mussoorie.'},
     {year:'2025', title:'Distinguished Panelist', body:'18th DigiTech Conclave, Delhi — exchange on the future of digital governance and public-service innovation.'},
     {year:'2025', title:'Certificate of Recognition', body:'National Stakeholder Conference “Aadhaar Samvaad” by UIDAI, 8 April 2025, Bharat Mandapam, New Delhi.'},
-    {year:'2022', title:'Leadership Governance Award', body:'Digital Governance recognition by APAC News Network.'},
+    {year:'2022', title:'Leadership Governance Award', body:'Digital Governance recognition by APAC News Network for implementing IT projects.'},
+    {year:'2022', title:'Special Address, APAC Digital Empowerment Meet', body:'2nd India Digital Empowerment Meet & Awards, APAC News Network, The Park Hotel, Delhi.'},
     {year:'2022', title:'BRICS Energy Partnership Forum', body:'Special Address on sustainable development in Delhi.'},
-    {year:'2022', title:'Education & Diplomacy Forums', body:'Special Guest at Future Ready Education Summit and Education Leadership Summit; Guest of Honor at the launch of IDC, Hyderabad.'},
-    {year:'2018', title:'Technology & Finance Forums', body:'Special Guest at the World Artificial Intelligence Show, Mumbai, and NBFC Convention, IMC Chambers.'},
+    {year:'2022', title:'Education & Diplomacy Forums', body:'Special Guest at Future Ready Education Summit (Hyatt Regency, Delhi) and Education Leadership Summit (The Leela Ambience Convention Hotel, Delhi); Guest of Honor at the launch of the International Diplomatic Club, Hyderabad.'},
+    {year:'2022', title:'Career Talk with Mentoria', body:'“A Day in the Life of an IAS Officer,” Delhi.'},
+    {year:'2018', title:'Technology & Finance Forums', body:'Special Guest at the World Artificial Intelligence Show (Taj Lands End, Mumbai) and NBFC Convention, IMC Chambers, Mumbai.'},
     {year:'2016', title:"Chief Minister's Award for Excellence", body:'Public Administration award in the New Initiative/Innovative Step category.'},
     {year:'2011', title:'LBSNAA Honors', body:'Director Special Prize in Dance Jodi Competition and Director Medal in Volleyball, Phase I.'}
   ],
@@ -75,11 +83,10 @@ window.SITE_DATA = {
     {date:'21 November 2022', publication:'Economic Times Government', title:'Opinion: Are coaching institutes really responsible for rote learning?', url:'https://government.economictimes.indiatimes.com/news/education/opinion-how-coaching-institutes-are-responsible-for-deteriorating-education-quality-of-top-level-aspirants/95638030'}
   ],
   recognition: [
-    {title:'Skilled negotiator', text:'Conducted Mishing Autonomous Councils elections after a 22-year gap as Returning Officer.'},
-    {title:'Crisis manager', text:'Led relief and disaster operations in Dhemaji District on the Brahmaputra.'},
+    {title:'Skilled negotiator', text:'Conducted Mishing Autonomous Councils elections after a 22-year gap as Returning Officer, for a constituency where the majority of the population fell under his jurisdiction.'},
+    {title:'Crisis manager', text:'Led relief and disaster operations in Dhemaji District, one of the wettest, most flood-prone areas on the Brahmaputra.'},
     {title:'Institution builder', text:'Modernized Jonai with a public park, circuit house and office upgrades.'},
     {title:'Enabling leader', text:'Believes anyone can work, provided they get the proper environment.'}
   ],
   extras: ['Captain, Volleyball Team, Inter-Zonal Hansraj Tournament, DAV School Meerut','Swimming, Yoga, Bodybuilding and Athletics','Calligraphy and Fine Arts','Active member, The Bharat Scouts and Guides','Organized events at Shaastra and Saarang, IIT Madras','NSS Volunteer at IIT Madras — led education drives in Taramani villages']
-  }
 };
