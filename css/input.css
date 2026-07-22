@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -23,5 +23,53 @@
   .reveal.is-visible { opacity:1; transform:none; }
   .nav-link { @apply text-sm font-medium text-slate-700 transition hover:text-gold-500 dark:text-slate-200; }
   .nav-link.active { @apply text-gold-500; }
+
+  /* Initiatives marquee (homepage "Selected work") */
+  .initiatives-marquee { position:relative; overflow-x:auto; overflow-y:hidden; -webkit-overflow-scrolling:touch; scroll-snap-type:x proximity; cursor:grab; scrollbar-width:none; -ms-overflow-style:none; }
+  .initiatives-marquee::-webkit-scrollbar { display:none; }
+  .initiatives-marquee.dragging { cursor:grabbing; scroll-snap-type:none; user-select:none; }
+  .initiatives-marquee::before,.initiatives-marquee::after { content:''; position:absolute; top:0; bottom:0; width:64px; z-index:2; pointer-events:none; }
+  .initiatives-marquee::before { left:0; background:linear-gradient(to right, white, transparent); }
+  .initiatives-marquee::after { right:0; background:linear-gradient(to left, white, transparent); }
+  .dark .initiatives-marquee::before { background:linear-gradient(to right, #0f172a, transparent); }
+  .dark .initiatives-marquee::after { background:linear-gradient(to left, #0f172a, transparent); }
+  .initiatives-track { display:flex; gap:24px; width:max-content; will-change:transform; }
+  .initiatives-track.autoplay { animation: initiatives-autoplay var(--ip-duration, 10s) ease-in-out 1; }
+  @keyframes initiatives-autoplay { 0% { transform:translateX(0); } 50% { transform:translateX(var(--ip-distance, 0px)); } 100% { transform:translateX(0); } }
+  .initiative-card { position:relative; flex:0 0 300px; height:380px; display:block; overflow:hidden; border-radius:1.25rem; background-color:#0d2534; box-shadow:0 20px 50px -28px rgba(6,24,45,.5); transition:transform .4s ease, box-shadow .4s ease; scroll-snap-align:start; }
+  .initiative-card-img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; z-index:0; }
+  .initiative-card:hover { transform:translateY(-6px) scale(1.02); box-shadow:0 28px 60px -24px rgba(6,24,45,.6); }
+  .initiative-card::before { content:''; position:absolute; inset:0; z-index:1; background:linear-gradient(to top, rgba(6,24,45,.93) 8%, rgba(6,24,45,.35) 50%, transparent 78%); }
+  .initiative-card .corner { position:absolute; width:26px; height:26px; border-color:#ddb65a; opacity:0; transition:opacity .3s ease; }
+  .initiative-card:hover .corner { opacity:.9; }
+  .initiative-card .corner-tl { top:14px; left:14px; border-top:2px solid; border-left:2px solid; border-radius:6px 0 0 0; }
+  .initiative-card .corner-br { bottom:14px; right:14px; border-bottom:2px solid; border-right:2px solid; border-radius:0 0 6px 0; }
+  .initiative-content { position:absolute; left:0; right:0; bottom:0; z-index:2; padding:22px; }
+  .initiative-eyebrow { display:block; margin-bottom:8px; font-size:11px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:#ddb65a; }
+  .initiative-title { display:block; font-family:"Fraunces",Georgia,serif; font-weight:600; font-size:1.4rem; line-height:1.25; color:#fff; }
+  .initiative-arrow { display:inline-block; margin-left:6px; color:#ddb65a; transition:transform .3s ease; }
+  .initiative-card:hover .initiative-arrow { transform:translateX(5px); }
+
+  .project-detail-img { display:block; width:100%; max-width:320px; height:400px; object-fit:contain; background-color:#0d2534; border-radius:1.25rem; margin-bottom:2rem; box-shadow:0 20px 50px -28px rgba(6,24,45,.5); }
+
+  /* The HTML wrapper (#projects-grid) still carries its original
+     "grid lg:grid-cols-3" classes from the page markup. Since our
+     marquee/carousel is injected as the ONLY child, it was being
+     placed into one grid column instead of using the full width.
+     Reset to block layout whenever our content is present. */
+  #projects-grid:has(.initiatives-marquee),
+  #projects-grid:has(.projects-carousel) { display:block; gap:0; }
+
+  /* Projects page: one-pass auto-scroll, then swipeable (mobile) / draggable (mouse) carousel */
+  .projects-carousel { overflow-x:auto; overflow-y:hidden; -webkit-overflow-scrolling:touch; scroll-snap-type:x proximity; cursor:grab; scrollbar-width:none; -ms-overflow-style:none; position:relative; left:50%; right:50%; width:100vw; margin-left:-50vw; margin-right:-50vw; padding-left:1.25rem; padding-right:1.25rem; }
+  @media (min-width:640px){ .projects-carousel { padding-left:2rem; padding-right:2rem; } }
+  @media (min-width:1024px){ .projects-carousel { padding-left:3rem; padding-right:3rem; } }
+  .projects-carousel::-webkit-scrollbar { display:none; }
+  .projects-carousel.dragging { cursor:grabbing; scroll-snap-type:none; user-select:none; }
+  .projects-carousel-track { display:flex; gap:24px; width:max-content; padding:4px 4px 28px; will-change:transform; }
+  .projects-carousel-track.autoplay { animation: projects-carousel-autoplay var(--cp-duration, 8s) ease-in-out 1; }
+  @keyframes projects-carousel-autoplay { from { transform:translateX(0); } to { transform:translateX(var(--cp-distance, 0px)); } }
+  .carousel-card { scroll-snap-align:start; flex:0 0 300px; height:420px; }
+  .initiative-summary { display:block; margin-top:8px; font-size:.85rem; line-height:1.5; color:rgba(255,255,255,.85); }
 }
 @media (prefers-reduced-motion: reduce) { *,*:before,*:after { scroll-behavior:auto!important; transition-duration:.01ms!important; animation-duration:.01ms!important; animation-iteration-count:1!important; } .reveal{opacity:1;transform:none;} }

@@ -12,7 +12,7 @@ module.exports = {
         teal: '#2aa9a1'
       },
       fontFamily: {
-        display: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+        display: ['"Fraunces"', 'Georgia', 'serif'],
         sans: ['Inter', 'system-ui', 'sans-serif']
       },
       boxShadow: { lift: '0 20px 50px -28px rgba(6,24,45,.5)' },
