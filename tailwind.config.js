@@ -11,7 +11,8 @@ module.exports = {
           400: 'rgb(var(--c-gold-400) / <alpha-value>)',
           500: 'rgb(var(--c-gold-500) / <alpha-value>)'
         },
-        ivory: '#f7f4ed',
+        slate: { 600: '#334155' },
+        ivory: '#fdfcf9',
         ink: '#182330',
         teal: '#2aa9a1'
       },
