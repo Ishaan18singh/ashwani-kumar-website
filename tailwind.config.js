@@ -6,14 +6,18 @@ module.exports = {
     extend: {
       colors: {
         navy: { 950: '#06182d', 900: '#0B2545', 800: '#12345b', 700: '#19456f' },
-        gold: { 300: '#f0cf7a', 400: '#ddb65a', 500: '#c9972f' },
+        gold: {
+          300: 'rgb(var(--c-gold-300) / <alpha-value>)',
+          400: 'rgb(var(--c-gold-400) / <alpha-value>)',
+          500: 'rgb(var(--c-gold-500) / <alpha-value>)'
+        },
         ivory: '#f7f4ed',
         ink: '#182330',
         teal: '#2aa9a1'
       },
       fontFamily: {
-        display: ['"Fraunces"', 'Georgia', 'serif'],
-        sans: ['Inter', 'system-ui', 'sans-serif']
+        display: ['"Jost"', '-apple-system', 'BlinkMacSystemFont', '"Helvetica Neue"', 'Arial', 'sans-serif'],
+        sans: ['"Atkinson Hyperlegible"', 'Inter', 'system-ui', 'sans-serif']
       },
       boxShadow: { lift: '0 20px 50px -28px rgba(6,24,45,.5)' },
       backgroundImage: {
