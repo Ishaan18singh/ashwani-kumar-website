@@ -121,8 +121,8 @@
   mount('awards-track',d.awards.map(x=>`<article class="card min-w-[82vw] snap-start sm:min-w-[380px]"><span class="text-sm font-bold text-gold-500">${x.year}</span><h2 class="mt-3 text-3xl font-semibold text-navy-900 dark:text-white">${x.title}</h2><p class="mt-3 text-sm leading-6 text-slate-600 dark:text-slate-300">${x.body}</p></article>`).join(''));
   mount('awards-grid',d.awards.map(x=>`<article class="card reveal"><span class="text-sm font-bold text-gold-500">${x.year}</span><h3 class="mt-2 text-2xl font-semibold text-navy-900 dark:text-white">${x.title}</h3><p class="mt-3 text-sm leading-6 text-slate-600 dark:text-slate-300">${x.body}</p></article>`).join(''));
   const pubImgTag=(x,cls)=>`<img class="${cls}" src="${x.image}" alt="${x.title.replace(/"/g,'&quot;')}" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'pub-fallback',textContent:'${x.publication.replace(/'/g,"\\'")}'}))">`;
-  const publications=d.publications;
-  if(publications.length){
+  const renderPublications=(publications)=>{
+    if(!publications || !publications.length)return;
     const [featured,...rest]=publications;
     const featuredHtml=`<a href="${featured.url}" target="_blank" rel="noopener noreferrer" class="pub-featured group">
       <span class="pub-featured-img-wrap">${pubImgTag(featured,'')}</span>
@@ -138,6 +138,16 @@
       <span class="pub-headline block group-hover:underline">${x.title}</span>
     </a>`).join('');
     mount('publications-list',`${featuredHtml}${rest.length?`<div class="pub-grid">${gridHtml}</div>`:''}`);
+  };
+  if(document.getElementById('publications-list')){
+    if(window.supabaseClient){
+      window.supabaseClient.from('publications').select('*').order('sort_order',{ascending:true}).then(({data,error})=>{
+        if(error||!data||!data.length){ renderPublications(d.publications); return; }
+        renderPublications(data);
+      });
+    } else {
+      renderPublications(d.publications);
+    }
   }
   mount('recognition-grid',d.recognition.map(x=>`<article class="border-l-2 border-gold-400 pl-5"><h3 class="text-2xl font-semibold text-navy-900 dark:text-white">${x.title}</h3><p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">${x.text}</p></article>`).join(''));
   mount('extras-list',d.extras.map(x=>`<li class="rounded-xl bg-white p-4 text-sm shadow-sm dark:bg-slate-900">${x}</li>`).join(''));
