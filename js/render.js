@@ -151,4 +151,17 @@
   }
   mount('recognition-grid',d.recognition.map(x=>`<article class="border-l-2 border-gold-400 pl-5"><h3 class="text-2xl font-semibold text-navy-900 dark:text-white">${x.title}</h3><p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">${x.text}</p></article>`).join(''));
   mount('extras-list',d.extras.map(x=>`<li class="rounded-xl bg-white p-4 text-sm shadow-sm dark:bg-slate-900">${x}</li>`).join(''));
+  const socialIconMap = {
+    LinkedIn: { bg:'#0A66C2', svg:'<svg viewBox="0 0 24 24" width="18" height="18" fill="#fff"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.5h4V23h-4V8.5zM8.5 8.5h3.8v1.98h.05c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.78 2.65 4.78 6.1V23h-4v-6.65c0-1.59-.03-3.63-2.22-3.63-2.22 0-2.56 1.73-2.56 3.51V23h-4V8.5z"/></svg>' },
+    X: { bg:'#000000', svg:'<svg viewBox="0 0 24 24" width="16" height="16" fill="#fff"><path d="M18.9 2h3.3l-7.2 8.2L23.5 22h-6.6l-5.2-6.8L5.7 22H2.4l7.7-8.8L1 2h6.8l4.7 6.2L18.9 2zm-1.2 18h1.8L7.4 3.9H5.5L17.7 20z"/></svg>' },
+    Instagram: { bg:'linear-gradient(45deg,#f9ce34,#ee2a7b 40%,#6228d7)', svg:'<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#fff" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1.1" fill="#fff" stroke="none"/></svg>' },
+    Facebook: { bg:'#1877F2', svg:'<svg viewBox="0 0 24 24" width="16" height="16" fill="#fff"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg>' },
+    YouTube: { bg:'#FF0000', svg:'<svg viewBox="0 0 24 24" width="18" height="18" fill="#fff"><path d="M9.5 15.5V8.5L16 12l-6.5 3.5z"/></svg>' },
+    Website: { bg:'#0B2545', svg:'<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#fff" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.8 6 3.8 9s-1.3 6.5-3.8 9c-2.5-2.5-3.8-6-3.8-9s1.3-6.5 3.8-9z"/></svg>' }
+  };
+  mount('hero-social', d.profile.social.map(s=>{
+    const icon = socialIconMap[s.label] || socialIconMap.Website;
+    const bgStyle = icon.bg.startsWith('linear-gradient') ? `background-image:${icon.bg}` : `background-color:${icon.bg}`;
+    return `<a href="${s.url}" target="_blank" rel="noopener noreferrer" aria-label="${s.label} (opens in new tab)" class="social-badge grid h-10 w-10 place-items-center rounded-full transition" style="${bgStyle}">${icon.svg}</a>`;
+  }).join(''));
 })();

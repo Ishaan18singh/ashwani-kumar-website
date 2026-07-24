@@ -1,5 +1,5 @@
 (function () {
-  const pages = [['index.html','Home'],['about.html','About'],['timeline.html','Timeline'],['projects.html','Projects'],['awards.html','Awards'],['publications.html','Publications'],['gallery.html','Gallery'],['contact.html','Contact']];
+  const pages = [['index.html','Home'],['about.html','About'],['timeline.html','Timeline'],['projects.html','Initiatives'],['awards.html','Awards'],['publications.html','Publications'],['gallery.html','Gallery'],['contact.html','Contact']];
   const current = location.pathname.split('/').pop() || 'index.html';
 
   // Curated header links (kept to 3, per design spec — full list lives in the fullscreen menu)

@@ -102,3 +102,6 @@ html.dark .fullscreen-menu-pill:hover { background-color: hsla(0,0%,100%,.06); }
 .fullscreen-menu-social-link { font-size: .82rem; font-weight: 500; color: #0B2545; text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 200ms ease, color 200ms ease; }
 .fullscreen-menu-social-link:hover { color: rgb(var(--c-gold-500)); border-bottom-color: rgb(var(--c-gold-500)); }
 html.dark .fullscreen-menu-social-link { color: #fff; }
+@layer components {
+  .social-badge:hover { @apply bg-gold-400 text-navy-950; }
+}
