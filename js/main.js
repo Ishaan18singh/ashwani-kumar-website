@@ -43,7 +43,7 @@
     if(!toggle||!menu)return;
     toggle.setAttribute('aria-expanded',String(open));
     toggle.classList.toggle('is-active',open);
-    toggle.setAttribute('aria-label',open?'Close menu':'Open menu');
+    toggle.setAttribute('aria-label',window.I18N?window.I18N.t(open?'common.closeMenu':'common.openMenu'):(open?'Close menu':'Open menu'));
     menu.classList.toggle('is-open',open);
     menu.setAttribute('aria-hidden',String(!open));
     document.body.classList.toggle('overflow-hidden',open);

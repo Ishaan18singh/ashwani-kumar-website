@@ -1,13 +1,12 @@
 /*
  * Editorial typography system
- * Open-license fonts: Inter + Source Serif 4 (Google Fonts).
+ * Two typefaces only: Jost (display/headings) + Atkinson Hyperlegible (body/UI).
+ * Fonts are loaded once via the @import at the top of css/input.css.
  */
 
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap");
-
 :root {
-  --font-sans: "Inter", "Helvetica Neue", Arial, sans-serif;
-  --font-serif: "Source Serif 4", Georgia, serif;
+  --font-sans: "Atkinson Hyperlegible", Inter, system-ui, sans-serif;
+  --font-serif: "Jost", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
 
   --type-heading-color: #000;
   --type-body-color: #333;
@@ -66,6 +65,13 @@
   --step-caption-color: var(--type-muted-color);
 }
 
+html.dark {
+  --type-heading-color: #fff;
+  --type-body-color: #cbd5e1;
+  --type-muted-color: #94a3b8;
+  --type-link-color: #7dd3fc;
+}
+
 html {
   font-family: var(--font-sans);
   font-synthesis: none;
@@ -102,16 +108,16 @@ h6,
 
 h1,
 h2,
+h3,
 .h1,
-.h2 {
+.h2,
+.h3 {
   font-family: var(--font-serif);
 }
 
-h3,
 h4,
 h5,
 h6,
-.h3,
 .h4,
 .h5,
 .h6 {
@@ -175,7 +181,6 @@ h6,
 }
 
 .eyebrow {
-  color: var(--step-eyebrow-color);
   font-family: var(--font-sans);
   font-size: var(--step-eyebrow-size);
   font-weight: var(--step-eyebrow-weight);

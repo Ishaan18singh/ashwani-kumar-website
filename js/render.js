@@ -1,5 +1,6 @@
 (function(){
-  const d=window.SITE_DATA;
+  const d=window.I18N?window.I18N.localizedSiteData():window.SITE_DATA;
+  const t=(key)=>window.I18N?window.I18N.t(key):key;
   const mount=(id,html)=>{const el=document.getElementById(id);if(el)el.innerHTML=html};
   const slugify=(s)=>s.toLowerCase().trim().replace(/&/g,'and').replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'');
   mount('positions-list',d.positions.map((x,i)=>`<li class="flex gap-3"><span class="mt-1 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-gold-400/15 text-xs font-bold text-gold-500">${i+1}</span><span>${x}</span></li>`).join(''));
@@ -8,7 +9,7 @@
   const cardImg=(i)=>initiativeImages[i%initiativeImages.length];
   const isProjectsPage=/(^|\/)projects(\.html)?\/?$/.test(location.pathname);
   if(isProjectsPage){
-    const carouselCard=(x,i)=>`<a href="project.html#${slugify(x.title)}" class="initiative-card carousel-card" aria-label="${x.title} — read more"><img class="initiative-card-img" src="images/${cardImg(i)}.webp" alt="" loading="lazy"><span class="corner corner-tl" aria-hidden="true"></span><span class="corner corner-br" aria-hidden="true"></span><span class="initiative-content"><span class="initiative-eyebrow">Initiative</span><span class="initiative-title">${x.title}<span class="initiative-arrow" aria-hidden="true">→</span></span><span class="initiative-summary">${x.summary}</span></span></a>`;
+    const carouselCard=(x,i)=>`<a href="project.html#${slugify(x.title)}" class="initiative-card carousel-card" aria-label="${x.title} — read more"><img class="initiative-card-img" src="images/${cardImg(i)}.webp" alt="" loading="lazy"><span class="corner corner-tl" aria-hidden="true"></span><span class="corner corner-br" aria-hidden="true"></span><span class="initiative-content"><span class="initiative-eyebrow">${t('project.initiative')}</span><span class="initiative-title">${x.title}<span class="initiative-arrow" aria-hidden="true">→</span></span><span class="initiative-summary">${x.summary}</span></span></a>`;
     const cards=d.projects.map(carouselCard).join('');
     mount('projects-grid',`<div class="projects-carousel" tabindex="0" role="region" aria-label="Key projects and initiatives — scroll or drag to browse"><div class="projects-carousel-track">${cards}</div></div>`);
     const carousel=document.querySelector('.projects-carousel');
@@ -54,7 +55,7 @@
       carousel.addEventListener('click',(e)=>{if(moved){e.preventDefault();moved=false;}},true);
     }
   } else {
-    const marqueeCard=(x,i)=>`<a href="project.html#${slugify(x.title)}" class="initiative-card" aria-label="${x.title} — read more"><img class="initiative-card-img" src="images/${cardImg(i)}.webp" alt="" loading="lazy"><span class="corner corner-tl" aria-hidden="true"></span><span class="corner corner-br" aria-hidden="true"></span><span class="initiative-content"><span class="initiative-eyebrow">Initiative</span><span class="initiative-title">${x.title}<span class="initiative-arrow" aria-hidden="true">→</span></span></span></a>`;
+    const marqueeCard=(x,i)=>`<a href="project.html#${slugify(x.title)}" class="initiative-card" aria-label="${x.title} — read more"><img class="initiative-card-img" src="images/${cardImg(i)}.webp" alt="" loading="lazy"><span class="corner corner-tl" aria-hidden="true"></span><span class="corner corner-br" aria-hidden="true"></span><span class="initiative-content"><span class="initiative-eyebrow">${t('project.initiative')}</span><span class="initiative-title">${x.title}<span class="initiative-arrow" aria-hidden="true">→</span></span></span></a>`;
     const cards=d.projects.map(marqueeCard).join('');
     mount('projects-grid',`<div class="initiatives-marquee" tabindex="0" role="region" aria-label="Selected initiatives — scroll or drag to browse"><div class="initiatives-track">${cards}</div></div>`);
     const marquee=document.querySelector('.initiatives-marquee');
@@ -109,9 +110,9 @@
         document.title=`${x.title} | Ashwani Kumar, IAS`;
         const nextIndex=(index+1)%d.projects.length;
         const nextProject=d.projects[nextIndex];
-        mount('project-detail',`<img class="project-detail-img" src="images/${cardImg(index)}.webp" alt=""><div class="project-detail-body"><p class="eyebrow">Initiative</p><h1 class="max-w-3xl text-4xl font-semibold sm:text-6xl">${x.title}</h1><p class="mt-4 text-sm font-bold uppercase tracking-[.15em] text-gold-500">${x.tag}</p><p class="mt-6 max-w-2xl text-lg leading-8 text-slate-600 dark:text-slate-300">${x.summary}</p><p class="mt-4 max-w-2xl leading-7 text-slate-600 dark:text-slate-300">${x.detail}</p><div class="mt-10 flex flex-wrap gap-3"><a href="projects.html" class="button-ghost inline-flex w-fit">← All initiatives</a><a href="project.html#${slugify(nextProject.title)}" class="button-ghost inline-flex w-fit">Next initiative: ${nextProject.title} →</a></div></div>`);
+        mount('project-detail',`<img class="project-detail-img" src="images/${cardImg(index)}.webp" alt=""><div class="project-detail-body"><p class="eyebrow">${t('project.initiative')}</p><h1 class="max-w-3xl text-4xl font-semibold sm:text-6xl">${x.title}</h1><p class="mt-4 text-sm font-bold uppercase tracking-[.15em] text-gold-500">${x.tag}</p><p class="mt-6 max-w-2xl text-lg leading-8 text-slate-600 dark:text-slate-300">${x.summary}</p><p class="mt-4 max-w-2xl leading-7 text-slate-600 dark:text-slate-300">${x.detail}</p><div class="mt-10 flex flex-wrap gap-3"><a href="projects.html" class="button-ghost inline-flex w-fit">${t('project.allInitiatives')}</a><a href="project.html#${slugify(nextProject.title)}" class="button-ghost inline-flex w-fit">${t('project.nextInitiative')} ${nextProject.title} →</a></div></div>`);
       } else {
-        mount('project-detail',`<div class="project-detail-body"><p class="eyebrow">Not found</p><h1 class="text-4xl font-semibold sm:text-5xl">We couldn't find that initiative.</h1><p class="mt-4 max-w-2xl leading-7 text-slate-600 dark:text-slate-300">It may have moved, or the link is out of date.</p><a href="projects.html" class="button-primary mt-8 inline-flex w-fit">← All initiatives</a></div>`);
+        mount('project-detail',`<div class="project-detail-body"><p class="eyebrow">${t('project.notFound')}</p><h1 class="text-4xl font-semibold sm:text-5xl">${t('project.notFoundTitle')}</h1><p class="mt-4 max-w-2xl leading-7 text-slate-600 dark:text-slate-300">${t('project.notFoundText')}</p><a href="projects.html" class="button-primary mt-8 inline-flex w-fit">${t('project.allInitiatives')}</a></div>`);
       }
       window.scrollTo(0,0);
     };
@@ -129,7 +130,7 @@
       <span>
         <span class="pub-kicker">${featured.publication} · ${featured.date}</span>
         <span class="pub-headline block group-hover:underline">${featured.title}</span>
-        <span class="pub-dateline">Read the full article ↗</span>
+        <span class="pub-dateline">${t('publications.readFull')}</span>
       </span>
     </a>`;
     const gridHtml=rest.map((x)=>`<a href="${x.url}" target="_blank" rel="noopener noreferrer" class="pub-grid-item group block">
@@ -151,17 +152,4 @@
   }
   mount('recognition-grid',d.recognition.map(x=>`<article class="border-l-2 border-gold-400 pl-5"><h3 class="text-2xl font-semibold text-navy-900 dark:text-white">${x.title}</h3><p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">${x.text}</p></article>`).join(''));
   mount('extras-list',d.extras.map(x=>`<li class="rounded-xl bg-white p-4 text-sm shadow-sm dark:bg-slate-900">${x}</li>`).join(''));
-  const socialIconMap = {
-    LinkedIn: { bg:'#0A66C2', svg:'<svg viewBox="0 0 24 24" width="18" height="18" fill="#fff"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.5h4V23h-4V8.5zM8.5 8.5h3.8v1.98h.05c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.78 2.65 4.78 6.1V23h-4v-6.65c0-1.59-.03-3.63-2.22-3.63-2.22 0-2.56 1.73-2.56 3.51V23h-4V8.5z"/></svg>' },
-    X: { bg:'#000000', svg:'<svg viewBox="0 0 24 24" width="16" height="16" fill="#fff"><path d="M18.9 2h3.3l-7.2 8.2L23.5 22h-6.6l-5.2-6.8L5.7 22H2.4l7.7-8.8L1 2h6.8l4.7 6.2L18.9 2zm-1.2 18h1.8L7.4 3.9H5.5L17.7 20z"/></svg>' },
-    Instagram: { bg:'linear-gradient(45deg,#f9ce34,#ee2a7b 40%,#6228d7)', svg:'<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#fff" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1.1" fill="#fff" stroke="none"/></svg>' },
-    Facebook: { bg:'#1877F2', svg:'<svg viewBox="0 0 24 24" width="16" height="16" fill="#fff"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg>' },
-    YouTube: { bg:'#FF0000', svg:'<svg viewBox="0 0 24 24" width="18" height="18" fill="#fff"><path d="M9.5 15.5V8.5L16 12l-6.5 3.5z"/></svg>' },
-    Website: { bg:'#0B2545', svg:'<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#fff" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.8 6 3.8 9s-1.3 6.5-3.8 9c-2.5-2.5-3.8-6-3.8-9s1.3-6.5 3.8-9z"/></svg>' }
-  };
-  mount('hero-social', d.profile.social.map(s=>{
-    const icon = socialIconMap[s.label] || socialIconMap.Website;
-    const bgStyle = icon.bg.startsWith('linear-gradient') ? `background-image:${icon.bg}` : `background-color:${icon.bg}`;
-    return `<a href="${s.url}" target="_blank" rel="noopener noreferrer" aria-label="${s.label} (opens in new tab)" class="social-badge grid h-10 w-10 place-items-center rounded-full transition" style="${bgStyle}">${icon.svg}</a>`;
-  }).join(''));
 })();

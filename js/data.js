@@ -27,10 +27,6 @@ window.SITE_DATA = {
   {
     label: "YouTube",
     url: "https://www.youtube.com/results?search_query=IAS+Ashwani+Kumar"
-  },
-  {
-    label: "Website",
-    url: "https://www.ashwanikumarias.com"
   }
 ]
   },
