@@ -42,9 +42,11 @@ html.dark .header-menu-btn:hover { background-color: hsla(0,0%,100%,.06); }
 .header-menu-icon { position: relative; display: inline-block; width: 20px; height: 14px; flex-shrink: 0; }
 .menu-bar { position: absolute; left: 0; width: 20px; height: 2px; background: currentColor; border-radius: 1px; transition: transform 300ms ease, top 300ms ease, opacity 300ms ease; }
 .menu-bar:nth-child(1) { top: 0; }
-.menu-bar:nth-child(2) { top: 12px; }
+.menu-bar:nth-child(2) { top: 6px; }
+.menu-bar:nth-child(3) { top: 12px; }
 .header-menu-btn.is-active .menu-bar:nth-child(1) { top: 6px; transform: rotate(45deg); }
-.header-menu-btn.is-active .menu-bar:nth-child(2) { top: 6px; transform: rotate(-45deg); }
+.header-menu-btn.is-active .menu-bar:nth-child(2) { opacity: 0; }
+.header-menu-btn.is-active .menu-bar:nth-child(3) { top: 6px; transform: rotate(-45deg); }
 .header-menu-label { display: none; }
 @media (min-width: 1200px) { .header-menu-label { display: inline; } }
 
@@ -384,7 +386,7 @@ b {
     width: fit-content;
     margin-left: auto;
     margin-right: auto;
-    column-gap: 3rem;
+    column-gap: 5.5rem;
     text-align: left;
   }
 }

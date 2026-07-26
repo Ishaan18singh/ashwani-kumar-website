@@ -150,6 +150,7 @@ export default function Header() {
             <span className="header-menu-icon" aria-hidden="true">
               <span className="menu-bar" />
               <span className="menu-bar" />
+              <span className="menu-bar" />
             </span>
             <span className="header-menu-label">{t('common.menu')}</span>
           </button>
