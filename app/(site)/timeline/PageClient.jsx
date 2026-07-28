@@ -1,0 +1,20 @@
+'use client';
+
+import { useI18n } from '@/lib/i18n/context';
+import PageHero from '@/components/PageHero';
+import TimelineList from '@/components/TimelineList';
+
+export default function TimelinePage() {
+  const { t, data } = useI18n();
+
+  return (
+    <>
+      <PageHero eyebrow={t('timeline.eyebrow')} title={t('timeline.title')} subtitle={t('timeline.subtitle')} />
+      <section className="py-24">
+        <div className="shell">
+          <TimelineList timeline={data.timeline} />
+        </div>
+      </section>
+    </>
+  );
+}

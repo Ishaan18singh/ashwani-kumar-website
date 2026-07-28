@@ -1,4 +1,10 @@
-# Next.js rebuild — kept local only, not tracked in this repo
+# Leftover duplicate from the migration — delete this folder locally,
+# its contents now live at the repo root instead.
 nextjs-site/
 
+# Next.js
 node_modules/
+.next/
+out/
+.env*.local
+.DS_Store
