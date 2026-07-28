@@ -8,7 +8,12 @@ export default function AboutPage() {
 
   return (
     <>
-      <PageHero eyebrow={t('about.eyebrow')} title={t('about.title')} subtitle={t('about.subtitle')} />
+      <PageHero
+        eyebrow={t('about.eyebrow')}
+        title={t('about.title')}
+        subtitle={t('about.subtitle')}
+        titleClassName="max-w-4xl text-5xl font-light tracking-tight sm:text-7xl"
+      />
 
       <section className="py-24">
         <div className="shell grid gap-14 lg:grid-cols-[.8fr_1.2fr]">
