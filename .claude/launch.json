@@ -4,7 +4,7 @@
     {
       "name": "nextjs-site",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["--prefix", "nextjs-site", "run", "dev"],
+      "runtimeArgs": ["run", "dev"],
       "port": 3000
     }
   ]
