@@ -17,7 +17,7 @@ export default function HomePage() {
             <p className="eyebrow">{t('home.eyebrow')}</p>
             <Html
               as="h1"
-              className="max-w-2xl text-5xl font-normal leading-[.94] sm:text-6xl lg:text-7xl"
+              className="max-w-2xl text-5xl font-normal leading-tight sm:text-6xl sm:leading-[.94] lg:text-7xl"
               html={t('home.titleHtml')}
             />
             <p className="mt-7 max-w-xl text-base leading-7 text-slate-600 dark:text-slate-300 sm:text-lg">
