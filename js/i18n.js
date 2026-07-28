@@ -5,7 +5,10 @@
     { code: 'fr', native: 'Français' },
     { code: 'de', native: 'Deutsch' },
     { code: 'ru', native: 'Русский' },
-    { code: 'as', native: 'অসমীয়া' }
+    { code: 'as', native: 'অসমীয়া' },
+    { code: 'zh', native: '中文' },
+    { code: 'ja', native: '日本語' },
+    { code: 'ar', native: 'العربية' }
   ];
   const CODES = LANGS.map(l => l.code);
 
@@ -81,5 +84,7 @@
   };
 
   window.I18N = { LANGS, getLang, setLang, t, translateStaticDOM, localizedSiteData };
-  document.documentElement.setAttribute('lang', getLang());
+  const lang = getLang();
+  document.documentElement.setAttribute('lang', lang);
+  document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
 })();

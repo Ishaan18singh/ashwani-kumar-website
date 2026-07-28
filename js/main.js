@@ -66,9 +66,15 @@
   });
   const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('is-visible');observer.unobserve(e.target)}}),{threshold:.12});
   document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+  new MutationObserver(mutations=>mutations.forEach(m=>m.addedNodes.forEach(node=>{
+    if(node.nodeType!==1)return;
+    if(node.matches?.('.reveal'))observer.observe(node);
+    node.querySelectorAll?.('.reveal').forEach(el=>observer.observe(el));
+  }))).observe(document.body,{childList:true,subtree:true});
   document.getElementById('year').textContent=new Date().getFullYear();
   document.querySelectorAll('[data-accordion]').forEach(button=>button.addEventListener('click',()=>{const panel=document.getElementById(button.getAttribute('aria-controls'));const open=button.getAttribute('aria-expanded')==='true';button.setAttribute('aria-expanded',String(!open));panel.hidden=open;button.querySelector('[data-plus]').textContent=open?'+':'−'}));
   const form=document.getElementById('contact-form');
+  const formLoadedAt=Date.now();
   form?.addEventListener('submit',async e=>{
     e.preventDefault();
     const status=document.getElementById('form-status');
@@ -76,6 +82,12 @@
     const name=form.querySelector('[name="name"]').value.trim();
     const email=form.querySelector('[name="email"]').value.trim();
     const message=form.querySelector('[name="message"]').value.trim();
+    const honeypot=form.querySelector('[name="company"]')?.value;
+    if(honeypot || Date.now()-formLoadedAt<1500){
+      status.textContent='Thank you — your message has been sent.';
+      form.reset();
+      return;
+    }
     if(!window.supabaseClient){
       status.textContent='Form is not connected yet. Please contact via email directly.';
       status.focus();
