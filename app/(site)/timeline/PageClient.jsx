@@ -15,7 +15,7 @@ export default function TimelinePage() {
         subtitle={t('timeline.subtitle')}
         titleClassName="max-w-4xl text-5xl font-normal tracking-tight sm:text-7xl"
       />
-      <section className="py-24">
+      <section className="py-12 sm:py-24">
         <div className="shell">
           <TimelineList timeline={data.timeline} />
         </div>

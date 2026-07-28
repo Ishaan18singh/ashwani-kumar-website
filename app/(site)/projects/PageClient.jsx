@@ -16,7 +16,7 @@ export default function ProjectsPage() {
         subtitle={t('projects.subtitle')}
         titleClassName="max-w-5xl text-5xl font-normal tracking-tight sm:text-7xl"
       />
-      <section className="py-24">
+      <section className="py-12 sm:py-24">
         <div className="shell">
           <InitiativesRail projects={data.projects} mode="carousel" />
         </div>

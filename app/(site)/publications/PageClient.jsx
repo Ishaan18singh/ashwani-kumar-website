@@ -14,7 +14,7 @@ export default function PublicationsPage() {
         title={t('publications.title')}
         titleClassName="max-w-5xl text-5xl font-normal tracking-tight sm:text-7xl"
       />
-      <section className="py-24">
+      <section className="py-12 sm:py-24">
         <div className="shell">
           <p className="eyebrow pub-masthead-rule">{t('publications.publishedArticles')}</p>
           <div className="mt-10">

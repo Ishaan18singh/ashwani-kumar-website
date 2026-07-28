@@ -14,7 +14,7 @@ export default function IasAspirantsPage() {
         subtitle={t('iasAspirants.subtitle')}
         titleClassName="max-w-4xl text-5xl font-normal tracking-tight sm:text-7xl"
       />
-      <section className="py-24">
+      <section className="py-12 sm:py-24">
         <div className="shell grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           <article className="card">
             <h2 className="text-2xl font-semibold text-navy-900 dark:text-white">{t('iasAspirants.prepTitle')}</h2>
