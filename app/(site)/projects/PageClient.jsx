@@ -10,7 +10,12 @@ export default function ProjectsPage() {
 
   return (
     <>
-      <PageHero eyebrow={t('projects.eyebrow')} title={t('projects.title')} subtitle={t('projects.subtitle')} wide />
+      <PageHero
+        eyebrow={t('projects.eyebrow')}
+        title={t('projects.title')}
+        subtitle={t('projects.subtitle')}
+        titleClassName="max-w-5xl text-5xl font-normal tracking-tight sm:text-7xl"
+      />
       <section className="py-24">
         <div className="shell">
           <InitiativesRail projects={data.projects} mode="carousel" />

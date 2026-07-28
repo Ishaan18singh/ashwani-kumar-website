@@ -9,7 +9,12 @@ export default function GalleryPage() {
 
   return (
     <>
-      <PageHero eyebrow={t('gallery.eyebrow')} title={t('gallery.title')} subtitle={t('gallery.subtitle')} />
+      <PageHero
+        eyebrow={t('gallery.eyebrow')}
+        title={t('gallery.title')}
+        subtitle={t('gallery.subtitle')}
+        titleClassName="max-w-4xl text-5xl font-normal tracking-tight sm:text-7xl"
+      />
       <GalleryGrid />
     </>
   );

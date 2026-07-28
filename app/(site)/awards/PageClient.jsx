@@ -8,7 +8,11 @@ export default function AwardsPage() {
 
   return (
     <>
-      <PageHero eyebrow={t('awards.eyebrow')} title={t('awards.title')} />
+      <PageHero
+        eyebrow={t('awards.eyebrow')}
+        title={t('awards.title')}
+        titleClassName="max-w-4xl text-5xl font-normal tracking-tight sm:text-7xl"
+      />
       <section className="overflow-hidden py-24">
         <div className="shell">
           <div className="mb-8 flex items-end justify-between">

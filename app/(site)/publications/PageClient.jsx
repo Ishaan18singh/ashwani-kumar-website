@@ -9,7 +9,11 @@ export default function PublicationsPage() {
 
   return (
     <>
-      <PageHero eyebrow={t('publications.eyebrow')} title={t('publications.title')} wide />
+      <PageHero
+        eyebrow={t('publications.eyebrow')}
+        title={t('publications.title')}
+        titleClassName="max-w-5xl text-5xl font-normal tracking-tight sm:text-7xl"
+      />
       <section className="py-24">
         <div className="shell">
           <p className="eyebrow pub-masthead-rule">{t('publications.publishedArticles')}</p>

@@ -11,7 +11,11 @@ export default function ContactPage() {
 
   return (
     <>
-      <PageHero eyebrow={t('contact.eyebrow')} title={t('contact.title')} />
+      <PageHero
+        eyebrow={t('contact.eyebrow')}
+        title={t('contact.title')}
+        titleClassName="max-w-4xl text-5xl font-normal tracking-tight sm:text-7xl"
+      />
       <section className="py-24">
         <div className="shell grid gap-14 lg:grid-cols-[.8fr_1.2fr]">
           <div>
