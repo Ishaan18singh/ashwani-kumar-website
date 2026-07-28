@@ -2,12 +2,6 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "site-preview",
-      "runtimeExecutable": "npx",
-      "runtimeArgs": ["serve", ".", "-l", "5050"],
-      "port": 5050
-    },
-    {
       "name": "nextjs-site",
       "runtimeExecutable": "npm",
       "runtimeArgs": ["--prefix", "nextjs-site", "run", "dev"],

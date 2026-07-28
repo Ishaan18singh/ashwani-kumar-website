@@ -1,2 +1,4 @@
 # Next.js rebuild — kept local only, not tracked in this repo
 nextjs-site/
+
+node_modules/
