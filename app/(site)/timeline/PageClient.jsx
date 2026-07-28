@@ -9,7 +9,12 @@ export default function TimelinePage() {
 
   return (
     <>
-      <PageHero eyebrow={t('timeline.eyebrow')} title={t('timeline.title')} subtitle={t('timeline.subtitle')} />
+      <PageHero
+        eyebrow={t('timeline.eyebrow')}
+        title={t('timeline.title')}
+        subtitle={t('timeline.subtitle')}
+        titleClassName="max-w-4xl text-5xl font-normal tracking-tight sm:text-7xl"
+      />
       <section className="py-24">
         <div className="shell">
           <TimelineList timeline={data.timeline} />
