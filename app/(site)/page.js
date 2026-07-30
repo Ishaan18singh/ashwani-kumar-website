@@ -13,7 +13,7 @@ export default function HomePage() {
       <section className="relative min-h-screen overflow-hidden bg-ivory pt-20 text-navy-900 dark:bg-slate-950 dark:text-white">
         <div className="absolute inset-0 bg-circuit bg-[length:48px_48px] opacity-60 [mask-image:linear-gradient(to_right,black,transparent)]" />
         <div className="shell relative grid min-h-[calc(100vh-5rem)] items-center gap-10 py-16 lg:grid-cols-[1.05fr_.95fr]">
-          <div className="z-10 reveal">
+          <div className="z-10 reveal stack-center">
             <p className="eyebrow">{t('home.eyebrow')}</p>
             <Html
               as="h1"
@@ -62,7 +62,7 @@ export default function HomePage() {
             <p className="eyebrow">{t('home.introEyebrow')}</p>
             <Html as="h2" className="section-title" html={t('home.introTitleHtml')} />
           </div>
-          <div className="reveal">
+          <div className="reveal stack-center">
             <p className="text-base leading-6 text-slate-600 dark:text-slate-300">{t('home.introText')}</p>
             <div className="mt-10 grid grid-cols-3 gap-4">
               <div>
@@ -104,7 +104,7 @@ export default function HomePage() {
             alt="Portrait of Ashwani Kumar, IAS"
             className="reveal aspect-[4/5] w-full rounded-2xl object-cover"
           />
-          <div className="reveal">
+          <div className="reveal stack-center">
             <p className="eyebrow">{t('home.leadershipEyebrow')}</p>
             <h2 className="section-title">{t('home.leadershipTitle')}</h2>
             <p className="section-copy">{t('home.leadershipText')}</p>

@@ -337,3 +337,54 @@ strong,
 b {
   font-weight: 500;
 }
+
+/* ============================================================
+   Mobile content centering
+   On narrow screens, headings/eyebrows and hero-style content
+   blocks read better centered rather than pinned to the left
+   edge. Long-form body copy (multi-paragraph text, lists,
+   forms) is intentionally left out so readability isn't hurt.
+   ============================================================ */
+@media (max-width: 639px) {
+  .page-hero .shell > .eyebrow,
+  .page-hero .shell > h1,
+  .page-hero .shell > p {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .eyebrow,
+  .section-title {
+    text-align: center;
+  }
+
+  .stack-center {
+    text-align: center;
+  }
+  .stack-center > * {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .stack-center .flex {
+    justify-content: center;
+  }
+
+  footer .shell {
+    text-align: center;
+  }
+  footer .shell > * {
+    width: 100%;
+  }
+  footer .flex.flex-wrap.gap-3 {
+    justify-content: center;
+  }
+  footer .grid-cols-2 {
+    width: -moz-fit-content;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    column-gap: 3rem;
+    text-align: left;
+  }
+}
