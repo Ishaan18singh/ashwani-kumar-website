@@ -32,19 +32,22 @@ export default function Footer() {
         <div>
           <p className="mb-4 text-xs font-bold uppercase tracking-[.2em] text-gold-500">{t('common.connect')}</p>
           <div className="flex flex-wrap gap-3">
-            {SITE_DATA.profile.social.map((s) => (
-              <a
-                key={s.label}
-                href={s.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`${s.label} (opens in new tab)`}
-                title={s.label}
-                className="footer-social-link"
-              >
-                <SocialIcon label={s.label} />
-              </a>
-            ))}
+            {SITE_DATA.profile.social.map((s) => {
+              const isMail = s.url.startsWith('mailto:');
+              return (
+                <a
+                  key={s.label}
+                  href={s.url}
+                  target={isMail ? undefined : '_blank'}
+                  rel={isMail ? undefined : 'noopener noreferrer'}
+                  aria-label={isMail ? s.label : `${s.label} (opens in new tab)`}
+                  title={s.label}
+                  className="footer-social-link"
+                >
+                  <SocialIcon label={s.label} />
+                </a>
+              );
+            })}
           </div>
         </div>
       </div>

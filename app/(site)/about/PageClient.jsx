@@ -3,6 +3,19 @@
 import { useI18n } from '@/lib/i18n/context';
 import PageHero from '@/components/PageHero';
 
+const EXTRA_ICONS = [
+  { match: /volleyball|captain|sport/i, icon: '🏐' },
+  { match: /swim|yoga|bodybuild|athlet/i, icon: '🏊' },
+  { match: /calligraphy|fine arts|art/i, icon: '🎨' },
+  { match: /scouts|guides/i, icon: '🧭' },
+  { match: /shaastra|saarang|event/i, icon: '🎉' },
+  { match: /nss|volunteer|education/i, icon: '📚' },
+];
+
+function iconFor(text) {
+  return EXTRA_ICONS.find((e) => e.match.test(text))?.icon ?? '✨';
+}
+
 export default function AboutPage() {
   const { t, data } = useI18n();
 
@@ -70,8 +83,11 @@ export default function AboutPage() {
           <h2 className="mt-24 text-4xl font-semibold text-navy-900 dark:text-white">{t('about.beyondOffice')}</h2>
           <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {data.extras.map((x) => (
-              <li key={x} className="reveal rounded-xl bg-white p-4 text-sm shadow-sm dark:bg-slate-900">
-                {x}
+              <li key={x} className="card reveal flex items-start gap-3 text-sm">
+                <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-gold-400/15 text-lg">
+                  {iconFor(x)}
+                </span>
+                <span className="pt-1 text-slate-600 dark:text-slate-300">{x}</span>
               </li>
             ))}
           </ul>

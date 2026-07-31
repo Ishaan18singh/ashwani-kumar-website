@@ -340,6 +340,26 @@ b {
   font-weight: 500;
 }
 
+.initiative-row-img {
+  aspect-ratio: 4 / 3;
+  height: auto;
+}
+
+.initiative-rows-gap {
+  gap: 4rem;
+}
+@media (min-width: 640px) {
+  .initiative-rows-gap {
+    gap: 6rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .initiative-row-reverse .initiative-row-img {
+    order: 2;
+  }
+}
+
 /* ============================================================
    Mobile content centering
    On narrow screens, headings/eyebrows and hero-style content
