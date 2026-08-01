@@ -157,7 +157,6 @@ export default function Header() {
           <Link href="/" className="header-brand" aria-label="Ashwani Kumar home">
             <span className="header-brand-text">
               <strong className="header-brand-name">Ashwani Kumar</strong>
-              <small className="header-brand-sub">IAS · Government of Assam</small>
             </span>
           </Link>
           <div className="header-right">

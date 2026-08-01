@@ -53,10 +53,10 @@ html.dark .header-menu-btn:hover { background-color: hsla(0,0%,100%,.06); }
 .header-brand { grid-column: 2; justify-self: center; display: flex; align-items: center; gap: .6rem; text-decoration: none; min-width: 0; }
 .header-brand-avatar { display: grid; place-items: center; flex-shrink: 0; width: 34px; height: 34px; border-radius: 9999px; border: 1px solid rgb(var(--c-gold-400)); font-family: "Jost", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif; font-weight: 700; font-size: .8rem; color: rgb(var(--c-gold-500)); }
 .header-brand-text { display: flex; flex-direction: column; line-height: 1.15; min-width: 0; }
-.header-brand-name { font-family: "Jost", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif; font-weight: 600; font-size: .95rem; color: #0B2545; white-space: nowrap; }
+.header-brand-name { font-family: "Jost", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif; font-weight: 400; font-size: 1.25rem; letter-spacing: .01em; color: #0B2545; white-space: nowrap; }
 html.dark .header-brand-name { color: #fff; }
 .header-brand-sub { margin-top: 2px; font-size: .6rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: #6E6E73; white-space: nowrap; } html.dark .header-brand-sub { color: #94a3b8; }
-@media (max-width: 420px) { .header-brand-avatar { width: 30px; height: 30px; } .header-brand-name { font-size: .82rem; } .header-brand-sub { font-size: .55rem; } }
+@media (max-width: 420px) { .header-brand-avatar { width: 30px; height: 30px; } .header-brand-name { font-size: 1.05rem; } .header-brand-sub { font-size: .55rem; } }
 
 .header-right { grid-column: 3; justify-self: end; display: flex; align-items: center; gap: 1.1rem; }
 .header-links { display: none; align-items: center; gap: 2rem; }
