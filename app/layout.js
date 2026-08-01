@@ -21,13 +21,13 @@ export const metadata = {
     url: SITE_URL,
     title: 'Ashwani Kumar, IAS | Digital Governance & Public Service',
     description: DEFAULT_DESCRIPTION,
-    images: [{ url: '/images/ashwani-kumar-hero.webp', width: 1200, height: 1200 }]
+    images: [{ url: '/images/og-image.jpg', width: 1200, height: 630 }]
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Ashwani Kumar, IAS | Digital Governance & Public Service',
     description: DEFAULT_DESCRIPTION,
-    images: ['/images/ashwani-kumar-hero.webp']
+    images: ['/images/og-image.jpg']
   }
 };
 
