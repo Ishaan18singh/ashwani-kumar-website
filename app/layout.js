@@ -1,7 +1,7 @@
 import { headers } from 'next/headers';
 import './globals.css';
 
-const SITE_URL = 'https://www.ashwanikumarias.com';
+const SITE_URL = 'https://ashwani-kumar-website.vercel.app';
 const DEFAULT_DESCRIPTION =
   'Official profile of Ashwani Kumar, IAS Officer, 2010 Batch and Director, DITEC, Government of Assam.';
 
