@@ -5,7 +5,15 @@ const jost = Jost({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'],
   variable: '--font-jost',
-  display: 'swap'
+  // 'optional' (not 'swap'): Jost is the heading font, and headings are
+  // consistently the LCP element on this site. Next's automatic font
+  // preload isn't firing here (next-font-manifest.json comes out empty at
+  // build time - a real gap, not a config issue found so far), so on a
+  // slow connection 'swap' means LCP waits out the CSS->font chain before
+  // painting. 'optional' paints with the fallback font immediately instead
+  // and only uses Jost if it's already cached, trading guaranteed branding
+  // on first paint for a much faster LCP.
+  display: 'optional'
 });
 const atkinson = Atkinson_Hyperlegible({
   subsets: ['latin'],
