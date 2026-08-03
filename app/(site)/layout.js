@@ -2,6 +2,7 @@ import { I18nProvider } from '@/lib/i18n/context';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import RevealObserver from '@/components/RevealObserver';
+import SmoothScroll from '@/components/SmoothScroll';
 import SkipLink from '@/components/SkipLink';
 
 // Chrome (header/footer/nav) for every public page. The /admin route sits
@@ -15,6 +16,7 @@ export default function SiteLayout({ children }) {
       <main id="main">{children}</main>
       <Footer />
       <RevealObserver />
+      <SmoothScroll />
     </I18nProvider>
   );
 }

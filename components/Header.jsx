@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import { useI18n } from '@/lib/i18n/context';
-import { NAV_PAGES, HEADER_PICKS, COLOR_THEMES } from '@/lib/nav';
+import { NAV_PAGES, HEADER_PICKS } from '@/lib/nav';
 
 export default function Header() {
   const pathname = usePathname();
@@ -13,21 +13,10 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
-  const [colorTheme, setColorTheme] = useState('classic');
-  const [isDark, setIsDark] = useState(false);
 
   const toggleRef = useRef(null);
   const panelRef = useRef(null);
   const lastFocused = useRef(null);
-
-  // Sync color theme + dark mode reads (the blocking inline script in layout
-  // already applied classes before paint; this just mirrors that into state
-  // so the swatches/toggle reflect reality).
-  useEffect(() => {
-    const root = document.documentElement;
-    setColorTheme(root.getAttribute('data-theme') || 'classic');
-    setIsDark(root.classList.contains('dark'));
-  }, []);
 
   useEffect(() => {
     let lastY = window.scrollY;
@@ -110,20 +99,6 @@ export default function Header() {
     document.body.classList.remove('overflow-hidden');
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname]);
-
-  const toggleDark = () => {
-    const root = document.documentElement;
-    root.classList.toggle('dark');
-    const nowDark = root.classList.contains('dark');
-    window.localStorage.setItem('theme', nowDark ? 'dark' : 'light');
-    setIsDark(nowDark);
-  };
-
-  const applyColorTheme = (theme) => {
-    document.documentElement.setAttribute('data-theme', theme);
-    window.localStorage.setItem('colorTheme', theme);
-    setColorTheme(theme);
-  };
 
   const headerLinks = NAV_PAGES.filter(([href]) => HEADER_PICKS.includes(href));
 
@@ -212,36 +187,6 @@ export default function Header() {
                 </Link>
               ))}
             </nav>
-            <div className="fullscreen-menu-footer">
-              <div className="fullscreen-menu-block">
-                <p className="fullscreen-menu-label">{t('common.appearance')}</p>
-                <div className="fullscreen-menu-appearance-row">
-                  <button
-                    id="theme-toggle"
-                    type="button"
-                    className="fullscreen-menu-pill"
-                    aria-label="Toggle dark mode"
-                    onClick={toggleDark}
-                  >
-                    <span aria-hidden="true">◐</span> <span>{t('common.darkMode')}</span>
-                  </button>
-                  <div className="fullscreen-menu-swatches" role="group" aria-label="Color theme options">
-                    {COLOR_THEMES.map((s) => (
-                      <button
-                        key={s.theme}
-                        type="button"
-                        className="theme-swatch h-9 w-9 rounded-full"
-                        style={{ background: s.gradient }}
-                        aria-pressed={colorTheme === s.theme}
-                        aria-label={s.label}
-                        role="menuitemradio"
-                        onClick={() => applyColorTheme(s.theme)}
-                      />
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>

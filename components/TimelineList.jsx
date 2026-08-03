@@ -10,7 +10,7 @@ export default function TimelineList({ timeline }) {
       {timeline.map((x, i) => {
         const open = openIndex === i;
         return (
-          <article key={`${x.role}-${x.period}`} className="reveal relative pl-10">
+          <article key={`${x.role}-${x.period}`} className="reveal timeline-reveal relative pl-10">
             <span className="absolute left-0 top-2 h-4 w-4 rounded-full border-4 border-ivory bg-gold-400 ring-1 ring-gold-400 dark:border-slate-950" />
             <button
               type="button"

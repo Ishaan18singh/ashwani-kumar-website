@@ -21,9 +21,9 @@ export default function ProjectsPage() {
           {data.projects.map((x, i) => (
             <article
               key={x.title}
-              className={`reveal initiative-row grid items-center gap-8 lg:grid-cols-2 lg:gap-14${
-                i % 2 === 1 ? ' initiative-row-reverse' : ''
-              }`}
+              className={`reveal initiative-row grid items-center gap-8 lg:grid-cols-2 lg:gap-14 ${
+                i % 2 === 0 ? 'initiative-reveal-from-right' : 'initiative-reveal-from-left'
+              }${i % 2 === 1 ? ' initiative-row-reverse' : ''}`}
             >
               <img
                 src={`/images/${cardImage(i)}.webp`}

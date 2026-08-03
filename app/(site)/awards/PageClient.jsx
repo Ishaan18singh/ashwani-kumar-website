@@ -15,12 +15,12 @@ export default function AwardsPage() {
       />
       <section className="overflow-hidden py-12 sm:py-24">
         <div className="shell">
-          <div className="mb-8 flex items-end justify-between">
-            <div>
-              <p className="eyebrow">{t('awards.featuredEyebrow')}</p>
-              <h2 className="section-title">{t('awards.milestones')}</h2>
+          <div className="milestones-badge-row flex justify-center">
+            <div className="milestones-badge">
+              <span className="eyebrow milestones-badge-eyebrow">{t('awards.featuredEyebrow')}</span>
+              <span className="font-display text-2xl text-navy-900 dark:text-white">{t('awards.milestones')}</span>
+              <span className="milestones-badge-dot-track" aria-hidden="true" />
             </div>
-            <p className="text-sm text-slate-500 dark:text-slate-400">{t('awards.swipe')}</p>
           </div>
           <div className="flex snap-x gap-6 overflow-x-auto pb-6" tabIndex={0} aria-label="Featured awards carousel">
             {data.awards.map((x) => (
@@ -31,6 +31,7 @@ export default function AwardsPage() {
               </article>
             ))}
           </div>
+          <p className="mt-3 text-center text-sm text-slate-500 dark:text-slate-400">{t('awards.swipe')}</p>
           <p className="eyebrow mt-20">{t('awards.chronologyEyebrow')}</p>
           <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {data.awards.map((x) => (

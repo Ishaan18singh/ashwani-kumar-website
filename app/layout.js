@@ -1,4 +1,3 @@
-import { headers } from 'next/headers';
 import './globals.css';
 
 const SITE_URL = 'https://ashwani-kumar-website.vercel.app';
@@ -61,23 +60,10 @@ const personJsonLd = {
   ]
 };
 
-// Runs before paint (server-injected inline script) so dark mode / color
-// theme are applied without a flash — same technique as the original
-// per-page inline <script> in the static site. Shared by every route,
-// including /admin, which also respects the saved theme.
-const themeInitScript = `(function(){var r=document.documentElement;if(localStorage.theme==='dark'||(!('theme' in localStorage)&&matchMedia('(prefers-color-scheme: dark)').matches))r.classList.add('dark');r.setAttribute('data-theme',localStorage.colorTheme||'classic')})()`;
-
 export default function RootLayout({ children }) {
-  const nonce = headers().get('x-nonce') || undefined;
-
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en">
       <head>
-        {/* React SSR strips the rendered nonce attribute value (browsers hide it
-            from the DOM after parsing, by design) which trips a harmless
-            hydration-mismatch warning in dev; the nonce itself is still applied
-            correctly for CSP enforcement. suppressHydrationWarning silences it. */}
-        <script nonce={nonce} suppressHydrationWarning dangerouslySetInnerHTML={{ __html: themeInitScript }} />
         {/* JSON-LD is exempt from CSP script-src (non-executable data block), so no nonce needed. */}
         <script
           type="application/ld+json"
