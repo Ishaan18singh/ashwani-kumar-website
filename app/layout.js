@@ -1,4 +1,3 @@
-import { headers } from 'next/headers';
 import { Jost, Atkinson_Hyperlegible, Inter } from 'next/font/google';
 import './globals.css';
 
@@ -83,12 +82,6 @@ const personJsonLd = {
 };
 
 export default function RootLayout({ children }) {
-  // Calling headers() opts this layout into dynamic rendering, which is what
-  // lets Next.js read the nonce off the CSP header (set in middleware.js) and
-  // apply it to its own inline hydration scripts. Without this, those scripts
-  // have no nonce, the strict CSP silently blocks them, and the site never
-  // hydrates in production (dev is unaffected since CSP is relaxed there).
-  headers();
   return (
     <html lang="en" className={`${jost.variable} ${atkinson.variable} ${inter.variable}`}>
       <head>

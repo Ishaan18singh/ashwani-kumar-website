@@ -4,12 +4,16 @@ const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://zblqmohpsq
 const SUPABASE_WS_URL = SUPABASE_URL.replace(/^https:/, 'wss:');
 
 export function middleware(request) {
-  const nonce = Buffer.from(crypto.randomUUID()).toString('base64');
   const isDev = process.env.NODE_ENV !== 'production';
 
+  // No per-request nonce: pages are static (prerendered once at build time),
+  // so a nonce generated per-request here could never match what's baked
+  // into that static HTML. 'unsafe-inline' is required for Next's own inline
+  // hydration scripts to run; this is the standard tradeoff for a statically
+  // rendered Next.js app (see https://nextjs.org/docs/app/guides/content-security-policy).
   const cspHeader = `
     default-src 'self';
-    script-src 'self' 'nonce-${nonce}'${isDev ? " 'unsafe-eval'" : ''};
+    script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ''};
     style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
     font-src 'self' https://fonts.gstatic.com;
     img-src 'self' data:;
@@ -22,11 +26,7 @@ export function middleware(request) {
     .replace(/\s{2,}/g, ' ')
     .trim();
 
-  const requestHeaders = new Headers(request.headers);
-  requestHeaders.set('x-nonce', nonce);
-  requestHeaders.set('Content-Security-Policy', cspHeader);
-
-  const response = NextResponse.next({ request: { headers: requestHeaders } });
+  const response = NextResponse.next();
   response.headers.set('Content-Security-Policy', cspHeader);
   response.headers.set('X-Content-Type-Options', 'nosniff');
   response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
