@@ -41,6 +41,8 @@ export default function HomePage() {
               src="/images/ashwani-kumar-hero.webp"
               alt="Ashwani Kumar, IAS, in a blue suit"
               className="h-full w-full object-cover object-top"
+              fetchPriority="high"
+              decoding="async"
             />
             <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-navy-950 via-navy-950/60 to-transparent p-7 pt-24 text-white">
               <p className="text-xs font-bold uppercase tracking-[.2em] text-gold-300">{t('home.currentOfficeLabel')}</p>
