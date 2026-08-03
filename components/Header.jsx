@@ -137,7 +137,7 @@ export default function Header() {
           <div className="header-right">
             <nav className="header-links" aria-label="Quick links">
               {headerLinks.map(([href, key]) => (
-                <Link key={href} href={href} className={`header-link${pathname === href ? ' active' : ''}`}>
+                <Link key={href} href={href} prefetch={false} className={`header-link${pathname === href ? ' active' : ''}`}>
                   {t(key)}
                 </Link>
               ))}
@@ -180,6 +180,7 @@ export default function Header() {
                 <Link
                   key={href}
                   href={href}
+                  prefetch={false}
                   style={{ '--i': i }}
                   className={`fullscreen-menu-link${pathname === href ? ' active' : ''}`}
                 >

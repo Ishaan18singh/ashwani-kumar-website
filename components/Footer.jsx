@@ -23,7 +23,7 @@ export default function Footer() {
           <p className="mb-4 text-xs font-bold uppercase tracking-[.2em] text-gold-500">{t('common.navigate')}</p>
           <div className="grid grid-cols-2 gap-3 text-sm text-slate-600">
             {NAV_PAGES.map(([href, key]) => (
-              <Link key={href} href={href} className={`nav-link${pathname === href ? ' active' : ''}`}>
+              <Link key={href} href={href} prefetch={false} className={`nav-link${pathname === href ? ' active' : ''}`}>
                 {t(key)}
               </Link>
             ))}
