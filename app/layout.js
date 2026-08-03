@@ -91,7 +91,7 @@ export default function RootLayout({ children }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
         />
       </head>
-      <body>{children}</body>
+      <body className={atkinson.className}>{children}</body>
     </html>
   );
 }

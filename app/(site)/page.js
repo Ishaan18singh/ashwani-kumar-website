@@ -39,6 +39,8 @@ export default function HomePage() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/images/ashwani-kumar-hero.webp"
+              srcSet="/images/ashwani-kumar-hero-mobile.webp 750w, /images/ashwani-kumar-hero.webp 1302w"
+              sizes="(min-width: 1024px) 45vw, 100vw"
               alt="Ashwani Kumar, IAS, in a blue suit"
               className="h-full w-full object-cover object-top"
               fetchPriority="high"
