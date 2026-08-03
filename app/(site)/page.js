@@ -13,7 +13,7 @@ export default function HomePage() {
       <section className="relative min-h-screen overflow-hidden bg-ivory pt-20 text-navy-900 dark:bg-slate-950 dark:text-white">
         <div className="absolute inset-0 bg-circuit bg-[length:48px_48px] opacity-60 [mask-image:linear-gradient(to_right,black,transparent)]" />
         <div className="shell relative grid min-h-[calc(100vh-5rem)] items-center gap-10 py-16 lg:grid-cols-[1.05fr_.95fr]">
-          <div className="z-10 reveal stack-center">
+          <div className="z-10 stack-center">
             <p className="eyebrow">{t('home.eyebrow')}</p>
             <Html
               as="h1"

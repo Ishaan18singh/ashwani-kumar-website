@@ -9,8 +9,17 @@ export default function RevealObserver() {
   const pathname = usePathname();
 
   useEffect(() => {
+    // Fail-safe: content already sitting in the initial viewport (e.g. the
+    // hero) shouldn't wait on an async observer callback to appear — reveal
+    // it immediately so a slow/blocked observer never leaves it stuck at
+    // opacity:0.
+    const vh = window.innerHeight;
+    document.querySelectorAll('.reveal:not(.is-visible)').forEach((el) => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < vh && rect.bottom > 0) el.classList.add('is-visible');
+    });
+
     const els = document.querySelectorAll('.reveal:not(.is-visible)');
-    if (!els.length) return undefined;
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -38,9 +47,16 @@ export default function RevealObserver() {
     });
     mutationObserver.observe(document.body, { childList: true, subtree: true });
 
+    // Second fail-safe: whatever the cause, nothing should stay invisible
+    // forever — force-reveal any stragglers a few seconds in.
+    const safetyTimer = setTimeout(() => {
+      document.querySelectorAll('.reveal:not(.is-visible)').forEach((el) => el.classList.add('is-visible'));
+    }, 4000);
+
     return () => {
       observer.disconnect();
       mutationObserver.disconnect();
+      clearTimeout(safetyTimer);
     };
   }, [pathname]);
 
