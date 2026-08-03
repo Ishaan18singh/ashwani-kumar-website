@@ -24,10 +24,10 @@ export default function HomePage() {
               {t('home.subtitle')}
             </p>
             <div className="mt-9 flex flex-wrap gap-3">
-              <Link className="button-primary" href="/projects">
+              <Link className="button-primary" href="/projects" prefetch={false}>
                 <span>{t('home.exploreBtn')}</span> <span aria-hidden="true">→</span>
               </Link>
-              <Link className="button-ghost" href="/about">
+              <Link className="button-ghost" href="/about" prefetch={false}>
                 {t('home.aboutBtn')}
               </Link>
             </div>
@@ -91,7 +91,7 @@ export default function HomePage() {
           <p className="eyebrow">{t('home.selectedWorkEyebrow')}</p>
           <div className="flex flex-col justify-between gap-5 md:flex-row md:items-end">
             <h2 className="section-title">{t('home.selectedWorkTitle')}</h2>
-            <Link href="/projects" className="text-sm font-bold text-gold-500">
+            <Link href="/projects" prefetch={false} className="text-sm font-bold text-gold-500">
               {t('home.viewAll')}
             </Link>
           </div>
@@ -112,7 +112,7 @@ export default function HomePage() {
             <p className="eyebrow">{t('home.leadershipEyebrow')}</p>
             <h2 className="section-title">{t('home.leadershipTitle')}</h2>
             <p className="section-copy">{t('home.leadershipText')}</p>
-            <Link className="button-primary mt-8" href="/timeline">
+            <Link className="button-primary mt-8" href="/timeline" prefetch={false}>
               {t('home.followJourney')}
             </Link>
           </div>

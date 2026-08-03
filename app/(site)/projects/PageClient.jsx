@@ -38,6 +38,7 @@ export default function ProjectsPage() {
                 <Link
                   className="button-primary mt-8"
                   href={`/projects/${slugify(x.title)}`}
+                  prefetch={false}
                   aria-label={`${x.title} — read more`}
                 >
                   {t('project.learnMore')}
@@ -53,7 +54,7 @@ export default function ProjectsPage() {
             <p className="eyebrow">{t('projects.principleEyebrow')}</p>
             <h2 className="max-w-3xl text-4xl font-semibold sm:text-5xl">{t('projects.principleTitle')}</h2>
           </div>
-          <Link className="button-primary" href="/contact">
+          <Link className="button-primary" href="/contact" prefetch={false}>
             {t('projects.startConversation')}
           </Link>
         </div>
