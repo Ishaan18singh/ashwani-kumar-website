@@ -1,5 +1,26 @@
 import { headers } from 'next/headers';
+import { Jost, Atkinson_Hyperlegible, Inter } from 'next/font/google';
 import './globals.css';
+
+const jost = Jost({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-jost',
+  display: 'swap'
+});
+const atkinson = Atkinson_Hyperlegible({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  style: ['normal', 'italic'],
+  variable: '--font-atkinson',
+  display: 'swap'
+});
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-inter',
+  display: 'swap'
+});
 
 const SITE_URL = 'https://ashwani-kumar-website.vercel.app';
 const DEFAULT_DESCRIPTION =
@@ -69,17 +90,8 @@ export default function RootLayout({ children }) {
   // hydrates in production (dev is unaffected since CSP is relaxed there).
   headers();
   return (
-    <html lang="en">
+    <html lang="en" className={`${jost.variable} ${atkinson.variable} ${inter.variable}`}>
       <head>
-        {/* Preconnect + a direct <link> (instead of a CSS @import, which the
-            browser can't discover until globals.css itself has loaded) lets
-            the font request start in parallel with the page's own CSS. */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap"
-        />
         {/* JSON-LD is exempt from CSP script-src (non-executable data block), so no nonce needed. */}
         <script
           type="application/ld+json"

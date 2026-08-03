@@ -51,7 +51,7 @@ export default function HomePage() {
           </div>
           <a
             href="#introduction"
-            className="absolute bottom-5 left-1/2 hidden -translate-x-1/2 text-xs uppercase tracking-[.2em] text-slate-500 dark:text-slate-400 lg:block"
+            className="absolute bottom-5 left-1/2 hidden -translate-x-1/2 text-xs uppercase tracking-[.2em] text-slate-600 dark:text-slate-400 lg:block"
           >
             {t('home.scroll')}
           </a>
@@ -69,15 +69,15 @@ export default function HomePage() {
             <div className="mt-10 grid grid-cols-3 gap-4">
               <div>
                 <strong className="font-display text-4xl text-navy-900 dark:text-white">2010</strong>
-                <span className="mt-1 block text-xs uppercase tracking-wider text-slate-500">{t('home.stat1Label')}</span>
+                <span className="mt-1 block text-xs uppercase tracking-wider text-slate-600">{t('home.stat1Label')}</span>
               </div>
               <div>
                 <strong className="font-display text-4xl text-navy-900 dark:text-white">7+</strong>
-                <span className="mt-1 block text-xs uppercase tracking-wider text-slate-500">{t('home.stat2Label')}</span>
+                <span className="mt-1 block text-xs uppercase tracking-wider text-slate-600">{t('home.stat2Label')}</span>
               </div>
               <div>
                 <strong className="font-display text-4xl text-navy-900 dark:text-white">₹500cr</strong>
-                <span className="mt-1 block text-xs uppercase tracking-wider text-slate-500">{t('home.stat3Label')}</span>
+                <span className="mt-1 block text-xs uppercase tracking-wider text-slate-600">{t('home.stat3Label')}</span>
               </div>
             </div>
           </div>
