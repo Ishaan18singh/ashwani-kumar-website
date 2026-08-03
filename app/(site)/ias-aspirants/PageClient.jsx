@@ -30,7 +30,7 @@ export default function IasAspirantsPage() {
           </article>
         </div>
         <div className="shell mt-16">
-          <p className="text-sm text-slate-500 dark:text-slate-400">{t('iasAspirants.placeholderNote')}</p>
+          <p className="text-sm text-slate-600 dark:text-slate-400">{t('iasAspirants.placeholderNote')}</p>
         </div>
       </section>
     </>

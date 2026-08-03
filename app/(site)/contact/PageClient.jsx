@@ -34,7 +34,7 @@ export default function ContactPage() {
                 {SITE_DATA.profile.phone}
               </a>
             </div>
-            <p className="mt-10 text-sm leading-6 text-slate-500 dark:text-slate-400">{t('contact.formalNote')}</p>
+            <p className="mt-10 text-sm leading-6 text-slate-600 dark:text-slate-400">{t('contact.formalNote')}</p>
           </div>
           <ContactForm />
         </div>

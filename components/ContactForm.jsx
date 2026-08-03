@@ -91,7 +91,7 @@ export default function ContactForm() {
       <button className="button-primary mt-6" type="submit" disabled={sending}>
         {sending ? 'Sending…' : t('contact.sendBtn')}
       </button>
-      <p ref={statusRef} className="mt-4 text-sm text-slate-500 dark:text-slate-400" role="status" tabIndex={-1}>
+      <p ref={statusRef} className="mt-4 text-sm text-slate-600 dark:text-slate-400" role="status" tabIndex={-1}>
         {status}
       </p>
     </form>

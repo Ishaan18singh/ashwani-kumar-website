@@ -25,7 +25,7 @@ export default function TimelineList({ timeline }) {
                     {x.period} · {x.type}
                   </span>
                   <strong className="mt-2 block font-display text-2xl text-navy-900 dark:text-white">{x.role}</strong>
-                  <span className="mt-1 block text-sm text-slate-500 dark:text-slate-400">{x.org}</span>
+                  <span className="mt-1 block text-sm text-slate-600 dark:text-slate-400">{x.org}</span>
                 </span>
                 <span className="text-2xl text-gold-500">{open ? '−' : '+'}</span>
               </span>

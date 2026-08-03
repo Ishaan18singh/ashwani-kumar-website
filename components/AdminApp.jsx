@@ -169,7 +169,7 @@ export default function AdminApp() {
         <div className="shell flex h-20 items-center justify-between">
           <div>
             <p className="font-display text-xl text-navy-900 dark:text-white">Admin dashboard</p>
-            <p className="text-xs text-slate-500">{session.user?.email}</p>
+            <p className="text-xs text-slate-600">{session.user?.email}</p>
           </div>
           <button onClick={handleLogout} className="button-ghost">
             Sign out
@@ -198,11 +198,11 @@ export default function AdminApp() {
 
         {tab === 'messages' ? (
           <section className="mt-8">
-            <p className="mb-4 text-sm text-slate-500">Contact form submissions, newest first.</p>
+            <p className="mb-4 text-sm text-slate-600">Contact form submissions, newest first.</p>
             {messagesError ? (
               <p className="text-sm text-red-600">Failed to load: {messagesError}</p>
             ) : !messages || !messages.length ? (
-              <p className="text-sm text-slate-500">No messages yet.</p>
+              <p className="text-sm text-slate-600">No messages yet.</p>
             ) : (
               <div className="space-y-4">
                 {messages.map((m) => (
@@ -217,7 +217,7 @@ export default function AdminApp() {
                             </span>
                           ) : null}
                         </p>
-                        <p className="text-sm text-slate-500">
+                        <p className="text-sm text-slate-600">
                           {m.email} · {new Date(m.created_at).toLocaleString()}
                         </p>
                       </div>
@@ -243,7 +243,7 @@ export default function AdminApp() {
         ) : (
           <section className="mt-8">
             <div className="mb-6 flex items-center justify-between">
-              <p className="text-sm text-slate-500">Manage the articles shown on your Publications page.</p>
+              <p className="text-sm text-slate-600">Manage the articles shown on your Publications page.</p>
               <button onClick={openAddPub} className="button-primary">
                 + Add publication
               </button>
@@ -316,7 +316,7 @@ export default function AdminApp() {
             {publicationsError ? (
               <p className="text-sm text-red-600">Failed to load: {publicationsError}</p>
             ) : !publications || !publications.length ? (
-              <p className="text-sm text-slate-500">No publications yet.</p>
+              <p className="text-sm text-slate-600">No publications yet.</p>
             ) : (
               <div className="space-y-4">
                 {publications.map((p) => (

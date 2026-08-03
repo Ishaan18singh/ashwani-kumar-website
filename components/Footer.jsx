@@ -51,7 +51,7 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      <div className="shell mt-12 border-t border-slate-200 pt-6 text-xs text-slate-500">
+      <div className="shell mt-12 border-t border-slate-200 pt-6 text-xs text-slate-600">
         © <span>{year}</span> Ashwani Kumar. {t('common.allRightsReserved')}
       </div>
     </footer>

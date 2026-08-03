@@ -39,7 +39,7 @@ export default function ProjectsPage() {
                   className="button-primary mt-8"
                   href={`/projects/${slugify(x.title)}`}
                   prefetch={false}
-                  aria-label={`${x.title} — read more`}
+                  aria-label={`${t('project.learnMore')}: ${x.title}`}
                 >
                   {t('project.learnMore')}
                 </Link>

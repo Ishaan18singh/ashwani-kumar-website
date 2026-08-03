@@ -31,7 +31,7 @@ export default function AwardsPage() {
               </article>
             ))}
           </div>
-          <p className="mt-3 text-center text-sm text-slate-500 dark:text-slate-400">{t('awards.swipe')}</p>
+          <p className="mt-3 text-center text-sm text-slate-600 dark:text-slate-400">{t('awards.swipe')}</p>
           <p className="eyebrow mt-20">{t('awards.chronologyEyebrow')}</p>
           <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {data.awards.map((x) => (
