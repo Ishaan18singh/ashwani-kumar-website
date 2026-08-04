@@ -66,8 +66,8 @@ export default function HomePage() {
       </section>
 
       <section id="introduction" className="border-t border-slate-200 py-24 dark:border-slate-800">
-        <div className="shell grid items-center gap-14 lg:grid-cols-[.95fr_1.05fr]">
-          <div className="reveal">
+        <div className="shell grid items-start gap-14 lg:grid-cols-[.95fr_1.05fr]">
+          <div className="reveal pin-on-scroll">
             <p className="eyebrow">{t('home.introEyebrow')}</p>
             <Html as="h2" className="section-title" html={t('home.introTitleHtml')} />
           </div>

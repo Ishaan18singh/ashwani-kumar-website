@@ -4,6 +4,7 @@ import Footer from '@/components/Footer';
 import RevealObserver from '@/components/RevealObserver';
 import SmoothScroll from '@/components/SmoothScroll';
 import SkipLink from '@/components/SkipLink';
+import PageTransition from '@/components/PageTransition';
 
 // Chrome (header/footer/nav) for every public page. The /admin route sits
 // outside this group and intentionally has none of this, matching the
@@ -13,7 +14,9 @@ export default function SiteLayout({ children }) {
     <I18nProvider>
       <SkipLink />
       <Header />
-      <main id="main">{children}</main>
+      <main id="main">
+        <PageTransition>{children}</PageTransition>
+      </main>
       <Footer />
       <RevealObserver />
       <SmoothScroll />
