@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { useEffect, useRef, useState } from 'react';
 import { useI18n } from '@/lib/i18n/context';
 import Html from '@/components/Html';
 
@@ -12,6 +13,46 @@ const EXPLORE_CARDS = [
 
 export default function HomePage() {
   const { t } = useI18n();
+  const pinWrapperRef = useRef(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [mobilePinActive, setMobilePinActive] = useState(false);
+
+  // Mobile-only scroll-pin: as the user scrolls through a tall wrapper, one
+  // card at a time is shown (Timeline -> Initiatives -> Awards), then the
+  // section releases and the page continues scrolling normally. Desktop
+  // keeps the plain 3-column grid untouched - this effect never engages
+  // there. Skipped entirely under prefers-reduced-motion.
+  useEffect(() => {
+    const pinQuery = window.matchMedia('(max-width: 1023px)');
+    const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let raf = null;
+
+    const update = () => {
+      raf = null;
+      const wrapper = pinWrapperRef.current;
+      const active = pinQuery.matches && !motionQuery.matches;
+      setMobilePinActive(active);
+      if (!wrapper || !active) return;
+      const rect = wrapper.getBoundingClientRect();
+      const scrollable = rect.height - window.innerHeight;
+      const progress = scrollable > 0 ? Math.min(1, Math.max(0, -rect.top / scrollable)) : 0;
+      setActiveIndex(Math.min(EXPLORE_CARDS.length - 1, Math.floor(progress * EXPLORE_CARDS.length)));
+    };
+
+    const onScroll = () => {
+      if (raf) return;
+      raf = requestAnimationFrame(update);
+    };
+
+    update();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, []);
 
   return (
     <>
@@ -95,23 +136,29 @@ export default function HomePage() {
         <div className="shell">
           <p className="eyebrow">{t('home.selectedWorkEyebrow')}</p>
           <h2 className="section-title">{t('home.selectedWorkTitle')}</h2>
-          <div className="mt-10 explore-grid">
-            {EXPLORE_CARDS.map((card) => (
-              <Link
-                key={card.href}
-                href={card.href}
-                prefetch={false}
-                className="explore-card group"
-                aria-label={t(card.labelKey)}
-              >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img className="explore-card-img" src={card.image} alt="" loading="lazy" />
-                <span className="explore-card-overlay" aria-hidden="true" />
-                <span className="explore-card-title">
-                  {t(card.labelKey)} <span aria-hidden="true">→</span>
-                </span>
-              </Link>
-            ))}
+          <div ref={pinWrapperRef} className={mobilePinActive ? 'explore-pin-wrapper' : undefined}>
+            <div className={mobilePinActive ? 'explore-pin-sticky' : undefined}>
+              <div className={`mt-10 explore-grid${mobilePinActive ? ' is-pinning' : ''}`}>
+                {EXPLORE_CARDS.map((card, i) => (
+                  <Link
+                    key={card.href}
+                    href={card.href}
+                    prefetch={false}
+                    className={`explore-card group${mobilePinActive ? (i === activeIndex ? ' is-active' : '') : ''}`}
+                    aria-label={t(card.labelKey)}
+                    aria-hidden={mobilePinActive && i !== activeIndex ? 'true' : undefined}
+                    tabIndex={mobilePinActive && i !== activeIndex ? -1 : undefined}
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img className="explore-card-img" src={card.image} alt="" loading="lazy" />
+                    <span className="explore-card-overlay" aria-hidden="true" />
+                    <span className="explore-card-title">
+                      {t(card.labelKey)} <span aria-hidden="true">→</span>
+                    </span>
+                  </Link>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>

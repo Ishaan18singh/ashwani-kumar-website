@@ -733,3 +733,40 @@ textarea:focus-visible,
     align-self: start;
   }
 }
+
+/* Mobile-only scroll-pin for the Timeline/Initiatives/Awards cards (see
+   page.js): these classes are only ever added by JS once it's confirmed
+   both a mobile viewport and no prefers-reduced-motion, so no extra media
+   query is needed here - the wrapper's presence alone means "pin mode on". */
+.explore-pin-wrapper {
+  position: relative;
+  height: 300vh;
+}
+.explore-pin-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+.explore-grid.is-pinning {
+  position: relative;
+  width: 100%;
+  max-width: 22rem;
+  aspect-ratio: 4 / 5;
+  margin: 0 auto;
+}
+.explore-grid.is-pinning .explore-card {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: translateY(24px) scale(0.96);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  pointer-events: none;
+}
+.explore-grid.is-pinning .explore-card.is-active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
