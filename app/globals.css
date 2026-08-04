@@ -770,3 +770,11 @@ textarea:focus-visible,
   transform: translateY(0) scale(1);
   pointer-events: auto;
 }
+
+/* Homepage hero: image visually above the text on mobile (desktop keeps its
+   existing side-by-side layout, no order change there). */
+@media (max-width: 1023px) {
+  .hero-media {
+    order: -1;
+  }
+}

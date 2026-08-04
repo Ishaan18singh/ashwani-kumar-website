@@ -81,7 +81,7 @@ export default function HomePage() {
               {t('home.quote')}
             </blockquote>
           </div>
-          <div className="relative h-[60vh] min-h-[480px] overflow-hidden rounded-t-[9rem] rounded-b-2xl border border-navy-900/10 shadow-2xl lg:h-[75vh]">
+          <div className="hero-media relative h-[60vh] min-h-[480px] overflow-hidden rounded-t-[9rem] rounded-b-2xl border border-navy-900/10 shadow-2xl lg:h-[75vh]">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/images/ashwani-kumar-hero.webp"
