@@ -55,8 +55,8 @@ export default function HomePage() {
   }, []);
 
   return (
-    <>
-      <section className="relative min-h-screen overflow-hidden bg-ivory pt-20 text-navy-900 dark:bg-slate-950 dark:text-white">
+    <div className="home-sections">
+      <section className="home-section-hero relative min-h-screen overflow-hidden bg-ivory pt-20 text-navy-900 dark:bg-slate-950 dark:text-white">
         <div className="absolute inset-0 bg-circuit bg-[length:48px_48px] opacity-60 [mask-image:linear-gradient(to_right,black,transparent)]" />
         <div className="shell relative grid min-h-[calc(100vh-5rem)] items-center gap-10 py-16 lg:grid-cols-[1.05fr_.95fr]">
           <div className="z-10 stack-center">
@@ -106,7 +106,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="introduction" className="border-t border-slate-200 py-24 dark:border-slate-800">
+      <section id="introduction" className="home-section-intro border-t border-slate-200 py-24 dark:border-slate-800">
         <div className="shell grid items-start gap-14 lg:grid-cols-[.95fr_1.05fr]">
           <div className="reveal pin-on-scroll">
             <p className="eyebrow">{t('home.introEyebrow')}</p>
@@ -132,7 +132,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="border-t border-slate-200 bg-white py-24 dark:border-slate-700 dark:bg-slate-900">
+      <section className="home-section-work border-t border-slate-200 bg-white py-24 dark:border-slate-700 dark:bg-slate-900">
         <div className="shell">
           <p className="eyebrow">{t('home.selectedWorkEyebrow')}</p>
           <h2 className="section-title">{t('home.selectedWorkTitle')}</h2>
@@ -163,7 +163,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="border-t border-slate-200 py-24 dark:border-slate-800">
+      <section className="home-section-leadership border-t border-slate-200 py-24 dark:border-slate-800">
         <div className="shell grid items-center gap-12 lg:grid-cols-2">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
@@ -182,6 +182,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }

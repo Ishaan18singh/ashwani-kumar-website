@@ -778,3 +778,25 @@ textarea:focus-visible,
     order: -1;
   }
 }
+
+/* Homepage section order: on mobile, Selected Work (Timeline/Initiatives/
+   Awards) moves above the Introduction section. Desktop keeps the original
+   DOM order (Introduction before Selected Work) untouched. */
+.home-sections {
+  display: flex;
+  flex-direction: column;
+}
+@media (max-width: 1023px) {
+  .home-section-hero {
+    order: 1;
+  }
+  .home-section-work {
+    order: 2;
+  }
+  .home-section-intro {
+    order: 3;
+  }
+  .home-section-leadership {
+    order: 4;
+  }
+}
