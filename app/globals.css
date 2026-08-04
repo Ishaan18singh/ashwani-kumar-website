@@ -369,10 +369,10 @@ html.dark .button-ghost:hover {
 /* Editorial heading style: thin/light weight, soft dark-gray ink
    (instead of navy) on a warm off-white page background. */
 html {
-  background-color: #f5f3ee;
+  background-color: #e5e5e5;
 }
 .bg-ivory {
-  background-color: #f5f3ee !important;
+  background-color: #e5e5e5 !important;
 }
 footer.bg-ivory {
   background-color: #fff !important;
