@@ -3,10 +3,15 @@
 import Link from 'next/link';
 import { useI18n } from '@/lib/i18n/context';
 import Html from '@/components/Html';
-import InitiativesRail from '@/components/InitiativesRail';
+
+const EXPLORE_CARDS = [
+  { href: '/timeline', image: '/images/gallery-01.webp', labelKey: 'nav.timeline' },
+  { href: '/projects', image: '/images/gallery-03.webp', labelKey: 'nav.projects' },
+  { href: '/awards', image: '/images/gallery-04.webp', labelKey: 'nav.awards' }
+];
 
 export default function HomePage() {
-  const { t, data } = useI18n();
+  const { t } = useI18n();
 
   return (
     <>
@@ -89,13 +94,25 @@ export default function HomePage() {
       <section className="border-t border-slate-200 bg-white py-24 dark:border-slate-700 dark:bg-slate-900">
         <div className="shell">
           <p className="eyebrow">{t('home.selectedWorkEyebrow')}</p>
-          <div className="flex flex-col justify-between gap-5 md:flex-row md:items-end">
-            <h2 className="section-title">{t('home.selectedWorkTitle')}</h2>
-            <Link href="/projects" prefetch={false} className="text-sm font-bold text-gold-500">
-              {t('home.viewAll')}
-            </Link>
+          <h2 className="section-title">{t('home.selectedWorkTitle')}</h2>
+          <div className="mt-10 explore-grid">
+            {EXPLORE_CARDS.map((card) => (
+              <Link
+                key={card.href}
+                href={card.href}
+                prefetch={false}
+                className="explore-card group"
+                aria-label={t(card.labelKey)}
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img className="explore-card-img" src={card.image} alt="" loading="lazy" />
+                <span className="explore-card-overlay" aria-hidden="true" />
+                <span className="explore-card-title">
+                  {t(card.labelKey)} <span aria-hidden="true">→</span>
+                </span>
+              </Link>
+            ))}
           </div>
-          <InitiativesRail projects={data.projects} mode="marquee" />
         </div>
       </section>
 

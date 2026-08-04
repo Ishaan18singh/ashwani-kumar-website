@@ -645,3 +645,60 @@ textarea:focus-visible,
   outline: 3px solid #0b2545;
   outline-offset: 2px;
 }
+
+/* Homepage "explore" cards: Timeline / Initiatives / Awards. */
+.explore-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 640px) {
+  .explore-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.explore-card {
+  position: relative;
+  display: block;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border-radius: 1.25rem;
+  box-shadow: 0 20px 50px -28px rgba(6, 24, 45, 0.5);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.explore-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 28px 60px -24px rgba(6, 24, 45, 0.6);
+}
+.explore-card-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.5s ease;
+}
+.explore-card:hover .explore-card-img {
+  transform: scale(1.04);
+}
+.explore-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(6, 24, 45, 0.85) 12%, rgba(6, 24, 45, 0.15) 55%, transparent 80%);
+}
+.explore-card-title {
+  position: absolute;
+  left: 1.25rem;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  font-family: var(--font-jost), -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 600;
+  font-size: 1.375rem;
+  color: #fff;
+}
+@media (max-width: 639px) {
+  .explore-card {
+    aspect-ratio: 4 / 5;
+  }
+}
