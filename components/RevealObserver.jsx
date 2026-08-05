@@ -48,10 +48,13 @@ export default function RevealObserver() {
     mutationObserver.observe(document.body, { childList: true, subtree: true });
 
     // Second fail-safe: whatever the cause, nothing should stay invisible
-    // forever — force-reveal any stragglers a few seconds in.
+    // forever — force-reveal any stragglers well after a real observer
+    // would have fired. Long enough that a visitor who lingers on the hero
+    // before scrolling doesn't get lower sections silently force-revealed
+    // out from under their entrance animation before they ever scroll there.
     const safetyTimer = setTimeout(() => {
       document.querySelectorAll('.reveal:not(.is-visible)').forEach((el) => el.classList.add('is-visible'));
-    }, 4000);
+    }, 15000);
 
     return () => {
       observer.disconnect();
