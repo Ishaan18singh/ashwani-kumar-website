@@ -148,7 +148,8 @@ export default function HomePage() {
                     key={card.href}
                     href={card.href}
                     prefetch={false}
-                    className="explore-card group"
+                    className="explore-card reveal reveal-tilt group"
+                    style={{ transitionDelay: `${i * 120}ms` }}
                     aria-label={t(card.labelKey)}
                     aria-hidden={mobilePinActive && i !== activeIndex ? 'true' : undefined}
                     tabIndex={mobilePinActive && i !== activeIndex ? -1 : undefined}
