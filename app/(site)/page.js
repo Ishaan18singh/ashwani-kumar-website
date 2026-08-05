@@ -14,14 +14,16 @@ const EXPLORE_CARDS = [
 export default function HomePage() {
   const { t } = useI18n();
   const pinWrapperRef = useRef(null);
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [progress, setProgress] = useState(0);
   const [mobilePinActive, setMobilePinActive] = useState(false);
+  const activeIndex = Math.min(EXPLORE_CARDS.length - 1, Math.round(progress * (EXPLORE_CARDS.length - 1)));
 
-  // Mobile-only scroll-pin: as the user scrolls through a tall wrapper, one
-  // card at a time is shown (Timeline -> Initiatives -> Awards), then the
-  // section releases and the page continues scrolling normally. Desktop
-  // keeps the plain 3-column grid untouched - this effect never engages
-  // there. Skipped entirely under prefers-reduced-motion.
+  // Mobile-only scroll-pin: as the user scrolls through a tall wrapper, the
+  // three cards slide right-to-left across the screen (Timeline ->
+  // Initiatives -> Awards) as a continuous track, then the section releases
+  // and the page continues scrolling normally. Desktop keeps the plain
+  // 3-column grid untouched - this effect never engages there. Skipped
+  // entirely under prefers-reduced-motion.
   useEffect(() => {
     const pinQuery = window.matchMedia('(max-width: 1023px)');
     const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -35,8 +37,7 @@ export default function HomePage() {
       if (!wrapper || !active) return;
       const rect = wrapper.getBoundingClientRect();
       const scrollable = rect.height - window.innerHeight;
-      const progress = scrollable > 0 ? Math.min(1, Math.max(0, -rect.top / scrollable)) : 0;
-      setActiveIndex(Math.min(EXPLORE_CARDS.length - 1, Math.floor(progress * EXPLORE_CARDS.length)));
+      setProgress(scrollable > 0 ? Math.min(1, Math.max(0, -rect.top / scrollable)) : 0);
     };
 
     const onScroll = () => {
@@ -134,13 +135,20 @@ export default function HomePage() {
           <h2 className="section-title">{t('home.selectedWorkTitle')}</h2>
           <div ref={pinWrapperRef} className={mobilePinActive ? 'explore-pin-wrapper' : undefined}>
             <div className={mobilePinActive ? 'explore-pin-sticky' : undefined}>
-              <div className={`mt-10 explore-grid${mobilePinActive ? ' is-pinning' : ''}`}>
+              <div
+                className={`mt-10 explore-grid${mobilePinActive ? ' is-sliding' : ''}`}
+                style={
+                  mobilePinActive
+                    ? { transform: `translateX(-${progress * (EXPLORE_CARDS.length - 1) * 100}%)` }
+                    : undefined
+                }
+              >
                 {EXPLORE_CARDS.map((card, i) => (
                   <Link
                     key={card.href}
                     href={card.href}
                     prefetch={false}
-                    className={`explore-card group${mobilePinActive ? (i === activeIndex ? ' is-active' : '') : ''}`}
+                    className="explore-card group"
                     aria-label={t(card.labelKey)}
                     aria-hidden={mobilePinActive && i !== activeIndex ? 'true' : undefined}
                     tabIndex={mobilePinActive && i !== activeIndex ? -1 : undefined}
