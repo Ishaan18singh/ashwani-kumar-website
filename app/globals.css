@@ -763,41 +763,10 @@ textarea:focus-visible,
 }
 
 /* Desktop-only 3D entrance for the explore cards: perspective tilt settles
-   flat as each card scrolls into view (staggered via transitionDelay in
-   JSX). Reuses the site's existing .reveal/is-visible IntersectionObserver
-   (RevealObserver.jsx) - only the transform differs from the base .reveal
-   fade. Scoped to min-width:1024px to match the JS mobile-pin breakpoint,
-   so it never fights the mobile slide track's inline transform. */
-@media (min-width: 1024px) {
-  .reveal-tilt {
-    opacity: 0;
-    transform: perspective(1200px) rotateY(18deg) translateX(30px) scale(0.94);
-    transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .reveal-tilt.is-visible {
-    opacity: 1;
-    transform: perspective(1200px) rotateY(0deg) translateX(0) scale(1);
-  }
-}
-/* .reveal-tilt's own transform only applies at 1024px+ (above), but the
-   base .reveal class it's paired with (needed to trigger the shared
-   IntersectionObserver) still applies its default fade/translateY below
-   that - neutralize it there, since mobile has its own slide-track
-   visibility mechanism and doesn't need or want the generic reveal fade. */
-@media (max-width: 1023px) {
-  .explore-card.reveal {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .reveal-tilt {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
-}
+   flat as each card scrolls into view. Driven entirely by inline styles set
+   from scroll position in page.js (a continuous scrub, not a fire-once
+   threshold), so no CSS state lives here - just the plain resting look the
+   cards fall back to once JS clears the inline style at full reveal. */
 
 /* Homepage hero: image visually above the text on mobile (desktop keeps its
    existing side-by-side layout, no order change there). */

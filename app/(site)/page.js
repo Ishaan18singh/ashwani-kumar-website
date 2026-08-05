@@ -14,6 +14,7 @@ const EXPLORE_CARDS = [
 export default function HomePage() {
   const { t } = useI18n();
   const pinWrapperRef = useRef(null);
+  const cardRefs = useRef([]);
   const [progress, setProgress] = useState(0);
   const [mobilePinActive, setMobilePinActive] = useState(false);
   const activeIndex = Math.min(EXPLORE_CARDS.length - 1, Math.round(progress * (EXPLORE_CARDS.length - 1)));
@@ -21,23 +22,62 @@ export default function HomePage() {
   // Mobile-only scroll-pin: as the user scrolls through a tall wrapper, the
   // three cards slide right-to-left across the screen (Timeline ->
   // Initiatives -> Awards) as a continuous track, then the section releases
-  // and the page continues scrolling normally. Desktop keeps the plain
-  // 3-column grid untouched - this effect never engages there. Skipped
-  // entirely under prefers-reduced-motion.
+  // and the page continues scrolling normally.
+  //
+  // Desktop: the cards tilt-and-settle flat as they scroll into view, a
+  // continuous scrub tied directly to scroll position (not a fire-once
+  // threshold) and staggered card-to-card, cleared once each card fully
+  // settles so the existing hover-lift CSS takes back over.
+  //
+  // Both skipped entirely under prefers-reduced-motion.
   useEffect(() => {
     const pinQuery = window.matchMedia('(max-width: 1023px)');
     const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
     let raf = null;
 
+    const clearCardStyle = (card) => {
+      card.style.transition = '';
+      card.style.opacity = '';
+      card.style.transform = '';
+    };
+
     const update = () => {
       raf = null;
       const wrapper = pinWrapperRef.current;
-      const active = pinQuery.matches && !motionQuery.matches;
+      const mobile = pinQuery.matches;
+      const reduced = motionQuery.matches;
+      const active = mobile && !reduced;
       setMobilePinActive(active);
-      if (!wrapper || !active) return;
-      const rect = wrapper.getBoundingClientRect();
-      const scrollable = rect.height - window.innerHeight;
-      setProgress(scrollable > 0 ? Math.min(1, Math.max(0, -rect.top / scrollable)) : 0);
+
+      if (active && wrapper) {
+        const rect = wrapper.getBoundingClientRect();
+        const scrollable = rect.height - window.innerHeight;
+        setProgress(scrollable > 0 ? Math.min(1, Math.max(0, -rect.top / scrollable)) : 0);
+      }
+
+      const cards = cardRefs.current;
+      if (mobile || reduced) {
+        cards.forEach((card) => card && clearCardStyle(card));
+        return;
+      }
+
+      const stagger = 0.25;
+      const n = cards.length;
+      cards.forEach((card, i) => {
+        if (!card) return;
+        const rect = card.getBoundingClientRect();
+        const start = window.innerHeight * 0.92;
+        const end = window.innerHeight * 0.55;
+        const base = Math.min(1, Math.max(0, (start - rect.top) / (start - end)));
+        const t = Math.min(1, Math.max(0, base * (1 + stagger * (n - 1)) - i * stagger));
+        if (t >= 1) {
+          clearCardStyle(card);
+        } else {
+          card.style.transition = 'none';
+          card.style.opacity = String(t);
+          card.style.transform = `perspective(1200px) rotateY(${18 * (1 - t)}deg) translateX(${30 * (1 - t)}px) scale(${0.94 + 0.06 * t})`;
+        }
+      });
     };
 
     const onScroll = () => {
@@ -146,10 +186,10 @@ export default function HomePage() {
                 {EXPLORE_CARDS.map((card, i) => (
                   <Link
                     key={card.href}
+                    ref={(el) => (cardRefs.current[i] = el)}
                     href={card.href}
                     prefetch={false}
-                    className="explore-card reveal reveal-tilt group"
-                    style={{ transitionDelay: `${i * 120}ms` }}
+                    className="explore-card group"
                     aria-label={t(card.labelKey)}
                     aria-hidden={mobilePinActive && i !== activeIndex ? 'true' : undefined}
                     tabIndex={mobilePinActive && i !== activeIndex ? -1 : undefined}
