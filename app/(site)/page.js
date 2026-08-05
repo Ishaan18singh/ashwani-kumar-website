@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { useI18n } from '@/lib/i18n/context';
 import Html from '@/components/Html';
 
@@ -13,24 +13,15 @@ const EXPLORE_CARDS = [
 
 export default function HomePage() {
   const { t } = useI18n();
-  const pinWrapperRef = useRef(null);
   const cardRefs = useRef([]);
   const cardSettledRef = useRef([]);
-  const [progress, setProgress] = useState(0);
-  const [mobilePinActive, setMobilePinActive] = useState(false);
-  const activeIndex = Math.min(EXPLORE_CARDS.length - 1, Math.round(progress * (EXPLORE_CARDS.length - 1)));
 
-  // Mobile-only scroll-pin: as the user scrolls through a tall wrapper, the
-  // three cards slide right-to-left across the screen (Timeline ->
-  // Initiatives -> Awards) as a continuous track, then the section releases
-  // and the page continues scrolling normally.
-  //
-  // Desktop: the cards tilt-and-settle flat as they scroll into view, a
+  // Desktop-only: the cards tilt-and-settle flat as they scroll into view, a
   // continuous scrub tied directly to scroll position (not a fire-once
   // threshold) and staggered card-to-card, cleared once each card fully
-  // settles so the existing hover-lift CSS takes back over.
-  //
-  // Both skipped entirely under prefers-reduced-motion.
+  // settles so the existing hover-lift CSS takes back over. Mobile just
+  // shows the plain stacked grid with no scroll-driven effect. Skipped
+  // entirely under prefers-reduced-motion.
   useEffect(() => {
     const pinQuery = window.matchMedia('(max-width: 1023px)');
     const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -44,17 +35,8 @@ export default function HomePage() {
 
     const update = () => {
       raf = null;
-      const wrapper = pinWrapperRef.current;
       const mobile = pinQuery.matches;
       const reduced = motionQuery.matches;
-      const active = mobile && !reduced;
-      setMobilePinActive(active);
-
-      if (active && wrapper) {
-        const rect = wrapper.getBoundingClientRect();
-        const scrollable = rect.height - window.innerHeight;
-        setProgress(scrollable > 0 ? Math.min(1, Math.max(0, -rect.top / scrollable)) : 0);
-      }
 
       const cards = cardRefs.current;
       const settled = cardSettledRef.current;
@@ -189,37 +171,24 @@ export default function HomePage() {
         <div className="shell">
           <p className="eyebrow">{t('home.selectedWorkEyebrow')}</p>
           <h2 className="section-title">{t('home.selectedWorkTitle')}</h2>
-          <div ref={pinWrapperRef} className={mobilePinActive ? 'explore-pin-wrapper' : undefined}>
-            <div className={mobilePinActive ? 'explore-pin-sticky' : undefined}>
-              <div
-                className={`mt-10 explore-grid${mobilePinActive ? ' is-sliding' : ''}`}
-                style={
-                  mobilePinActive
-                    ? { transform: `translateX(-${progress * (EXPLORE_CARDS.length - 1) * 100}%)` }
-                    : undefined
-                }
+          <div className="mt-10 explore-grid">
+            {EXPLORE_CARDS.map((card, i) => (
+              <Link
+                key={card.href}
+                ref={(el) => (cardRefs.current[i] = el)}
+                href={card.href}
+                prefetch={false}
+                className="explore-card group"
+                aria-label={t(card.labelKey)}
               >
-                {EXPLORE_CARDS.map((card, i) => (
-                  <Link
-                    key={card.href}
-                    ref={(el) => (cardRefs.current[i] = el)}
-                    href={card.href}
-                    prefetch={false}
-                    className="explore-card group"
-                    aria-label={t(card.labelKey)}
-                    aria-hidden={mobilePinActive && i !== activeIndex ? 'true' : undefined}
-                    tabIndex={mobilePinActive && i !== activeIndex ? -1 : undefined}
-                  >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img className="explore-card-img" src={card.image} alt="" loading="lazy" />
-                    <span className="explore-card-overlay" aria-hidden="true" />
-                    <span className="explore-card-title">
-                      {t(card.labelKey)} <span aria-hidden="true">→</span>
-                    </span>
-                  </Link>
-                ))}
-              </div>
-            </div>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img className="explore-card-img" src={card.image} alt="" loading="lazy" />
+                <span className="explore-card-overlay" aria-hidden="true" />
+                <span className="explore-card-title">
+                  {t(card.labelKey)} <span aria-hidden="true">→</span>
+                </span>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
