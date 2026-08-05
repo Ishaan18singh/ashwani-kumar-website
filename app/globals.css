@@ -702,6 +702,11 @@ textarea:focus-visible,
     aspect-ratio: 4 / 5;
   }
 }
+@media (min-width: 1024px) {
+  .explore-card {
+    will-change: transform, opacity;
+  }
+}
 
 /* Page transition: remounted per-route (see PageTransition.jsx), so this
    animation replays automatically on every navigation. */

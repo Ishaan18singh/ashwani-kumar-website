@@ -15,6 +15,7 @@ export default function HomePage() {
   const { t } = useI18n();
   const pinWrapperRef = useRef(null);
   const cardRefs = useRef([]);
+  const cardSettledRef = useRef([]);
   const [progress, setProgress] = useState(0);
   const [mobilePinActive, setMobilePinActive] = useState(false);
   const activeIndex = Math.min(EXPLORE_CARDS.length - 1, Math.round(progress * (EXPLORE_CARDS.length - 1)));
@@ -56,8 +57,15 @@ export default function HomePage() {
       }
 
       const cards = cardRefs.current;
+      const settled = cardSettledRef.current;
       if (mobile || reduced) {
-        cards.forEach((card) => card && clearCardStyle(card));
+        cards.forEach((card, i) => {
+          if (!card) return;
+          if (settled[i] !== true) {
+            clearCardStyle(card);
+            settled[i] = true;
+          }
+        });
         return;
       }
 
@@ -71,8 +79,16 @@ export default function HomePage() {
         const base = Math.min(1, Math.max(0, (start - rect.top) / (start - end)));
         const t = Math.min(1, Math.max(0, base * (1 + stagger * (n - 1)) - i * stagger));
         if (t >= 1) {
-          clearCardStyle(card);
+          // Write once on the frame it settles, then leave it alone - Lenis's
+          // easing can leave rect.top jittering by sub-pixels for many frames
+          // near the target, and re-toggling the inline style every frame as
+          // t flickers around 1 is what caused the visible stutter here.
+          if (settled[i] !== true) {
+            clearCardStyle(card);
+            settled[i] = true;
+          }
         } else {
+          settled[i] = false;
           card.style.transition = 'none';
           card.style.opacity = String(t);
           card.style.transform = `perspective(1200px) rotateY(${18 * (1 - t)}deg) translateX(${30 * (1 - t)}px) scale(${0.94 + 0.06 * t})`;
