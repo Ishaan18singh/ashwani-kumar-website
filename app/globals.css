@@ -697,9 +697,21 @@ textarea:focus-visible,
   font-size: 1.375rem;
   color: #fff;
 }
+/* Mobile: plain native horizontal scroll (no scroll-jacking) - cards sit in
+   a row, sized to show a peek of the next one, snapping as you swipe. */
 @media (max-width: 639px) {
+  .explore-grid {
+    display: flex;
+    grid-template-columns: none;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 0.25rem;
+  }
   .explore-card {
+    flex: 0 0 80%;
     aspect-ratio: 4 / 5;
+    scroll-snap-align: start;
   }
 }
 @media (min-width: 1024px) {
