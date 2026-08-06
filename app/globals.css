@@ -720,6 +720,35 @@ textarea:focus-visible,
   }
 }
 
+/* Acting & Modeling page: film/project cards. */
+.film-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 1rem;
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  background-color: #fff;
+  box-shadow: 0 20px 50px -28px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.film-card:hover {
+  transform: translateY(-4px);
+  border-color: rgb(var(--c-gold-400) / 0.6);
+}
+html.dark .film-card {
+  border-color: rgb(51 65 85);
+  background-color: rgb(15 23 42);
+}
+.film-card-img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+.film-card-body {
+  padding: 1.5rem;
+}
+
 /* Page transition: remounted per-route (see PageTransition.jsx), so this
    animation replays automatically on every navigation. */
 .page-transition {
