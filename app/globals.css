@@ -743,7 +743,11 @@ html.dark .film-card {
   display: block;
   width: 100%;
   aspect-ratio: 16 / 9;
-  object-fit: cover;
+  object-fit: contain;
+  background-color: #f1f5f9;
+}
+html.dark .film-card-img {
+  background-color: rgb(30 41 59);
 }
 .film-card-body {
   padding: 1.5rem;
