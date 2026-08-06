@@ -46,6 +46,15 @@ export default function SocialIcon({ label }) {
           <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8z" opacity=".35" />
         </svg>
       );
+    case 'IMDb':
+      return (
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.7">
+          <rect x="2" y="5" width="20" height="14" rx="3" />
+          <text x="12" y="15.3" fontSize="7.2" fontWeight="700" textAnchor="middle" fill="currentColor" stroke="none" fontFamily="Arial, Helvetica, sans-serif">
+            IMDb
+          </text>
+        </svg>
+      );
     case 'Mail':
       return (
         <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.7">
