@@ -1,7 +1,7 @@
 import PageClient from './PageClient';
 
 export const metadata = {
-  title: 'Acting & Modeling',
+  title: 'Screen & Style',
   description: 'Screen and modeling work by Ashwani Kumar, IAS, alongside his career in public administration.',
   alternates: { canonical: '/acting-modeling' }
 };

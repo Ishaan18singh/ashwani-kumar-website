@@ -1,7 +1,13 @@
 'use client';
 
+import { useRef, useState } from 'react';
 import { useI18n } from '@/lib/i18n/context';
 import PageHero from '@/components/PageHero';
+
+const PORTRAITS = [
+  { src: '/images/screen-style-01.webp', alt: 'Studio portrait of Ashwani Kumar in a cream knit polo' },
+  { src: '/images/screen-style-02.webp', alt: 'Black and white studio portrait of Ashwani Kumar' }
+];
 
 const FILMS = [
   {
@@ -21,6 +27,14 @@ const FILMS = [
 
 export default function ActingModelingPage() {
   const { t } = useI18n();
+  const dialogRef = useRef(null);
+  const [active, setActive] = useState(null);
+
+  const open = (item) => {
+    setActive(item);
+    dialogRef.current?.showModal();
+  };
+  const close = () => dialogRef.current?.close();
 
   return (
     <>
@@ -66,6 +80,48 @@ export default function ActingModelingPage() {
           ))}
         </div>
       </section>
+      <section className="border-t border-slate-200 py-12 dark:border-slate-800 sm:py-24">
+        <div className="shell">
+          <p className="eyebrow">{t('actingModeling.galleryEyebrow')}</p>
+          <div className="mt-8 grid gap-6 sm:grid-cols-2">
+            {PORTRAITS.map((item) => (
+              <button
+                key={item.src}
+                type="button"
+                onClick={() => open(item)}
+                className="group reveal overflow-hidden rounded-2xl"
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={item.src}
+                  alt={item.alt}
+                  loading="lazy"
+                  className="aspect-[4/5] w-full object-cover object-center transition duration-500 group-hover:scale-105"
+                />
+              </button>
+            ))}
+          </div>
+        </div>
+      </section>
+      <dialog
+        ref={dialogRef}
+        className="m-auto w-[min(94vw,1000px)] rounded-2xl bg-navy-950 p-3 text-white backdrop:bg-black/80"
+        onClick={(e) => {
+          if (e.target === dialogRef.current) close();
+        }}
+      >
+        <button
+          type="button"
+          onClick={close}
+          className="absolute right-5 top-5 z-10 grid h-10 w-10 place-items-center rounded-full bg-black/60 text-xl"
+          aria-label="Close image"
+        >
+          ×
+        </button>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={active?.src} alt="" className="max-h-[82vh] w-full rounded-xl object-contain" />
+        <p className="p-3 text-center text-sm text-slate-300">{active?.alt}</p>
+      </dialog>
     </>
   );
 }
