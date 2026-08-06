@@ -96,7 +96,7 @@ export default function ActingModelingPage() {
                   src={item.src}
                   alt={item.alt}
                   loading="lazy"
-                  className="aspect-[4/5] w-full object-cover object-center transition duration-500 group-hover:scale-105"
+                  className="film-card-img w-full object-center transition duration-500 group-hover:scale-105"
                 />
               </button>
             ))}
