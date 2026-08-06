@@ -16,7 +16,7 @@ export default function Footer() {
     <footer className="bg-ivory border-t border-slate-200 py-14 text-navy-900">
       <div className="shell grid gap-10 md:grid-cols-[1.2fr_1fr_1fr]">
         <div>
-          <p className="font-display text-3xl">Ashwani Kumar</p>
+          <p className="font-display text-xl">Ashwani Kumar</p>
           <p className="mt-3 max-w-sm text-sm leading-6 text-slate-600">{t('common.footerTagline')}</p>
         </div>
         <div>
@@ -31,7 +31,7 @@ export default function Footer() {
         </div>
         <div>
           <p className="mb-4 text-xs font-bold uppercase tracking-[.2em] text-gold-500">{t('common.connect')}</p>
-          <div className="flex flex-wrap gap-3">
+          <div className="footer-social-list">
             {SITE_DATA.profile.social.map((s) => {
               const isMail = s.url.startsWith('mailto:');
               return (

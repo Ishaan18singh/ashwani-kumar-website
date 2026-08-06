@@ -3,11 +3,13 @@
 import { useRef, useState } from 'react';
 
 const ITEMS = [
-  { src: '/images/gallery-01.webp', alt: 'Ashwani Kumar in a blue suit, full-length portrait', className: 'row-span-2' },
-  { src: '/images/gallery-02.webp', alt: 'Ashwani Kumar standing in a formal wood-paneled interior', className: 'lg:col-span-2' },
-  { src: '/images/gallery-03.webp', alt: 'Close portrait of Ashwani Kumar', className: 'row-span-2' },
-  { src: '/images/gallery-04.webp', alt: 'Ashwani Kumar in a formal portrait', className: '' },
-  { src: '/images/gallery-05.webp', alt: 'Black and white portrait of Ashwani Kumar', className: 'lg:col-span-2' }
+  { src: '/images/gallery-01.webp', alt: 'Ashwani Kumar in a blue suit, full-length portrait' },
+  { src: '/images/gallery-02.webp', alt: 'Ashwani Kumar standing in a formal wood-paneled interior' },
+  { src: '/images/gallery-03.webp', alt: 'Close portrait of Ashwani Kumar' },
+  { src: '/images/gallery-04.webp', alt: 'Ashwani Kumar in a formal portrait' },
+  { src: '/images/gallery-05.webp', alt: 'Black and white portrait of Ashwani Kumar' },
+  { src: '/images/screen-style-01.webp', alt: 'Studio portrait of Ashwani Kumar in a cream knit polo' },
+  { src: '/images/screen-style-02.webp', alt: 'Black and white studio portrait of Ashwani Kumar' }
 ];
 
 export default function GalleryGrid() {
@@ -23,20 +25,15 @@ export default function GalleryGrid() {
   return (
     <>
       <section className="py-24">
-        <div className="shell grid auto-rows-[220px] gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="shell grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {ITEMS.map((item) => (
-            <button
-              key={item.src}
-              type="button"
-              onClick={() => open(item)}
-              className={`group overflow-hidden rounded-2xl ${item.className}`}
-            >
+            <button key={item.src} type="button" onClick={() => open(item)} className="group overflow-hidden rounded-2xl">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={item.src}
                 alt={item.alt}
                 loading="lazy"
-                className="h-full w-full object-cover object-center transition duration-500 group-hover:scale-105"
+                className="film-card-img w-full object-center transition duration-500 group-hover:scale-105"
               />
             </button>
           ))}

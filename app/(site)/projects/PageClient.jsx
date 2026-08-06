@@ -14,7 +14,7 @@ export default function ProjectsPage() {
         eyebrow={t('projects.eyebrow')}
         title={t('projects.title')}
         subtitle={t('projects.subtitle')}
-        titleClassName="max-w-5xl text-5xl font-normal tracking-tight sm:text-7xl"
+        titleClassName="max-w-5xl text-4xl font-normal tracking-tight sm:text-5xl"
       />
       <section className="py-12 sm:py-24">
         <div className="shell flex flex-col initiative-rows-gap">

@@ -2,6 +2,7 @@
 
 import { useI18n } from '@/lib/i18n/context';
 import PageHero from '@/components/PageHero';
+import GalleryGrid from '@/components/GalleryGrid';
 
 const FILMS = [
   {
@@ -28,7 +29,7 @@ export default function ActingModelingPage() {
         eyebrow={t('actingModeling.eyebrow')}
         title={t('actingModeling.title')}
         subtitle={t('actingModeling.subtitle')}
-        titleClassName="max-w-4xl text-5xl font-normal tracking-tight sm:text-7xl"
+        titleClassName="max-w-4xl text-4xl font-normal tracking-tight sm:text-5xl"
       />
       <section className="py-12 sm:py-24">
         <div className="shell grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
@@ -65,6 +66,12 @@ export default function ActingModelingPage() {
             </article>
           ))}
         </div>
+      </section>
+      <section className="border-t border-slate-200 dark:border-slate-800">
+        <div className="shell pt-12 sm:pt-24">
+          <p className="eyebrow">{t('actingModeling.galleryEyebrow')}</p>
+        </div>
+        <GalleryGrid />
       </section>
     </>
   );

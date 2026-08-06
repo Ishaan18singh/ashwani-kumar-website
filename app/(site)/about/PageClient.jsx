@@ -25,7 +25,7 @@ export default function AboutPage() {
         eyebrow={t('about.eyebrow')}
         title={t('about.title')}
         subtitle={t('about.subtitle')}
-        titleClassName="max-w-4xl text-5xl font-normal tracking-tight sm:text-7xl"
+        titleClassName="max-w-4xl text-4xl font-normal tracking-tight sm:text-5xl"
       />
 
       <section className="py-12 sm:py-24">

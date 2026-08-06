@@ -11,7 +11,7 @@ export default function AwardsPage() {
       <PageHero
         eyebrow={t('awards.eyebrow')}
         title={t('awards.title')}
-        titleClassName="max-w-4xl text-5xl font-normal tracking-tight sm:text-7xl"
+        titleClassName="max-w-4xl text-4xl font-normal tracking-tight sm:text-5xl"
       />
       <section className="overflow-hidden py-12 sm:py-24">
         <div className="shell">

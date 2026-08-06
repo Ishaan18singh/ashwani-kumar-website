@@ -14,7 +14,7 @@ export default function ContactPage() {
       <PageHero
         eyebrow={t('contact.eyebrow')}
         title={t('contact.title')}
-        titleClassName="max-w-4xl text-5xl font-normal tracking-tight sm:text-7xl"
+        titleClassName="max-w-4xl text-4xl font-normal tracking-tight sm:text-5xl"
       />
       <section className="py-12 sm:py-24">
         <div className="shell grid gap-14 lg:grid-cols-[.8fr_1.2fr]">

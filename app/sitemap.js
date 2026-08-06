@@ -3,7 +3,7 @@ import { slugify } from '@/lib/utils';
 
 const SITE_URL = 'https://www.ashwanikumarias.com';
 
-const ROUTES = ['/', '/about', '/timeline', '/projects', '/awards', '/publications', '/ias-aspirants', '/gallery', '/contact'];
+const ROUTES = ['/', '/about', '/timeline', '/projects', '/awards', '/publications', '/ias-aspirants', '/acting-modeling', '/contact'];
 
 export default function sitemap() {
   const staticEntries = ROUTES.map((route) => ({

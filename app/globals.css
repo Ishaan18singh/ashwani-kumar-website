@@ -753,6 +753,22 @@ html.dark .film-card-img {
   padding: 1.5rem;
 }
 
+/* Footer social icons: wrap naturally on mobile, but lock to a fixed
+   4-column grid on desktop so the 8 icons always form exactly 2 rows
+   regardless of container width. */
+.footer-social-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+@media (min-width: 768px) {
+  .footer-social-list {
+    display: grid;
+    grid-template-columns: repeat(4, max-content);
+    gap: 0.75rem;
+  }
+}
+
 /* Page transition: remounted per-route (see PageTransition.jsx), so this
    animation replays automatically on every navigation. */
 .page-transition {
