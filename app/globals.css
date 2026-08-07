@@ -763,9 +763,9 @@ html.dark .film-card-img {
 }
 @media (min-width: 768px) {
   .footer-social-list {
-    display: grid;
-    grid-template-columns: repeat(5, max-content);
-    gap: 0.75rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 228px;
   }
 }
 
