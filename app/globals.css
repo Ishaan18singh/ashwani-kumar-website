@@ -824,8 +824,37 @@ html.dark .film-card-img {
 /* Homepage hero: image visually above the text on mobile (desktop keeps its
    existing side-by-side layout, no order change there). */
 @media (max-width: 1023px) {
-  .hero-media {
+  .hero-frame-wrap {
     order: -1;
+  }
+}
+
+/* Hero photo frame: a thin gold outline centered evenly around the photo
+   (not the photo's own border - a separate box behind it, offset out on
+   all sides so it reads as a frame rather than a card edge). */
+.hero-frame-wrap {
+  padding: 28px;
+}
+.hero-frame {
+  position: absolute;
+  inset: 0;
+  border: 1.5px solid rgb(var(--c-gold-400));
+  border-radius: 34px;
+  pointer-events: none;
+}
+.hero-media {
+  aspect-ratio: 3 / 4;
+  border-radius: 28px;
+}
+@media (max-width: 1023px) {
+  .hero-frame-wrap {
+    padding: 20px;
+  }
+  .hero-frame {
+    border-radius: 26px;
+  }
+  .hero-media {
+    border-radius: 20px;
   }
 }
 

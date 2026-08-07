@@ -120,17 +120,20 @@ export default function HomePage() {
               {t('home.quote')}
             </blockquote>
           </div>
-          <div className="hero-media relative h-[60vh] min-h-[480px] overflow-hidden rounded-t-[9rem] rounded-b-2xl border border-navy-900/10 shadow-2xl lg:h-[75vh]">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/images/ashwani-kumar-hero.webp"
-              srcSet="/images/ashwani-kumar-hero-mobile.webp 750w, /images/ashwani-kumar-hero.webp 1302w"
-              sizes="(min-width: 1024px) 45vw, 100vw"
-              alt="Ashwani Kumar, IAS, in a blue suit"
-              className="h-full w-full object-cover object-top"
-              fetchPriority="high"
-              decoding="async"
-            />
+          <div className="hero-frame-wrap relative">
+            <span className="hero-frame" aria-hidden="true" />
+            <div className="hero-media relative overflow-hidden shadow-2xl">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/ashwani-kumar-hero.webp"
+                srcSet="/images/ashwani-kumar-hero-mobile.webp 750w, /images/ashwani-kumar-hero.webp 1302w"
+                sizes="(min-width: 1024px) 45vw, 100vw"
+                alt="Ashwani Kumar, IAS, in a blue suit"
+                className="h-full w-full object-cover object-top"
+                fetchPriority="high"
+                decoding="async"
+              />
+            </div>
           </div>
           <a
             href="#introduction"
