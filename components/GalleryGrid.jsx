@@ -4,12 +4,12 @@ import { useRef, useState } from 'react';
 
 const ITEMS = [
   { src: '/images/gallery-01.webp', alt: 'Ashwani Kumar in a blue suit, full-length portrait' },
-  { src: '/images/gallery-02.webp', alt: 'Ashwani Kumar standing in a formal wood-paneled interior' },
   { src: '/images/gallery-03.webp', alt: 'Close portrait of Ashwani Kumar' },
   { src: '/images/gallery-04.webp', alt: 'Ashwani Kumar in a formal portrait' },
   { src: '/images/gallery-05.webp', alt: 'Black and white portrait of Ashwani Kumar' },
   { src: '/images/screen-style-01.webp', alt: 'Studio portrait of Ashwani Kumar in a cream knit polo' },
-  { src: '/images/screen-style-02.webp', alt: 'Black and white studio portrait of Ashwani Kumar' }
+  { src: '/images/screen-style-02.webp', alt: 'Black and white studio portrait of Ashwani Kumar' },
+  { src: '/images/screen-style-03.webp', alt: 'Studio portrait of Ashwani Kumar in white linen' }
 ];
 
 export default function GalleryGrid() {
