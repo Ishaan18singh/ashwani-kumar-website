@@ -14,14 +14,14 @@ export default function Footer() {
 
   return (
     <footer className="bg-ivory border-t border-slate-200 py-14 text-navy-900">
-      <div className="shell grid gap-10 md:grid-cols-[1.2fr_1fr_1fr]">
-        <div>
+      <div className="shell footer-grid grid gap-10 md:grid-cols-[1.2fr_1fr_1fr]">
+        <div className="footer-col">
           <p className="font-display text-xl">Ashwani Kumar</p>
           <p className="mt-3 max-w-sm text-sm leading-6 text-slate-600">{t('common.footerTagline')}</p>
         </div>
-        <div>
+        <div className="footer-col">
           <p className="mb-4 text-xs font-bold uppercase tracking-[.2em] text-gold-500">{t('common.navigate')}</p>
-          <div className="grid grid-cols-2 gap-3 text-sm text-slate-600">
+          <div className="footer-nav-links grid grid-cols-2 gap-3 text-sm text-slate-600">
             {NAV_PAGES.map(([href, key]) => (
               <Link key={href} href={href} prefetch={false} className={`nav-link${pathname === href ? ' active' : ''}`}>
                 {t(key)}
@@ -29,7 +29,7 @@ export default function Footer() {
             ))}
           </div>
         </div>
-        <div>
+        <div className="footer-col">
           <p className="mb-4 text-xs font-bold uppercase tracking-[.2em] text-gold-500">{t('common.connect')}</p>
           <div className="footer-social-list">
             {SITE_DATA.profile.social.map((s) => {

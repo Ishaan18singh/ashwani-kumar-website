@@ -763,12 +763,36 @@ html.dark .film-card-img {
   justify-content: center;
   gap: 0.75rem;
   max-width: 228px;
+  margin-left: auto;
+  margin-right: auto;
 }
 @media (min-width: 768px) {
   .footer-social-list {
     flex-wrap: wrap;
     justify-content: center;
     max-width: 228px;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+/* Mobile footer: center every column as a block (name/tagline, nav
+   links, connect) so the whole footer reads as one centered stack
+   instead of the nav-links grid sitting off to the left while
+   everything else looks centered. Desktop keeps its left-aligned
+   3-column layout, unchanged. */
+@media (max-width: 767px) {
+  .footer-col {
+    text-align: center;
+  }
+  .footer-col .max-w-sm {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .footer-nav-links {
+    max-width: 280px;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
