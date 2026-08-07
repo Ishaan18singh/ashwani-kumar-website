@@ -833,7 +833,16 @@ html.dark .film-card-img {
    (not the photo's own border - a separate box behind it, offset out on
    all sides so it reads as a frame rather than a card edge). */
 .hero-frame-wrap {
+  width: 100%;
+  min-width: 0;
   padding: 28px;
+  box-sizing: border-box;
+}
+@media (min-width: 1024px) {
+  .hero-frame-wrap {
+    max-width: 400px;
+    margin-left: auto;
+  }
 }
 .hero-frame {
   position: absolute;
