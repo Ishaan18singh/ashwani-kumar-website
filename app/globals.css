@@ -848,22 +848,16 @@ html.dark .film-card-img {
   position: absolute;
   inset: 0;
   border: 1.5px solid rgb(var(--c-gold-400));
-  border-radius: 34px;
+  border-radius: 0;
   pointer-events: none;
 }
 .hero-media {
   aspect-ratio: 3 / 4;
-  border-radius: 28px;
+  border-radius: 0;
 }
 @media (max-width: 1023px) {
   .hero-frame-wrap {
     padding: 20px;
-  }
-  .hero-frame {
-    border-radius: 26px;
-  }
-  .hero-media {
-    border-radius: 20px;
   }
 }
 
