@@ -547,7 +547,7 @@ html.dark .text-navy-950 {
    edge. Long-form body copy (multi-paragraph text, lists,
    forms) is intentionally left out so readability isn't hurt.
    ============================================================ */
-@media (max-width: 639px) {
+@media (max-width: 1023px) {
   .page-hero .shell > .eyebrow,
   .page-hero .shell > h1,
   .page-hero .shell > p {
@@ -571,26 +571,13 @@ html.dark .text-navy-950 {
   .stack-center .flex {
     justify-content: center;
   }
-
+}
+@media (max-width: 639px) {
   footer .shell {
     text-align: center;
   }
   footer .shell > * {
     width: 100%;
-  }
-  footer .flex.flex-wrap.gap-3 {
-    justify-content: center;
-  }
-  footer .grid-cols-2 {
-    width: -moz-fit-content;
-    width: fit-content;
-    margin-left: auto;
-    margin-right: auto;
-    column-gap: 5 rem;
-    text-align: left;
-  }
-  footer .grid-cols-2 > a:nth-child(even) {
-    margin-left: 3rem;
   }
 }
 
