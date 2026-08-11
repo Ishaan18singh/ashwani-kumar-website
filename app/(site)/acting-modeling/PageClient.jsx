@@ -1,24 +1,10 @@
 'use client';
 
+import Link from 'next/link';
 import { useI18n } from '@/lib/i18n/context';
 import PageHero from '@/components/PageHero';
 import GalleryGrid from '@/components/GalleryGrid';
-
-const FILMS = [
-  {
-    title: 'Devyani',
-    image: '/images/devyani-poster.jpg',
-    year: 2026,
-    genres: ['Drama', 'Suspense'],
-    language: 'Hindi',
-    duration: '20m',
-    synopsis: "A father's fear for his unborn daughter transforms into hope through an extraordinary vision.",
-    cast: ['Archana Gautam', 'Ashwani Kumar'],
-    director: 'Ashish Panda',
-    platform: 'ZEE5',
-    watchUrl: 'https://www.zee5.com/movies/details/devyani/0-0-1z51017722'
-  }
-];
+import { FILMS } from '@/lib/films';
 
 export default function ActingModelingPage() {
   const { t } = useI18n();
@@ -35,8 +21,10 @@ export default function ActingModelingPage() {
         <div className="shell grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
           {FILMS.map((film) => (
             <article key={film.title} className="film-card reveal">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img className="film-card-img" src={film.image} alt="" loading="lazy" />
+              <Link href={`/acting-modeling/${film.slug}`} prefetch={false} aria-label={`${t('project.learnMore')}: ${film.title}`}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img className="film-card-img" src={film.image} alt="" loading="lazy" />
+              </Link>
               <div className="film-card-body">
                 <div className="flex flex-wrap items-center gap-2 text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400">
                   <span>{film.year}</span>
@@ -47,7 +35,11 @@ export default function ActingModelingPage() {
                   <span aria-hidden="true">·</span>
                   <span>{film.duration}</span>
                 </div>
-                <h2 className="mt-2 text-2xl font-semibold text-navy-900 dark:text-white">{film.title}</h2>
+                <h2 className="mt-2 text-2xl font-semibold text-gold-500">
+                  <Link href={`/acting-modeling/${film.slug}`} prefetch={false}>
+                    {film.title}
+                  </Link>
+                </h2>
                 <p className="mt-3 text-sm leading-6 text-slate-600 dark:text-slate-300">{film.synopsis}</p>
                 <div className="mt-5">
                   <div className="flex gap-2 text-sm text-slate-600 dark:text-slate-300">
@@ -59,9 +51,14 @@ export default function ActingModelingPage() {
                     <span>{film.director}</span>
                   </div>
                 </div>
-                <a className="button-primary mt-6" href={film.watchUrl} target="_blank" rel="noopener noreferrer">
-                  <span>{t('actingModeling.watchOn')}</span> <span aria-hidden="true">→</span>
-                </a>
+                <div className="mt-6 flex flex-wrap gap-3">
+                  <Link href={`/acting-modeling/${film.slug}`} prefetch={false} className="button-ghost">
+                    {t('project.learnMore')}
+                  </Link>
+                  <a className="button-primary" href={film.watchUrl} target="_blank" rel="noopener noreferrer">
+                    <span>{t('actingModeling.watchOn')}</span> <span aria-hidden="true">→</span>
+                  </a>
+                </div>
               </div>
             </article>
           ))}
