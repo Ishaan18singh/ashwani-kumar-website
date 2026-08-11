@@ -48,6 +48,26 @@ export default function FilmDetailPage() {
             Watch Trailer
           </a>
         </div>
+      </div>
+      {film.press?.length > 0 && (
+        <div className="film-detail-press">
+          <p className="eyebrow">Press &amp; Reactions</p>
+          <h2 className="section-title">In the News</h2>
+          <ul className="film-detail-press-list">
+            {film.press.map((item, i) => (
+              <li key={`${item.url}-${i}`}>
+                <a href={item.url} target="_blank" rel="noopener noreferrer">
+                  <span className="film-detail-press-source">{item.source}</span>
+                  <span className="film-detail-press-title">
+                    {item.title} <span aria-hidden="true">↗</span>
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+      <div className="film-detail-body">
         <Link href="/acting-modeling" prefetch={false} className="film-detail-back">
           ← {t('actingModeling.title')}
         </Link>

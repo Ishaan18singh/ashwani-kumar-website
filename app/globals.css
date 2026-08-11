@@ -992,6 +992,51 @@ html.dark .film-detail-trailer {
 html.dark .film-detail-back {
   color: rgb(148, 163, 184);
 }
+.film-detail-press {
+  max-width: 42rem;
+  margin: 4rem auto 0;
+  padding: 2.5rem 1.5rem 0;
+  border-top: 1px solid rgb(226, 232, 240);
+  text-align: left;
+}
+html.dark .film-detail-press {
+  border-top-color: rgb(51, 65, 85);
+}
+.film-detail-press-list {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.film-detail-press-list a {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgb(241, 245, 249);
+  transition: opacity 0.15s ease;
+}
+html.dark .film-detail-press-list a {
+  border-bottom-color: rgb(30, 41, 59);
+}
+.film-detail-press-list a:hover {
+  opacity: 0.7;
+}
+.film-detail-press-source {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgb(var(--c-gold-500));
+}
+.film-detail-press-title {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: rgb(11, 37, 69);
+}
+html.dark .film-detail-press-title {
+  color: rgb(255, 255, 255);
+}
 
 /* Homepage section order: on mobile, Selected Work (Timeline/Initiatives/
    Awards) moves above the Introduction section. Desktop keeps the original
