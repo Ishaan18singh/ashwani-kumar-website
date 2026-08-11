@@ -203,7 +203,7 @@ export default function HomePage() {
             loading="lazy"
             src="/images/ashwani-kumar-portrait.webp"
             alt="Portrait of Ashwani Kumar, IAS"
-            className="reveal aspect-[4/5] w-full rounded-2xl object-cover"
+            className="leadership-photo reveal aspect-[4/5] w-full rounded-2xl object-cover"
           />
           <div className="reveal stack-center">
             <p className="eyebrow">{t('home.leadershipEyebrow')}</p>

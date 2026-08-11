@@ -844,6 +844,14 @@ html.dark .film-card-img {
     margin-left: auto;
   }
 }
+
+/* Leadership section portrait: capped narrower on desktop instead of
+   filling its full grid column. */
+@media (min-width: 1024px) {
+  .leadership-photo {
+    max-width: 400px;
+  }
+}
 .hero-frame {
   position: absolute;
   inset: 0;
