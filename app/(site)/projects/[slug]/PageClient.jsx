@@ -19,7 +19,7 @@ export default function ProjectDetailPage() {
           <div className="project-detail-body">
             <p className="eyebrow">{t('project.notFound')}</p>
             <h1 className="text-4xl font-semibold sm:text-5xl">{t('project.notFoundTitle')}</h1>
-            <p className="mt-4 max-w-2xl leading-7 text-slate-600 dark:text-slate-300">{t('project.notFoundText')}</p>
+            <p className="body-copy mt-4 max-w-2xl text-slate-600 dark:text-slate-300">{t('project.notFoundText')}</p>
             <Link href="/projects" prefetch={false} className="button-primary mt-8 inline-flex w-fit">
               {t('project.allInitiatives')}
             </Link>
@@ -41,7 +41,7 @@ export default function ProjectDetailPage() {
           <h1 className="max-w-3xl text-4xl font-semibold sm:text-6xl">{project.title}</h1>
           <p className="mt-4 text-sm font-bold uppercase tracking-[.15em] text-gold-500">{project.tag}</p>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600 dark:text-slate-300">{project.summary}</p>
-          <p className="mt-4 max-w-2xl leading-7 text-slate-600 dark:text-slate-300">{project.detail}</p>
+          <p className="body-copy mt-4 max-w-2xl text-slate-600 dark:text-slate-300">{project.detail}</p>
           <div className="mt-10 flex flex-wrap gap-3">
             <Link href="/projects" prefetch={false} className="button-ghost inline-flex w-fit">
               {t('project.allInitiatives')}

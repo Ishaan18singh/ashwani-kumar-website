@@ -105,7 +105,7 @@ export default function HomePage() {
               className="max-w-2xl text-5xl font-normal leading-tight sm:text-6xl sm:leading-[.94] lg:text-7xl"
               html={t('home.titleHtml')}
             />
-            <p className="mt-7 max-w-xl text-base leading-7 text-slate-600 dark:text-slate-300 sm:text-lg">
+            <p className="body-copy mt-7 max-w-xl text-slate-600 dark:text-slate-300">
               {t('home.subtitle')}
             </p>
             <div className="mt-9 flex flex-wrap gap-3">

@@ -39,7 +39,7 @@ export default function AboutPage() {
           <div className="reveal">
             <p className="eyebrow">{t('about.journeyEyebrow')}</p>
             <h2 className="section-title">{t('about.journeyTitle')}</h2>
-            <div className="mt-7 space-y-5 leading-7 text-slate-600 dark:text-slate-300">
+            <div className="body-copy mt-7 space-y-5 text-slate-600 dark:text-slate-300">
               <p>{t('about.journeyP1')}</p>
               <p>{t('about.journeyP2')}</p>
               <p>{t('about.journeyP3')}</p>

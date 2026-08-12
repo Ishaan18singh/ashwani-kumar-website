@@ -34,7 +34,7 @@ export default function ProjectsPage() {
               <div>
                 <p className="eyebrow">{x.tag}</p>
                 <h2 className="text-3xl font-semibold text-navy-900 dark:text-white sm:text-4xl">{x.title}</h2>
-                <p className="mt-5 max-w-xl leading-7 text-slate-600 dark:text-slate-300">{x.detail}</p>
+                <p className="body-copy mt-5 max-w-xl text-slate-600 dark:text-slate-300">{x.detail}</p>
                 <Link
                   className="button-primary mt-8"
                   href={`/projects/${slugify(x.title)}`}

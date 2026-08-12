@@ -23,7 +23,7 @@ export default function ContactPage() {
             <h2 className="section-title">{t('contact.officeTitle')}</h2>
             <Html
               as="address"
-              className="mt-7 not-italic leading-7 text-slate-600 dark:text-slate-300"
+              className="body-copy mt-7 not-italic text-slate-600 dark:text-slate-300"
               html={t('contact.addressHtml')}
             />
             <div className="mt-8 space-y-3">

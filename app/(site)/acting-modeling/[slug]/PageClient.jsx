@@ -69,7 +69,7 @@ export default function FilmDetailPage() {
         <div className="shell max-w-4xl">
           <p className="eyebrow">{t('project.notFound')}</p>
           <h1 className="text-4xl font-semibold sm:text-5xl">{t('project.notFoundTitle')}</h1>
-          <p className="mt-4 max-w-2xl leading-7 text-slate-600 dark:text-slate-300">{t('project.notFoundText')}</p>
+          <p className="body-copy mt-4 max-w-2xl text-slate-600 dark:text-slate-300">{t('project.notFoundText')}</p>
           <Link href="/acting-modeling" prefetch={false} className="button-primary mt-8 inline-flex w-fit">
             {t('actingModeling.title')}
           </Link>
