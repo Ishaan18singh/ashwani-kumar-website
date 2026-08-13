@@ -18,6 +18,7 @@ export function middleware(request) {
     font-src 'self' https://fonts.gstatic.com;
     img-src 'self' data:;
     connect-src 'self' ${SUPABASE_URL} ${SUPABASE_WS_URL};
+    frame-src https://www.youtube.com https://www.youtube-nocookie.com;
     base-uri 'self';
     form-action 'self';
     object-src 'none';

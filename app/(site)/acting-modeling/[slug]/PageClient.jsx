@@ -2,14 +2,26 @@
 
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
+import { useRef, useState } from 'react';
 import { useI18n } from '@/lib/i18n/context';
 import { FILMS } from '@/lib/films';
 
 export default function FilmDetailPage() {
   const { slug } = useParams();
   const { t } = useI18n();
+  const trailerDialogRef = useRef(null);
+  const [trailerPlaying, setTrailerPlaying] = useState(false);
 
   const film = FILMS.find((f) => f.slug === slug);
+
+  const openTrailer = () => {
+    setTrailerPlaying(true);
+    trailerDialogRef.current?.showModal();
+  };
+  const closeTrailer = () => {
+    trailerDialogRef.current?.close();
+    setTrailerPlaying(false);
+  };
 
   if (!film) {
     return (
@@ -44,9 +56,11 @@ export default function FilmDetailPage() {
           <a className="film-detail-watch" href={film.watchUrl} target="_blank" rel="noopener noreferrer">
             <span aria-hidden="true">▶</span> Watch Now — Free on {film.platform}
           </a>
-          <a className="film-detail-trailer" href={film.watchUrl} target="_blank" rel="noopener noreferrer">
-            Watch Trailer
-          </a>
+          {film.trailerYoutubeId && (
+            <button type="button" className="film-detail-trailer" onClick={openTrailer}>
+              Watch Trailer
+            </button>
+          )}
         </div>
       </div>
       {film.press?.length > 0 && (
@@ -80,6 +94,30 @@ export default function FilmDetailPage() {
           ← {t('actingModeling.title')}
         </Link>
       </div>
+      {film.trailerYoutubeId && (
+        <dialog
+          ref={trailerDialogRef}
+          className="film-detail-trailer-dialog"
+          onClick={(e) => {
+            if (e.target === trailerDialogRef.current) closeTrailer();
+          }}
+          onClose={() => setTrailerPlaying(false)}
+        >
+          <button type="button" onClick={closeTrailer} className="film-detail-trailer-close" aria-label="Close trailer">
+            ×
+          </button>
+          <div className="film-detail-trailer-frame">
+            {trailerPlaying && (
+              <iframe
+                src={`https://www.youtube.com/embed/${film.trailerYoutubeId}?autoplay=1`}
+                title={`${film.title} — Trailer`}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            )}
+          </div>
+        </dialog>
+      )}
     </section>
   );
 }
