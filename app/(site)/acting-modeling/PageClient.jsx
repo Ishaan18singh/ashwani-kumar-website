@@ -52,12 +52,9 @@ export default function ActingModelingPage() {
                   </div>
                 </div>
                 <div className="mt-6 flex flex-wrap gap-3">
-                  <Link href={`/acting-modeling/${film.slug}`} prefetch={false} className="button-ghost">
-                    {t('project.learnMore')}
+                  <Link href={`/acting-modeling/${film.slug}`} prefetch={false} className="button-primary">
+                    {t('project.learnMore')} <span aria-hidden="true">→</span>
                   </Link>
-                  <a className="button-primary" href={film.watchUrl} target="_blank" rel="noopener noreferrer">
-                    <span>{t('actingModeling.watchOn')}</span> <span aria-hidden="true">→</span>
-                  </a>
                 </div>
               </div>
             </article>
