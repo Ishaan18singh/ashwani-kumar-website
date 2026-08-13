@@ -53,18 +53,26 @@ export default function FilmDetailPage() {
         <div className="film-detail-press">
           <p className="eyebrow">Press &amp; Reactions</p>
           <h2 className="section-title">In the News</h2>
-          <ul className="film-detail-press-list">
-            {film.press.map((item, i) => (
-              <li key={`${item.url}-${i}`}>
-                <a href={item.url} target="_blank" rel="noopener noreferrer">
+          <div className="film-detail-press-grid">
+            {film.press.map((item, i) => {
+              let domain = item.source;
+              try {
+                domain = new URL(item.url).hostname.replace(/^www\./, '');
+              } catch {
+                // keep source as fallback
+              }
+              return (
+                <a key={`${item.url}-${i}`} href={item.url} target="_blank" rel="noopener noreferrer" className="film-detail-press-card">
+                  <span className="film-detail-press-domain">{domain}</span>
                   <span className="film-detail-press-source">{item.source}</span>
-                  <span className="film-detail-press-title">
-                    {item.title} <span aria-hidden="true">↗</span>
+                  <span className="film-detail-press-title">{item.title}</span>
+                  <span className="film-detail-press-link">
+                    Read more <span aria-hidden="true">↗</span>
                   </span>
                 </a>
-              </li>
-            ))}
-          </ul>
+              );
+            })}
+          </div>
         </div>
       )}
       <div className="film-detail-body">
