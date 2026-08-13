@@ -40,8 +40,10 @@ export default function FilmDetailPage() {
 
   return (
     <section className="film-detail-cinematic">
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img className="film-detail-poster" src={film.image} alt="" />
+      <div className="film-detail-poster-wrap">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img className="film-detail-poster" src={film.image} alt="" />
+      </div>
       <div className="film-detail-body">
         <h1 className="film-detail-title">{film.title}</h1>
         <p className="film-detail-about">{film.about}</p>
