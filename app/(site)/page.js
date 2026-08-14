@@ -6,7 +6,7 @@ import { useI18n } from '@/lib/i18n/context';
 import Html from '@/components/Html';
 
 const EXPLORE_CARDS = [
-  { href: '/timeline', image: '/images/gallery-01.webp', labelKey: 'nav.timeline' },
+  { href: '/timeline', image: '/images/ashwani-kumar-timeline.jpg', labelKey: 'nav.timeline' },
   { href: '/projects', image: '/images/gallery-03.webp', labelKey: 'nav.projects' },
   { href: '/awards', image: '/images/gallery-04.webp', labelKey: 'nav.awards' }
 ];
