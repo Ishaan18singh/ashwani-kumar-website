@@ -48,7 +48,7 @@ export default function ProjectsPage() {
           ))}
         </div>
       </section>
-      <section className="bg-white border-t border-slate-200 py-20 text-navy-900 dark:bg-slate-900 dark:text-white">
+      <section className="bg-ivory border-t border-slate-200 py-20 text-navy-900 dark:bg-slate-900 dark:text-white">
         <div className="shell flex flex-col items-start justify-between gap-8 md:flex-row md:items-center">
           <div>
             <p className="eyebrow">{t('projects.principleEyebrow')}</p>

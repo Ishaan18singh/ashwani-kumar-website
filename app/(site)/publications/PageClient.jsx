@@ -22,7 +22,7 @@ export default function PublicationsPage() {
           </div>
         </div>
       </section>
-      <section className="bg-white py-24 dark:bg-slate-900">
+      <section className="bg-ivory py-24 dark:bg-slate-900">
         <div className="shell">
           <p className="eyebrow">{t('publications.mediaEyebrow')}</p>
           <h2 className="section-title">{t('publications.mediaTitle')}</h2>

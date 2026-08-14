@@ -51,7 +51,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="bg-white py-24 dark:bg-slate-900">
+      <section className="bg-ivory py-24 dark:bg-slate-900">
         <div className="shell">
           <p className="eyebrow">{t('about.responsibilitiesEyebrow')}</p>
           <h2 className="section-title">{t('about.responsibilitiesTitle')}</h2>

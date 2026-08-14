@@ -170,7 +170,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="home-section-work border-t border-slate-200 bg-white py-24 dark:border-slate-700 dark:bg-slate-900">
+      <section className="home-section-work border-t border-slate-200 bg-ivory py-24 dark:border-slate-700 dark:bg-slate-900">
         <div className="shell">
           <p className="eyebrow">{t('home.selectedWorkEyebrow')}</p>
           <h2 className="section-title">{t('home.selectedWorkTitle')}</h2>
