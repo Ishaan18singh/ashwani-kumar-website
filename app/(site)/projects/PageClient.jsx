@@ -29,7 +29,7 @@ export default function ProjectsPage() {
                 src={`/images/${cardImage(i)}.webp`}
                 alt=""
                 loading="lazy"
-                className="initiative-row-img w-full rounded-2xl object-cover shadow-2xl"
+                className="initiative-row-img w-full rounded-2xl object-contain shadow-2xl"
               />
               <div>
                 <p className="eyebrow">{x.tag}</p>

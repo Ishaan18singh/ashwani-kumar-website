@@ -490,6 +490,10 @@ html.dark .text-navy-950 {
 .initiative-row-img {
   aspect-ratio: 4 / 3;
   height: auto;
+  background-color: #f1f5f9;
+}
+html.dark .initiative-row-img {
+  background-color: rgb(30, 41, 59);
 }
 
 .initiative-rows-gap {
