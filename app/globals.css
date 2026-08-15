@@ -1151,6 +1151,21 @@ html.dark .film-detail-press-title {
 .film-detail-share-dialog::backdrop {
   background: rgba(6, 24, 45, 0.5);
 }
+/* Mobile: anchor the dialog to the bottom of the screen (bottom-sheet
+   style) instead of centering it, so it opens right above the Share
+   button instead of jumping away to the vertical middle of the screen. */
+@media (max-width: 639px) {
+  .film-detail-share-dialog {
+    position: fixed;
+    inset: auto 0 0 0;
+    margin: 0;
+    width: 100%;
+    max-width: none;
+    max-height: 80vh;
+    overflow-y: auto;
+    border-radius: 1.25rem 1.25rem 0 0;
+  }
+}
 html.dark .film-detail-share-dialog {
   background: #0f172a;
   color: #fff;
