@@ -1135,6 +1135,176 @@ html.dark .film-detail-press-title {
   border: 0;
 }
 
+/* Film detail page: YouTube-style share dialog - platform icon row plus
+   a copyable link field, in the site's own light/dark surface colors. */
+.film-detail-share-dialog {
+  position: relative;
+  margin: auto;
+  width: min(94vw, 420px);
+  border-radius: 1rem;
+  background: #fff;
+  color: #0B2545;
+  padding: 1.5rem;
+  border: 1px solid rgba(11, 37, 69, 0.1);
+  box-shadow: 0 30px 70px -20px rgba(6, 24, 45, 0.5);
+}
+.film-detail-share-dialog::backdrop {
+  background: rgba(6, 24, 45, 0.5);
+}
+html.dark .film-detail-share-dialog {
+  background: #0f172a;
+  color: #fff;
+  border-color: hsla(0, 0%, 100%, 0.1);
+}
+.film-detail-share-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+.film-detail-share-header h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+.film-detail-share-close {
+  width: 32px;
+  height: 32px;
+  border-radius: 9999px;
+  border: 0;
+  background: rgba(11, 37, 69, 0.06);
+  color: inherit;
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+}
+html.dark .film-detail-share-close {
+  background: hsla(0, 0%, 100%, 0.1);
+}
+.film-detail-share-row {
+  display: flex;
+  gap: 1.25rem;
+  overflow-x: auto;
+  padding-bottom: 0.25rem;
+}
+.film-detail-share-btn {
+  display: flex;
+  width: 56px;
+  flex-shrink: 0;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  border: 0;
+  background: none;
+  padding: 0;
+  font-family: inherit;
+  text-decoration: none;
+  color: inherit;
+  font-size: 0.7rem;
+  cursor: pointer;
+}
+.film-detail-share-btn span {
+  color: rgb(100, 116, 139);
+}
+html.dark .film-detail-share-btn span {
+  color: rgb(148, 163, 184);
+}
+.film-detail-share-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 9999px;
+}
+.film-detail-share-icon svg {
+  width: 22px;
+  height: 22px;
+  color: #fff;
+}
+.film-detail-share-btn--whatsapp .film-detail-share-icon {
+  background: #25d366;
+}
+.film-detail-share-btn--instagram .film-detail-share-icon {
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%);
+}
+.film-detail-share-btn--facebook .film-detail-share-icon {
+  background: #1877f2;
+}
+.film-detail-share-btn--x .film-detail-share-icon {
+  background: #000;
+}
+.film-detail-share-btn--mail .film-detail-share-icon {
+  background: rgb(100, 116, 139);
+}
+.film-detail-share-btn--linkedin .film-detail-share-icon {
+  background: #0a66c2;
+}
+.film-detail-share-btn--reddit .film-detail-share-icon {
+  background: #ff4500;
+}
+.film-detail-share-btn--messages .film-detail-share-icon {
+  background: #34c759;
+}
+.film-detail-share-btn--embed .film-detail-share-icon {
+  background: rgb(11, 37, 69);
+}
+html.dark .film-detail-share-btn--embed .film-detail-share-icon {
+  background: rgb(51, 65, 85);
+}
+.film-detail-share-linkrow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  padding: 0.6rem 0.6rem 0.6rem 1rem;
+  border: 1px solid rgba(11, 37, 69, 0.15);
+  border-radius: 9999px;
+}
+html.dark .film-detail-share-linkrow {
+  border-color: hsla(0, 0%, 100%, 0.15);
+}
+.film-detail-share-linkrow input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font-size: 0.85rem;
+  outline: none;
+}
+.film-detail-share-linkrow--embed {
+  align-items: flex-start;
+  border-radius: 0.75rem;
+}
+.film-detail-share-linkrow--embed textarea {
+  flex: 1;
+  min-width: 0;
+  min-height: 70px;
+  resize: none;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  outline: none;
+}
+.film-detail-share-linkrow--embed .film-detail-share-copy {
+  align-self: flex-start;
+  margin-top: 0.1rem;
+}
+.film-detail-share-copy {
+  flex-shrink: 0;
+  padding: 0.5rem 1.1rem;
+  border-radius: 9999px;
+  border: 0;
+  background: rgb(var(--c-gold-400));
+  color: rgb(6, 24, 45);
+  font-weight: 600;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
 /* Homepage section order: on mobile, Selected Work (Timeline/Initiatives/
    Awards) moves above the Introduction section. Desktop keeps the original
    DOM order (Introduction before Selected Work) untouched. */

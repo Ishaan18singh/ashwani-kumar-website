@@ -5,12 +5,17 @@ import { useParams } from 'next/navigation';
 import { useRef, useState } from 'react';
 import { useI18n } from '@/lib/i18n/context';
 import { FILMS } from '@/lib/films';
+import SocialIcon from '@/components/SocialIcon';
 
 export default function FilmDetailPage() {
   const { slug } = useParams();
   const { t } = useI18n();
   const trailerDialogRef = useRef(null);
+  const shareDialogRef = useRef(null);
   const [trailerPlaying, setTrailerPlaying] = useState(false);
+  const [shareCopied, setShareCopied] = useState(false);
+  const [showEmbed, setShowEmbed] = useState(false);
+  const [embedCopied, setEmbedCopied] = useState(false);
 
   const film = FILMS.find((f) => f.slug === slug);
 
@@ -21,6 +26,41 @@ export default function FilmDetailPage() {
   const closeTrailer = () => {
     trailerDialogRef.current?.close();
     setTrailerPlaying(false);
+  };
+
+  const openShare = () => shareDialogRef.current?.showModal();
+  const closeShare = () => shareDialogRef.current?.close();
+  const copyShareLink = async () => {
+    try {
+      await navigator.clipboard.writeText(film.watchUrl);
+      setShareCopied(true);
+      setTimeout(() => setShareCopied(false), 2000);
+    } catch {
+      // clipboard unavailable
+    }
+  };
+  const shareToInstagram = async () => {
+    // Instagram has no web share-intent URL for arbitrary links, so the
+    // standard workaround is to copy the link and let people paste it
+    // into a story or DM once Instagram opens.
+    try {
+      await navigator.clipboard.writeText(film.watchUrl);
+    } catch {
+      // clipboard unavailable
+    }
+    window.open('https://www.instagram.com/', '_blank', 'noopener,noreferrer');
+  };
+  const embedCode = film?.trailerYoutubeId
+    ? `<iframe width="560" height="315" src="https://www.youtube.com/embed/${film.trailerYoutubeId}" title="${film.title} — Trailer" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
+    : '';
+  const copyEmbedCode = async () => {
+    try {
+      await navigator.clipboard.writeText(embedCode);
+      setEmbedCopied(true);
+      setTimeout(() => setEmbedCopied(false), 2000);
+    } catch {
+      // clipboard unavailable
+    }
   };
 
   if (!film) {
@@ -63,6 +103,9 @@ export default function FilmDetailPage() {
               Watch Trailer
             </button>
           )}
+          <button type="button" className="film-detail-trailer" onClick={openShare}>
+            Share
+          </button>
         </div>
       </div>
       {film.press?.length > 0 && (
@@ -120,6 +163,128 @@ export default function FilmDetailPage() {
           </div>
         </dialog>
       )}
+      <dialog
+        ref={shareDialogRef}
+        className="film-detail-share-dialog"
+        onClick={(e) => {
+          if (e.target === shareDialogRef.current) closeShare();
+        }}
+      >
+        <div className="film-detail-share-header">
+          <h3>Share</h3>
+          <button type="button" onClick={closeShare} className="film-detail-share-close" aria-label="Close share">
+            ×
+          </button>
+        </div>
+        <div className="film-detail-share-row">
+          <a
+            className="film-detail-share-btn film-detail-share-btn--whatsapp"
+            href={`https://api.whatsapp.com/send?text=${encodeURIComponent(`Watch ${film.title} on ${film.platform}: ${film.watchUrl}`)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span className="film-detail-share-icon">
+              <SocialIcon label="WhatsApp" />
+            </span>
+            <span>WhatsApp</span>
+          </a>
+          <button type="button" className="film-detail-share-btn film-detail-share-btn--instagram" onClick={shareToInstagram}>
+            <span className="film-detail-share-icon">
+              <SocialIcon label="Instagram" />
+            </span>
+            <span>Instagram</span>
+          </button>
+          <a
+            className="film-detail-share-btn film-detail-share-btn--facebook"
+            href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(film.watchUrl)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span className="film-detail-share-icon">
+              <SocialIcon label="Facebook" />
+            </span>
+            <span>Facebook</span>
+          </a>
+          <a
+            className="film-detail-share-btn film-detail-share-btn--x"
+            href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(film.watchUrl)}&text=${encodeURIComponent(`Watch ${film.title} on ${film.platform}`)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span className="film-detail-share-icon">
+              <SocialIcon label="X" />
+            </span>
+            <span>X</span>
+          </a>
+          <a
+            className="film-detail-share-btn film-detail-share-btn--linkedin"
+            href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(film.watchUrl)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span className="film-detail-share-icon">
+              <SocialIcon label="LinkedIn" />
+            </span>
+            <span>LinkedIn</span>
+          </a>
+          <a
+            className="film-detail-share-btn film-detail-share-btn--reddit"
+            href={`https://www.reddit.com/submit?url=${encodeURIComponent(film.watchUrl)}&title=${encodeURIComponent(`${film.title} — Watch on ${film.platform}`)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span className="film-detail-share-icon">
+              <SocialIcon label="Reddit" />
+            </span>
+            <span>Reddit</span>
+          </a>
+          <a
+            className="film-detail-share-btn film-detail-share-btn--messages"
+            href={`sms:?&body=${encodeURIComponent(`Watch ${film.title} on ${film.platform}: ${film.watchUrl}`)}`}
+          >
+            <span className="film-detail-share-icon">
+              <SocialIcon label="Messages" />
+            </span>
+            <span>Messages</span>
+          </a>
+          <a
+            className="film-detail-share-btn film-detail-share-btn--mail"
+            href={`mailto:?subject=${encodeURIComponent(film.title)}&body=${encodeURIComponent(`Watch ${film.title} on ${film.platform}: ${film.watchUrl}`)}`}
+          >
+            <span className="film-detail-share-icon">
+              <SocialIcon label="Mail" />
+            </span>
+            <span>Email</span>
+          </a>
+          {film.trailerYoutubeId && (
+            <button
+              type="button"
+              className="film-detail-share-btn film-detail-share-btn--embed"
+              onClick={() => setShowEmbed((v) => !v)}
+            >
+              <span className="film-detail-share-icon">
+                <SocialIcon label="Embed" />
+              </span>
+              <span>Embed</span>
+            </button>
+          )}
+        </div>
+        {showEmbed ? (
+          <div className="film-detail-share-linkrow film-detail-share-linkrow--embed">
+            <textarea readOnly value={embedCode} onFocus={(e) => e.target.select()} />
+            <button type="button" onClick={copyEmbedCode} className="film-detail-share-copy">
+              {embedCopied ? 'Copied' : 'Copy'}
+            </button>
+          </div>
+        ) : (
+          <div className="film-detail-share-linkrow">
+            <input type="text" readOnly value={film.watchUrl} onFocus={(e) => e.target.select()} />
+            <button type="button" onClick={copyShareLink} className="film-detail-share-copy">
+              {shareCopied ? 'Copied' : 'Copy'}
+            </button>
+          </div>
+        )}
+      </dialog>
     </section>
   );
 }

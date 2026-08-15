@@ -55,11 +55,41 @@ export default function SocialIcon({ label }) {
           </text>
         </svg>
       );
+    case 'WhatsApp':
+      return (
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+          <path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.2-.7.8-.8.9-.1.2-.3.2-.5.1-.2-.1-1-.4-1.9-1.2-.7-.6-1.2-1.4-1.3-1.6-.1-.2 0-.4.1-.5.1-.1.2-.3.4-.4.1-.1.2-.2.2-.4.1-.1 0-.3 0-.4 0-.1-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 1.9 0 1.1.8 2.2.9 2.4.1.2 1.6 2.5 4 3.5.6.2 1 .4 1.3.5.6.2 1.1.2 1.5.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2-.1-.1-.2-.2-.4-.3z" />
+        </svg>
+      );
     case 'Mail':
       return (
         <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.7">
           <rect x="2.5" y="4.5" width="19" height="15" rx="3" />
           <path d="M3.5 6.5l8.5 7 8.5-7" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      );
+    case 'Reddit':
+      return (
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+          <circle cx="12" cy="13.2" r="8.2" fillOpacity=".001" stroke="currentColor" strokeWidth="1.6" fill="none" />
+          <circle cx="8.6" cy="13" r="1.4" />
+          <circle cx="15.4" cy="13" r="1.4" />
+          <path d="M8 16.6c1 .8 2.2 1.1 4 1.1s3-.3 4-1.1" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+          <path d="M12 9.8V5.2m0 0L9.8 3m2.2 2.2L14.4 3" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+          <circle cx="12" cy="9.4" r="1.1" />
+        </svg>
+      );
+    case 'Messages':
+      return (
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+          <path d="M12 3C6.5 3 2 6.7 2 11.3c0 2.6 1.4 4.9 3.6 6.4-.1.9-.5 2.3-1.3 3.6 1.6-.3 3.1-1 4.2-1.8 1.1.3 2.3.5 3.5.5 5.5 0 10-3.7 10-8.3S17.5 3 12 3z" />
+        </svg>
+      );
+    case 'Embed':
+      return (
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.9">
+          <path d="M8.5 7.5L3.5 12l5 4.5" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M15.5 7.5l5 4.5-5 4.5" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       );
     default:
