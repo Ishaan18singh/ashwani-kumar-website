@@ -790,7 +790,7 @@ html.dark .pub-card {
 .pub-card-img-wrap {
   display: block;
   width: 100%;
-  aspect-ratio: 2 / 1;
+  aspect-ratio: 2.6 / 1;
   background-color: #f1f5f9;
 }
 html.dark .pub-card-img-wrap {
@@ -811,7 +811,7 @@ html.dark .pub-card-img-wrap {
   flex: 1;
   flex-direction: column;
   align-items: flex-start;
-  padding: 1rem;
+  padding: 0.75rem;
 }
 .pub-card-meta {
   font-size: 0.62rem;
@@ -824,8 +824,8 @@ html.dark .pub-card-meta {
   color: rgb(148, 163, 184);
 }
 .pub-card-source {
-  margin-top: 0.35rem;
-  font-size: 0.85rem;
+  margin-top: 0.25rem;
+  font-size: 0.8rem;
   font-weight: 600;
   color: #061c2c;
 }
@@ -833,9 +833,9 @@ html.dark .pub-card-source {
   color: #fff;
 }
 .pub-card-body .button-primary {
-  margin-top: 0.75rem;
-  padding: 0.55rem 1.1rem;
-  font-size: 0.72rem;
+  margin-top: 0.5rem;
+  padding: 0.45rem 1rem;
+  font-size: 0.68rem;
 }
 
 /* Footer social icons: capped to exactly one row's width (5 icons + gaps)
