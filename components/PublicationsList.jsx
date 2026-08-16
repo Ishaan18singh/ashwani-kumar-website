@@ -39,12 +39,7 @@ export default function PublicationsList({ fallback }) {
             <PubImage item={x} />
           </span>
           <div className="pub-card-body">
-            <p className="pub-card-meta">
-              {x.date} · {x.language || 'English'}
-            </p>
-            <h3 className="pub-card-title">{x.title}</h3>
-            <p className="pub-card-source">{x.publication}</p>
-            <a href={x.url} target="_blank" rel="noopener noreferrer" className="button-primary mt-6">
+            <a href={x.url} target="_blank" rel="noopener noreferrer" className="button-primary">
               {t('publications.readFull')} <span aria-hidden="true">→</span>
             </a>
           </div>
