@@ -4,6 +4,12 @@ import { useEffect, useState } from 'react';
 import { useI18n } from '@/lib/i18n/context';
 import { getSupabaseClient } from '@/lib/supabase';
 
+// The Supabase "publications" table has no language column, so the
+// language shown is derived from the publication name for outlets that
+// publish in a language other than English (rather than always falling
+// back to "English").
+const NON_ENGLISH_PUBLICATIONS = { 'Dainik Bhaskar': 'Hindi' };
+
 function PubImage({ item }) {
   const [failed, setFailed] = useState(false);
   if (failed) {
@@ -40,7 +46,7 @@ export default function PublicationsList({ fallback }) {
           </span>
           <div className="pub-card-body">
             <p className="pub-card-meta">
-              {x.date} · {x.language || 'English'}
+              {x.date} · {x.language || NON_ENGLISH_PUBLICATIONS[x.publication] || 'English'}
             </p>
             <p className="pub-card-source">{x.publication}</p>
             <a href={x.url} target="_blank" rel="noopener noreferrer" className="button-primary">
