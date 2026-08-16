@@ -30,37 +30,26 @@ export default function PublicationsList({ fallback }) {
   }, []);
 
   if (!publications || !publications.length) return null;
-  const [featured, ...rest] = publications;
 
   return (
-    <>
-      <a href={featured.url} target="_blank" rel="noopener noreferrer" className="pub-featured reveal group">
-        <span className="pub-featured-img-wrap">
-          <PubImage item={featured} />
-        </span>
-        <span>
-          <span className="pub-kicker">
-            {featured.publication} · {featured.date}
+    <div className="pub-card-grid">
+      {publications.map((x) => (
+        <article key={x.url || x.title} className="pub-card reveal">
+          <span className="pub-card-img-wrap">
+            <PubImage item={x} />
           </span>
-          <span className="pub-headline block group-hover:underline">{featured.title}</span>
-          <span className="pub-dateline">{t('publications.readFull')}</span>
-        </span>
-      </a>
-      {rest.length ? (
-        <div className="pub-grid">
-          {rest.map((x) => (
-            <a key={x.title} href={x.url} target="_blank" rel="noopener noreferrer" className="pub-grid-item reveal group block">
-              <span className="pub-grid-img-wrap block">
-                <PubImage item={x} />
-              </span>
-              <span className="pub-kicker">
-                {x.publication} · {x.date}
-              </span>
-              <span className="pub-headline block group-hover:underline">{x.title}</span>
+          <div className="pub-card-body">
+            <p className="pub-card-meta">
+              {x.date} · {x.language || 'English'}
+            </p>
+            <h3 className="pub-card-title">{x.title}</h3>
+            <p className="pub-card-source">{x.publication}</p>
+            <a href={x.url} target="_blank" rel="noopener noreferrer" className="button-primary mt-6">
+              {t('publications.readFull')} <span aria-hidden="true">→</span>
             </a>
-          ))}
-        </div>
-      ) : null}
-    </>
+          </div>
+        </article>
+      ))}
+    </div>
   );
 }

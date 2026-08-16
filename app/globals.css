@@ -751,6 +751,103 @@ html.dark .film-card-img {
   padding: 1.5rem;
 }
 
+/* Publications page: uniform card grid (same size/shape as the
+   Acting & Modeling film cards) instead of a large "featured" article
+   plus a smaller two-up grid. */
+.pub-card-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 640px) {
+  .pub-card-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (min-width: 1024px) {
+  .pub-card-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+.pub-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 1rem;
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  background-color: #fff;
+  box-shadow: 0 20px 50px -28px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.pub-card:hover {
+  transform: translateY(-4px);
+  border-color: rgb(var(--c-gold-400) / 0.6);
+}
+html.dark .pub-card {
+  border-color: rgb(51 65 85);
+  background-color: rgb(15 23 42);
+}
+.pub-card-img-wrap {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background-color: #f1f5f9;
+}
+html.dark .pub-card-img-wrap {
+  background-color: rgb(30 41 59);
+}
+.pub-card-img-wrap img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.pub-card-img-wrap .pub-fallback {
+  width: 100%;
+  height: 100%;
+}
+.pub-card-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 1.1rem;
+}
+.pub-card-meta {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgb(100, 116, 139);
+}
+html.dark .pub-card-meta {
+  color: rgb(148, 163, 184);
+}
+.pub-card-title {
+  margin-top: 0.4rem;
+  font-family: var(--font-jost), -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.25;
+  color: #061c2c;
+}
+html.dark .pub-card-title {
+  color: #fff;
+}
+.pub-card-source {
+  margin-top: 0.4rem;
+  font-size: 0.75rem;
+  color: rgb(100, 116, 139);
+}
+html.dark .pub-card-source {
+  color: rgb(148, 163, 184);
+}
+.pub-card-body .button-primary {
+  margin-top: 0.9rem;
+  align-self: flex-start;
+  padding: 0.55rem 1.1rem;
+  font-size: 0.72rem;
+}
+
 /* Footer social icons: capped to exactly one row's width (5 icons + gaps)
    so the 9 icons wrap into two rows, with the leftover second row
    centered via justify-content rather than pinned to the left. Applies
