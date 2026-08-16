@@ -790,7 +790,7 @@ html.dark .pub-card {
 .pub-card-img-wrap {
   display: block;
   width: 100%;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 2 / 1;
   background-color: #f1f5f9;
 }
 html.dark .pub-card-img-wrap {
@@ -810,7 +810,7 @@ html.dark .pub-card-img-wrap {
   display: flex;
   flex: 1;
   flex-direction: column;
-  padding: 1.1rem;
+  padding: 0.9rem;
 }
 .pub-card-meta {
   font-size: 0.62rem;
@@ -825,10 +825,14 @@ html.dark .pub-card-meta {
 .pub-card-title {
   margin-top: 0.4rem;
   font-family: var(--font-jost), -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 600;
   line-height: 1.25;
   color: #061c2c;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 html.dark .pub-card-title {
   color: #fff;
