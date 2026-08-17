@@ -187,7 +187,7 @@ export default function HomePage() {
               href="/acting-modeling/devyani"
               prefetch={false}
             >
-              Watch Devyani <span aria-hidden="true">→</span>
+              Learn more <span aria-hidden="true">→</span>
             </Link>
           </div>
         </div>
