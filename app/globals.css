@@ -751,6 +751,19 @@ html.dark .film-card-img {
   padding: 1.5rem;
 }
 
+/* Publications page: the "Published articles" section had a big gap
+   under the page hero (hero's own bottom padding plus this section's
+   full top padding stacked together) - trim just this section's top
+   padding, leaving the bottom padding before the next section alone. */
+.publications-articles-section {
+  padding-top: 0.5rem;
+}
+@media (min-width: 640px) {
+  .publications-articles-section {
+    padding-top: 1rem;
+  }
+}
+
 /* Publications page: uniform card grid (same size/shape as the
    Acting & Modeling film cards) instead of a large "featured" article
    plus a smaller two-up grid. */
