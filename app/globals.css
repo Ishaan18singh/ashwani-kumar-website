@@ -974,10 +974,10 @@ html.dark .pub-card-source {
 /* Homepage Devyani section: small fixed-size poster thumbnail
    (3cm x 4cm at 96dpi = 113px x 151px) next to the copy. */
 .devyani-poster-thumb {
-  width: 113px;
-  height: 151px;
-  flex-shrink: 0;
-  object-fit: cover;
+  display: block;
+  width: 240px;
+  max-width: 100%;
+  height: auto;
   border-radius: 0.5rem;
   box-shadow: 0 12px 30px -14px rgba(6, 24, 45, 0.5);
 }
@@ -1462,7 +1462,10 @@ html.dark .film-detail-share-linkrow {
   .home-section-intro {
     order: 3;
   }
-  .home-section-leadership {
+  .home-section-devyani {
     order: 4;
+  }
+  .home-section-leadership {
+    order: 5;
   }
 }

@@ -173,31 +173,29 @@ export default function HomePage() {
       <section className="home-section-devyani border-t border-slate-200 py-24 dark:border-slate-800">
         <div className="shell grid items-center gap-14 lg:grid-cols-[.95fr_1.05fr]">
           <div className="reveal">
-            <p className="eyebrow">Beyond the Office</p>
-            <h2 className="section-title">Public service doesn&apos;t end at the office door.</h2>
-          </div>
-          <div className="reveal flex gap-6">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/images/devyani-poster.jpg"
               alt="Devyani movie poster"
-              className="devyani-poster-thumb"
+              className="devyani-poster-thumb mb-6"
               loading="lazy"
             />
-            <div className="stack-center">
-              <p className="body-copy text-slate-600 dark:text-slate-300">
-                Ashwani Kumar carries that same commitment to public storytelling onto the screen, marking his acting
-                debut in <strong>Devyani</strong> — a drama-suspense film about a father&apos;s fear for his unborn
-                daughter transforming into hope.
-              </p>
-              <Link
-                className="button-primary mt-8 inline-flex w-fit"
-                href="/acting-modeling/devyani"
-                prefetch={false}
-              >
-                Learn more <span aria-hidden="true">→</span>
-              </Link>
-            </div>
+            <p className="eyebrow">Beyond the Office</p>
+            <h2 className="section-title">Public service doesn&apos;t end at the office door.</h2>
+          </div>
+          <div className="reveal stack-center">
+            <p className="body-copy text-slate-600 dark:text-slate-300">
+              Ashwani Kumar carries that same commitment to public storytelling onto the screen, marking his acting
+              debut in <strong>Devyani</strong> — a drama-suspense film about a father&apos;s fear for his unborn
+              daughter transforming into hope.
+            </p>
+            <Link
+              className="button-primary mt-8 inline-flex w-fit"
+              href="/acting-modeling/devyani"
+              prefetch={false}
+            >
+              Learn more <span aria-hidden="true">→</span>
+            </Link>
           </div>
         </div>
       </section>
@@ -229,15 +227,8 @@ export default function HomePage() {
       </section>
 
       <section className="home-section-leadership border-t border-slate-200 py-24 dark:border-slate-800">
-        <div className="shell grid items-center gap-12 lg:grid-cols-2">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            loading="lazy"
-            src="/images/ashwani-kumar-portrait.webp"
-            alt="Portrait of Ashwani Kumar, IAS"
-            className="leadership-photo reveal aspect-[4/5] w-full rounded-2xl object-cover"
-          />
-          <div className="reveal stack-center">
+        <div className="shell">
+          <div className="reveal stack-center max-w-2xl">
             <p className="eyebrow">{t('home.leadershipEyebrow')}</p>
             <h2 className="section-title">{t('home.leadershipTitle')}</h2>
             <p className="section-copy">{t('home.leadershipText')}</p>
