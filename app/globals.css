@@ -970,6 +970,17 @@ html.dark .pub-card-source {
     max-width: 400px;
   }
 }
+
+/* Homepage Devyani section: small fixed-size poster thumbnail
+   (3cm x 4cm at 96dpi = 113px x 151px) next to the copy. */
+.devyani-poster-thumb {
+  width: 113px;
+  height: 151px;
+  flex-shrink: 0;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  box-shadow: 0 12px 30px -14px rgba(6, 24, 45, 0.5);
+}
 .hero-frame {
   position: absolute;
   inset: 0;

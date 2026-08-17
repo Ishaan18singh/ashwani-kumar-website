@@ -176,19 +176,28 @@ export default function HomePage() {
             <p className="eyebrow">Beyond the Office</p>
             <h2 className="section-title">Public service doesn&apos;t end at the office door.</h2>
           </div>
-          <div className="reveal stack-center">
-            <p className="body-copy text-slate-600 dark:text-slate-300">
-              Ashwani Kumar carries that same commitment to public storytelling onto the screen, marking his acting
-              debut in <strong>Devyani</strong> — a drama-suspense film about a father&apos;s fear for his unborn
-              daughter transforming into hope.
-            </p>
-            <Link
-              className="button-primary mt-8 inline-flex w-fit"
-              href="/acting-modeling/devyani"
-              prefetch={false}
-            >
-              Learn more <span aria-hidden="true">→</span>
-            </Link>
+          <div className="reveal flex gap-6">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/devyani-poster.jpg"
+              alt="Devyani movie poster"
+              className="devyani-poster-thumb"
+              loading="lazy"
+            />
+            <div className="stack-center">
+              <p className="body-copy text-slate-600 dark:text-slate-300">
+                Ashwani Kumar carries that same commitment to public storytelling onto the screen, marking his acting
+                debut in <strong>Devyani</strong> — a drama-suspense film about a father&apos;s fear for his unborn
+                daughter transforming into hope.
+              </p>
+              <Link
+                className="button-primary mt-8 inline-flex w-fit"
+                href="/acting-modeling/devyani"
+                prefetch={false}
+              >
+                Learn more <span aria-hidden="true">→</span>
+              </Link>
+            </div>
           </div>
         </div>
       </section>
