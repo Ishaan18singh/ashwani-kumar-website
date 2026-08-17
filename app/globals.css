@@ -791,7 +791,7 @@ html.dark .pub-card {
 .pub-card-img-wrap {
   display: block;
   width: 100%;
-  aspect-ratio: 2.6 / 1;
+  aspect-ratio: 2 / 1;
   background-color: #f1f5f9;
 }
 html.dark .pub-card-img-wrap {
@@ -801,7 +801,8 @@ html.dark .pub-card-img-wrap {
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
+  object-position: top;
 }
 .pub-card-img-wrap .pub-fallback {
   width: 100%;
