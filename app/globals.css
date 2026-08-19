@@ -389,6 +389,42 @@ h1, h2, h3,
 h1, h2, h3 {
   font-weight: 300 !important;
 }
+
+/* Sitewide heading shine: a soft light sweep across the letters,
+   using currentColor so it works with every heading's own color
+   (navy, white, gold, etc.) without needing per-context overrides.
+   Gated behind @supports so browsers without background-clip:text
+   just show plain solid-color headings instead of invisible text. */
+@supports (background-clip: text) or (-webkit-background-clip: text) {
+  h1, h2, h3 {
+    background-image: linear-gradient(
+      110deg,
+      currentColor 35%,
+      transparent 50%,
+      currentColor 65%
+    );
+    background-size: 250% 100%;
+    background-position: 180% 0;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: heading-shine 5s ease-in-out infinite;
+  }
+  @keyframes heading-shine {
+    0%, 20% {
+      background-position: 180% 0;
+    }
+    70%, 100% {
+      background-position: -60% 0;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    h1, h2, h3 {
+      animation: none;
+      background-position: 0 0;
+    }
+  }
+}
 html.dark h1, html.dark h2, html.dark h3,
 html.dark .text-navy-900,
 html.dark .text-navy-950 {
