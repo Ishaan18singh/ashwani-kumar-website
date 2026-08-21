@@ -13,7 +13,7 @@ export default function TimelinePage() {
         eyebrow={t('timeline.eyebrow')}
         title={t('timeline.title')}
         subtitle={t('timeline.subtitle')}
-        titleClassName="max-w-4xl text-4xl font-normal tracking-tight sm:text-5xl"
+        titleClassName="max-w-4xl text-display-m font-normal tracking-tight"
       />
       <section className="py-12 sm:py-24">
         <div className="shell">

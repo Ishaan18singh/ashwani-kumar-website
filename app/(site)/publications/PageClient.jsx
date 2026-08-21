@@ -12,7 +12,7 @@ export default function PublicationsPage() {
       <PageHero
         eyebrow={t('publications.eyebrow')}
         title={t('publications.title')}
-        titleClassName="max-w-5xl text-4xl font-normal tracking-tight sm:text-5xl"
+        titleClassName="max-w-5xl text-display-m font-normal tracking-tight"
       />
       <section className="publications-articles-section py-12 sm:py-24">
         <div className="shell">

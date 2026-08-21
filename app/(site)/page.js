@@ -102,10 +102,10 @@ export default function HomePage() {
             <p className="eyebrow">{t('home.eyebrow')}</p>
             <Html
               as="h1"
-              className="max-w-2xl text-5xl font-normal leading-tight sm:text-6xl sm:leading-[.94] lg:text-7xl"
+              className="text-hero-headline max-w-2xl font-normal"
               html={t('home.titleHtml')}
             />
-            <p className="body-copy mt-7 max-w-xl text-slate-600 dark:text-slate-300">
+            <p className="text-hero-supporting mt-7 max-w-xl text-slate-600 dark:text-slate-300">
               {t('home.subtitle')}
             </p>
             <div className="mt-9 flex flex-wrap gap-3">
@@ -152,15 +152,15 @@ export default function HomePage() {
             <p className="text-base leading-6 text-slate-600 dark:text-slate-300">{t('home.introText')}</p>
             <div className="mt-10 grid grid-cols-3 gap-4">
               <div>
-                <strong className="font-display text-4xl text-navy-900 dark:text-white">2010</strong>
+                <strong className="text-display-m font-display text-navy-900 dark:text-white">2010</strong>
                 <span className="mt-1 block text-xs uppercase tracking-wider text-slate-600">{t('home.stat1Label')}</span>
               </div>
               <div>
-                <strong className="font-display text-4xl text-navy-900 dark:text-white">7+</strong>
+                <strong className="text-display-m font-display text-navy-900 dark:text-white">7+</strong>
                 <span className="mt-1 block text-xs uppercase tracking-wider text-slate-600">{t('home.stat2Label')}</span>
               </div>
               <div>
-                <strong className="font-display text-4xl text-navy-900 dark:text-white">₹500cr</strong>
+                <strong className="text-display-m font-display text-navy-900 dark:text-white">₹500cr</strong>
                 <span className="mt-1 block text-xs uppercase tracking-wider text-slate-600">{t('home.stat3Label')}</span>
               </div>
             </div>

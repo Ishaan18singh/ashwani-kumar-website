@@ -15,7 +15,7 @@ export default function ActingModelingPage() {
         eyebrow={t('actingModeling.eyebrow')}
         title={t('actingModeling.title')}
         subtitle={t('actingModeling.subtitle')}
-        titleClassName="max-w-4xl text-4xl font-normal tracking-tight sm:text-5xl"
+        titleClassName="max-w-4xl text-display-m font-normal tracking-tight"
       />
       <section className="py-12 sm:py-24">
         <div className="shell grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
