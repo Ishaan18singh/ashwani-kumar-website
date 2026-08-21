@@ -125,7 +125,7 @@ export default function HomePage() {
             <div className="hero-media relative overflow-hidden shadow-2xl">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/ashwani-kumar-timeline.jpg"
+                src="/images/ashwani-kumar-hero-new.jpg"
                 alt="Ashwani Kumar, IAS"
                 className="h-full w-full object-cover object-top"
                 fetchPriority="high"
