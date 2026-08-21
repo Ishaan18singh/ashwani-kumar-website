@@ -31,6 +31,14 @@ export default function Footer() {
         </div>
         <div className="footer-col footer-col-connect">
           <p className="mb-4 text-xs font-bold uppercase tracking-[.2em] text-gold-500">{t('common.connect')}</p>
+          {(() => {
+            const mail = SITE_DATA.profile.social.find((s) => s.url.startsWith('mailto:'));
+            return mail ? (
+              <a href={mail.url} className="footer-email-link">
+                {mail.url.replace('mailto:', '')}
+              </a>
+            ) : null;
+          })()}
           <div className="footer-social-list">
             {SITE_DATA.profile.social.map((s) => {
               const isMail = s.url.startsWith('mailto:');

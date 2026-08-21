@@ -940,6 +940,21 @@ html.dark .pub-card-source {
   font-size: 0.68rem;
 }
 
+/* Footer "Connect" column: the plain email address shown as text
+   above the social icon row. */
+.footer-email-link {
+  display: block;
+  margin-bottom: 1rem;
+  font-size: 0.85rem;
+  color: rgb(51, 65, 85);
+}
+.footer-email-link:hover {
+  color: rgb(var(--c-gold-500));
+}
+html.dark .footer-email-link {
+  color: rgb(148, 163, 184);
+}
+
 /* Footer social icons: capped to exactly one row's width (5 icons + gaps)
    so the 9 icons wrap into two rows, with the leftover second row
    centered via justify-content rather than pinned to the left. Applies
