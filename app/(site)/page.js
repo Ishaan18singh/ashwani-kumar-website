@@ -6,7 +6,7 @@ import { useI18n } from '@/lib/i18n/context';
 import Html from '@/components/Html';
 
 const EXPLORE_CARDS = [
-  { href: '/timeline', image: '/images/ashwani-kumar-hero.webp', labelKey: 'nav.timeline' },
+  { href: '/about', image: '/images/ashwani-kumar-hero.webp', labelKey: 'nav.timeline' },
   { href: '/projects', image: '/images/gallery-03.webp', labelKey: 'nav.projects' },
   { href: '/awards', image: '/images/gallery-04.webp', labelKey: 'nav.awards' }
 ];
@@ -230,7 +230,7 @@ export default function HomePage() {
             <p className="eyebrow">{t('home.leadershipEyebrow')}</p>
             <h2 className="section-title">{t('home.leadershipTitle')}</h2>
             <p className="section-copy">{t('home.leadershipText')}</p>
-            <Link className="button-primary mt-8" href="/timeline" prefetch={false}>
+            <Link className="button-primary mt-8" href="/about" prefetch={false}>
               {t('home.followJourney')}
             </Link>
           </div>

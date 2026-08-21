@@ -15,7 +15,7 @@ Open http://localhost:3000. `npm run build && npm run start` for a production bu
 
 ## Structure
 
-- `app/(site)/` — every public page (`/`, `/about`, `/timeline`, `/projects`,
+- `app/(site)/` — every public page (`/`, `/about`, `/projects`,
   `/projects/[slug]`, `/awards`, `/publications`, `/gallery`, `/contact`,
   `/ias-aspirants`), sharing `app/(site)/layout.js` (header, footer, i18n).
 - `app/admin/` — the Supabase-backed admin dashboard (messages + publications
