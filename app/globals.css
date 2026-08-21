@@ -1573,3 +1573,9 @@ html.dark .film-detail-share-linkrow {
   height: 100%;
   object-fit: cover;
 }
+.about-journey-copy {
+  color: rgb(30, 41, 59);
+}
+html.dark .about-journey-copy {
+  color: rgb(226, 232, 240);
+}
