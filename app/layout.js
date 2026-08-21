@@ -1,33 +1,5 @@
-import { Jost, Atkinson_Hyperlegible, Inter } from 'next/font/google';
+import { GeistSans } from 'geist/font/sans';
 import './globals.css';
-
-const jost = Jost({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-jost',
-  // 'optional' (not 'swap'): Jost is the heading font, and headings are
-  // consistently the LCP element on this site. Next's automatic font
-  // preload isn't firing here (next-font-manifest.json comes out empty at
-  // build time - a real gap, not a config issue found so far), so on a
-  // slow connection 'swap' means LCP waits out the CSS->font chain before
-  // painting. 'optional' paints with the fallback font immediately instead
-  // and only uses Jost if it's already cached, trading guaranteed branding
-  // on first paint for a much faster LCP.
-  display: 'optional'
-});
-const atkinson = Atkinson_Hyperlegible({
-  subsets: ['latin'],
-  weight: ['400', '700'],
-  style: ['normal', 'italic'],
-  variable: '--font-atkinson',
-  display: 'swap'
-});
-const inter = Inter({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-inter',
-  display: 'swap'
-});
 
 const SITE_URL = 'https://ashwani-kumar-website.vercel.app';
 const DEFAULT_DESCRIPTION =
@@ -91,7 +63,7 @@ const personJsonLd = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${jost.variable} ${atkinson.variable} ${inter.variable}`}>
+    <html lang="en" className={GeistSans.variable}>
       <head>
         {/* JSON-LD is exempt from CSP script-src (non-executable data block), so no nonce needed. */}
         <script
@@ -99,7 +71,7 @@ export default function RootLayout({ children }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
         />
       </head>
-      <body className={atkinson.className}>{children}</body>
+      <body className={GeistSans.className}>{children}</body>
     </html>
   );
 }
