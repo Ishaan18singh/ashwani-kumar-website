@@ -983,6 +983,17 @@ html.dark .footer-email-link {
    instead of the nav-links grid sitting off to the left while
    everything else looks centered. Desktop keeps its left-aligned
    3-column layout, unchanged. */
+
+/* Footer nav-links: fill top-to-bottom within the first column, then
+   the second, instead of the grid's default left-to-right row fill
+   (which interleaves the two columns as Home/About, Initiatives/
+   Awards, ... instead of grouping them Home/About/Initiatives/Awards
+   then Publications/IAS Aspirants/Screen & Style/Contact). */
+.footer-nav-links {
+  grid-auto-flow: column;
+  grid-template-rows: repeat(4, auto);
+}
+
 @media (max-width: 767px) {
   .footer-col {
     text-align: center;
