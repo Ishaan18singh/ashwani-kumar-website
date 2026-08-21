@@ -984,6 +984,27 @@ html.dark .pub-card-source {
   }
 }
 
+/* Desktop footer: center the Navigate and Connect columns within
+   their own grid track (they were left-aligned by default, sitting
+   flush against their column's left edge instead of centered under
+   the "NAVIGATE"/"CONNECT" labels). The brand column keeps its
+   natural left alignment. */
+@media (min-width: 768px) {
+  .footer-col-navigate,
+  .footer-col-connect {
+    text-align: center;
+  }
+  .footer-col-navigate .footer-nav-links {
+    display: inline-grid;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .footer-col-connect .footer-social-list {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
 /* Page transition: remounted per-route (see PageTransition.jsx), so this
    animation replays automatically on every navigation. */
 .page-transition {

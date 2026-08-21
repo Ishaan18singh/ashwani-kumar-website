@@ -19,7 +19,7 @@ export default function Footer() {
           <p className="font-display text-xl">Ashwani Kumar</p>
           <p className="mt-3 max-w-sm text-sm leading-6 text-slate-600">{t('common.footerTagline')}</p>
         </div>
-        <div className="footer-col">
+        <div className="footer-col footer-col-navigate">
           <p className="mb-4 text-xs font-bold uppercase tracking-[.2em] text-gold-500">{t('common.navigate')}</p>
           <div className="footer-nav-links grid grid-cols-2 gap-3 text-sm text-slate-600">
             {NAV_PAGES.map(([href, key]) => (
@@ -29,7 +29,7 @@ export default function Footer() {
             ))}
           </div>
         </div>
-        <div className="footer-col">
+        <div className="footer-col footer-col-connect">
           <p className="mb-4 text-xs font-bold uppercase tracking-[.2em] text-gold-500">{t('common.connect')}</p>
           <div className="footer-social-list">
             {SITE_DATA.profile.social.map((s) => {
