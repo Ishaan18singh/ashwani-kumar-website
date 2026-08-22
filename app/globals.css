@@ -8,7 +8,12 @@
    palette, so it stays consistent with the rest of the site.
    ============================================================ */
 
-.site-header { transition: transform 350ms ease-in-out; will-change: transform; }
+.site-header {
+  background-color: #FFFFFF;
+  border-bottom: 1px solid transparent;
+  transition: transform 350ms ease-in-out, background-color 350ms ease-in-out, border-color 350ms ease-in-out, box-shadow 350ms ease-in-out;
+  will-change: transform;
+}
 .site-header.header-hidden { transform: translateY(-100%); }
 
 .header-inner {
@@ -17,20 +22,18 @@
   align-items: center;
   column-gap: 1.5rem;
   height: 88px;
-  background-color: #FFFFFF;
-  border-bottom: 1px solid transparent;
-  transition: background-color 350ms ease-in-out, border-color 350ms ease-in-out, box-shadow 350ms ease-in-out, height 350ms ease-in-out;
+  transition: height 350ms ease-in-out;
 }
 @media (max-width: 1199.98px) {
   .header-inner { height: 72px; }
 }
-.site-header.is-scrolled .header-inner {
+.site-header.is-scrolled {
   background-color: #FFFFFF;
   -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
   border-bottom-color: rgba(11,37,69,.08);
 }
-html.dark .site-header.is-scrolled .header-inner {
+html.dark .site-header.is-scrolled {
   background-color: rgba(2,6,23,.75);
   border-bottom-color: hsla(0,0%,100%,.08);
 }
@@ -1109,25 +1112,12 @@ html.dark .footer-email-link {
   border-left: 1px solid rgb(var(--c-gold-400));
   color: rgba(247, 244, 236, 0.85);
 }
-.hero-fullbleed-ghost-btn {
-  background-color: rgb(var(--c-gold-400));
-  background-image: none;
-  border-color: rgb(var(--c-gold-400));
-  box-shadow: none;
-  color: #fff;
-}
-.hero-fullbleed-ghost-btn:hover {
-  background-color: rgb(var(--c-gold-300));
-  border-color: rgb(var(--c-gold-300));
-  color: #fff;
-}
-
 /* Header: switch to light text over the homepage's dark full-bleed
    hero photo while unscrolled (transparent header). Every other page
    has a light .page-hero background, where the header's normal dark
    text still applies - and once scrolled, the header gets its own
    solid white background regardless of page, so dark text resumes. */
-.site-header.on-dark-hero:not(.is-scrolled) .header-inner {
+.site-header.on-dark-hero:not(.is-scrolled) {
   background-color: transparent;
   border-bottom-color: transparent;
 }

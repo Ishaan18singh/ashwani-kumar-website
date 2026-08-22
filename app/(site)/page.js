@@ -113,7 +113,7 @@ export default function HomePage() {
             <Link className="button-primary" href="/projects" prefetch={false}>
               <span>{t('home.exploreBtn')}</span> <span aria-hidden="true">→</span>
             </Link>
-            <Link className="button-ghost hero-fullbleed-ghost-btn" href="/about" prefetch={false}>
+            <Link className="button-primary text-white" href="/about" prefetch={false}>
               {t('home.aboutBtn')}
             </Link>
           </div>
