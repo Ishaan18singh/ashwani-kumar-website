@@ -158,15 +158,15 @@ export default function HomePage() {
       <section className="home-section-devyani border-t border-slate-200 py-24 dark:border-slate-800">
         <div className="shell grid items-center gap-14 lg:grid-cols-[.95fr_1.05fr]">
           <div className="reveal">
+            <p className="eyebrow">Beyond the Office</p>
+            <h2 className="section-title mb-6">Public service doesn&apos;t end at the office door.</h2>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/images/devyani-poster.jpg"
               alt="Devyani movie poster"
-              className="devyani-poster-thumb mb-6"
+              className="devyani-poster-thumb"
               loading="lazy"
             />
-            <p className="eyebrow">Beyond the Office</p>
-            <h2 className="section-title">Public service doesn&apos;t end at the office door.</h2>
           </div>
           <div className="reveal stack-center">
             <p className="body-copy text-slate-600 dark:text-slate-300">
