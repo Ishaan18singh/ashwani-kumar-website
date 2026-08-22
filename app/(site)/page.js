@@ -106,28 +106,27 @@ export default function HomePage() {
         />
         <div className="hero-fullbleed-overlay" aria-hidden="true" />
         <div className="shell hero-fullbleed-content relative z-10 min-h-screen">
-          <h1 className="hero-fullbleed-name">Ashwani Kumar</h1>
-          <span className="hero-fullbleed-divider" aria-hidden="true" />
-          {t('home.eyebrow')
-            .split(' · ')
-            .map((line, i) => (
-              <p key={line} className={i === 0 ? 'hero-fullbleed-label' : 'hero-fullbleed-sublabel'}>
-                {line}
-              </p>
-            ))}
-          <p className="hero-fullbleed-text max-w-xl">{t('home.subtitle')}</p>
-          <a href="#introduction" className="hero-fullbleed-cta">
-            {t('home.exploreBtn')} <span aria-hidden="true">↓</span>
-          </a>
+          <p className="eyebrow">{t('home.eyebrow')}</p>
+          <Html as="h1" className="text-hero-headline max-w-2xl font-normal" html={t('home.titleHtml')} />
+          <p className="hero-fullbleed-text mt-7 max-w-xl">{t('home.subtitle')}</p>
+          <div className="mt-9 flex flex-wrap gap-3">
+            <Link className="button-primary" href="/projects" prefetch={false}>
+              <span>{t('home.exploreBtn')}</span> <span aria-hidden="true">→</span>
+            </Link>
+            <Link className="button-ghost hero-fullbleed-ghost-btn" href="/about" prefetch={false}>
+              {t('home.aboutBtn')}
+            </Link>
+          </div>
+          <blockquote className="hero-fullbleed-quote mt-10 max-w-xl pl-5 font-display text-xl italic">
+            {t('home.quote')}
+          </blockquote>
         </div>
-        <a href="#introduction" className="hero-fullbleed-scroll">
-          <span className="hero-fullbleed-scroll-line" aria-hidden="true" />
-          {t('home.scroll').replace(' ↓', '')}
+        <a
+          href="#introduction"
+          className="absolute bottom-5 left-1/2 hidden -translate-x-1/2 text-xs uppercase tracking-[.2em] text-white lg:block"
+        >
+          {t('home.scroll')}
         </a>
-        <span className="hero-fullbleed-page">
-          <span className="hero-fullbleed-page-line" aria-hidden="true" />
-          01
-        </span>
       </section>
 
       <section id="introduction" className="home-section-intro border-t border-slate-200 py-24 dark:border-slate-800">
