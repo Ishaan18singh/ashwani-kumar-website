@@ -108,7 +108,7 @@ export default function Header() {
         id="site-header-bar"
         className={`site-header fixed inset-x-0 top-0 z-40${scrolled ? ' is-scrolled' : ''}${
           hidden ? ' header-hidden' : ''
-        }`}
+        }${pathname === '/' ? ' on-dark-hero' : ''}`}
       >
         <div className="header-inner shell">
           <button

@@ -1068,6 +1068,156 @@ html.dark .footer-email-link {
    threshold), so no CSS state lives here - just the plain resting look the
    cards fall back to once JS clears the inline style at full reveal. */
 
+/* Homepage hero: full-bleed background photo with the name/eyebrow/
+   copy/CTA stacked bottom-left over a dark gradient overlay, plus a
+   bottom-left "scroll" cue and a bottom-right page counter. */
+.hero-fullbleed-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.hero-fullbleed-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-top: 8rem;
+  padding-bottom: 4rem;
+}
+.hero-fullbleed-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.35) 55%, rgba(0, 0, 0, 0.7) 100%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.72) 0%, rgba(0, 0, 0, 0.4) 38%, rgba(0, 0, 0, 0.05) 68%);
+}
+.hero-fullbleed-name {
+  font-size: var(--fs-hero-headline);
+  line-height: 1.02;
+  font-weight: 400;
+  color: #f7f4ec;
+}
+.hero-fullbleed-divider {
+  display: block;
+  width: 96px;
+  height: 1px;
+  margin: 1.75rem 0 1.5rem;
+  background: rgba(247, 244, 236, 0.35);
+}
+.hero-fullbleed-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #f7f4ec;
+}
+.hero-fullbleed-sublabel {
+  margin-top: 0.35rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(247, 244, 236, 0.6);
+}
+.hero-fullbleed-text {
+  margin-top: 1.75rem;
+  font-size: var(--fs-body-l);
+  line-height: 1.7;
+  color: rgba(247, 244, 236, 0.85);
+}
+.hero-fullbleed-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 2.5rem;
+  width: fit-content;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #f7f4ec;
+  border-bottom: 1px solid rgba(247, 244, 236, 0.4);
+  padding-bottom: 0.35rem;
+  transition: border-color 200ms ease, opacity 200ms ease;
+}
+.hero-fullbleed-cta:hover {
+  border-color: rgb(var(--c-gold-400));
+  opacity: 0.85;
+}
+.hero-fullbleed-scroll {
+  position: absolute;
+  left: 2rem;
+  bottom: 2rem;
+  z-index: 10;
+  display: none;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(247, 244, 236, 0.75);
+}
+.hero-fullbleed-scroll-line {
+  width: 1px;
+  height: 32px;
+  background: rgba(247, 244, 236, 0.4);
+}
+.hero-fullbleed-page {
+  position: absolute;
+  right: 2rem;
+  bottom: 2rem;
+  z-index: 10;
+  display: none;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: rgba(247, 244, 236, 0.75);
+}
+.hero-fullbleed-page-line {
+  width: 1px;
+  height: 32px;
+  background: rgba(247, 244, 236, 0.4);
+}
+@media (min-width: 1024px) {
+  .hero-fullbleed-scroll,
+  .hero-fullbleed-page {
+    display: inline-flex;
+  }
+}
+
+/* Header: switch to light text over the homepage's dark full-bleed
+   hero photo while unscrolled (transparent header). Every other page
+   has a light .page-hero background, where the header's normal dark
+   text still applies - and once scrolled, the header gets its own
+   solid white background regardless of page, so dark text resumes. */
+.site-header.on-dark-hero:not(.is-scrolled) .header-inner {
+  background-color: transparent;
+  border-bottom-color: transparent;
+}
+.site-header.on-dark-hero:not(.is-scrolled) .header-brand-name,
+.site-header.on-dark-hero:not(.is-scrolled) .header-link,
+.site-header.on-dark-hero:not(.is-scrolled) .header-menu-btn,
+.site-header.on-dark-hero:not(.is-scrolled) .lang-select {
+  color: #f7f4ec;
+}
+.site-header.on-dark-hero:not(.is-scrolled) .header-brand-sub {
+  color: rgba(247, 244, 236, 0.65);
+}
+.site-header.on-dark-hero:not(.is-scrolled) .header-menu-btn:hover {
+  background-color: rgba(247, 244, 236, 0.1);
+}
+.site-header.on-dark-hero:not(.is-scrolled) .menu-bar {
+  background: #f7f4ec;
+}
+.site-header.on-dark-hero:not(.is-scrolled) .lang-select {
+  border-color: rgba(247, 244, 236, 0.4);
+}
+
 /* Homepage hero: image visually above the text on mobile (desktop keeps its
    existing side-by-side layout, no order change there). */
 @media (max-width: 1023px) {

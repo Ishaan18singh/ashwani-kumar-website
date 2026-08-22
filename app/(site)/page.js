@@ -95,51 +95,39 @@ export default function HomePage() {
 
   return (
     <div className="home-sections">
-      <section className="home-section-hero relative min-h-screen overflow-hidden bg-ivory pt-20 text-navy-900 dark:bg-slate-950 dark:text-white">
-        <div className="absolute inset-0 bg-circuit bg-[length:48px_48px] opacity-60 [mask-image:linear-gradient(to_right,black,transparent)]" />
-        <div className="shell relative grid min-h-[calc(100vh-5rem)] items-center gap-10 py-16 lg:grid-cols-[1.05fr_.95fr]">
-          <div className="z-10 stack-center">
-            <p className="eyebrow">{t('home.eyebrow')}</p>
-            <Html
-              as="h1"
-              className="text-hero-headline max-w-2xl font-normal"
-              html={t('home.titleHtml')}
-            />
-            <p className="text-hero-supporting mt-7 max-w-xl text-slate-600 dark:text-slate-300">
-              {t('home.subtitle')}
-            </p>
-            <div className="mt-9 flex flex-wrap gap-3">
-              <Link className="button-primary" href="/projects" prefetch={false}>
-                <span>{t('home.exploreBtn')}</span> <span aria-hidden="true">→</span>
-              </Link>
-              <Link className="button-ghost" href="/about" prefetch={false}>
-                {t('home.aboutBtn')}
-              </Link>
-            </div>
-            <blockquote className="mt-10 max-w-xl border-l border-gold-400 pl-5 font-display text-xl italic text-slate-600 dark:text-slate-300">
-              {t('home.quote')}
-            </blockquote>
-          </div>
-          <div className="hero-frame-wrap relative">
-            <span className="hero-frame" aria-hidden="true" />
-            <div className="hero-media relative overflow-hidden shadow-2xl">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/images/ashwani-kumar-hero-new2.jpg"
-                alt="Ashwani Kumar, IAS"
-                className="h-full w-full object-cover object-top"
-                fetchPriority="high"
-                decoding="async"
-              />
-            </div>
-          </div>
-          <a
-            href="#introduction"
-            className="absolute bottom-5 left-1/2 hidden -translate-x-1/2 text-xs uppercase tracking-[.2em] text-slate-600 dark:text-slate-400 lg:block"
-          >
-            {t('home.scroll')}
+      <section className="home-section-hero hero-fullbleed relative min-h-screen overflow-hidden text-white">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/images/ashwani-kumar-hero-fullbleed.jpg"
+          alt="Ashwani Kumar, IAS"
+          className="hero-fullbleed-bg"
+          fetchPriority="high"
+          decoding="async"
+        />
+        <div className="hero-fullbleed-overlay" aria-hidden="true" />
+        <div className="shell hero-fullbleed-content relative z-10 min-h-screen">
+          <h1 className="hero-fullbleed-name">Ashwani Kumar</h1>
+          <span className="hero-fullbleed-divider" aria-hidden="true" />
+          {t('home.eyebrow')
+            .split(' · ')
+            .map((line, i) => (
+              <p key={line} className={i === 0 ? 'hero-fullbleed-label' : 'hero-fullbleed-sublabel'}>
+                {line}
+              </p>
+            ))}
+          <p className="hero-fullbleed-text max-w-xl">{t('home.subtitle')}</p>
+          <a href="#introduction" className="hero-fullbleed-cta">
+            {t('home.exploreBtn')} <span aria-hidden="true">↓</span>
           </a>
         </div>
+        <a href="#introduction" className="hero-fullbleed-scroll">
+          <span className="hero-fullbleed-scroll-line" aria-hidden="true" />
+          {t('home.scroll').replace(' ↓', '')}
+        </a>
+        <span className="hero-fullbleed-page">
+          <span className="hero-fullbleed-page-line" aria-hidden="true" />
+          01
+        </span>
       </section>
 
       <section id="introduction" className="home-section-intro border-t border-slate-200 py-24 dark:border-slate-800">
