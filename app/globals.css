@@ -1110,16 +1110,16 @@ html.dark .footer-email-link {
   color: rgba(247, 244, 236, 0.85);
 }
 .hero-fullbleed-ghost-btn {
-  background-color: transparent;
+  background-color: rgb(var(--c-gold-400));
   background-image: none;
-  border-color: rgba(247, 244, 236, 0.4);
+  border-color: rgb(var(--c-gold-400));
   box-shadow: none;
-  color: #f7f4ec;
+  color: #fff;
 }
 .hero-fullbleed-ghost-btn:hover {
-  background-color: rgba(247, 244, 236, 0.08);
-  border-color: rgb(var(--c-gold-400));
-  color: rgb(var(--c-gold-400));
+  background-color: rgb(var(--c-gold-300));
+  border-color: rgb(var(--c-gold-300));
+  color: #fff;
 }
 
 /* Header: switch to light text over the homepage's dark full-bleed
