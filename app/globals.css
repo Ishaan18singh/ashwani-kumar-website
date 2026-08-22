@@ -1098,15 +1098,26 @@ html.dark .footer-email-link {
   line-height: 1.7;
   color: rgba(247, 244, 236, 0.85);
 }
+/* h1's base rule sets an explicit dark color, which otherwise wins
+   over the inherited .text-white on the section (class beats type
+   selector, but only when nothing more specific sets it directly). */
+.hero-fullbleed-content h1,
+.hero-fullbleed-content .h1 {
+  color: #f7f4ec;
+}
 .hero-fullbleed-quote {
   border-left: 1px solid rgb(var(--c-gold-400));
   color: rgba(247, 244, 236, 0.85);
 }
 .hero-fullbleed-ghost-btn {
+  background-color: transparent;
+  background-image: none;
   border-color: rgba(247, 244, 236, 0.4);
+  box-shadow: none;
   color: #f7f4ec;
 }
 .hero-fullbleed-ghost-btn:hover {
+  background-color: rgba(247, 244, 236, 0.08);
   border-color: rgb(var(--c-gold-400));
   color: rgb(var(--c-gold-400));
 }
