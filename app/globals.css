@@ -16,8 +16,10 @@
    ============================================================ */
 
 .site-header {
-  background-color: #FFFFFF;
-  border-bottom: 1px solid transparent;
+  background-color: rgba(255, 255, 255, 0.6);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
   transition: transform 350ms ease-in-out, background-color 350ms ease-in-out, border-color 350ms ease-in-out, box-shadow 350ms ease-in-out;
   will-change: transform;
 }
@@ -35,7 +37,7 @@
   .header-inner { height: 72px; }
 }
 .site-header.is-scrolled {
-  background-color: #FFFFFF;
+  background-color: rgba(255, 255, 255, 0.75);
   -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
   border-bottom-color: rgba(11,37,69,.08);
@@ -965,80 +967,13 @@ html.dark .footer-email-link {
   color: rgb(148, 163, 184);
 }
 
-/* Footer social icons: capped to exactly one row's width (5 icons + gaps)
-   so the 9 icons wrap into two rows, with the leftover second row
-   centered via justify-content rather than pinned to the left. Applies
-   at every breakpoint. */
+/* Footer social icons: single row, wrapping only if the viewport is
+   too narrow to fit all of them. */
 .footer-social-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 0.75rem;
-  max-width: 228px;
-  margin-left: auto;
-  margin-right: auto;
-}
-@media (min-width: 768px) {
-  .footer-social-list {
-    flex-wrap: wrap;
-    justify-content: center;
-    max-width: 228px;
-    margin-left: 0;
-    margin-right: 0;
-  }
-}
-
-/* Mobile footer: center every column as a block (name/tagline, nav
-   links, connect) so the whole footer reads as one centered stack
-   instead of the nav-links grid sitting off to the left while
-   everything else looks centered. Desktop keeps its left-aligned
-   3-column layout, unchanged. */
-
-/* Footer nav-links: fill top-to-bottom within the first column, then
-   the second, instead of the grid's default left-to-right row fill
-   (which interleaves the two columns as Home/About, Initiatives/
-   Awards, ... instead of grouping them Home/About/Initiatives/Awards
-   then Publications/IAS Aspirants/Screen & Style/Contact). */
-.footer-nav-links {
-  grid-auto-flow: column;
-  grid-template-rows: repeat(4, auto);
-}
-
-@media (max-width: 767px) {
-  .footer-col {
-    text-align: center;
-  }
-  .footer-col .max-w-sm {
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .footer-nav-links {
-    max-width: 380px;
-    margin-left: auto;
-    margin-right: auto;
-    column-gap: 3rem;
-  }
-}
-
-/* Desktop footer: center the Navigate and Connect columns within
-   their own grid track (they were left-aligned by default, sitting
-   flush against their column's left edge instead of centered under
-   the "NAVIGATE"/"CONNECT" labels). The brand column keeps its
-   natural left alignment. */
-@media (min-width: 768px) {
-  .footer-col-navigate,
-  .footer-col-connect {
-    text-align: center;
-  }
-  .footer-col-navigate .footer-nav-links {
-    width: fit-content;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .footer-col-connect .footer-social-list {
-    margin-left: auto;
-    margin-right: auto;
-  }
 }
 
 /* Page transition: remounted per-route (see PageTransition.jsx), so this
@@ -1118,6 +1053,9 @@ html.dark .footer-email-link {
 .hero-fullbleed-quote {
   border-left: 1px solid rgb(var(--c-gold-400));
   color: rgba(247, 244, 236, 0.85);
+}
+.text-black {
+  color: #000;
 }
 /* Header: switch to light text over the homepage's dark full-bleed
    hero photo while unscrolled (transparent header). Every other page
