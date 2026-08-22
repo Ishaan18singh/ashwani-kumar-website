@@ -1024,6 +1024,15 @@ html.dark .footer-email-link {
   object-fit: cover;
   object-position: center;
 }
+/* On narrow viewports the tall, narrow crop window shows only a thin
+   vertical slice of this wide landscape photo. The subject sits in
+   the right half of the frame, so a centered crop pushes him mostly
+   out of view - shift the crop point toward him instead. */
+@media (max-width: 1023px) {
+  .hero-fullbleed-bg {
+    object-position: 74% center;
+  }
+}
 .hero-fullbleed-content {
   display: flex;
   flex-direction: column;
