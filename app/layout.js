@@ -1,5 +1,12 @@
 import { GeistSans } from 'geist/font/sans';
+import { Playfair_Display } from 'next/font/google';
 import './globals.css';
+
+const playfairDisplay = Playfair_Display({
+  subsets: ['latin'],
+  variable: '--font-playfair-display',
+  display: 'swap'
+});
 
 const SITE_URL = 'https://ashwani-kumar-website.vercel.app';
 const DEFAULT_DESCRIPTION =
@@ -63,7 +70,7 @@ const personJsonLd = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={GeistSans.variable}>
+    <html lang="en" className={`${GeistSans.variable} ${playfairDisplay.variable}`}>
       <head>
         {/* JSON-LD is exempt from CSP script-src (non-executable data block), so no nonce needed. */}
         <script

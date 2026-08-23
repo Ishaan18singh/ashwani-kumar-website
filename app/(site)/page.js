@@ -113,7 +113,7 @@ export default function HomePage() {
           decoding="async"
         />
         <div className="hero-fullbleed-overlay" aria-hidden="true" />
-        <div className="shell hero-fullbleed-content relative z-10 min-h-screen">
+        <div className="shell hero-fullbleed-content hero-desktop-content relative z-10 min-h-screen">
           <div className="hero-fullbleed-top">
             <p className="eyebrow">{t('home.eyebrow')}</p>
             <Html as="h1" className="text-hero-headline max-w-2xl font-normal" html={t('home.titleHtml')} />
@@ -137,6 +137,32 @@ export default function HomePage() {
             >
               {t('home.scroll')}
             </a>
+          </div>
+        </div>
+
+        <div className="hero-mobile-content relative z-10">
+          <div className="hero-mobile-top">
+            <p className="hero-mobile-eyebrow">Indian Administrative Service</p>
+            <p className="hero-mobile-eyebrow hero-mobile-eyebrow-sub">Assam-Meghalaya Cadre</p>
+            <h1 className="hero-mobile-heading">
+              <span className="block">Digital governance.</span>
+              <span className="block">Public purpose.</span>
+            </h1>
+            <div className="hero-mobile-divider" />
+          </div>
+          <div className="hero-mobile-bottom">
+            <p className="hero-mobile-name">Ashwani Kumar, IAS</p>
+            <p className="hero-mobile-role">Director, DITEC</p>
+            <p className="hero-mobile-role">Government of Assam</p>
+            <p className="hero-mobile-subtitle">
+              Building trusted systems, capable institutions and citizen-first public services for Assam.
+            </p>
+            <a href="#introduction" className="hero-mobile-cta">
+              <span>Explore the journey</span> <span aria-hidden="true">→</span>
+            </a>
+            <div className="hero-mobile-scroll">
+              <span>Scroll</span> <span aria-hidden="true">↓</span>
+            </div>
           </div>
         </div>
       </section>
