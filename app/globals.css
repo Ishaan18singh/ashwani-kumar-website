@@ -752,7 +752,14 @@ textarea:focus-visible,
   gap: 1.25rem;
   grid-template-columns: 1fr;
 }
-@media (min-width: 640px) {
+@media (min-width: 640px) and (max-width: 1039.98px) {
+  .explore-grid {
+    grid-template-columns: repeat(2, 250px);
+    justify-content: center;
+    gap: 40px;
+  }
+}
+@media (min-width: 1040px) {
   .explore-grid {
     grid-template-columns: repeat(3, 250px);
     justify-content: center;
@@ -1072,6 +1079,34 @@ html.dark .footer-email-link {
 .hero-fullbleed-quote {
   border-left: 1px solid rgb(var(--c-gold-400));
   color: rgba(247, 244, 236, 0.85);
+}
+
+/* Homepage hero: dedicated mobile "living portrait" treatment. A tall
+   portrait crop (subject kept clear on the right) replaces the wide
+   desktop photo, and the copy is confined to the darker left-hand
+   space so it never sits over his face, hands, or watch. */
+.hero-bg-mobile {
+  display: none;
+}
+@media (max-width: 1023px) {
+  .hero-bg-desktop {
+    display: none;
+  }
+  .hero-bg-mobile {
+    display: block;
+    object-position: 68% center;
+  }
+  .hero-fullbleed-content {
+    max-width: 72%;
+  }
+  .hero-fullbleed-content .eyebrow {
+    color: rgb(var(--c-gold-400));
+  }
+  .hero-fullbleed-content h1,
+  .hero-fullbleed-content .h1 {
+    font-size: 26px;
+    line-height: 1.22;
+  }
 }
 .text-black {
   color: #000;

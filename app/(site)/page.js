@@ -100,7 +100,15 @@ export default function HomePage() {
         <img
           src="/images/ashwani-kumar-hero-fullbleed.jpg"
           alt="Ashwani Kumar, IAS"
-          className="hero-fullbleed-bg"
+          className="hero-fullbleed-bg hero-bg-desktop"
+          fetchPriority="high"
+          decoding="async"
+        />
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/images/ashwani-kumar-hero-mobile.png"
+          alt="Ashwani Kumar, IAS"
+          className="hero-fullbleed-bg hero-bg-mobile"
           fetchPriority="high"
           decoding="async"
         />
@@ -123,7 +131,7 @@ export default function HomePage() {
         </div>
         <a
           href="#introduction"
-          className="absolute bottom-5 left-1/2 hidden -translate-x-1/2 text-xs uppercase tracking-[.2em] text-white lg:block"
+          className="absolute bottom-5 left-1/2 -translate-x-1/2 text-xs uppercase tracking-[.2em] text-white"
         >
           {t('home.scroll')}
         </a>
