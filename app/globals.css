@@ -756,7 +756,7 @@ textarea:focus-visible,
   .explore-grid {
     grid-template-columns: repeat(3, 250px);
     justify-content: center;
-    gap: 2.5rem;
+    gap: 65px;
   }
 }
 .explore-card {
