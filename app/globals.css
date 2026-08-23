@@ -755,7 +755,8 @@ textarea:focus-visible,
 @media (min-width: 640px) {
   .explore-grid {
     grid-template-columns: repeat(3, 250px);
-    justify-content: space-between;
+    justify-content: center;
+    gap: 2.5rem;
   }
 }
 .explore-card {
@@ -763,7 +764,7 @@ textarea:focus-visible,
   display: block;
   aspect-ratio: 3 / 4;
   overflow: hidden;
-  border-radius: 1.25rem;
+  border-radius: 0;
   box-shadow: 0 20px 50px -28px rgba(6, 24, 45, 0.5);
   transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
