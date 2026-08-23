@@ -741,8 +741,9 @@ textarea:focus-visible,
 /* Homepage "explore" cards: Timeline / Initiatives / Awards. */
 .explore-grid {
   display: grid;
-  gap: 1.5rem;
+  gap: 1.25rem;
   grid-template-columns: 1fr;
+  max-width: 780px;
 }
 @media (min-width: 640px) {
   .explore-grid {

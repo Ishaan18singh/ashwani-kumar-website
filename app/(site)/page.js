@@ -6,9 +6,9 @@ import { useI18n } from '@/lib/i18n/context';
 import Html from '@/components/Html';
 
 const EXPLORE_CARDS = [
-  { href: '/about', image: '/images/ashwani-kumar-hero.webp', labelKey: 'nav.timeline' },
   { href: '/projects', image: '/images/ashwani-kumar-initiatives.jpg', labelKey: 'nav.projects' },
-  { href: '/awards', image: '/images/gallery-04.webp', labelKey: 'nav.awards' }
+  { href: '/awards', image: '/images/gallery-04.webp', labelKey: 'nav.awards' },
+  { href: '/acting-modeling', image: '/images/devyani-poster.jpg', labelKey: 'nav.actingModeling' }
 ];
 
 export default function HomePage() {
@@ -187,7 +187,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="home-section-work border-t border-slate-200 bg-ivory py-24 dark:border-slate-700 dark:bg-slate-900">
+      <section className="home-section-work border-t border-slate-200 bg-ivory py-16 dark:border-slate-700 dark:bg-slate-900">
         <div className="shell">
           <p className="eyebrow">{t('home.selectedWorkEyebrow')}</p>
           <h2 className="section-title">{t('home.selectedWorkTitle')}</h2>
