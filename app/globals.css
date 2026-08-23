@@ -756,7 +756,7 @@ textarea:focus-visible,
   .explore-grid {
     grid-template-columns: repeat(3, 250px);
     justify-content: center;
-    gap: 65px;
+    gap: 90px;
   }
 }
 .explore-card {
@@ -1612,9 +1612,9 @@ html.dark .film-detail-share-linkrow {
   cursor: pointer;
 }
 
-/* Homepage section order: on mobile, Selected Work (Timeline/Initiatives/
-   Awards) moves above the Introduction section. Desktop keeps the original
-   DOM order (Introduction before Selected Work) untouched. */
+/* Homepage section order: on mobile, Introduction (Service through
+   systems) stays right after the hero. Desktop keeps the original DOM
+   order (Introduction before Selected Work) untouched. */
 .home-sections {
   display: flex;
   flex-direction: column;
@@ -1623,10 +1623,10 @@ html.dark .film-detail-share-linkrow {
   .home-section-hero {
     order: 1;
   }
-  .home-section-work {
+  .home-section-intro {
     order: 2;
   }
-  .home-section-intro {
+  .home-section-work {
     order: 3;
   }
   .home-section-devyani {
