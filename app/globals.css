@@ -739,9 +739,9 @@ textarea:focus-visible,
 }
 
 /* Homepage "explore" cards: Initiatives / Awards / Screen & Style.
-   Centered within the now full-width shell, capped at 1100px so the
-   3 cards fill most of the width without growing oversized on very
-   wide screens. */
+   Centered within the now full-width shell. Cards stay a fixed small
+   size (not stretched); the leftover width between the container and
+   the 3 cards becomes wider gaps via justify-content, not bigger cards. */
 .home-selected-work-inner {
   max-width: min(1100px, 100%);
   margin-left: auto;
@@ -749,12 +749,13 @@ textarea:focus-visible,
 }
 .explore-grid {
   display: grid;
-  gap: 1.75rem;
+  gap: 1.25rem;
   grid-template-columns: 1fr;
 }
 @media (min-width: 640px) {
   .explore-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 250px);
+    justify-content: space-between;
   }
 }
 .explore-card {
