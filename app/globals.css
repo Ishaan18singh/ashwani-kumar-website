@@ -1095,6 +1095,14 @@ html.dark .footer-email-link {
   display: none;
 }
 @media (max-width: 1023px) {
+  /* Mobile browsers show/hide their address bar as you scroll, so a
+     fixed 100vh (the Tailwind min-h-screen on the section) is taller
+     than what's actually visible, pushing the bottom of the hero
+     (CTA/scroll cue) below the fold. 100dvh tracks the real visible
+     viewport instead, matching the reference site's min-h-dvh. */
+  .hero-fullbleed {
+    min-height: 100dvh;
+  }
   .hero-bg-desktop {
     display: none;
   }
@@ -1119,6 +1127,7 @@ html.dark .footer-email-link {
     flex-direction: column;
     justify-content: space-between;
     min-height: 100vh;
+    min-height: 100dvh;
     max-width: 70%;
     padding: 5rem 1rem 2rem 1.5rem;
   }
