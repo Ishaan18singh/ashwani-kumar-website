@@ -1107,6 +1107,20 @@ html.dark .footer-email-link {
     font-size: 26px;
     line-height: 1.22;
   }
+  /* Split the hero copy into two groups so the gap falls between the
+     headline and the identity/CTA block instead of below it - the
+     eyebrow and headline stay near the top, the rest anchors to the
+     bottom of the viewport just above the scroll cue. */
+  .hero-fullbleed-content {
+    justify-content: space-between;
+  }
+  .hero-fullbleed-bottom .hero-fullbleed-scroll {
+    position: static;
+    left: auto;
+    transform: none;
+    display: inline-block;
+    margin-top: 2rem;
+  }
 }
 .text-black {
   color: #000;

@@ -114,27 +114,31 @@ export default function HomePage() {
         />
         <div className="hero-fullbleed-overlay" aria-hidden="true" />
         <div className="shell hero-fullbleed-content relative z-10 min-h-screen">
-          <p className="eyebrow">{t('home.eyebrow')}</p>
-          <Html as="h1" className="text-hero-headline max-w-2xl font-normal" html={t('home.titleHtml')} />
-          <p className="hero-fullbleed-text mt-7 max-w-xl">{t('home.subtitle')}</p>
-          <div className="mt-9 flex flex-wrap gap-3">
-            <Link className="button-primary" href="/projects" prefetch={false}>
-              <span>{t('home.exploreBtn')}</span> <span aria-hidden="true">→</span>
-            </Link>
-            <Link className="button-primary text-black" href="/about" prefetch={false}>
-              {t('home.aboutBtn')}
-            </Link>
+          <div className="hero-fullbleed-top">
+            <p className="eyebrow">{t('home.eyebrow')}</p>
+            <Html as="h1" className="text-hero-headline max-w-2xl font-normal" html={t('home.titleHtml')} />
           </div>
-          <blockquote className="hero-fullbleed-quote mt-10 max-w-xl pl-5 font-display text-xl italic">
-            {t('home.quote')}
-          </blockquote>
+          <div className="hero-fullbleed-bottom">
+            <p className="hero-fullbleed-text mt-7 max-w-xl">{t('home.subtitle')}</p>
+            <div className="mt-9 flex flex-wrap gap-3">
+              <Link className="button-primary" href="/projects" prefetch={false}>
+                <span>{t('home.exploreBtn')}</span> <span aria-hidden="true">→</span>
+              </Link>
+              <Link className="button-primary text-black" href="/about" prefetch={false}>
+                {t('home.aboutBtn')}
+              </Link>
+            </div>
+            <blockquote className="hero-fullbleed-quote mt-10 max-w-xl pl-5 font-display text-xl italic">
+              {t('home.quote')}
+            </blockquote>
+            <a
+              href="#introduction"
+              className="hero-fullbleed-scroll absolute bottom-5 left-1/2 -translate-x-1/2 text-xs uppercase tracking-[.2em] text-white"
+            >
+              {t('home.scroll')}
+            </a>
+          </div>
         </div>
-        <a
-          href="#introduction"
-          className="absolute bottom-5 left-1/2 -translate-x-1/2 text-xs uppercase tracking-[.2em] text-white"
-        >
-          {t('home.scroll')}
-        </a>
       </section>
 
       <section id="introduction" className="home-section-intro border-t border-slate-200 py-24 dark:border-slate-800">
