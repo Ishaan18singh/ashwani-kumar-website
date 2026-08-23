@@ -189,33 +189,35 @@ export default function HomePage() {
 
       <section className="home-section-work border-t border-slate-200 bg-ivory py-16 dark:border-slate-700 dark:bg-slate-900">
         <div className="shell">
-          <p className="eyebrow">{t('home.selectedWorkEyebrow')}</p>
-          <h2 className="section-title">{t('home.selectedWorkTitle')}</h2>
-          <div className="mt-10 explore-grid">
-            {EXPLORE_CARDS.map((card, i) => (
-              <Link
-                key={card.href}
-                ref={(el) => (cardRefs.current[i] = el)}
-                href={card.href}
-                prefetch={false}
-                className="explore-card group"
-                aria-label={t(card.labelKey)}
-              >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img className="explore-card-img" src={card.image} alt="" loading="lazy" />
-                <span className="explore-card-overlay" aria-hidden="true" />
-                <span className="explore-card-title">
-                  {t(card.labelKey)} <span aria-hidden="true">→</span>
-                </span>
-              </Link>
-            ))}
+          <div className="home-selected-work-inner">
+            <p className="eyebrow">{t('home.selectedWorkEyebrow')}</p>
+            <h2 className="section-title">{t('home.selectedWorkTitle')}</h2>
+            <div className="mt-10 explore-grid">
+              {EXPLORE_CARDS.map((card, i) => (
+                <Link
+                  key={card.href}
+                  ref={(el) => (cardRefs.current[i] = el)}
+                  href={card.href}
+                  prefetch={false}
+                  className="explore-card group"
+                  aria-label={t(card.labelKey)}
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img className="explore-card-img" src={card.image} alt="" loading="lazy" />
+                  <span className="explore-card-overlay" aria-hidden="true" />
+                  <span className="explore-card-title">
+                    {t(card.labelKey)} <span aria-hidden="true">→</span>
+                  </span>
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
       <section className="home-section-leadership border-t border-slate-200 py-24 dark:border-slate-800">
         <div className="shell">
-          <div className="reveal stack-center max-w-2xl">
+          <div className="reveal stack-center max-w-2xl mx-auto">
             <p className="eyebrow">{t('home.leadershipEyebrow')}</p>
             <h2 className="section-title">{t('home.leadershipTitle')}</h2>
             <p className="section-copy">{t('home.leadershipText')}</p>

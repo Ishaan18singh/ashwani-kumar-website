@@ -738,12 +738,19 @@ textarea:focus-visible,
   outline-offset: 2px;
 }
 
-/* Homepage "explore" cards: Timeline / Initiatives / Awards. */
+/* Homepage "explore" cards: Initiatives / Awards / Screen & Style.
+   The whole block (eyebrow + heading + grid) is centered within the
+   now full-width shell, rather than hugging the left edge with a
+   large empty gap to the right. */
+.home-selected-work-inner {
+  max-width: 780px;
+  margin-left: auto;
+  margin-right: auto;
+}
 .explore-grid {
   display: grid;
   gap: 1.25rem;
   grid-template-columns: 1fr;
-  max-width: 780px;
 }
 @media (min-width: 640px) {
   .explore-grid {
