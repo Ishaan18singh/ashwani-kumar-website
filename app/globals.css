@@ -96,7 +96,7 @@ html.dark .fullscreen-menu-backdrop { background: rgba(0,0,0,.6); }
 .fullscreen-menu-align { position: relative; height: 100%; display: flex; align-items: flex-start; padding-top: 104px; padding-bottom: 24px; pointer-events: none; }
 @media (max-width: 1199.98px) { .fullscreen-menu-align { padding-top: 88px; } }
 
-.fullscreen-menu-panel { pointer-events: auto; width: 100%; max-width: 380px; max-height: calc(100vh - 128px); overflow-y: auto; background: #ffffff; border-radius: 1.25rem; box-shadow: 0 20px 50px -28px rgba(6,24,45,.5); border: 1px solid rgba(11,37,69,.08); padding: 1.5rem 1.5rem 1.75rem; transform: translateY(-10px); opacity: 0; transition: transform 280ms ease, opacity 280ms ease; }
+.fullscreen-menu-panel { pointer-events: auto; width: 100%; max-width: 380px; max-height: calc(100vh - 128px); overflow-y: auto; background: #ffffff; border-radius: 0; box-shadow: 0 20px 50px -28px rgba(6,24,45,.5); border: 1px solid rgba(11,37,69,.08); padding: 1.5rem 1.5rem 1.75rem; transform: translateY(-10px); opacity: 0; transition: transform 280ms ease, opacity 280ms ease; }
 @media (max-width: 1199.98px) { .fullscreen-menu-panel { max-height: calc(100vh - 112px); } }
 html.dark .fullscreen-menu-panel { background: #0f172a; border-color: hsla(0,0%,100%,.08); }
 .fullscreen-menu.is-open .fullscreen-menu-panel { transform: translateY(0); opacity: 1; }
