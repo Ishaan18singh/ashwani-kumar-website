@@ -1746,8 +1746,7 @@ html.dark .film-detail-share-linkrow {
 }
 
 /* Homepage section order: on mobile, Introduction (Service through
-   systems) stays right after the hero, and Leadership Lens sits just
-   above Beyond the Office, matching the desktop DOM order. */
+   systems) stays right after the hero, matching the desktop DOM order. */
 .home-sections {
   display: flex;
   flex-direction: column;
@@ -1762,11 +1761,8 @@ html.dark .film-detail-share-linkrow {
   .home-section-leadership {
     order: 3;
   }
-  .home-section-devyani {
-    order: 4;
-  }
   .home-section-work {
-    order: 5;
+    order: 4;
   }
 }
 
