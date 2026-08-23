@@ -9,7 +9,7 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-ivory border-t border-slate-200 py-14 text-navy-900">
+    <footer className="footer-black py-14 text-white">
       <div className="shell flex flex-col items-center gap-6 text-center">
         {(() => {
           const mail = SITE_DATA.profile.social.find((s) => s.url.startsWith('mailto:'));
@@ -38,7 +38,7 @@ export default function Footer() {
           })}
         </div>
       </div>
-      <div className="shell mt-12 border-t border-slate-200 pt-6 text-center text-xs text-slate-600">
+      <div className="shell footer-black-rule mt-12 pt-6 text-center text-xs">
         © <span>{year}</span> Ashwani Kumar. {t('common.allRightsReserved')}
       </div>
     </footer>

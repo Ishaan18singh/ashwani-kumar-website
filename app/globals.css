@@ -113,12 +113,8 @@ html.dark .fullscreen-menu-link { color: #fff; border-bottom-color: hsla(0,0%,10
 .fullscreen-menu-social-link { font-size: .82rem; font-weight: 500; color: #0B2545; text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 200ms ease, color 200ms ease; }
 .fullscreen-menu-social-link:hover { color: rgb(var(--c-gold-500)); border-bottom-color: rgb(var(--c-gold-500)); }
 html.dark .fullscreen-menu-social-link { color: #fff; }
-.footer-social-link { display: inline-flex; align-items: center; justify-content: center; width: 2.25rem; height: 2.25rem; border-radius: 9999px; border: 1px solid rgba(11,37,69,.15); color: #0B2545; transition: color 200ms ease, border-color 200ms ease, transform 200ms ease; }
-.footer-social-link:hover { color: rgb(var(--c-gold-500)); border-color: rgb(var(--c-gold-400)); transform: translateY(-2px); }
-/* The footer keeps its light (ivory) background in dark mode too, so its
-   content must stay dark-on-light regardless of the site-wide theme. */
-html.dark .footer-social-link { color: #0B2545; border-color: rgba(11,37,69,.15); }
-html.dark .footer-social-link:hover { color: rgb(var(--c-gold-500)); border-color: rgb(var(--c-gold-400)); }
+.footer-social-link { display: inline-flex; align-items: center; justify-content: center; width: 2.25rem; height: 2.25rem; border-radius: 9999px; border: 1px solid rgba(255,255,255,.2); color: #fff; transition: color 200ms ease, border-color 200ms ease, transform 200ms ease; }
+.footer-social-link:hover { color: rgb(var(--c-gold-400)); border-color: rgb(var(--c-gold-400)); transform: translateY(-2px); }
 html.dark footer .nav-link { color: rgb(51 65 85); }
 html.dark footer .nav-link:hover { color: rgb(var(--c-gold-500)); }
 html.dark footer .nav-link.active { color: rgb(var(--c-gold-500)); }
@@ -969,19 +965,25 @@ html.dark .pub-card-source {
   font-size: 0.68rem;
 }
 
+/* Footer background: solid black, with light text/link colors to match. */
+.footer-black {
+  background-color: #000;
+}
+.footer-black-rule {
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.6);
+}
+
 /* Footer "Connect" column: the plain email address shown as text
    above the social icon row. */
 .footer-email-link {
   display: block;
   margin-bottom: 1rem;
   font-size: 0.85rem;
-  color: rgb(51, 65, 85);
+  color: rgba(255, 255, 255, 0.75);
 }
 .footer-email-link:hover {
-  color: rgb(var(--c-gold-500));
-}
-html.dark .footer-email-link {
-  color: rgb(148, 163, 184);
+  color: rgb(var(--c-gold-400));
 }
 
 /* Footer social icons: single row, wrapping only if the viewport is
