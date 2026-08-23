@@ -189,10 +189,10 @@ export default function HomePage() {
 
       <section className="home-section-work border-t border-slate-200 bg-ivory py-16 dark:border-slate-700 dark:bg-slate-900">
         <div className="shell">
-          <div className="home-selected-work-inner">
-            <p className="eyebrow">{t('home.selectedWorkEyebrow')}</p>
-            <h2 className="section-title">{t('home.selectedWorkTitle')}</h2>
-            <div className="mt-10 explore-grid">
+          <p className="eyebrow">{t('home.selectedWorkEyebrow')}</p>
+          <h2 className="section-title">{t('home.selectedWorkTitle')}</h2>
+          <div className="mt-10 home-selected-work-inner">
+            <div className="explore-grid">
               {EXPLORE_CARDS.map((card, i) => (
                 <Link
                   key={card.href}
@@ -217,7 +217,7 @@ export default function HomePage() {
 
       <section className="home-section-leadership border-t border-slate-200 py-24 dark:border-slate-800">
         <div className="shell">
-          <div className="reveal stack-center max-w-2xl mx-auto">
+          <div className="reveal stack-center max-w-2xl">
             <p className="eyebrow">{t('home.leadershipEyebrow')}</p>
             <h2 className="section-title">{t('home.leadershipTitle')}</h2>
             <p className="section-copy">{t('home.leadershipText')}</p>
