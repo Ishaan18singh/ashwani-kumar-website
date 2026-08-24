@@ -1292,6 +1292,60 @@ html.dark .pub-card-source {
   }
 }
 
+/* Homepage "Latest Updates": dark band with a row of press/media
+   cards - a photo alongside a headline, date and arrow. */
+.home-section-updates {
+  background-color: rgb(6, 24, 45);
+  border-top-color: rgba(255, 255, 255, 0.08);
+}
+.home-section-updates .eyebrow {
+  color: rgb(var(--c-gold-400));
+}
+.updates-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 768px) {
+  .updates-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.update-card {
+  display: flex;
+  align-items: stretch;
+  gap: 1rem;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.update-card-img {
+  width: 40%;
+  flex-shrink: 0;
+  object-fit: cover;
+}
+.update-card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1rem 1rem 1rem 0;
+}
+.update-card-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: #f7f4ec;
+}
+.update-card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: rgba(247, 244, 236, 0.55);
+}
+
 /* Header: switch to light text over the homepage's dark full-bleed
    hero photo while unscrolled (transparent header). Every other page
    has a light .page-hero background, where the header's normal dark
@@ -1846,6 +1900,9 @@ html.dark .film-detail-share-linkrow {
   }
   .home-section-work {
     order: 4;
+  }
+  .home-section-updates {
+    order: 5;
   }
 }
 

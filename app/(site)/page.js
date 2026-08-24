@@ -11,6 +11,13 @@ const EXPLORE_CARDS = [
   { href: '/acting-modeling', image: '/images/devyani-poster.jpg', labelKey: 'nav.actingModeling' }
 ];
 
+// Placeholder cards until real updates (title, date, photo) are provided.
+const LATEST_UPDATES = [
+  { image: '/images/ashwani-kumar-initiatives.jpg' },
+  { image: '/images/ashwani-kumar-hero-new.jpg' },
+  { image: '/images/ashwani-kumar-hero-new2.jpg' }
+];
+
 export default function HomePage() {
   const { t } = useI18n();
   const cardRefs = useRef([]);
@@ -227,6 +234,27 @@ export default function HomePage() {
                 </Link>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="home-section-updates border-t border-slate-200 py-24">
+        <div className="shell">
+          <p className="eyebrow">Latest Updates</p>
+          <div className="mt-10 updates-grid">
+            {LATEST_UPDATES.map((update, i) => (
+              <div key={i} className="update-card reveal">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img className="update-card-img" src={update.image} alt="" loading="lazy" />
+                <div className="update-card-body">
+                  <p className="update-card-title">Update headline coming soon</p>
+                  <div className="update-card-meta">
+                    <span>Coming soon</span>
+                    <span aria-hidden="true">→</span>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
