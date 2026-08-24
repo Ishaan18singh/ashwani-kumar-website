@@ -164,28 +164,28 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="introduction" className="home-section-intro border-t border-slate-200 py-24 dark:border-slate-800">
-        <div className="shell grid items-start gap-14 lg:grid-cols-[.95fr_1.05fr]">
-          <div className="reveal pin-on-scroll">
-            <p className="eyebrow">{t('home.introEyebrow')}</p>
-            <Html as="h2" className="section-title" html={t('home.introTitleHtml')} />
+      <section id="introduction" className="home-section-intro journey-section">
+        <div className="journey-grid">
+          <div className="reveal journey-text">
+            <p className="eyebrow">My Journey</p>
+            <h2 className="journey-heading">A Journey of Purpose and Progress</h2>
+            <div className="journey-divider" />
+            <p className="journey-copy">
+              From a small town with big dreams to the journey of serving lakhs of people — every step has been
+              driven by purpose.
+            </p>
+            <Link className="journey-cta" href="/about" prefetch={false}>
+              Read My Story <span aria-hidden="true">→</span>
+            </Link>
           </div>
-          <div className="reveal stack-center">
-            <p className="text-base leading-6 text-slate-600 dark:text-slate-300">{t('home.introText')}</p>
-            <div className="mt-10 grid grid-cols-3 gap-4">
-              <div>
-                <strong className="text-display-m font-display text-navy-900 dark:text-white">2010</strong>
-                <span className="mt-1 block text-xs uppercase tracking-wider text-slate-600">{t('home.stat1Label')}</span>
-              </div>
-              <div>
-                <strong className="text-display-m font-display text-navy-900 dark:text-white">7+</strong>
-                <span className="mt-1 block text-xs uppercase tracking-wider text-slate-600">{t('home.stat2Label')}</span>
-              </div>
-              <div>
-                <strong className="text-display-m font-display text-navy-900 dark:text-white">₹500cr</strong>
-                <span className="mt-1 block text-xs uppercase tracking-wider text-slate-600">{t('home.stat3Label')}</span>
-              </div>
-            </div>
+          <div className="reveal journey-image-wrap">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/ashwani-kumar-portrait.webp"
+              alt="Ashwani Kumar, IAS at his desk"
+              className="journey-image"
+              loading="lazy"
+            />
           </div>
         </div>
       </section>
