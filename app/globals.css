@@ -1828,8 +1828,8 @@ html.dark .film-detail-share-linkrow {
   cursor: pointer;
 }
 
-/* Homepage section order: on mobile, Introduction (Service through
-   systems) stays right after the hero, matching the desktop DOM order. */
+/* Homepage section order: on mobile, matches the desktop DOM order -
+   Leadership Lens then Introduction (My Journey) right after the hero. */
 .home-sections {
   display: flex;
   flex-direction: column;
@@ -1838,11 +1838,14 @@ html.dark .film-detail-share-linkrow {
   .home-section-hero {
     order: 1;
   }
-  .home-section-intro {
+  .home-section-leadership {
     order: 2;
   }
-  .home-section-work {
+  .home-section-intro {
     order: 3;
+  }
+  .home-section-work {
+    order: 4;
   }
 }
 
