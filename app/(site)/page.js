@@ -124,9 +124,6 @@ export default function HomePage() {
               <Link className="button-primary" href="/projects" prefetch={false}>
                 <span>{t('home.exploreBtn')}</span> <span aria-hidden="true">→</span>
               </Link>
-              <Link className="button-primary text-black" href="/about" prefetch={false}>
-                {t('home.aboutBtn')}
-              </Link>
             </div>
             <blockquote className="hero-fullbleed-quote mt-10 max-w-xl pl-5 font-display text-xl italic">
               {t('home.quote')}
