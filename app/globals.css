@@ -1758,11 +1758,8 @@ html.dark .film-detail-share-linkrow {
   .home-section-intro {
     order: 2;
   }
-  .home-section-leadership {
-    order: 3;
-  }
   .home-section-work {
-    order: 4;
+    order: 3;
   }
 }
 

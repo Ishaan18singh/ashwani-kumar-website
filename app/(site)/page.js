@@ -193,19 +193,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="home-section-leadership border-t border-slate-200 py-24 dark:border-slate-800">
-        <div className="shell">
-          <div className="reveal stack-center max-w-2xl">
-            <p className="eyebrow">{t('home.leadershipEyebrow')}</p>
-            <h2 className="section-title">{t('home.leadershipTitle')}</h2>
-            <p className="section-copy">{t('home.leadershipText')}</p>
-            <Link className="button-primary mt-8" href="/about" prefetch={false}>
-              {t('home.followJourney')}
-            </Link>
-          </div>
-        </div>
-      </section>
-
       <section className="home-section-work border-t border-slate-200 bg-ivory py-16 dark:border-slate-700 dark:bg-slate-900">
         <div className="shell">
           <p className="eyebrow">{t('home.selectedWorkEyebrow')}</p>
