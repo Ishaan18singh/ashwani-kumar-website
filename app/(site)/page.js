@@ -68,7 +68,7 @@ export default function HomePage() {
             <p className="hero-mobile-role">Director, DITEC</p>
             <p className="hero-mobile-role">Government of Assam</p>
             <p className="hero-mobile-subtitle">
-              Building trusted systems, capable institutions and citizen-first public services for Assam.
+              From leading flood relief and grassroots reform in Assam’s field districts to driving statewide digital governance through e-Prastuti, PGRS and citizen-first public services.
             </p>
             <a href="#introduction" className="hero-mobile-cta">
               <span>Explore the journey</span> <span aria-hidden="true">→</span>
