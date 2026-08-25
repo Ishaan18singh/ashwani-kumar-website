@@ -177,8 +177,8 @@ export default function HomePage() {
             <p className="eyebrow">{t('home.leadershipEyebrow')}</p>
             <h2 className="section-title">{t('home.leadershipTitle')}</h2>
             <p className="section-copy">{t('home.leadershipText')}</p>
-            <Link className="button-primary mt-8" href="/about" prefetch={false}>
-              {t('home.followJourney')}
+            <Link className="button-primary mt-8" href="/projects" prefetch={false}>
+              <span>{t('home.exploreBtn')}</span> <span aria-hidden="true">→</span>
             </Link>
           </div>
         </div>
