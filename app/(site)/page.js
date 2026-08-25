@@ -1,15 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import { useEffect, useRef } from 'react';
 import { useI18n } from '@/lib/i18n/context';
 import Html from '@/components/Html';
-
-const EXPLORE_CARDS = [
-  { href: '/projects', image: '/images/ashwani-kumar-initiatives.jpg', labelKey: 'nav.projects' },
-  { href: '/awards', image: '/images/gallery-04.webp', labelKey: 'nav.awards' },
-  { href: '/acting-modeling', image: '/images/devyani-poster.jpg', labelKey: 'nav.actingModeling' }
-];
 
 // Placeholder cards until real updates (title, date, photo) are provided.
 const LATEST_UPDATES = [
@@ -20,85 +13,6 @@ const LATEST_UPDATES = [
 
 export default function HomePage() {
   const { t } = useI18n();
-  const cardRefs = useRef([]);
-  const cardSettledRef = useRef([]);
-
-  // Desktop-only: the cards tilt-and-settle flat as they scroll into view, a
-  // continuous scrub tied directly to scroll position (not a fire-once
-  // threshold) and staggered card-to-card, cleared once each card fully
-  // settles so the existing hover-lift CSS takes back over. Mobile just
-  // shows the plain stacked grid with no scroll-driven effect. Skipped
-  // entirely under prefers-reduced-motion.
-  useEffect(() => {
-    const pinQuery = window.matchMedia('(max-width: 1023px)');
-    const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-    let raf = null;
-
-    const clearCardStyle = (card) => {
-      card.style.transition = '';
-      card.style.opacity = '';
-      card.style.transform = '';
-    };
-
-    const update = () => {
-      raf = null;
-      const mobile = pinQuery.matches;
-      const reduced = motionQuery.matches;
-
-      const cards = cardRefs.current;
-      const settled = cardSettledRef.current;
-      if (mobile || reduced) {
-        cards.forEach((card, i) => {
-          if (!card) return;
-          if (settled[i] !== true) {
-            clearCardStyle(card);
-            settled[i] = true;
-          }
-        });
-        return;
-      }
-
-      const stagger = 0.25;
-      const n = cards.length;
-      cards.forEach((card, i) => {
-        if (!card) return;
-        const rect = card.getBoundingClientRect();
-        const start = window.innerHeight * 0.92;
-        const end = window.innerHeight * 0.55;
-        const base = Math.min(1, Math.max(0, (start - rect.top) / (start - end)));
-        const t = Math.min(1, Math.max(0, base * (1 + stagger * (n - 1)) - i * stagger));
-        if (t >= 1) {
-          // Write once on the frame it settles, then leave it alone - Lenis's
-          // easing can leave rect.top jittering by sub-pixels for many frames
-          // near the target, and re-toggling the inline style every frame as
-          // t flickers around 1 is what caused the visible stutter here.
-          if (settled[i] !== true) {
-            clearCardStyle(card);
-            settled[i] = true;
-          }
-        } else {
-          settled[i] = false;
-          card.style.transition = 'none';
-          card.style.opacity = String(t);
-          card.style.transform = `perspective(1200px) rotateY(${18 * (1 - t)}deg) translateX(${30 * (1 - t)}px) scale(${0.94 + 0.06 * t})`;
-        }
-      });
-    };
-
-    const onScroll = () => {
-      if (raf) return;
-      raf = requestAnimationFrame(update);
-    };
-
-    update();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll);
-    return () => {
-      window.removeEventListener('scroll', onScroll);
-      window.removeEventListener('resize', onScroll);
-      if (raf) cancelAnimationFrame(raf);
-    };
-  }, []);
 
   return (
     <div className="home-sections">
@@ -127,11 +41,6 @@ export default function HomePage() {
           </div>
           <div className="hero-fullbleed-bottom">
             <p className="hero-fullbleed-text mt-7 max-w-xl">{t('home.subtitle')}</p>
-            <div className="mt-9 flex flex-wrap gap-3">
-              <Link className="button-primary" href="/projects" prefetch={false}>
-                <span>{t('home.exploreBtn')}</span> <span aria-hidden="true">→</span>
-              </Link>
-            </div>
             <blockquote className="hero-fullbleed-quote mt-10 max-w-xl pl-5 font-display text-xl italic">
               {t('home.quote')}
             </blockquote>
@@ -206,34 +115,6 @@ export default function HomePage() {
               className="journey-image"
               loading="lazy"
             />
-          </div>
-        </div>
-      </section>
-
-      <section className="home-section-work border-t border-slate-200 bg-ivory py-16 dark:border-slate-700 dark:bg-slate-900">
-        <div className="shell">
-          <p className="eyebrow">{t('home.selectedWorkEyebrow')}</p>
-          <h2 className="section-title">{t('home.selectedWorkTitle')}</h2>
-          <div className="mt-10 home-selected-work-inner">
-            <div className="explore-grid">
-              {EXPLORE_CARDS.map((card, i) => (
-                <Link
-                  key={card.href}
-                  ref={(el) => (cardRefs.current[i] = el)}
-                  href={card.href}
-                  prefetch={false}
-                  className="explore-card group"
-                  aria-label={t(card.labelKey)}
-                >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img className="explore-card-img" src={card.image} alt="" loading="lazy" />
-                  <span className="explore-card-overlay" aria-hidden="true" />
-                  <span className="explore-card-title">
-                    {t(card.labelKey)} <span aria-hidden="true">→</span>
-                  </span>
-                </Link>
-              ))}
-            </div>
           </div>
         </div>
       </section>
