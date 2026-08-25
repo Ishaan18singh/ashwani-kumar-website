@@ -1292,15 +1292,9 @@ html.dark .pub-card-source {
   }
 }
 
-/* Homepage "Latest Updates": dark band with a row of press/media
-   cards - a photo alongside a headline, date and arrow. */
-.home-section-updates {
-  background-color: rgb(6, 24, 45);
-  border-top-color: rgba(255, 255, 255, 0.08);
-}
-.home-section-updates .eyebrow {
-  color: rgb(var(--c-gold-400));
-}
+/* Homepage "Latest Updates": light band matching the rest of the
+   site, with a row of press/media cards - a photo alongside a
+   headline, date and arrow. */
 .updates-grid {
   display: grid;
   gap: 1.5rem;
@@ -1317,8 +1311,9 @@ html.dark .pub-card-source {
   gap: 1rem;
   border-radius: 0.75rem;
   overflow: hidden;
-  background-color: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background-color: #fff;
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  box-shadow: 0 20px 50px -28px rgba(6, 24, 45, 0.35);
 }
 .update-card-img {
   width: 40%;
@@ -1336,14 +1331,14 @@ html.dark .pub-card-source {
   font-size: 0.95rem;
   font-weight: 600;
   line-height: 1.35;
-  color: #f7f4ec;
+  color: rgb(11, 37, 69);
 }
 .update-card-meta {
   display: flex;
   align-items: center;
   justify-content: space-between;
   font-size: 0.75rem;
-  color: rgba(247, 244, 236, 0.55);
+  color: rgb(100, 116, 139);
 }
 
 /* Header: switch to light text over the homepage's dark full-bleed
