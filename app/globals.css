@@ -1327,6 +1327,7 @@ html.dark .pub-card-source {
   justify-content: center;
   gap: 0.75rem;
   padding: 1rem 1rem 1rem 0;
+  min-width: 0;
 }
 .update-card-title {
   font-size: 0.95rem;
