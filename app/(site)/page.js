@@ -4,11 +4,22 @@ import Link from 'next/link';
 import { useI18n } from '@/lib/i18n/context';
 import Html from '@/components/Html';
 
-// Placeholder cards until real updates (title, date, photo) are provided.
 const LATEST_UPDATES = [
-  { image: '/images/ashwani-kumar-initiatives.jpg' },
-  { image: '/images/ashwani-kumar-hero-new.jpg' },
-  { image: '/images/ashwani-kumar-hero-new2.jpg' }
+  {
+    image: '/images/ashwani-kumar-initiatives.jpg',
+    title: 'Phase 3 Mid-Career Training Programme',
+    date: '12 May – 6 June 2025 · LBSNAA, Mussoorie'
+  },
+  {
+    image: '/images/ashwani-kumar-hero-new.jpg',
+    title: 'Distinguished Panelist, 18th DigiTech Conclave',
+    date: '2025 · Delhi'
+  },
+  {
+    image: '/images/ashwani-kumar-hero-new2.jpg',
+    title: 'Aadhaar Samvaad — National Stakeholder Conference, UIDAI',
+    date: '8 April 2025 · Bharat Mandapam, New Delhi'
+  }
 ];
 
 export default function HomePage() {
@@ -124,17 +135,17 @@ export default function HomePage() {
           <p className="eyebrow">Latest Updates</p>
           <div className="mt-10 updates-grid">
             {LATEST_UPDATES.map((update, i) => (
-              <div key={i} className="update-card reveal">
+              <Link key={i} href="/awards" prefetch={false} className="update-card reveal">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img className="update-card-img" src={update.image} alt="" loading="lazy" />
                 <div className="update-card-body">
-                  <p className="update-card-title">Update headline coming soon</p>
+                  <p className="update-card-title">{update.title}</p>
                   <div className="update-card-meta">
-                    <span>Coming soon</span>
+                    <span>{update.date}</span>
                     <span aria-hidden="true">→</span>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
