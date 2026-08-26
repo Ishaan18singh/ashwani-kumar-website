@@ -1275,8 +1275,9 @@ html.dark .pub-card-source {
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: top center;
+  object-fit: contain;
+  object-position: center;
+  background-color: #fff;
 }
 @media (max-width: 1023px) {
   .journey-grid {
