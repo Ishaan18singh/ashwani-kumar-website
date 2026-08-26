@@ -20,7 +20,13 @@ export default function AboutPage() {
         <div className="shell grid gap-14 lg:grid-cols-[.8fr_1.2fr]">
           <div className="reveal about-portrait-frame">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/images/ashwani-kumar-portrait-bw.jpg" alt="Ashwani Kumar, IAS, standing in a formal interior" />
+            <img
+              src="/images/ashwani-kumar-portrait-bw.webp"
+              alt="Ashwani Kumar, IAS, standing in a formal interior"
+              width={1000}
+              height={1500}
+              loading="lazy"
+            />
           </div>
           <div className="reveal">
             <p className="eyebrow">{t('about.journeyEyebrow')}</p>
