@@ -6,17 +6,23 @@ import Html from '@/components/Html';
 
 const LATEST_UPDATES = [
   {
-    image: '/images/ashwani-kumar-initiatives.jpg',
+    image: '/images/ashwani-kumar-initiatives.webp',
+    width: 520,
+    height: 716,
     title: 'Phase 3 Mid-Career Training Programme',
     date: '12 May – 6 June 2025 · LBSNAA, Mussoorie'
   },
   {
-    image: '/images/ashwani-kumar-hero-new.jpg',
+    image: '/images/ashwani-kumar-hero-new.webp',
+    width: 520,
+    height: 778,
     title: 'Distinguished Panelist, 18th DigiTech Conclave',
     date: '2025 · Delhi'
   },
   {
-    image: '/images/ashwani-kumar-hero-new2.jpg',
+    image: '/images/ashwani-kumar-hero-new2.webp',
+    width: 520,
+    height: 692,
     title: 'Aadhaar Samvaad — National Stakeholder Conference, UIDAI',
     date: '8 April 2025 · Bharat Mandapam, New Delhi'
   }
@@ -33,14 +39,18 @@ export default function HomePage() {
           src="/images/ashwani-kumar-hero-fullbleed.jpg"
           alt="Ashwani Kumar, IAS"
           className="hero-fullbleed-bg hero-bg-desktop"
+          width={1672}
+          height={941}
           fetchPriority="high"
           decoding="async"
         />
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/images/ashwani-kumar-hero-mobile.png"
+          src="/images/ashwani-kumar-hero-mobile-bg.webp"
           alt="Ashwani Kumar, IAS"
           className="hero-fullbleed-bg hero-bg-mobile"
+          width={1086}
+          height={1448}
           fetchPriority="high"
           decoding="async"
         />
@@ -121,9 +131,11 @@ export default function HomePage() {
           <div className="reveal journey-image-wrap">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/images/ashwani-kumar-portrait.webp"
+              src="/images/ashwani-kumar-portrait-sm.webp"
               alt="Ashwani Kumar, IAS at his desk"
               className="journey-image"
+              width={800}
+              height={1200}
               loading="lazy"
             />
           </div>
@@ -137,7 +149,14 @@ export default function HomePage() {
             {LATEST_UPDATES.map((update, i) => (
               <Link key={i} href="/awards" prefetch={false} className="update-card reveal">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img className="update-card-img" src={update.image} alt="" loading="lazy" />
+                <img
+                  className="update-card-img"
+                  src={update.image}
+                  alt=""
+                  width={update.width}
+                  height={update.height}
+                  loading="lazy"
+                />
                 <div className="update-card-body">
                   <p className="update-card-title">{update.title}</p>
                   <div className="update-card-meta">
