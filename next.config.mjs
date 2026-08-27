@@ -12,6 +12,15 @@ const nextConfig = {
         ]
       }
     ];
+  },
+  async redirects() {
+    return [
+      {
+        source: '/whatsapp',
+        destination: 'https://whatsapp.com/channel/0029VbDOAeI30LKQtRNd6L20',
+        permanent: false
+      }
+    ];
   }
 };
 
