@@ -1,3 +1,5 @@
+import fs from 'node:fs';
+import path from 'node:path';
 import { GeistSans } from 'geist/font/sans';
 import { Playfair_Display } from 'next/font/google';
 import './globals.css';
@@ -11,6 +13,20 @@ const playfairDisplay = Playfair_Display({
 const SITE_URL = 'https://ashwani-kumar-website.vercel.app';
 const DEFAULT_DESCRIPTION =
   'Official profile of Ashwani Kumar, IAS Officer, 2010 Batch and Director, DITEC, Government of Assam.';
+
+// /images/* is served with a 1-year immutable Cache-Control header (see
+// next.config.mjs), so CDNs and social-share crawlers (Facebook/WhatsApp)
+// never re-fetch og-image.jpg by filename alone even after "Scrape Again" -
+// appending the file's own mtime busts that cache automatically on every
+// deploy where the photo actually changed.
+const OG_IMAGE_VERSION = (() => {
+  try {
+    return Math.round(fs.statSync(path.join(process.cwd(), 'public/images/og-image.jpg')).mtimeMs);
+  } catch {
+    return 0;
+  }
+})();
+const OG_IMAGE_URL = `/images/og-image.jpg?v=${OG_IMAGE_VERSION}`;
 
 export const metadata = {
   metadataBase: new URL(SITE_URL),
@@ -28,13 +44,13 @@ export const metadata = {
     url: SITE_URL,
     title: 'Ashwani Kumar, IAS | Digital Governance & Public Service',
     description: DEFAULT_DESCRIPTION,
-    images: [{ url: '/images/og-image.jpg', width: 1200, height: 630 }]
+    images: [{ url: OG_IMAGE_URL, width: 1200, height: 630 }]
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Ashwani Kumar, IAS | Digital Governance & Public Service',
     description: DEFAULT_DESCRIPTION,
-    images: ['/images/og-image.jpg']
+    images: [OG_IMAGE_URL]
   }
 };
 
