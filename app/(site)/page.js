@@ -25,6 +25,38 @@ const LATEST_UPDATES = [
     height: 692,
     title: 'Aadhaar Samvaad — National Stakeholder Conference, UIDAI',
     date: '8 April 2025 · Bharat Mandapam, New Delhi'
+  },
+  {
+    image: '/images/press-devyani-nbsb.jpg',
+    width: 885,
+    height: 484,
+    title: 'IAS Officer Ashwani Kumar Steps Into Acting With Devyani',
+    date: '24 August 2026 · North Block South Block',
+    url: 'https://www.northblocksouthblock.com/ias-officer-ashwani-kumar-steps-into-acting-with-devyani/'
+  },
+  {
+    image: '/images/press-bhedbhav-rninews.jpg',
+    width: 700,
+    height: 400,
+    title: 'Bhedbhav with Girls: Punishment for Being a Girl in India',
+    date: '5 May 2025 · RNI News',
+    url: 'https://www.rninews.co.in/bhedbhav-with-girls-punishment-for-being-a-girl-in-india-when-will-the-thinking-change-179904-4/'
+  },
+  {
+    image: '/images/press-cybersecurity-etgov.jpg',
+    width: 1200,
+    height: 627,
+    title: 'Cyber Security: Are We Misunderstanding It and Exaggerating Its Risks?',
+    date: '15 January 2024 · ET Government',
+    url: 'https://government.economictimes.indiatimes.com/news/secure-india/cyber-security-are-we-misunderstanding-it-and-exaggerating-its-risks/106853720'
+  },
+  {
+    image: '/images/press-coaching-etgov.jpg',
+    width: 1198,
+    height: 627,
+    title: 'Opinion: Are Coaching Institutes Really Responsible for Rote Learning?',
+    date: '20 November 2022 · ET Government',
+    url: 'https://government.economictimes.indiatimes.com/news/education/opinion-how-coaching-institutes-are-responsible-for-deteriorating-education-quality-of-top-level-aspirants/95638030'
   }
 ];
 
@@ -145,27 +177,56 @@ export default function HomePage() {
       <section className="home-section-updates border-t border-slate-200 py-24">
         <div className="shell">
           <p className="eyebrow">Latest Updates</p>
-          <div className="mt-10 updates-grid">
-            {LATEST_UPDATES.map((update, i) => (
-              <Link key={i} href="/awards" prefetch={false} className="update-card reveal">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  className="update-card-img"
-                  src={update.image}
-                  alt=""
-                  width={update.width}
-                  height={update.height}
-                  loading="lazy"
-                />
-                <div className="update-card-body">
-                  <p className="update-card-title">{update.title}</p>
-                  <div className="update-card-meta">
-                    <span>{update.date}</span>
-                    <span aria-hidden="true">→</span>
-                  </div>
-                </div>
-              </Link>
-            ))}
+          <div className="mt-10 updates-marquee">
+            <div className="updates-track">
+              {[...LATEST_UPDATES, ...LATEST_UPDATES].map((update, i) => {
+                const isDuplicate = i >= LATEST_UPDATES.length;
+                const cardContent = (
+                  <>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      className="update-card-img"
+                      src={update.image}
+                      alt=""
+                      width={update.width}
+                      height={update.height}
+                    />
+                    <div className="update-card-body">
+                      <p className="update-card-title">{update.title}</p>
+                      <div className="update-card-meta">
+                        <span>{update.date}</span>
+                        <span aria-hidden="true">→</span>
+                      </div>
+                    </div>
+                  </>
+                );
+
+                return update.url ? (
+                  <a
+                    key={i}
+                    href={update.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="update-card"
+                    aria-hidden={isDuplicate}
+                    tabIndex={isDuplicate ? -1 : undefined}
+                  >
+                    {cardContent}
+                  </a>
+                ) : (
+                  <Link
+                    key={i}
+                    href="/awards"
+                    prefetch={false}
+                    className="update-card"
+                    aria-hidden={isDuplicate}
+                    tabIndex={isDuplicate ? -1 : undefined}
+                  >
+                    {cardContent}
+                  </Link>
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>

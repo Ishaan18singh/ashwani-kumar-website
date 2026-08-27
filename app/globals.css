@@ -1294,22 +1294,45 @@ html.dark .pub-card-source {
 }
 
 /* Homepage "Latest Updates": light band matching the rest of the
-   site, with a row of press/media cards - a photo alongside a
-   headline, date and arrow. */
-.updates-grid {
-  display: grid;
-  gap: 1.5rem;
-  grid-template-columns: 1fr;
+   site, with a single row of press/media cards that scrolls
+   continuously right-to-left, looping seamlessly (the track renders
+   the card list twice back-to-back and animates exactly -50%, so the
+   second copy lines up perfectly with the first as it loops). Paused
+   on hover/focus and disabled under prefers-reduced-motion. */
+.updates-marquee {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
 }
-@media (min-width: 768px) {
-  .updates-grid {
-    grid-template-columns: repeat(3, 1fr);
+.updates-track {
+  display: flex;
+  width: max-content;
+  gap: 1.5rem;
+  animation: updates-scroll 32s linear infinite;
+}
+.updates-marquee:hover .updates-track,
+.updates-marquee:focus-within .updates-track {
+  animation-play-state: paused;
+}
+@keyframes updates-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .updates-track {
+    animation: none;
   }
 }
 .update-card {
   display: flex;
   align-items: stretch;
   gap: 1rem;
+  width: 380px;
+  flex-shrink: 0;
   border-radius: 0.75rem;
   overflow: hidden;
   background-color: #fff;
@@ -1319,7 +1342,8 @@ html.dark .pub-card-source {
 .update-card-img {
   width: 40%;
   flex-shrink: 0;
-  object-fit: cover;
+  object-fit: contain;
+  background-color: rgb(241, 245, 249);
 }
 .update-card-body {
   display: flex;
