@@ -10,7 +10,7 @@ const playfairDisplay = Playfair_Display({
   display: 'swap'
 });
 
-const SITE_URL = 'https://ashwani-kumar-website.vercel.app';
+const SITE_URL = 'https://www.ashwanikumarias.com';
 const DEFAULT_DESCRIPTION =
   'Official profile of Ashwani Kumar, IAS Officer, 2010 Batch and Director, DITEC, Government of Assam.';
 
