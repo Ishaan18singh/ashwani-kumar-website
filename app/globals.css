@@ -1177,11 +1177,12 @@ html.dark .pub-card-source {
     color: rgba(247, 245, 241, 0.65);
   }
   .hero-mobile-cta {
-    display: inline-flex;
+    display: flex;
     align-items: center;
+    justify-content: center;
     gap: 0.5rem;
     width: fit-content;
-    margin-top: 1.75rem;
+    margin: 1.75rem auto 0;
     padding: 0.625rem 1.25rem;
     border-radius: 9999px;
     background-color: #c9a15a;
