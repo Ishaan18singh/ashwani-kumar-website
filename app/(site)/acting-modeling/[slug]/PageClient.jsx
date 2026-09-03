@@ -6,6 +6,7 @@ import { useRef, useState } from 'react';
 import { useI18n } from '@/lib/i18n/context';
 import { FILMS } from '@/lib/films';
 import SocialIcon from '@/components/SocialIcon';
+import Reveal from '@/components/Reveal';
 
 export default function FilmDetailPage() {
   const { slug } = useParams();
@@ -80,11 +81,11 @@ export default function FilmDetailPage() {
 
   return (
     <section className="film-detail-cinematic">
-      <div className="film-detail-poster-wrap">
+      <Reveal className="film-detail-poster-wrap" blur>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img className="film-detail-poster" src={film.image} alt="" />
-      </div>
-      <div className="film-detail-body">
+      </Reveal>
+      <Reveal className="film-detail-body" blur transition={{ duration: 0.7, ease: 'easeOut', delay: 0.1 }}>
         <h1 className="film-detail-title">{film.title}</h1>
         <p className="film-detail-about">{film.about}</p>
         <span className="film-detail-badge">
@@ -107,7 +108,7 @@ export default function FilmDetailPage() {
             Share
           </button>
         </div>
-      </div>
+      </Reveal>
       {film.press?.length > 0 && (
         <div className="film-detail-press">
           <p className="eyebrow">Press &amp; Reactions</p>
@@ -121,14 +122,22 @@ export default function FilmDetailPage() {
                 // keep source as fallback
               }
               return (
-                <a key={`${item.url}-${i}`} href={item.url} target="_blank" rel="noopener noreferrer" className="film-detail-press-card">
+                <Reveal
+                  as="a"
+                  key={`${item.url}-${i}`}
+                  href={item.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="film-detail-press-card"
+                  transition={{ duration: 0.7, ease: 'easeOut', delay: (i % 3) * 0.08 }}
+                >
                   <span className="film-detail-press-domain">{domain}</span>
                   <span className="film-detail-press-source">{item.source}</span>
                   <span className="film-detail-press-title">{item.title}</span>
                   <span className="film-detail-press-link">
                     Read more <span aria-hidden="true">↗</span>
                   </span>
-                </a>
+                </Reveal>
               );
             })}
           </div>

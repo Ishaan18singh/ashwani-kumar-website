@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { useI18n } from '@/lib/i18n/context';
+import Reveal from '@/components/Reveal';
 import { slugify, cardImage } from '@/lib/utils';
 
 export default function ProjectDetailPage() {
@@ -34,7 +35,7 @@ export default function ProjectDetailPage() {
   return (
     <section className="pt-40 pb-20 sm:pt-48">
       <div className="shell max-w-4xl">
-        <div className="project-detail-body">
+        <Reveal className="project-detail-body" blur>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img className="project-detail-img" src={`/images/${cardImage(index)}.webp`} alt="" />
           <p className="eyebrow">{t('project.initiative')}</p>
@@ -50,7 +51,7 @@ export default function ProjectDetailPage() {
               {t('project.nextInitiative')} {nextProject.title} →
             </Link>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

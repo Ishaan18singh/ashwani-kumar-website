@@ -1,6 +1,7 @@
 'use client';
 
 import { useRef, useState } from 'react';
+import Reveal from '@/components/Reveal';
 
 const ITEMS = [
   { src: '/images/gallery-01.webp', alt: 'Ashwani Kumar in a blue suit, full-length portrait' },
@@ -26,8 +27,15 @@ export default function GalleryGrid() {
     <>
       <section className="py-24">
         <div className="shell grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {ITEMS.map((item) => (
-            <button key={item.src} type="button" onClick={() => open(item)} className="group overflow-hidden rounded-2xl">
+          {ITEMS.map((item, i) => (
+            <Reveal
+              as="button"
+              key={item.src}
+              type="button"
+              onClick={() => open(item)}
+              className="group overflow-hidden rounded-2xl"
+              transition={{ duration: 0.7, ease: 'easeOut', delay: (i % 3) * 0.08 }}
+            >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={item.src}
@@ -35,7 +43,7 @@ export default function GalleryGrid() {
                 loading="lazy"
                 className="film-card-img w-full object-center transition duration-500 group-hover:scale-105"
               />
-            </button>
+            </Reveal>
           ))}
         </div>
       </section>

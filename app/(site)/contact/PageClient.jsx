@@ -4,6 +4,7 @@ import { useI18n } from '@/lib/i18n/context';
 import PageHero from '@/components/PageHero';
 import Html from '@/components/Html';
 import ContactForm from '@/components/ContactForm';
+import Reveal from '@/components/Reveal';
 import { SITE_DATA } from '@/lib/data';
 
 export default function ContactPage() {
@@ -18,7 +19,7 @@ export default function ContactPage() {
       />
       <section className="py-12 sm:py-24">
         <div className="shell grid gap-14 lg:grid-cols-[.8fr_1.2fr]">
-          <div>
+          <Reveal blur>
             <p className="eyebrow">{t('contact.officeEyebrow')}</p>
             <h2 className="section-title">{t('contact.officeTitle')}</h2>
             <Html
@@ -35,8 +36,10 @@ export default function ContactPage() {
               </a>
             </div>
             <p className="mt-10 text-sm leading-6 text-slate-600 dark:text-slate-400">{t('contact.formalNote')}</p>
-          </div>
-          <ContactForm />
+          </Reveal>
+          <Reveal blur transition={{ duration: 0.7, ease: 'easeOut', delay: 0.1 }}>
+            <ContactForm />
+          </Reveal>
         </div>
       </section>
     </>

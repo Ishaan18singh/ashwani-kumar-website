@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useI18n } from '@/lib/i18n/context';
 import PageHero from '@/components/PageHero';
+import Reveal from '@/components/Reveal';
 import { slugify, cardImage } from '@/lib/utils';
 
 export default function ProjectsPage() {
@@ -19,7 +20,8 @@ export default function ProjectsPage() {
       <section className="py-12 sm:py-24">
         <div className="shell flex flex-col initiative-rows-gap">
           {data.projects.map((x, i) => (
-            <article
+            <Reveal
+              as="article"
               key={x.title}
               className={`initiative-row grid items-center gap-8 lg:grid-cols-2 lg:gap-14${
                 i % 2 === 1 ? ' initiative-row-reverse' : ''
@@ -44,7 +46,7 @@ export default function ProjectsPage() {
                   {t('project.learnMore')}
                 </Link>
               </div>
-            </article>
+            </Reveal>
           ))}
         </div>
       </section>
