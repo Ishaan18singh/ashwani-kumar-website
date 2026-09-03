@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useI18n } from '@/lib/i18n/context';
 import Html from '@/components/Html';
+import Reveal from '@/components/Reveal';
 
 const LATEST_UPDATES = [
   {
@@ -135,20 +136,20 @@ export default function HomePage() {
 
       <section className="home-section-leadership border-t border-slate-200 py-24 dark:border-slate-800">
         <div className="shell">
-          <div className="reveal stack-center max-w-2xl">
+          <Reveal className="stack-center max-w-2xl">
             <p className="eyebrow">{t('home.leadershipEyebrow')}</p>
             <h2 className="section-title">{t('home.leadershipTitle')}</h2>
             <p className="section-copy">{t('home.leadershipText')}</p>
             <Link className="button-primary mt-8" href="/projects" prefetch={false}>
               <span>{t('home.exploreBtn')}</span> <span aria-hidden="true">→</span>
             </Link>
-          </div>
+          </Reveal>
         </div>
       </section>
 
       <section id="introduction" className="home-section-intro journey-section">
         <div className="journey-grid">
-          <div className="reveal journey-text">
+          <Reveal className="journey-text">
             <p className="eyebrow">My Journey</p>
             <h2 className="journey-heading">A Journey of Purpose and Progress</h2>
             <div className="journey-divider" />
@@ -159,8 +160,8 @@ export default function HomePage() {
             <Link className="journey-cta" href="/about" prefetch={false}>
               Read My Story <span aria-hidden="true">→</span>
             </Link>
-          </div>
-          <div className="reveal journey-image-wrap">
+          </Reveal>
+          <Reveal className="journey-image-wrap">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/images/ashwani-kumar-portrait-sm.webp"
@@ -170,7 +171,7 @@ export default function HomePage() {
               height={1200}
               loading="lazy"
             />
-          </div>
+          </Reveal>
         </div>
       </section>
 

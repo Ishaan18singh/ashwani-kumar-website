@@ -1,7 +1,7 @@
+import { MotionConfig } from 'framer-motion';
 import { I18nProvider } from '@/lib/i18n/context';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import RevealObserver from '@/components/RevealObserver';
 import SmoothScroll from '@/components/SmoothScroll';
 import SkipLink from '@/components/SkipLink';
 import PageTransition from '@/components/PageTransition';
@@ -12,14 +12,17 @@ import PageTransition from '@/components/PageTransition';
 export default function SiteLayout({ children }) {
   return (
     <I18nProvider>
-      <SkipLink />
-      <Header />
-      <main id="main">
-        <PageTransition>{children}</PageTransition>
-      </main>
-      <Footer />
-      <RevealObserver />
-      <SmoothScroll />
+      {/* reducedMotion="user" makes every <Reveal>/motion.* element respect
+          prefers-reduced-motion automatically, with no per-component check. */}
+      <MotionConfig reducedMotion="user">
+        <SkipLink />
+        <Header />
+        <main id="main">
+          <PageTransition>{children}</PageTransition>
+        </main>
+        <Footer />
+        <SmoothScroll />
+      </MotionConfig>
     </I18nProvider>
   );
 }

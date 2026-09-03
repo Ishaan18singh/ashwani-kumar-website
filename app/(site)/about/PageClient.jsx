@@ -3,6 +3,7 @@
 import { useI18n } from '@/lib/i18n/context';
 import PageHero from '@/components/PageHero';
 import TimelineList from '@/components/TimelineList';
+import Reveal from '@/components/Reveal';
 
 export default function AboutPage() {
   const { t, data } = useI18n();
@@ -18,7 +19,7 @@ export default function AboutPage() {
 
       <section className="py-12 sm:py-24">
         <div className="shell grid gap-14 lg:grid-cols-[.8fr_1.2fr]">
-          <div className="reveal about-portrait-frame">
+          <Reveal className="about-portrait-frame">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/images/ashwani-kumar-portrait-bw.webp"
@@ -27,8 +28,8 @@ export default function AboutPage() {
               height={1500}
               loading="lazy"
             />
-          </div>
-          <div className="reveal">
+          </Reveal>
+          <Reveal>
             <p className="eyebrow">{t('about.journeyEyebrow')}</p>
             <h2 className="section-title">{t('about.journeyTitle')}</h2>
             <div className="body-copy about-journey-copy mt-7 space-y-5">
@@ -39,7 +40,7 @@ export default function AboutPage() {
             <blockquote className="mt-10 border-l-2 border-gold-400 pl-6 font-display text-3xl italic text-navy-900 dark:text-white">
               {t('about.journeyQuote')}
             </blockquote>
-          </div>
+          </Reveal>
         </div>
       </section>
 
@@ -47,9 +48,9 @@ export default function AboutPage() {
         <div className="shell">
           <p className="eyebrow">{t('timeline.eyebrow')}</p>
           <h2 className="section-title max-w-3xl">{t('timeline.title')}</h2>
-          <p className="reveal mt-4 max-w-2xl text-sm leading-6 text-slate-600 dark:text-slate-300">
+          <Reveal as="p" className="mt-4 max-w-2xl text-sm leading-6 text-slate-600 dark:text-slate-300">
             {t('timeline.subtitle')}
-          </p>
+          </Reveal>
           <div className="mt-12">
             <TimelineList timeline={data.timeline} />
           </div>

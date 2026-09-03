@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useI18n } from '@/lib/i18n/context';
 import { getSupabaseClient } from '@/lib/supabase';
+import Reveal from '@/components/Reveal';
 
 // The Supabase "publications" table has no language column, so the
 // language shown is derived from the publication name for outlets that
@@ -40,7 +41,7 @@ export default function PublicationsList({ fallback }) {
   return (
     <div className="pub-card-grid">
       {publications.map((x) => (
-        <article key={x.url || x.title} className="pub-card reveal">
+        <Reveal as="article" key={x.url || x.title} className="pub-card">
           <span className="pub-card-img-wrap">
             <PubImage item={x} />
           </span>
@@ -53,7 +54,7 @@ export default function PublicationsList({ fallback }) {
               {t('publications.readFull')} <span aria-hidden="true">→</span>
             </a>
           </div>
-        </article>
+        </Reveal>
       ))}
     </div>
   );

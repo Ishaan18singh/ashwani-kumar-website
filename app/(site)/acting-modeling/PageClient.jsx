@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useI18n } from '@/lib/i18n/context';
 import PageHero from '@/components/PageHero';
 import GalleryGrid from '@/components/GalleryGrid';
+import Reveal from '@/components/Reveal';
 import { FILMS } from '@/lib/films';
 
 export default function ActingModelingPage() {
@@ -20,7 +21,7 @@ export default function ActingModelingPage() {
       <section className="py-12 sm:py-24">
         <div className="shell grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
           {FILMS.map((film) => (
-            <article key={film.title} className="film-card reveal">
+            <Reveal as="article" key={film.title} className="film-card">
               <Link href={`/acting-modeling/${film.slug}`} prefetch={false} aria-label={`${t('project.learnMore')}: ${film.title}`}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img className="film-card-img" src={film.image} alt="" loading="lazy" />
@@ -57,7 +58,7 @@ export default function ActingModelingPage() {
                   </Link>
                 </div>
               </div>
-            </article>
+            </Reveal>
           ))}
         </div>
       </section>

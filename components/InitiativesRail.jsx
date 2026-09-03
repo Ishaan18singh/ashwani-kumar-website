@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 import { useEffect, useRef } from 'react';
 import { useI18n } from '@/lib/i18n/context';
 import { slugify, cardImage } from '@/lib/utils';
@@ -108,12 +109,16 @@ export default function InitiativesRail({ projects, mode = 'marquee' }) {
 
   return (
     <div id="projects-grid" className="mt-12">
-      <div
+      <motion.div
         ref={containerRef}
-        className={`${outerClass} reveal`}
+        className={outerClass}
         tabIndex={0}
         role="region"
         aria-label={mode === 'carousel' ? 'Key projects and initiatives — scroll or drag to browse' : 'Selected initiatives — scroll or drag to browse'}
+        initial={{ opacity: 0, y: 18 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.12 }}
+        transition={{ duration: 0.7, ease: 'easeOut' }}
       >
         <div ref={trackRef} className={trackClass}>
           {projects.map((x, i) => (
@@ -133,7 +138,7 @@ export default function InitiativesRail({ projects, mode = 'marquee' }) {
             </Link>
           ))}
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }
