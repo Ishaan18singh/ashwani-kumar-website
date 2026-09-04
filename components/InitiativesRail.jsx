@@ -114,7 +114,7 @@ export default function InitiativesRail({ projects, mode = 'marquee' }) {
         className={outerClass}
         tabIndex={0}
         role="region"
-        aria-label={mode === 'carousel' ? 'Key projects and initiatives — scroll or drag to browse' : 'Selected initiatives — scroll or drag to browse'}
+        aria-label={mode === 'carousel' ? 'Key projects and initiatives, scroll or drag to browse' : 'Selected initiatives, scroll or drag to browse'}
         initial={{ opacity: 0, y: 18 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.12 }}
@@ -122,7 +122,7 @@ export default function InitiativesRail({ projects, mode = 'marquee' }) {
       >
         <div ref={trackRef} className={trackClass}>
           {projects.map((x, i) => (
-            <Link key={x.title} href={`/projects/${slugify(x.title)}`} prefetch={false} className={cardClass} aria-label={`${x.title} — read more`}>
+            <Link key={x.title} href={`/projects/${slugify(x.title)}`} prefetch={false} className={cardClass} aria-label={`${x.title}, read more`}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img className="initiative-card-img" src={`/images/${cardImage(i)}.webp`} alt="" loading="lazy" />
               <span className="corner corner-tl" aria-hidden="true" />

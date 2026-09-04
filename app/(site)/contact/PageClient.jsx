@@ -20,7 +20,6 @@ export default function ContactPage() {
       <section className="py-12 sm:py-24">
         <div className="shell grid gap-14 lg:grid-cols-[.8fr_1.2fr]">
           <Reveal blur>
-            <p className="eyebrow">{t('contact.officeEyebrow')}</p>
             <h2 className="section-title">{t('contact.officeTitle')}</h2>
             <Html
               as="address"

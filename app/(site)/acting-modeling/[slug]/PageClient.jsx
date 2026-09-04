@@ -52,7 +52,7 @@ export default function FilmDetailPage() {
     window.open('https://www.instagram.com/', '_blank', 'noopener,noreferrer');
   };
   const embedCode = film?.trailerYoutubeId
-    ? `<iframe width="560" height="315" src="https://www.youtube.com/embed/${film.trailerYoutubeId}" title="${film.title} — Trailer" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
+    ? `<iframe width="560" height="315" src="https://www.youtube.com/embed/${film.trailerYoutubeId}" title="${film.title} - Trailer" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
     : '';
   const copyEmbedCode = async () => {
     try {
@@ -97,7 +97,7 @@ export default function FilmDetailPage() {
         </p>
         <div className="film-detail-actions">
           <a className="film-detail-watch" href={film.watchUrl} target="_blank" rel="noopener noreferrer">
-            <span aria-hidden="true">▶</span> Watch Now — Free on {film.platform}
+            <span aria-hidden="true">▶</span> Watch Now, Free on {film.platform}
           </a>
           {film.trailerYoutubeId && (
             <button type="button" className="film-detail-trailer" onClick={openTrailer}>
@@ -164,7 +164,7 @@ export default function FilmDetailPage() {
             {trailerPlaying && (
               <iframe
                 src={`https://www.youtube.com/embed/${film.trailerYoutubeId}?autoplay=1`}
-                title={`${film.title} — Trailer`}
+                title={`${film.title} - Trailer`}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
               />
@@ -238,7 +238,7 @@ export default function FilmDetailPage() {
           </a>
           <a
             className="film-detail-share-btn film-detail-share-btn--reddit"
-            href={`https://www.reddit.com/submit?url=${encodeURIComponent(film.watchUrl)}&title=${encodeURIComponent(`${film.title} — Watch on ${film.platform}`)}`}
+            href={`https://www.reddit.com/submit?url=${encodeURIComponent(film.watchUrl)}&title=${encodeURIComponent(`${film.title} - Watch on ${film.platform}`)}`}
             target="_blank"
             rel="noopener noreferrer"
           >

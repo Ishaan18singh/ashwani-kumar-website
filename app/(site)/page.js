@@ -24,7 +24,7 @@ const LATEST_UPDATES = [
     image: '/images/ashwani-kumar-hero-new2.webp',
     width: 520,
     height: 692,
-    title: 'Aadhaar Samvaad — National Stakeholder Conference, UIDAI',
+    title: 'Aadhaar Samvaad: National Stakeholder Conference, UIDAI',
     date: '8 April 2025 · Bharat Mandapam, New Delhi'
   },
   {
@@ -147,11 +147,10 @@ export default function HomePage() {
       <section id="introduction" className="home-section-intro journey-section">
         <div className="journey-grid">
           <Reveal className="journey-text">
-            <p className="eyebrow">My Journey</p>
             <h2 className="journey-heading">A Journey of Purpose and Progress</h2>
             <div className="journey-divider" />
             <p className="journey-copy">
-              From a small town with big dreams to the journey of serving lakhs of people — every step has been
+              From a small town with big dreams to the journey of serving lakhs of people, every step has been
               driven by purpose.
             </p>
             <Link className="journey-cta" href="/about" prefetch={false}>
@@ -174,7 +173,7 @@ export default function HomePage() {
 
       <section className="home-section-updates border-t border-slate-200 py-24">
         <div className="shell">
-          <p className="eyebrow">Latest Updates</p>
+          <h2 className="section-title">Latest Updates</h2>
           <div className="mt-10 updates-marquee">
             <div className="updates-track">
               {[...LATEST_UPDATES, ...LATEST_UPDATES].map((update, i) => {

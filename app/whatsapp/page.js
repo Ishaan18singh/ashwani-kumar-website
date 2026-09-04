@@ -1,5 +1,5 @@
 const DESTINATION = 'https://whatsapp.com/channel/0029VbDOAeI30LKQtRNd6L20';
-const TITLE = 'Follow my WhatsApp channel — Ashwani Kumar | Updates';
+const TITLE = 'Follow my WhatsApp channel: Ashwani Kumar | Updates';
 const DESCRIPTION = 'Join the "Ashwani Kumar | Updates" channel on WhatsApp for updates from Ashwani Kumar, IAS.';
 
 export const metadata = {

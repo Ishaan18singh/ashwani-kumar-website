@@ -21,7 +21,7 @@ export default function ContactForm() {
     const honeypot = form.company?.value;
 
     if (honeypot || Date.now() - loadedAtRef.current < 1500) {
-      setStatus('Thank you — your message has been sent.');
+      setStatus('Thank you, your message has been sent.');
       form.reset();
       return;
     }
@@ -40,7 +40,7 @@ export default function ContactForm() {
     if (error) {
       setStatus('Something went wrong sending your message. Please try again or email directly.');
     } else {
-      setStatus('Thank you — your message has been sent.');
+      setStatus('Thank you, your message has been sent.');
       form.reset();
     }
     statusRef.current?.focus();
@@ -48,7 +48,7 @@ export default function ContactForm() {
 
   return (
     <form ref={formRef} id="contact-form" className="card" onSubmit={onSubmit}>
-      <p className="eyebrow">{t('contact.sendNote')}</p>
+      <h2 className="section-title">{t('contact.sendNote')}</h2>
       <div className="hidden" aria-hidden="true">
         <label>
           Leave this field empty

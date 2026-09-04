@@ -33,7 +33,7 @@ export default function AwardsPage() {
             ))}
           </div>
           <p className="mt-3 text-center text-sm text-slate-600 dark:text-slate-400">{t('awards.swipe')}</p>
-          <p className="eyebrow mt-20">{t('awards.chronologyEyebrow')}</p>
+          <h2 className="section-title mt-20">{t('awards.chronologyEyebrow')}</h2>
           <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {data.awards.map((x) => (
               <Reveal as="article" key={`grid-${x.year}-${x.title}`} className="card">

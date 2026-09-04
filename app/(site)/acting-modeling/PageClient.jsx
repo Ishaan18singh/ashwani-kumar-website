@@ -64,7 +64,7 @@ export default function ActingModelingPage() {
       </section>
       <section className="border-t border-slate-200 dark:border-slate-800">
         <div className="shell pt-12 sm:pt-24">
-          <p className="eyebrow">{t('actingModeling.galleryEyebrow')}</p>
+          <h2 className="section-title">{t('actingModeling.galleryEyebrow')}</h2>
         </div>
         <GalleryGrid />
       </section>

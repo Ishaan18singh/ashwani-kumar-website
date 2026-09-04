@@ -30,7 +30,6 @@ export default function AboutPage() {
             />
           </Reveal>
           <Reveal>
-            <p className="eyebrow">{t('about.journeyEyebrow')}</p>
             <h2 className="section-title">{t('about.journeyTitle')}</h2>
             <div className="body-copy about-journey-copy mt-7 space-y-5">
               <p>{t('about.journeyP1')}</p>
@@ -46,7 +45,6 @@ export default function AboutPage() {
 
       <section className="bg-ivory py-24 dark:bg-slate-900">
         <div className="shell">
-          <p className="eyebrow">{t('timeline.eyebrow')}</p>
           <h2 className="section-title max-w-3xl">{t('timeline.title')}</h2>
           <Reveal as="p" className="mt-4 max-w-2xl text-sm leading-6 text-slate-600 dark:text-slate-300">
             {t('timeline.subtitle')}

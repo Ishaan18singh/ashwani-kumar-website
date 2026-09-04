@@ -24,7 +24,6 @@ export default function PublicationsPage() {
       </section>
       <section className="bg-ivory py-24 dark:bg-slate-900">
         <div className="shell">
-          <p className="eyebrow">{t('publications.mediaEyebrow')}</p>
           <h2 className="section-title">{t('publications.mediaTitle')}</h2>
           <div className="mt-12 grid gap-6 md:grid-cols-3">
             <article className="card">
