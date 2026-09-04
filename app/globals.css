@@ -1251,6 +1251,9 @@ html.dark .pub-card-source {
     padding: 3rem 1.5rem;
     order: 2;
   }
+  .journey-cta {
+    align-self: center;
+  }
   .journey-image-wrap {
     order: 1;
     min-height: 340px;
