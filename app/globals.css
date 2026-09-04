@@ -1136,21 +1136,6 @@ html.dark .pub-card-source {
     line-height: 1.6;
     color: rgba(247, 245, 241, 0.65);
   }
-  .hero-mobile-cta {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    width: fit-content;
-    margin: 1.75rem auto 0;
-    padding: 0.625rem 1.25rem;
-    border-radius: 9999px;
-    background-color: #c9a15a;
-    color: #1a1408;
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 0.04em;
-  }
   .hero-mobile-scroll {
     display: flex;
     align-items: center;

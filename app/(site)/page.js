@@ -124,9 +124,6 @@ export default function HomePage() {
             <p className="hero-mobile-subtitle">
               From leading flood relief and grassroots reform in Assam’s field districts to driving statewide digital governance through e-Prastuti, PGRS and citizen-first public services.
             </p>
-            <a href="#introduction" className="hero-mobile-cta">
-              <span>Explore the journey</span> <span aria-hidden="true">→</span>
-            </a>
             <div className="hero-mobile-scroll">
               <span>Scroll</span> <span aria-hidden="true">↓</span>
             </div>
