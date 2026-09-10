@@ -1821,7 +1821,7 @@ html.dark .about-journey-copy {
    applied to a 16:9 frame instead of the mockup's portrait one. */
 .awards-group-heading {
   margin: 0 0 0.75em;
-  font-size: clamp(1.875rem, 3.2vw, 2.75rem);
+  font-size: clamp(1.125rem, 1.6vw, 1.5rem);
   line-height: 1.15;
   letter-spacing: -0.02em;
   color: #1d1d1f;
@@ -1956,7 +1956,7 @@ html.dark .about-journey-copy {
   display: block;
   width: 100%;
   text-align: left;
-  font-size: clamp(1.5rem, 2.3vw, 2.125rem);
+  font-size: clamp(1rem, 1.3vw, 1.25rem);
   font-weight: 300;
   line-height: 1.15;
   letter-spacing: -0.02em;
@@ -1982,7 +1982,7 @@ html.dark .about-journey-copy {
 .awards-showcase-body p {
   max-width: 34rem;
   padding-top: 0.75rem;
-  font-size: 1rem;
+  font-size: 0.875rem;
   line-height: 1.6;
   color: rgb(71, 85, 105);
 }
