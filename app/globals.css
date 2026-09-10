@@ -1821,10 +1821,12 @@ html.dark .about-journey-copy {
    applied to a 16:9 frame instead of the mockup's portrait one. */
 .awards-group-heading {
   margin: 0 0 0.75em;
-  font-size: clamp(1.5rem, 2.3vw, 2.125rem);
+  font-size: clamp(1.875rem, 3.2vw, 2.75rem);
   line-height: 1.15;
   letter-spacing: -0.02em;
-  color: #868f9e;
+  color: #1d1d1f;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
 }
 .awards-showcase {
   display: grid;
