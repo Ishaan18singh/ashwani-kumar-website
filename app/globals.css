@@ -499,105 +499,6 @@ html.dark .text-navy-950 {
   color: #f2f2f3;
 }
 
-/* Static "Featured Milestones" badge, top-center of the Awards page. */
-.milestones-badge-row {
-  margin-bottom: 4rem;
-}
-.milestones-badge {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 1.5rem 2.5rem 1.75rem;
-  border-radius: 1.25rem;
-  text-align: center;
-  background: radial-gradient(circle at 50% 30%, rgba(221, 182, 90, 0.16), rgba(221, 182, 90, 0.02) 75%);
-  border: 1px solid rgb(var(--c-gold-400));
-  box-shadow: 0 0 30px 0 rgba(221, 182, 90, 0.18);
-  animation: badge-float 4.5s ease-in-out infinite, badge-glow 3.5s ease-in-out infinite;
-}
-.milestones-badge-dot-track {
-  position: absolute;
-  inset: 0;
-  offset-path: border-box;
-  offset-rotate: 0deg;
-  animation: dot-travel 14s linear infinite;
-  pointer-events: none;
-}
-.milestones-badge-dot-track::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 7px;
-  height: 7px;
-  margin: -3.5px 0 0 -3.5px;
-  border-radius: 9999px;
-  background: rgb(var(--c-gold-400));
-  box-shadow: 0 0 10px 2px rgb(var(--c-gold-400));
-  animation: badge-dot-pulse 3.5s ease-in-out infinite;
-}
-@supports not (offset-path: border-box) {
-  .milestones-badge-dot-track {
-    inset: auto;
-    bottom: -4px;
-    left: 50%;
-    width: 7px;
-    height: 7px;
-    margin-left: -3.5px;
-  }
-  .milestones-badge-dot-track::before {
-    top: 0;
-    left: 0;
-    margin: 0;
-  }
-}
-@keyframes dot-travel {
-  from {
-    offset-distance: 0%;
-  }
-  to {
-    offset-distance: 100%;
-  }
-}
-@keyframes badge-float {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-8px);
-  }
-}
-@keyframes badge-glow {
-  0%, 100% {
-    box-shadow: 0 0 30px 0 rgba(221, 182, 90, 0.18);
-  }
-  50% {
-    box-shadow: 0 0 48px 6px rgba(221, 182, 90, 0.32);
-  }
-}
-@keyframes badge-dot-pulse {
-  0%, 100% {
-    opacity: 0.55;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.4);
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .milestones-badge,
-  .milestones-badge-dot-track,
-  .milestones-badge-dot-track::before {
-    animation: none;
-  }
-}
-.milestones-badge-eyebrow {
-  margin-bottom: 0;
-}
-
 .initiative-row-img {
   aspect-ratio: 4 / 3;
   height: auto;
@@ -1912,4 +1813,195 @@ html.dark .film-detail-share-linkrow {
 }
 html.dark .about-journey-copy {
   color: rgb(226, 232, 240);
+}
+
+/* Awards page: the Honors slideshow (photo left, award list right) plus
+   the group heading shared with the Recognition grid below it. Column
+   proportions follow the mockup's Image size 80 / Caption size 56,
+   applied to a 16:9 frame instead of the mockup's portrait one. */
+.awards-group-heading {
+  margin: 0 0 0.75em;
+  font-size: clamp(1.5rem, 2.3vw, 2.125rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: #868f9e;
+}
+.awards-showcase {
+  display: grid;
+  grid-template-columns: minmax(0, 80fr) minmax(0, 56fr);
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+    'media heading'
+    'media list';
+  column-gap: clamp(2rem, 5vw, 4.25rem);
+  row-gap: 0.75rem;
+}
+.awards-showcase .awards-group-heading {
+  grid-area: heading;
+  margin-bottom: 0;
+}
+.awards-showcase-media {
+  grid-area: media;
+  min-width: 0;
+}
+.awards-showcase-frame {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background-color: #0d2534;
+}
+.awards-showcase-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 600ms ease;
+}
+.awards-showcase-slide.is-active {
+  opacity: 1;
+}
+.awards-showcase-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.awards-showcase-fallback {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #0d2534, #061c2c);
+  color: rgb(var(--c-gold-400));
+  font-size: clamp(3rem, 7vw, 6rem);
+  font-weight: 300;
+  letter-spacing: -0.03em;
+}
+.awards-showcase-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.awards-showcase-dots {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+.awards-showcase-dot {
+  position: relative;
+  width: 0.375rem;
+  height: 0.375rem;
+  border-radius: 9999px;
+  background-color: #c4c9d1;
+  transition: width 300ms ease, background-color 300ms ease;
+}
+.awards-showcase-dot::after {
+  content: '';
+  position: absolute;
+  inset: -0.5rem -0.2rem;
+}
+.awards-showcase-dot.is-active {
+  width: 1.25rem;
+  background-color: #1d1d1f;
+}
+.awards-showcase-arrows {
+  display: flex;
+  gap: 0.5rem;
+}
+.awards-showcase-arrow {
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 0.5rem;
+  background-color: #eef0f3;
+  color: #1d1d1f;
+  transition: background-color 200ms ease;
+}
+.awards-showcase-arrow:hover {
+  background-color: #e2e5ea;
+}
+.awards-showcase-arrow:active {
+  transform: scale(0.96);
+}
+.awards-showcase-list-wrap {
+  grid-area: list;
+  position: relative;
+}
+/* Absolutely positioned so the list never stretches the row: the photo
+   sets the height, and the list scrolls (programmatically) inside it. */
+.awards-showcase-list {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  /* Only align() moves this list; stop scroll anchoring nudging it off a caption boundary. */
+  overflow-anchor: none;
+  padding: 0.75rem 0 3rem;
+  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 0.75rem, #000 calc(100% - 3rem), transparent 100%);
+  mask-image: linear-gradient(180deg, transparent 0, #000 0.75rem, #000 calc(100% - 3rem), transparent 100%);
+}
+/* Scroll room past the last caption, so the list can always stop on a
+   caption boundary instead of being clamped short at the end. */
+.awards-showcase-list::after {
+  content: '';
+  display: block;
+  height: 100%;
+}
+.awards-showcase-item + .awards-showcase-item {
+  margin-top: 1.5rem;
+}
+.awards-showcase-caption {
+  display: block;
+  width: 100%;
+  text-align: left;
+  font-size: clamp(1.5rem, 2.3vw, 2.125rem);
+  font-weight: 300;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: #868f9e;
+  transition: color 300ms ease;
+}
+.awards-showcase-caption:hover {
+  color: #5b6472;
+}
+.awards-showcase-item.is-active .awards-showcase-caption {
+  color: #1d1d1f;
+}
+.awards-showcase-caption:focus-visible {
+  outline-offset: -3px;
+}
+.awards-showcase-year,
+.awards-showcase-title {
+  display: block;
+}
+.awards-showcase-body {
+  overflow: hidden;
+}
+.awards-showcase-body p {
+  max-width: 34rem;
+  padding-top: 0.75rem;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: rgb(71, 85, 105);
+}
+@media (max-width: 1023px) {
+  .awards-showcase {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto;
+    grid-template-areas:
+      'heading'
+      'media'
+      'list';
+    row-gap: 1.5rem;
+  }
+  .awards-showcase-list-wrap {
+    height: 16rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .awards-showcase-slide,
+  .awards-showcase-dot,
+  .awards-showcase-caption {
+    transition: none;
+  }
 }

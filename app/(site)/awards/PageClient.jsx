@@ -3,9 +3,15 @@
 import { useI18n } from '@/lib/i18n/context';
 import PageHero from '@/components/PageHero';
 import Reveal from '@/components/Reveal';
+import AwardsShowcase from '@/components/AwardsShowcase';
 
 export default function AwardsPage() {
   const { t, data } = useI18n();
+
+  // Anything not explicitly tagged 'honor' falls under Recognition, so a
+  // newly added award can never silently disappear from the page.
+  const honors = data.awards.filter((x) => x.category === 'honor');
+  const recognition = data.awards.filter((x) => x.category !== 'honor');
 
   return (
     <>
@@ -14,35 +20,27 @@ export default function AwardsPage() {
         title={t('awards.title')}
         titleClassName="max-w-4xl text-display-m font-normal tracking-tight"
       />
-      <section className="overflow-hidden py-12 sm:py-24">
+      <section className="py-12 sm:py-24">
         <div className="shell">
-          <div className="milestones-badge-row flex justify-center">
-            <div className="milestones-badge">
-              <span className="eyebrow milestones-badge-eyebrow">{t('awards.featuredEyebrow')}</span>
-              <span className="font-display text-2xl text-navy-900 dark:text-white">{t('awards.milestones')}</span>
-              <span className="milestones-badge-dot-track" aria-hidden="true" />
-            </div>
-          </div>
-          <div className="flex snap-x gap-6 overflow-x-auto pb-6" tabIndex={0} aria-label="Featured awards carousel">
-            {data.awards.map((x) => (
-              <article key={`${x.year}-${x.title}`} className="card min-w-[82vw] snap-start sm:min-w-[380px]">
-                <span className="text-sm font-bold text-gold-500">{x.year}</span>
-                <h2 className="mt-3 text-3xl font-semibold text-navy-900 dark:text-white">{x.title}</h2>
-                <p className="mt-3 text-sm leading-6 text-slate-600 dark:text-slate-300">{x.body}</p>
-              </article>
-            ))}
-          </div>
-          <p className="mt-3 text-center text-sm text-slate-600 dark:text-slate-400">{t('awards.swipe')}</p>
-          <h2 className="section-title mt-20">{t('awards.chronologyEyebrow')}</h2>
-          <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {data.awards.map((x) => (
-              <Reveal as="article" key={`grid-${x.year}-${x.title}`} className="card">
-                <span className="text-sm font-bold text-gold-500">{x.year}</span>
-                <h3 className="mt-2 text-2xl font-semibold text-navy-900 dark:text-white">{x.title}</h3>
-                <p className="mt-3 text-sm leading-6 text-slate-600 dark:text-slate-300">{x.body}</p>
-              </Reveal>
-            ))}
-          </div>
+          {honors.length ? (
+            <Reveal>
+              <AwardsShowcase heading={t('awards.honorsTitle')} items={honors} />
+            </Reveal>
+          ) : null}
+          {recognition.length ? (
+            <section className={honors.length ? 'mt-20' : undefined}>
+              <h2 className="awards-group-heading">{t('awards.recognitionTitle')}</h2>
+              <div className="mt-4 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                {recognition.map((x) => (
+                  <Reveal as="article" key={`grid-${x.year}-${x.title}`} className="card">
+                    <span className="text-sm font-bold text-gold-500">{x.year}</span>
+                    <h3 className="mt-2 text-2xl font-semibold text-navy-900 dark:text-white">{x.title}</h3>
+                    <p className="mt-3 text-sm leading-6 text-slate-600 dark:text-slate-300">{x.body}</p>
+                  </Reveal>
+                ))}
+              </div>
+            </section>
+          ) : null}
         </div>
       </section>
     </>
