@@ -1849,6 +1849,11 @@ html.dark .about-journey-copy {
 .awards-showcase-frame {
   position: relative;
   aspect-ratio: 16 / 9;
+  /* Cap the height so a wide/short viewport can't stretch a 16:9 image
+     taller than the screen; letterbox the width to match via the ratio
+     instead of letting the 80fr grid column dictate an unbounded size. */
+  max-height: 52vh;
+  width: min(100%, calc(52vh * 16 / 9));
   overflow: hidden;
   background-color: #0d2534;
 }

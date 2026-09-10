@@ -20,7 +20,7 @@ export default function AwardsPage() {
         title={t('awards.title')}
         titleClassName="max-w-4xl text-display-m font-normal tracking-tight"
       />
-      <section className="py-12 sm:py-24">
+      <section className="pb-12 pt-8 sm:pb-24 sm:pt-10">
         <div className="shell">
           {honors.length ? (
             <Reveal>
