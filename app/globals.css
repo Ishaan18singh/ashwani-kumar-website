@@ -2012,3 +2012,32 @@ html.dark .about-journey-copy {
     transition: none;
   }
 }
+
+/* Contact page: a compact "Send a note" card (the default .card padding and
+   the form's own spacing made it read as oversized next to the office info
+   column) plus a row of the site's social links under the office details. */
+.contact-form-card {
+  max-width: 30rem;
+  padding: 1.25rem;
+}
+.contact-social-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.625rem;
+}
+.contact-social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  color: #1d1d1f;
+  transition: color 200ms ease, border-color 200ms ease, transform 200ms ease;
+}
+.contact-social-link:hover {
+  color: rgb(var(--c-gold-400));
+  border-color: rgb(var(--c-gold-400));
+  transform: translateY(-2px);
+}

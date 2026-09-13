@@ -47,7 +47,7 @@ export default function ContactForm() {
   };
 
   return (
-    <form ref={formRef} id="contact-form" className="card" onSubmit={onSubmit}>
+    <form ref={formRef} id="contact-form" className="card contact-form-card" onSubmit={onSubmit}>
       <h2 className="section-title">{t('contact.sendNote')}</h2>
       <div className="hidden" aria-hidden="true">
         <label>
@@ -55,14 +55,14 @@ export default function ContactForm() {
           <input type="text" name="company" tabIndex={-1} autoComplete="off" />
         </label>
       </div>
-      <div className="grid gap-6 sm:grid-cols-2">
+      <div className="grid gap-4 sm:grid-cols-2">
         <label className="text-sm font-semibold">
           <span>{t('contact.nameLabel')}</span>
           <input
             required
             autoComplete="name"
             name="name"
-            className="mt-2 w-full rounded-xl border border-slate-200 bg-transparent px-4 py-3 font-normal dark:border-slate-700"
+            className="mt-2 w-full rounded-xl border border-slate-200 bg-transparent px-4 py-2.5 font-normal dark:border-slate-700"
             placeholder={t('contact.namePlaceholder')}
           />
         </label>
@@ -73,25 +73,25 @@ export default function ContactForm() {
             type="email"
             autoComplete="email"
             name="email"
-            className="mt-2 w-full rounded-xl border border-slate-200 bg-transparent px-4 py-3 font-normal dark:border-slate-700"
+            className="mt-2 w-full rounded-xl border border-slate-200 bg-transparent px-4 py-2.5 font-normal dark:border-slate-700"
             placeholder={t('contact.emailPlaceholder')}
           />
         </label>
       </div>
-      <label className="mt-6 block text-sm font-semibold">
+      <label className="mt-4 block text-sm font-semibold">
         <span>{t('contact.messageLabel')}</span>
         <textarea
           required
           name="message"
-          rows={7}
-          className="mt-2 w-full rounded-xl border border-slate-200 bg-transparent px-4 py-3 font-normal dark:border-slate-700"
+          rows={4}
+          className="mt-2 w-full rounded-xl border border-slate-200 bg-transparent px-4 py-2.5 font-normal dark:border-slate-700"
           placeholder={t('contact.messagePlaceholder')}
         />
       </label>
-      <button className="button-primary mt-6" type="submit" disabled={sending}>
+      <button className="button-primary mt-5" type="submit" disabled={sending}>
         {sending ? 'Sending…' : t('contact.sendBtn')}
       </button>
-      <p ref={statusRef} className="mt-4 text-sm text-slate-600 dark:text-slate-400" role="status" tabIndex={-1}>
+      <p ref={statusRef} className="mt-3 text-sm text-slate-600 dark:text-slate-400" role="status" tabIndex={-1}>
         {status}
       </p>
     </form>

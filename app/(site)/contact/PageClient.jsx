@@ -2,9 +2,9 @@
 
 import { useI18n } from '@/lib/i18n/context';
 import PageHero from '@/components/PageHero';
-import Html from '@/components/Html';
 import ContactForm from '@/components/ContactForm';
 import Reveal from '@/components/Reveal';
+import SocialIcon from '@/components/SocialIcon';
 import { SITE_DATA } from '@/lib/data';
 
 export default function ContactPage() {
@@ -17,16 +17,30 @@ export default function ContactPage() {
         title={t('contact.title')}
         titleClassName="max-w-4xl text-display-m font-normal tracking-tight"
       />
-      <section className="py-12 sm:py-24">
-        <div className="shell grid gap-14 lg:grid-cols-[.8fr_1.2fr]">
+      <section className="pb-12 pt-6 sm:pb-24 sm:pt-10">
+        <div className="shell flex flex-col gap-10">
           <Reveal blur>
-            <h2 className="section-title">{t('contact.officeTitle')}</h2>
-            <Html
-              as="address"
-              className="body-copy mt-7 not-italic text-slate-600 dark:text-slate-300"
-              html={t('contact.addressHtml')}
-            />
-            <div className="mt-8 space-y-3">
+            <ContactForm />
+          </Reveal>
+          <Reveal blur transition={{ duration: 0.7, ease: 'easeOut', delay: 0.1 }}>
+            <div className="contact-social-list">
+              {SITE_DATA.profile.social
+                .filter((s) => !s.url.startsWith('mailto:'))
+                .map((s) => (
+                  <a
+                    key={s.label}
+                    href={s.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${s.label} (opens in new tab)`}
+                    title={s.label}
+                    className="contact-social-link"
+                  >
+                    <SocialIcon label={s.label} />
+                  </a>
+                ))}
+            </div>
+            <div className="mt-6 space-y-3">
               <a href={`mailto:${SITE_DATA.profile.email}`} className="block font-semibold text-gold-500">
                 {SITE_DATA.profile.email}
               </a>
@@ -34,10 +48,6 @@ export default function ContactPage() {
                 {SITE_DATA.profile.phone}
               </a>
             </div>
-            <p className="mt-10 text-sm leading-6 text-slate-600 dark:text-slate-400">{t('contact.formalNote')}</p>
-          </Reveal>
-          <Reveal blur transition={{ duration: 0.7, ease: 'easeOut', delay: 0.1 }}>
-            <ContactForm />
           </Reveal>
         </div>
       </section>
