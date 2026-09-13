@@ -1793,6 +1793,138 @@ html.dark .film-detail-share-linkrow {
   }
 }
 
+/* Page hero with no title/subtitle (About page, after moving its
+   heading below the portrait): the tall bottom padding sized for a
+   title block otherwise leaves a big empty gap under the eyebrow. */
+.page-hero.page-hero--compact {
+  padding-bottom: 0.5rem;
+}
+
+/* IAS Aspirants page hero: a photo banner (school screening event) with
+   the eyebrow/title/subtitle overlaid, in the same editorial style as
+   the homepage's full-bleed hero. */
+.aspirants-hero {
+  display: flex;
+  align-items: flex-end;
+  min-height: 60vh;
+  padding-top: 9rem;
+  padding-bottom: 3rem;
+}
+.aspirants-hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+}
+.aspirants-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.5) 55%, rgba(0, 0, 0, 0.82) 100%);
+}
+.aspirants-hero-content h1 {
+  color: #f7f4ec;
+}
+.aspirants-hero-subtitle {
+  color: rgba(247, 244, 236, 0.85);
+}
+
+/* IAS Aspirants "Four moves" section: an eyebrow with a short leading
+   rule, a large bold headline, then a 4-column grid with divider
+   lines between the numbered items. */
+.aspirants-moves-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: 0.075em;
+  text-transform: uppercase;
+  color: rgb(100, 116, 139);
+}
+html.dark .aspirants-moves-eyebrow {
+  color: rgb(148, 163, 184);
+}
+.aspirants-moves-eyebrow span {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1px;
+  background: currentColor;
+}
+.aspirants-moves-heading {
+  margin-top: 1rem;
+  font-weight: 800;
+  font-size: clamp(2.25rem, 5vw, 3.75rem);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+}
+.aspirants-moves-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin-top: 3rem;
+  border-top: 1px solid rgba(11, 37, 69, 0.1);
+}
+html.dark .aspirants-moves-grid {
+  border-top-color: rgba(255, 255, 255, 0.12);
+}
+@media (min-width: 768px) {
+  .aspirants-moves-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+.aspirants-moves-item {
+  padding: 2rem 0;
+  border-bottom: 1px solid rgba(11, 37, 69, 0.1);
+}
+html.dark .aspirants-moves-item {
+  border-bottom-color: rgba(255, 255, 255, 0.12);
+}
+@media (min-width: 768px) {
+  .aspirants-moves-item {
+    padding: 2.5rem 1.75rem;
+    border-bottom: none;
+    border-right: 1px solid rgba(11, 37, 69, 0.1);
+  }
+  html.dark .aspirants-moves-item {
+    border-right-color: rgba(255, 255, 255, 0.12);
+  }
+  .aspirants-moves-item:first-child {
+    padding-left: 0;
+  }
+  .aspirants-moves-item:last-child {
+    border-right: none;
+  }
+}
+.aspirants-moves-number {
+  font-family: var(--font-playfair-display), Georgia, serif;
+  font-style: italic;
+  font-size: 1.25rem;
+  color: rgb(var(--c-gold-500));
+}
+.aspirants-moves-item-title {
+  margin-top: 1.5rem;
+  font-weight: 700;
+  font-size: 1.375rem;
+}
+.aspirants-moves-item-text {
+  margin-top: 0.75rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: rgb(100, 116, 139);
+}
+html.dark .aspirants-moves-item-text {
+  color: rgb(203, 213, 225);
+}
+
+/* IAS Aspirants "The distinction" banner: a single pre-designed
+   graphic (text baked in), shown full-bleed edge to edge. */
+.aspirants-banner-img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 /* About page portrait: same framing as the portfolio site's About page
    (3:4 crop, thin neutral border, no rounded corners). */
 .about-portrait-frame {

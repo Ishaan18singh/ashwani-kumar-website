@@ -10,24 +10,25 @@ export default function AboutPage() {
 
   return (
     <>
-      <PageHero
-        eyebrow={t('about.eyebrow')}
-        title={t('about.title')}
-        subtitle={t('about.subtitle')}
-        titleClassName="max-w-4xl text-display-m font-normal tracking-tight"
-      />
+      <PageHero eyebrow={t('about.eyebrow')} />
 
       <section className="py-12 sm:py-24">
         <div className="shell grid gap-14 lg:grid-cols-[.8fr_1.2fr]">
-          <Reveal className="about-portrait-frame">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/images/ashwani-kumar-portrait-bw.webp"
-              alt="Ashwani Kumar, IAS, standing in a formal interior"
-              width={1000}
-              height={1500}
-              loading="lazy"
-            />
+          <Reveal>
+            <div className="about-portrait-frame">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/ashwani-kumar-portrait-bw.webp"
+                alt="Ashwani Kumar, IAS, standing in a formal interior"
+                width={1000}
+                height={1500}
+                loading="lazy"
+              />
+            </div>
+            <h1 className="mt-6 text-2xl font-semibold tracking-tight text-navy-900 dark:text-white">
+              {t('about.title')}
+            </h1>
+            <p className="mt-3 text-slate-600 dark:text-slate-300">{t('about.subtitle')}</p>
           </Reveal>
           <Reveal>
             <h2 className="section-title">{t('about.journeyTitle')}</h2>

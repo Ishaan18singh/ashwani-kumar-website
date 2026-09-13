@@ -8,7 +8,7 @@ import { NAV_PAGES, HEADER_PICKS } from '@/lib/nav';
 
 // Pages whose hero is dark behind the transparent header: the nav needs
 // light text there, or it renders dark-on-dark until the user scrolls.
-const DARK_HERO_ROUTES = ['/', '/contact'];
+const DARK_HERO_ROUTES = ['/', '/contact', '/ias-aspirants'];
 
 export default function Header() {
   const pathname = usePathname();
