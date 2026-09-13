@@ -2305,8 +2305,8 @@ html.dark .awards-hero-title {
   left: 0;
   z-index: 2;
   padding: 0.5rem 1.25rem;
-  background: rgb(var(--c-gold-500));
-  color: #1d1d1f;
+  background-color: #14110d;
+  color: #fff;
   font-weight: 700;
   font-size: 1rem;
   border-bottom-right-radius: 0.75rem;
@@ -2364,7 +2364,12 @@ html.dark .awards-hero-title {
   transition: background-color 200ms ease, transform 200ms ease;
 }
 .awards-showcase-arrow.is-accent {
-  background-color: rgb(var(--c-gold-500));
+  background-color: #14110d;
+  color: #fff;
+}
+.awards-showcase-arrow.is-accent:hover {
+  background-color: rgb(var(--c-gold-400));
+  color: #1d1d1f;
 }
 .awards-showcase-arrow:hover {
   transform: translateY(-1px);
@@ -2417,20 +2422,23 @@ html.dark .awards-featured-title {
   color: rgb(71, 85, 105);
 }
 .awards-featured-btn {
+  position: relative;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
   margin-top: 1.5rem;
   padding: 0.75rem 1.5rem;
   border-radius: 9999px;
-  background: rgb(var(--c-gold-500));
-  color: #1d1d1f;
+  background-color: #14110d;
+  border: none;
+  color: #fff;
   font-weight: 600;
   font-size: 0.875rem;
   transition: background-color 200ms ease, transform 200ms ease;
 }
 .awards-featured-btn:hover {
-  background: rgb(var(--c-gold-400));
+  background-color: rgb(var(--c-gold-400));
+  color: #1d1d1f;
   transform: translateY(-1px);
 }
 .awards-featured-heading {
@@ -2579,6 +2587,9 @@ html.dark .awards-featured-title {
   }
 }
 @media (max-width: 639px) {
+  .awards-showcase-year-badge {
+    display: none;
+  }
   .awards-tray {
     grid-template-columns: 1fr;
     gap: 1rem;
@@ -2592,7 +2603,7 @@ html.dark .awards-featured-title {
     padding: 0.75rem;
     border-radius: 1.25rem;
     border-color: rgba(180, 156, 116, 0.3);
-    background: #fdfbf5;
+    background: #fff;
   }
   .awards-tray-card.is-active {
     outline: 1.5px solid rgb(var(--c-gold-500));
