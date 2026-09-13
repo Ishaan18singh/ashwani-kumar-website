@@ -4,7 +4,7 @@ import { useI18n } from '@/lib/i18n/context';
 import ContactForm from '@/components/ContactForm';
 import Reveal from '@/components/Reveal';
 import SocialIcon from '@/components/SocialIcon';
-import { MailIcon, PinIcon, InstitutionIcon, MicIcon, PressIcon, IdeaIcon } from '@/components/ContactIcons';
+import { MailIcon, InstitutionIcon, MicIcon, PressIcon, IdeaIcon } from '@/components/ContactIcons';
 import { SITE_DATA } from '@/lib/data';
 
 const ENQUIRIES = [
@@ -40,10 +40,6 @@ export default function ContactPage() {
                 <span className="contact-hero-quote-rule" />
                 <p className="contact-hero-quote-tags">{t('contact.heroTags')}</p>
               </div>
-            </div>
-            <div className="contact-hero-location">
-              <PinIcon />
-              <span>{t('contact.heroLocation')}</span>
             </div>
           </Reveal>
         </div>
