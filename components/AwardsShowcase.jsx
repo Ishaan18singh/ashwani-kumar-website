@@ -42,10 +42,6 @@ export default function AwardsShowcase({ items, titleHtml }) {
     if (keyboard) setFocused(true);
   };
 
-  const scrollToGrid = () => {
-    gridRef.current?.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
-  };
-
   return (
     <div
       ref={rootRef}
@@ -111,9 +107,7 @@ export default function AwardsShowcase({ items, titleHtml }) {
         <p className="awards-featured-year">{item.year}</p>
         <h3 className="awards-featured-title">{item.title}</h3>
         <p className="awards-featured-body">{item.body}</p>
-        <button type="button" className="awards-featured-btn" onClick={scrollToGrid}>
-          {t('awards.readMore')} <span aria-hidden="true">→</span>
-        </button>
+        {item.impact ? <p className="awards-featured-body awards-featured-impact">{item.impact}</p> : null}
         <hr className="awards-featured-divider" />
         {titleHtml ? <Html as="h1" className="awards-hero-title awards-featured-heading" html={titleHtml} /> : null}
       </div>
