@@ -1,7 +1,15 @@
 'use client';
 
+import Link from 'next/link';
 import { useI18n } from '@/lib/i18n/context';
 import Reveal from '@/components/Reveal';
+import { EyeIcon, PeopleIcon, TrendingUpIcon, GraduationCapIcon } from '@/components/IasAspirantsIcons';
+
+const FEATURES = [
+  { Icon: EyeIcon, key: 'iasAspirants.ctaFeature1' },
+  { Icon: PeopleIcon, key: 'iasAspirants.ctaFeature2' },
+  { Icon: TrendingUpIcon, key: 'iasAspirants.ctaFeature3' }
+];
 
 const MOVES = [
   { number: '01', titleKey: 'iasAspirants.move1Title', textKey: 'iasAspirants.move1Text' },
@@ -31,7 +39,7 @@ export default function IasAspirantsPage() {
           <p className="mt-6 max-w-2xl text-lg leading-7 aspirants-hero-subtitle">{t('iasAspirants.subtitle')}</p>
         </Reveal>
       </section>
-      <section className="bg-ivory py-16 sm:py-24">
+      <section id="four-moves" className="bg-ivory py-16 sm:py-24">
         <div className="shell">
           <Reveal className="aspirants-moves-eyebrow">
             <span aria-hidden="true" />
@@ -64,23 +72,70 @@ export default function IasAspirantsPage() {
           loading="lazy"
         />
       </Reveal>
-      <section className="py-12 sm:py-24">
-        <div className="shell grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          <Reveal as="article" className="card" transition={{ duration: 0.7, ease: 'easeOut', delay: 0 }}>
-            <h2 className="text-2xl font-semibold text-navy-900 dark:text-white">{t('iasAspirants.prepTitle')}</h2>
-            <p className="mt-3 text-sm leading-6 text-slate-600 dark:text-slate-300">{t('iasAspirants.prepText')}</p>
+
+      <section className="aspirants-cta bg-ivory relative overflow-hidden">
+        <span className="aspirants-cta-blob aspirants-cta-blob-1" aria-hidden="true" />
+        <span className="aspirants-cta-blob aspirants-cta-blob-2" aria-hidden="true" />
+        <div className="shell aspirants-cta-grid">
+          <Reveal>
+            <div className="aspirants-moves-eyebrow">
+              <span aria-hidden="true" />
+              {t('iasAspirants.ctaEyebrow')}
+            </div>
+            <h2 className="aspirants-cta-heading">
+              <span>{t('iasAspirants.ctaHeadingLine1')}</span>
+              <span className="aspirants-cta-heading-accent">{t('iasAspirants.ctaHeadingLine2')}</span>
+            </h2>
+            <p className="aspirants-cta-text">{t('iasAspirants.subtitle')}</p>
+            <div className="aspirants-cta-features">
+              {FEATURES.map(({ Icon, key }, i) => (
+                <div key={key} className="aspirants-cta-feature">
+                  {i > 0 && <span className="aspirants-cta-feature-divider" aria-hidden="true" />}
+                  <span className="aspirants-cta-feature-icon">
+                    <Icon />
+                  </span>
+                  <p className="aspirants-cta-feature-label">{t(key)}</p>
+                </div>
+              ))}
+            </div>
+            <div className="aspirants-cta-actions">
+              <Link href="/contact" className="aspirants-cta-btn" prefetch={false}>
+                {t('iasAspirants.ctaPrimaryBtn')} <span aria-hidden="true">→</span>
+              </Link>
+              <a href="#four-moves" className="aspirants-cta-link">
+                {t('iasAspirants.ctaSecondaryBtn')}
+              </a>
+            </div>
           </Reveal>
-          <Reveal as="article" className="card" transition={{ duration: 0.7, ease: 'easeOut', delay: 0.08 }}>
-            <h2 className="text-2xl font-semibold text-navy-900 dark:text-white">{t('iasAspirants.interviewTitle')}</h2>
-            <p className="mt-3 text-sm leading-6 text-slate-600 dark:text-slate-300">{t('iasAspirants.interviewText')}</p>
+
+          <Reveal className="aspirants-cta-visual" transition={{ duration: 0.7, ease: 'easeOut', delay: 0.1 }}>
+            <p className="aspirants-cta-tag aspirants-cta-tag-top">
+              {t('iasAspirants.ctaTagTop')} <span aria-hidden="true" />
+            </p>
+            <div className="aspirants-cta-photo-wrap">
+              <span className="aspirants-cta-photo-blob" aria-hidden="true" />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/ias-aspirants-internship-photo.webp"
+                alt="Ashwani Kumar with a group of interns in a conference room"
+                className="aspirants-cta-photo"
+                loading="lazy"
+              />
+              <div className="aspirants-cta-badge">
+                <span className="aspirants-cta-badge-icon">
+                  <GraduationCapIcon />
+                </span>
+                <p>
+                  {t('iasAspirants.ctaBadgeLine1')}
+                  <br />
+                  {t('iasAspirants.ctaBadgeLine2')}
+                </p>
+              </div>
+            </div>
+            <p className="aspirants-cta-tag aspirants-cta-tag-bottom">
+              <span aria-hidden="true" /> {t('iasAspirants.ctaTagBottom')}
+            </p>
           </Reveal>
-          <Reveal as="article" className="card" transition={{ duration: 0.7, ease: 'easeOut', delay: 0.16 }}>
-            <h2 className="text-2xl font-semibold text-navy-900 dark:text-white">{t('iasAspirants.fieldTitle')}</h2>
-            <p className="mt-3 text-sm leading-6 text-slate-600 dark:text-slate-300">{t('iasAspirants.fieldText')}</p>
-          </Reveal>
-        </div>
-        <div className="shell mt-16">
-          <p className="text-sm text-slate-600 dark:text-slate-400">{t('iasAspirants.placeholderNote')}</p>
         </div>
       </section>
     </>

@@ -1809,6 +1809,7 @@ html.dark .film-detail-share-linkrow {
   min-height: 60vh;
   padding-top: 9rem;
   padding-bottom: 3rem;
+  background-color: #14110d;
 }
 .aspirants-hero-bg {
   position: absolute;
@@ -1828,6 +1829,30 @@ html.dark .film-detail-share-linkrow {
 }
 .aspirants-hero-subtitle {
   color: rgba(247, 244, 236, 0.85);
+}
+@media (max-width: 639px) {
+  .aspirants-hero {
+    min-height: 0;
+    padding-top: 6.5rem;
+    padding-bottom: 1.5rem;
+  }
+  .aspirants-hero-bg {
+    object-fit: contain;
+    object-position: center top;
+  }
+  .aspirants-hero-content .eyebrow {
+    font-size: 0.65rem;
+    margin-bottom: 0.4rem;
+  }
+  .aspirants-hero-content h1 {
+    font-size: 1.375rem;
+    line-height: 1.25;
+  }
+  .aspirants-hero-subtitle {
+    margin-top: 0.6rem;
+    font-size: 0.75rem;
+    line-height: 1.5;
+  }
 }
 
 /* IAS Aspirants "Four moves" section: an eyebrow with a short leading
@@ -1923,6 +1948,242 @@ html.dark .aspirants-moves-item-text {
   display: block;
   width: 100%;
   height: auto;
+}
+
+/* IAS Aspirants closing CTA: a two-column "philosophy to practice"
+   section with soft decorative blobs, an icon-feature row, and a
+   layered photo card with overlapping tag badges. */
+.aspirants-cta {
+  padding: 4rem 0;
+}
+@media (min-width: 640px) {
+  .aspirants-cta {
+    padding: 6rem 0;
+  }
+}
+.aspirants-cta-blob {
+  position: absolute;
+  border-radius: 9999px;
+  background: rgba(180, 156, 116, 0.16);
+  pointer-events: none;
+}
+.aspirants-cta-blob-1 {
+  top: -6rem;
+  left: -6rem;
+  width: 18rem;
+  height: 18rem;
+}
+.aspirants-cta-blob-2 {
+  bottom: -8rem;
+  right: -8rem;
+  width: 22rem;
+  height: 22rem;
+  background: rgba(180, 156, 116, 0.12);
+}
+.aspirants-cta-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 3rem;
+  grid-template-columns: 1fr;
+  align-items: center;
+}
+@media (min-width: 1024px) {
+  .aspirants-cta-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+  }
+}
+.aspirants-cta-heading {
+  margin-top: 1rem;
+  font-weight: 800;
+  font-size: clamp(2.25rem, 4.5vw, 3.5rem);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+}
+.aspirants-cta-heading span {
+  display: block;
+}
+.aspirants-cta-heading-accent {
+  color: rgb(var(--c-gold-500));
+}
+.aspirants-cta-text {
+  margin-top: 1.5rem;
+  max-width: 34rem;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgb(100, 116, 139);
+}
+.aspirants-cta-features {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  margin-top: 2.5rem;
+}
+.aspirants-cta-feature {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding-left: 1.25rem;
+}
+.aspirants-cta-feature:first-child {
+  padding-left: 0;
+}
+.aspirants-cta-feature-divider {
+  position: absolute;
+  left: 0;
+  top: 0.25rem;
+  bottom: 0.25rem;
+  width: 1px;
+  background: rgba(11, 37, 69, 0.12);
+}
+.aspirants-cta-feature-icon {
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 9999px;
+  background: rgba(180, 156, 116, 0.22);
+  color: rgb(133, 108, 61);
+}
+.aspirants-cta-feature-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgb(11, 37, 69);
+  max-width: 6.5rem;
+}
+.aspirants-cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+.aspirants-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 1.75rem;
+  border-radius: 9999px;
+  background: #14110d;
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: transform 200ms ease, background-color 200ms ease;
+}
+.aspirants-cta-btn:hover {
+  background: rgb(var(--c-gold-500));
+  transform: translateY(-1px);
+}
+.aspirants-cta-link {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: rgb(11, 37, 69);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.aspirants-cta-visual {
+  position: relative;
+}
+@media (max-width: 1023px) {
+  .aspirants-cta-visual {
+    order: -1;
+    margin-bottom: 1rem;
+  }
+}
+.aspirants-cta-tag {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgb(100, 87, 60);
+}
+.aspirants-cta-tag span {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1px;
+  background: currentColor;
+}
+.aspirants-cta-tag-top {
+  justify-content: flex-end;
+  margin-bottom: 1.5rem;
+}
+.aspirants-cta-tag-bottom {
+  justify-content: flex-start;
+  margin-top: 1.5rem;
+}
+.aspirants-cta-photo-wrap {
+  position: relative;
+}
+.aspirants-cta-photo-blob {
+  position: absolute;
+  inset: -0.75rem -0.75rem auto 1.5rem;
+  height: 55%;
+  border-radius: 1.5rem;
+  background: rgba(180, 156, 116, 0.35);
+}
+@media (min-width: 640px) {
+  .aspirants-cta-photo-blob {
+    inset: -1.5rem -1.5rem auto 3rem;
+    height: 60%;
+    border-radius: 2.5rem;
+  }
+}
+.aspirants-cta-photo {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 1.5rem;
+  box-shadow: 0 30px 60px -30px rgba(20, 17, 13, 0.4);
+}
+.aspirants-cta-badge {
+  position: absolute;
+  left: 1.25rem;
+  bottom: -1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  max-width: calc(100% - 2.5rem);
+  padding: 1rem 1.25rem;
+  border-radius: 1rem;
+  background: #241d15;
+  color: #f5f1e6;
+  box-shadow: 0 20px 40px -20px rgba(20, 17, 13, 0.55);
+}
+.aspirants-cta-badge-icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 9999px;
+  background: rgba(245, 241, 230, 0.14);
+  color: rgb(var(--c-gold-400));
+}
+.aspirants-cta-badge p {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  line-height: 1.5;
+}
+@media (max-width: 639px) {
+  .aspirants-cta-badge {
+    position: static;
+    margin-top: 1rem;
+  }
+  .aspirants-cta-tag-top {
+    justify-content: flex-start;
+  }
 }
 
 /* About page portrait: same framing as the portfolio site's About page
