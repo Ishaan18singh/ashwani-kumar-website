@@ -4,6 +4,14 @@ import { useRef, useState } from 'react';
 import { useI18n } from '@/lib/i18n/context';
 import { getSupabaseClient } from '@/lib/supabase';
 
+const ENQUIRY_OPTIONS = [
+  'enquiryOfficialTitle',
+  'enquirySpeakingTitle',
+  'enquiryMediaTitle',
+  'enquiryIdeasTitle',
+  'enquiryGeneralTitle',
+];
+
 export default function ContactForm() {
   const { t } = useI18n();
   const [status, setStatus] = useState('');
@@ -17,6 +25,8 @@ export default function ContactForm() {
     const form = formRef.current;
     const name = form.name.value.trim();
     const email = form.email.value.trim();
+    const organisation = form.organisation.value.trim();
+    const nature = form.nature.value;
     const message = form.message.value.trim();
     const honeypot = form.company?.value;
 
@@ -33,8 +43,15 @@ export default function ContactForm() {
       return;
     }
 
+    // contact_messages has no organisation/nature columns yet, so fold them
+    // into the message body rather than failing the insert on unknown fields.
+    const context = [organisation && `Organisation: ${organisation}`, nature && `Nature of enquiry: ${nature}`]
+      .filter(Boolean)
+      .join('\n');
+    const fullMessage = context ? `${context}\n\n${message}` : message;
+
     setSending(true);
-    const { error } = await sb.from('contact_messages').insert({ name, email, message });
+    const { error } = await sb.from('contact_messages').insert({ name, email, message: fullMessage });
     setSending(false);
 
     if (error) {
@@ -47,51 +64,66 @@ export default function ContactForm() {
   };
 
   return (
-    <form ref={formRef} id="contact-form" className="card contact-form-card" onSubmit={onSubmit}>
-      <h2 className="section-title">{t('contact.sendNote')}</h2>
+    <form ref={formRef} id="contact-form" onSubmit={onSubmit}>
       <div className="hidden" aria-hidden="true">
         <label>
           Leave this field empty
           <input type="text" name="company" tabIndex={-1} autoComplete="off" />
         </label>
       </div>
-      <div className="grid gap-4 sm:grid-cols-2">
-        <label className="text-sm font-semibold">
-          <span>{t('contact.nameLabel')}</span>
-          <input
-            required
-            autoComplete="name"
-            name="name"
-            className="mt-2 w-full rounded-xl border border-slate-200 bg-transparent px-4 py-2.5 font-normal dark:border-slate-700"
-            placeholder={t('contact.namePlaceholder')}
-          />
-        </label>
-        <label className="text-sm font-semibold">
-          <span>{t('contact.emailLabel')}</span>
-          <input
-            required
-            type="email"
-            autoComplete="email"
-            name="email"
-            className="mt-2 w-full rounded-xl border border-slate-200 bg-transparent px-4 py-2.5 font-normal dark:border-slate-700"
-            placeholder={t('contact.emailPlaceholder')}
-          />
-        </label>
-      </div>
-      <label className="mt-4 block text-sm font-semibold">
-        <span>{t('contact.messageLabel')}</span>
+
+      <label className="contact-field">
+        <span className="contact-field-label">{t('contact.nameLabel')}</span>
+        <input required autoComplete="name" name="name" className="contact-field-input" placeholder={t('contact.namePlaceholder')} />
+      </label>
+
+      <label className="contact-field">
+        <span className="contact-field-label">{t('contact.emailLabel')}</span>
+        <input
+          required
+          type="email"
+          autoComplete="email"
+          name="email"
+          className="contact-field-input"
+          placeholder={t('contact.emailPlaceholder')}
+        />
+      </label>
+
+      <label className="contact-field">
+        <span className="contact-field-label">{t('contact.orgLabel')}</span>
+        <input autoComplete="organization" name="organisation" className="contact-field-input" placeholder={t('contact.orgPlaceholder')} />
+      </label>
+
+      <label className="contact-field">
+        <span className="contact-field-label">{t('contact.natureLabel')}</span>
+        <select name="nature" defaultValue="" className="contact-field-input contact-field-select">
+          <option value="" disabled>
+            {t('contact.naturePlaceholder')}
+          </option>
+          {ENQUIRY_OPTIONS.map((key) => (
+            <option key={key} value={t(`contact.${key}`)}>
+              {t(`contact.${key}`)}
+            </option>
+          ))}
+        </select>
+      </label>
+
+      <label className="contact-field">
+        <span className="contact-field-label">{t('contact.messageLabel')}</span>
         <textarea
           required
           name="message"
           rows={4}
-          className="mt-2 w-full rounded-xl border border-slate-200 bg-transparent px-4 py-2.5 font-normal dark:border-slate-700"
+          className="contact-field-input contact-field-textarea"
           placeholder={t('contact.messagePlaceholder')}
         />
       </label>
-      <button className="button-primary mt-5" type="submit" disabled={sending}>
-        {sending ? 'Sending…' : t('contact.sendBtn')}
+
+      <button className="contact-send-btn" type="submit" disabled={sending}>
+        {sending ? 'Sending…' : t('contact.sendBtn')} <span aria-hidden="true">→</span>
       </button>
-      <p ref={statusRef} className="mt-3 text-sm text-slate-600 dark:text-slate-400" role="status" tabIndex={-1}>
+      <p className="contact-respond-note">{t('contact.respondNote')}</p>
+      <p ref={statusRef} className="mt-2 text-sm text-slate-600 dark:text-slate-400" role="status" tabIndex={-1}>
         {status}
       </p>
     </form>

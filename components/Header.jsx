@@ -6,6 +6,10 @@ import { useEffect, useRef, useState } from 'react';
 import { useI18n } from '@/lib/i18n/context';
 import { NAV_PAGES, HEADER_PICKS } from '@/lib/nav';
 
+// Pages whose hero is dark behind the transparent header: the nav needs
+// light text there, or it renders dark-on-dark until the user scrolls.
+const DARK_HERO_ROUTES = ['/', '/contact'];
+
 export default function Header() {
   const pathname = usePathname();
   const { t, lang, setLang, langs } = useI18n();
@@ -108,7 +112,7 @@ export default function Header() {
         id="site-header-bar"
         className={`site-header fixed inset-x-0 top-0 z-40${scrolled ? ' is-scrolled' : ''}${
           hidden ? ' header-hidden' : ''
-        }${pathname === '/' ? ' on-dark-hero' : ''}`}
+        }${DARK_HERO_ROUTES.includes(pathname) ? ' on-dark-hero' : ''}`}
       >
         <div className="header-inner shell">
           <button
