@@ -12,7 +12,7 @@ export default function AboutPage() {
     <>
       <PageHero eyebrow={t('about.eyebrow')} />
 
-      <section className="py-12 sm:py-24">
+      <section className="about-journey-section">
         <div className="shell grid gap-14 lg:grid-cols-[.8fr_1.2fr]">
           <Reveal>
             <div className="about-portrait-frame">

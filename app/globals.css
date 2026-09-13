@@ -1797,7 +1797,21 @@ html.dark .film-detail-share-linkrow {
    heading below the portrait): the tall bottom padding sized for a
    title block otherwise leaves a big empty gap under the eyebrow. */
 .page-hero.page-hero--compact {
-  padding-bottom: 0.5rem;
+  padding-bottom: 0.25rem;
+}
+
+/* About page journey section: same bottom padding as the site's usual
+   py-12/py-24 section rhythm, but a much smaller top padding so it
+   sits close to the compact hero above it instead of leaving a gap. */
+.about-journey-section {
+  padding-top: 1rem;
+  padding-bottom: 3rem;
+}
+@media (min-width: 640px) {
+  .about-journey-section {
+    padding-top: 1.5rem;
+    padding-bottom: 6rem;
+  }
 }
 
 /* IAS Aspirants page hero: a photo banner (school screening event) with
