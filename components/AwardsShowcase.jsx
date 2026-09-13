@@ -1,21 +1,19 @@
 'use client';
 
 import { useCallback, useEffect, useId, useRef, useState } from 'react';
-import { AnimatePresence, motion, useInView, useReducedMotion } from 'framer-motion';
+import { useI18n } from '@/lib/i18n/context';
+import { useInView, useReducedMotion } from 'framer-motion';
+import Html from '@/components/Html';
 
-// Mockup settings: Auto play on, every 3 s.
-const AUTOPLAY_MS = 3000;
-const DESCRIPTION_MS = 350;
-// Let the descriptions finish opening/closing before the list glides, so the
-// two motions read as one sequence instead of competing.
-const ALIGN_DELAY_MS = DESCRIPTION_MS + 100;
+// Mockup settings: Auto play on, every 5 s.
+const AUTOPLAY_MS = 5000;
 
-export default function AwardsShowcase({ heading, items }) {
+export default function AwardsShowcase({ items, titleHtml }) {
+  const { t } = useI18n();
   const count = items.length;
   const headingId = useId();
   const rootRef = useRef(null);
-  const listRef = useRef(null);
-  const itemRefs = useRef([]);
+  const gridRef = useRef(null);
   const [active, setActive] = useState(0);
   const [hovered, setHovered] = useState(false);
   const [focused, setFocused] = useState(false);
@@ -23,6 +21,7 @@ export default function AwardsShowcase({ heading, items }) {
   const reduceMotion = useReducedMotion();
 
   const current = Math.min(active, count - 1);
+  const item = items[current];
   const go = useCallback((i) => setActive(((i % count) + count) % count), [count]);
 
   useEffect(() => {
@@ -31,51 +30,7 @@ export default function AwardsShowcase({ heading, items }) {
     return () => clearTimeout(id);
   }, [current, count, go, hovered, focused, inView, reduceMotion]);
 
-  const align = useCallback(
-    (behavior) => {
-      const list = listRef.current;
-      const els = itemRefs.current.slice(0, count);
-      if (!list || !els.length || els.some((el) => !el)) return;
-      const style = getComputedStyle(list);
-      const pad = parseFloat(style.paddingTop);
-      // The bottom padding doubles as the fade-out zone; keep the active caption above it.
-      const view = list.clientHeight - parseFloat(style.paddingBottom);
-      const gap = els.length > 1 ? parseFloat(getComputedStyle(els[1]).marginTop) : 0;
-      // Measure the layout the list is heading towards (only the active
-      // description open), not the one on screen, so a description that is
-      // still mid-animation can't skew where the list stops.
-      const heights = els.map((el, i) => {
-        const body = i === current ? el.querySelector('.awards-showcase-body p') : null;
-        return el.firstElementChild.offsetHeight + (body ? body.offsetHeight : 0);
-      });
-      const starts = heights.map((_, i) => heights.slice(0, i).reduce((sum, h) => sum + h + gap, 0));
-      const top = starts[current];
-      const bottom = pad + top + heights[current];
-      let target = list.scrollTop;
-      if (top < target) {
-        target = top;
-      } else if (bottom > target + view) {
-        // Advance by whole captions so the top edge never cuts one in half.
-        target = starts.find((s) => bottom <= s + view) ?? top;
-      }
-      // Scroll the list itself: scrollIntoView would also drag the whole
-      // page to this section on every autoplay tick.
-      list.scrollTo({ top: target, behavior });
-    },
-    [current, count]
-  );
-
-  useEffect(() => {
-    const id = setTimeout(() => align(reduceMotion ? 'auto' : 'smooth'), ALIGN_DELAY_MS);
-    const onResize = () => align('auto');
-    window.addEventListener('resize', onResize);
-    return () => {
-      clearTimeout(id);
-      window.removeEventListener('resize', onResize);
-    };
-  }, [align, reduceMotion]);
-
-  if (!count) return null;
+  if (!count || !item) return null;
 
   const onFocus = (e) => {
     let keyboard = true;
@@ -85,6 +40,10 @@ export default function AwardsShowcase({ heading, items }) {
       // Safari < 15.4 can't parse :focus-visible; treat every focus as keyboard.
     }
     if (keyboard) setFocused(true);
+  };
+
+  const scrollToGrid = () => {
+    gridRef.current?.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
   };
 
   return (
@@ -101,89 +60,93 @@ export default function AwardsShowcase({ heading, items }) {
         if (!e.currentTarget.contains(e.relatedTarget)) setFocused(false);
       }}
     >
-      <h2 id={headingId} className="awards-group-heading">
-        {heading}
+      <h2 id={headingId} className="sr-only">
+        {t('awards.honorsTitle')}
       </h2>
 
       <div className="awards-showcase-media">
         <div className="awards-showcase-frame">
-          {items.map((item, i) => (
+          {items.map((slide, i) => (
             <div
-              key={`${item.year}-${item.title}`}
+              key={`${slide.year}-${slide.title}`}
               className={`awards-showcase-slide${i === current ? ' is-active' : ''}`}
               aria-hidden={i !== current}
             >
-              {item.image ? (
+              {slide.image ? (
                 // eslint-disable-next-line @next/next/no-img-element
-                <img src={item.image} alt={i === current ? item.title : ''} loading="lazy" decoding="async" />
+                <img src={slide.image} alt={i === current ? slide.title : ''} loading="lazy" decoding="async" />
               ) : (
-                <div className="awards-showcase-fallback">{item.year}</div>
+                <div className="awards-showcase-fallback">{slide.year}</div>
               )}
             </div>
           ))}
+          <span className="awards-showcase-year-badge">{item.year}</span>
+          <div className="awards-showcase-caption">
+            <p className="awards-showcase-caption-title">{item.title}</p>
+            <p className="awards-showcase-caption-meta">{item.body}</p>
+          </div>
         </div>
         <div className="awards-showcase-controls">
-          <div className="awards-showcase-dots" aria-hidden="true">
-            {items.map((item, i) => (
-              <button
-                key={`${item.year}-${item.title}`}
-                type="button"
-                tabIndex={-1}
-                className={`awards-showcase-dot${i === current ? ' is-active' : ''}`}
-                onClick={() => go(i)}
-              />
-            ))}
-          </div>
-          <div className="awards-showcase-arrows">
-            <button type="button" className="awards-showcase-arrow" aria-label="Previous award" onClick={() => go(current - 1)}>
-              <span aria-hidden="true">←</span>
-            </button>
-            <button type="button" className="awards-showcase-arrow" aria-label="Next award" onClick={() => go(current + 1)}>
-              <span aria-hidden="true">→</span>
-            </button>
+          <div className="awards-showcase-arrows-row">
+            <span className="awards-showcase-counter">
+              {String(current + 1).padStart(2, '0')} / {String(count).padStart(2, '0')}
+            </span>
+            <div className="awards-showcase-arrows">
+              <button type="button" className="awards-showcase-arrow" aria-label="Previous award" onClick={() => go(current - 1)}>
+                <span aria-hidden="true">←</span>
+              </button>
+              <button type="button" className="awards-showcase-arrow is-accent" aria-label="Next award" onClick={() => go(current + 1)}>
+                <span aria-hidden="true">→</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
 
-      <div className="awards-showcase-list-wrap">
-        <ul ref={listRef} className="awards-showcase-list">
-          {items.map((item, i) => {
-            const isActive = i === current;
-            return (
-              <li
-                key={`${item.year}-${item.title}`}
-                ref={(el) => {
-                  itemRefs.current[i] = el;
-                }}
-                className={`awards-showcase-item${isActive ? ' is-active' : ''}`}
-              >
-                <button
-                  type="button"
-                  className="awards-showcase-caption"
-                  aria-current={isActive ? 'true' : undefined}
-                  onClick={() => go(i)}
-                >
-                  <span className="awards-showcase-year">{item.year}</span>
-                  <span className="awards-showcase-title">{item.title}</span>
-                </button>
-                <AnimatePresence initial={false}>
-                  {isActive && item.body ? (
-                    <motion.div
-                      key="body"
-                      className="awards-showcase-body"
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: 'auto', opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: DESCRIPTION_MS / 1000, ease: [0.16, 1, 0.3, 1] }}
-                    >
-                      <p>{item.body}</p>
-                    </motion.div>
-                  ) : null}
-                </AnimatePresence>
-              </li>
-            );
-          })}
-        </ul>
+      <div className="awards-featured-panel">
+        <p className="awards-showcase-eyebrow">
+          <span aria-hidden="true" />
+          {t('awards.featuredEyebrow')}
+        </p>
+        <p className="awards-featured-year">{item.year}</p>
+        <h3 className="awards-featured-title">{item.title}</h3>
+        <p className="awards-featured-body">{item.body}</p>
+        <button type="button" className="awards-featured-btn" onClick={scrollToGrid}>
+          {t('awards.readMore')} <span aria-hidden="true">→</span>
+        </button>
+        <hr className="awards-featured-divider" />
+        {titleHtml ? <Html as="h1" className="awards-hero-title awards-featured-heading" html={titleHtml} /> : null}
+      </div>
+
+      <div ref={gridRef} className="awards-tray">
+        {items.map((tile, i) => (
+          <button
+            type="button"
+            key={`tile-${tile.year}-${tile.title}`}
+            className={`awards-tray-card${i === current ? ' is-active' : ''}`}
+            onClick={() => go(i)}
+          >
+            <span className="awards-tray-thumb">
+              {tile.image ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img src={tile.image} alt="" loading="lazy" />
+              ) : (
+                <span className="awards-tray-thumb-fallback">{tile.year}</span>
+              )}
+            </span>
+            <span className="awards-tray-body">
+              <span className="awards-tray-year-row">
+                <span className="awards-tray-year">{tile.year}</span>
+                {i === 0 ? <span className="awards-tray-latest">Latest</span> : null}
+              </span>
+              <span className="awards-tray-title">{tile.title}</span>
+              <span className="awards-tray-text">{tile.body}</span>
+            </span>
+            <span className="awards-tray-arrow" aria-hidden="true">
+              →
+            </span>
+          </button>
+        ))}
       </div>
     </div>
   );

@@ -1,7 +1,6 @@
 'use client';
 
 import { useI18n } from '@/lib/i18n/context';
-import PageHero from '@/components/PageHero';
 import Reveal from '@/components/Reveal';
 import AwardsShowcase from '@/components/AwardsShowcase';
 
@@ -15,17 +14,29 @@ export default function AwardsPage() {
 
   return (
     <>
-      <PageHero
-        eyebrow={t('awards.eyebrow')}
-        title={t('awards.title')}
-        titleClassName="max-w-4xl text-display-m font-normal tracking-tight"
-      />
-      <section className="pb-12 pt-8 sm:pb-24 sm:pt-10">
+      <section className="awards-hero">
+        <div className="shell awards-hero-grid">
+          <Reveal blur>
+            <p className="eyebrow">
+              <span aria-hidden="true" />
+              {t('awards.eyebrow')}
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="pb-12 pt-4 sm:pb-24 sm:pt-6">
         <div className="shell">
           {honors.length ? (
-            <Reveal>
-              <AwardsShowcase heading={t('awards.honorsTitle')} items={honors} />
-            </Reveal>
+            <>
+              <Reveal>
+                <AwardsShowcase items={honors} titleHtml={t('awards.titleHtml')} />
+              </Reveal>
+              <p className="awards-milestones-footer">
+                <span aria-hidden="true" />
+                {t('awards.milestonesFooter')}
+              </p>
+            </>
           ) : null}
           {recognition.length ? (
             <section className={honors.length ? 'mt-20' : undefined}>

@@ -1824,6 +1824,9 @@ html.dark .film-detail-share-linkrow {
   inset: 0;
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.5) 55%, rgba(0, 0, 0, 0.82) 100%);
 }
+.aspirants-hero-content .eyebrow {
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9), 0 2px 8px rgba(0, 0, 0, 0.6);
+}
 .aspirants-hero-content h1 {
   color: #f7f4ec;
 }
@@ -1845,13 +1848,13 @@ html.dark .film-detail-share-linkrow {
     margin-bottom: 0.4rem;
   }
   .aspirants-hero-content h1 {
-    font-size: 1.375rem;
-    line-height: 1.25;
+    font-size: 1.15rem;
+    line-height: 1.3;
   }
   .aspirants-hero-subtitle {
-    margin-top: 0.6rem;
-    font-size: 0.75rem;
-    line-height: 1.5;
+    margin-top: 0.5rem;
+    font-size: 0.7rem;
+    line-height: 1.45;
   }
 }
 
@@ -2221,33 +2224,54 @@ html.dark .about-journey-copy {
   text-decoration: underline;
   text-underline-offset: 0.2em;
 }
+/* Awards page hero: eyebrow + title only, kept tight so the featured
+   showcase below starts without a big empty gap. */
+.awards-hero {
+  padding: 9rem 0 1.5rem;
+}
+.awards-hero-grid .eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.awards-hero-grid .eyebrow span {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1px;
+  background: currentColor;
+}
+.awards-hero-title {
+  margin-top: 1rem;
+  max-width: 40rem;
+  font-weight: 500;
+  font-size: clamp(2rem, 4.5vw, 3.25rem);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: #1d1d1f;
+}
+html.dark .awards-hero-title {
+  color: #fff;
+}
+
+/* Awards featured showcase: a photo carousel (year badge + caption
+   overlay + prev/next controls) beside a "Featured award" detail
+   panel for the active item, with a 4-up thumbnail tray below. */
 .awards-showcase {
   display: grid;
-  grid-template-columns: minmax(0, 80fr) minmax(0, 56fr);
-  grid-template-rows: auto 1fr;
-  grid-template-areas:
-    'media heading'
-    'media list';
-  column-gap: clamp(2rem, 5vw, 4.25rem);
-  row-gap: 0.75rem;
-}
-.awards-showcase .awards-group-heading {
-  grid-area: heading;
-  margin-bottom: 0;
+  grid-template-columns: minmax(0, 62fr) minmax(0, 38fr);
+  column-gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: start;
 }
 .awards-showcase-media {
-  grid-area: media;
   min-width: 0;
 }
 .awards-showcase-frame {
   position: relative;
   aspect-ratio: 16 / 9;
-  /* Cap the height so a wide/short viewport can't stretch a 16:9 image
-     taller than the screen; letterbox the width to match via the ratio
-     instead of letting the 80fr grid column dictate an unbounded size. */
   max-height: 52vh;
-  width: min(100%, calc(52vh * 16 / 9));
+  width: 100%;
   overflow: hidden;
+  border-radius: 1.25rem;
   background-color: #0d2534;
 }
 .awards-showcase-slide {
@@ -2275,34 +2299,54 @@ html.dark .about-journey-copy {
   font-weight: 300;
   letter-spacing: -0.03em;
 }
+.awards-showcase-year-badge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  padding: 0.5rem 1.25rem;
+  background: rgb(var(--c-gold-500));
+  color: #1d1d1f;
+  font-weight: 700;
+  font-size: 1rem;
+  border-bottom-right-radius: 0.75rem;
+}
+.awards-showcase-caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  padding: 3rem 1.5rem 1.25rem;
+  background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.78) 100%);
+  color: #fff;
+}
+.awards-showcase-caption-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+.awards-showcase-caption-meta {
+  margin-top: 0.3rem;
+  font-size: 0.78rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.78);
+}
 .awards-showcase-controls {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
+  justify-content: flex-end;
   margin-top: 1rem;
 }
-.awards-showcase-dots {
+.awards-showcase-arrows-row {
   display: flex;
   align-items: center;
-  gap: 0.375rem;
+  gap: 1rem;
 }
-.awards-showcase-dot {
-  position: relative;
-  width: 0.375rem;
-  height: 0.375rem;
-  border-radius: 9999px;
-  background-color: #c4c9d1;
-  transition: width 300ms ease, background-color 300ms ease;
-}
-.awards-showcase-dot::after {
-  content: '';
-  position: absolute;
-  inset: -0.5rem -0.2rem;
-}
-.awards-showcase-dot.is-active {
-  width: 1.25rem;
-  background-color: #1d1d1f;
+.awards-showcase-counter {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: rgb(100, 116, 139);
 }
 .awards-showcase-arrows {
   display: flex;
@@ -2311,97 +2355,297 @@ html.dark .about-journey-copy {
 .awards-showcase-arrow {
   display: grid;
   place-items: center;
-  width: 2.25rem;
-  height: 2.25rem;
-  border-radius: 0.5rem;
-  background-color: #eef0f3;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 9999px;
+  background-color: #fff;
   color: #1d1d1f;
-  transition: background-color 200ms ease;
+  box-shadow: 0 10px 24px -14px rgba(11, 37, 69, 0.4);
+  transition: background-color 200ms ease, transform 200ms ease;
+}
+.awards-showcase-arrow.is-accent {
+  background-color: rgb(var(--c-gold-500));
 }
 .awards-showcase-arrow:hover {
-  background-color: #e2e5ea;
+  transform: translateY(-1px);
 }
 .awards-showcase-arrow:active {
   transform: scale(0.96);
 }
-.awards-showcase-list-wrap {
-  grid-area: list;
-  position: relative;
+
+.awards-featured-panel {
+  min-width: 0;
 }
-/* Absolutely positioned so the list never stretches the row: the photo
-   sets the height, and the list scrolls (programmatically) inside it. */
-.awards-showcase-list {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  /* Only align() moves this list; stop scroll anchoring nudging it off a caption boundary. */
-  overflow-anchor: none;
-  padding: 0.75rem 0 3rem;
-  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 0.75rem, #000 calc(100% - 3rem), transparent 100%);
-  mask-image: linear-gradient(180deg, transparent 0, #000 0.75rem, #000 calc(100% - 3rem), transparent 100%);
+.awards-showcase-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgb(100, 116, 139);
 }
-/* Scroll room past the last caption, so the list can always stop on a
-   caption boundary instead of being clamped short at the end. */
-.awards-showcase-list::after {
-  content: '';
-  display: block;
-  height: 100%;
+.awards-showcase-eyebrow span {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1px;
+  background: currentColor;
 }
-.awards-showcase-item + .awards-showcase-item {
-  margin-top: 1.5rem;
+.awards-featured-year {
+  margin-top: 1rem;
+  font-family: var(--font-playfair-display), Georgia, serif;
+  font-style: italic;
+  font-size: 2.25rem;
+  line-height: 1;
+  color: rgb(var(--c-gold-500));
 }
-.awards-showcase-caption {
-  display: block;
-  width: 100%;
-  text-align: left;
-  font-size: clamp(1rem, 1.3vw, 1.25rem);
-  font-weight: 300;
-  line-height: 1.15;
-  letter-spacing: -0.02em;
-  color: #868f9e;
-  transition: color 300ms ease;
-}
-.awards-showcase-caption:hover {
-  color: #5b6472;
-}
-.awards-showcase-item.is-active .awards-showcase-caption {
+.awards-featured-title {
+  margin-top: 0.5rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 1.25;
   color: #1d1d1f;
 }
-.awards-showcase-caption:focus-visible {
-  outline-offset: -3px;
+html.dark .awards-featured-title {
+  color: #fff;
 }
-.awards-showcase-year,
-.awards-showcase-title {
-  display: block;
-}
-.awards-showcase-body {
-  overflow: hidden;
-}
-.awards-showcase-body p {
-  max-width: 34rem;
-  padding-top: 0.75rem;
-  font-size: 0.875rem;
-  line-height: 1.6;
+.awards-featured-body {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  line-height: 1.65;
   color: rgb(71, 85, 105);
 }
+.awards-featured-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  background: rgb(var(--c-gold-500));
+  color: #1d1d1f;
+  font-weight: 600;
+  font-size: 0.875rem;
+  transition: background-color 200ms ease, transform 200ms ease;
+}
+.awards-featured-btn:hover {
+  background: rgb(var(--c-gold-400));
+  transform: translateY(-1px);
+}
+.awards-featured-heading {
+  margin-top: 1.75rem;
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  line-height: 1.2;
+}
+.awards-featured-divider {
+  margin: 1.5rem 0 1rem;
+  border: none;
+  border-top: 1px solid rgba(11, 37, 69, 0.1);
+}
+.awards-featured-tagline {
+  margin-top: 1.5rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgb(148, 163, 184);
+}
+
+.awards-tray {
+  grid-column: 1 / -1;
+  margin-top: 2.5rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+.awards-tray-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  text-align: left;
+  border-radius: 1rem;
+  background: #fff;
+  border: 1px solid rgba(11, 37, 69, 0.08);
+  box-shadow: 0 20px 40px -30px rgba(11, 37, 69, 0.25);
+  overflow: hidden;
+  transition: box-shadow 200ms ease, transform 200ms ease;
+}
+.awards-tray-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 24px 46px -28px rgba(11, 37, 69, 0.32);
+}
+.awards-tray-card.is-active {
+  outline: 2px solid rgb(var(--c-gold-500));
+  outline-offset: -2px;
+}
+.awards-tray-thumb {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: linear-gradient(135deg, #0d2534, #061c2c);
+}
+.awards-tray-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.awards-tray-thumb-fallback {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  color: rgb(var(--c-gold-400));
+  font-size: 1.75rem;
+  font-weight: 300;
+}
+.awards-tray-body {
+  display: block;
+  padding: 1rem 1.25rem 0.5rem;
+  flex: 1;
+}
+.awards-tray-year-row {
+  display: flex;
+  align-items: center;
+}
+.awards-tray-year {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: rgb(var(--c-gold-500));
+}
+.awards-tray-latest {
+  display: none;
+}
+.awards-tray-title {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #1d1d1f;
+}
+.awards-tray-text {
+  display: -webkit-box;
+  margin-top: 0.4rem;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: rgb(100, 116, 139);
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.awards-tray-arrow {
+  align-self: flex-end;
+  margin: 0.5rem 1.25rem 1rem auto;
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(11, 37, 69, 0.15);
+  color: rgb(var(--c-gold-500));
+  font-size: 0.85rem;
+}
+
+.awards-milestones-footer {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 2rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgb(148, 163, 184);
+}
+.awards-milestones-footer span {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1px;
+  background: currentColor;
+}
+
 @media (max-width: 1023px) {
   .awards-showcase {
     grid-template-columns: minmax(0, 1fr);
-    grid-template-rows: auto;
-    grid-template-areas:
-      'heading'
-      'media'
-      'list';
     row-gap: 1.5rem;
   }
-  .awards-showcase-list-wrap {
-    height: 16rem;
+  .awards-featured-panel {
+    padding-top: 0;
+  }
+  .awards-tray {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 639px) {
+  .awards-tray {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  /* Cards go horizontal on mobile: a small square thumbnail, a thin gold
+     rule, then year/title/text, with a circular arrow at the end. */
+  .awards-tray-card {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.9rem;
+    padding: 0.75rem;
+    border-radius: 1.25rem;
+    border-color: rgba(180, 156, 116, 0.3);
+    background: #fdfbf5;
+  }
+  .awards-tray-card.is-active {
+    outline: 1.5px solid rgb(var(--c-gold-500));
+    outline-offset: -1.5px;
+  }
+  .awards-tray-thumb {
+    flex-shrink: 0;
+    width: 4.75rem;
+    height: 4.75rem;
+    aspect-ratio: 1;
+    border-radius: 0.85rem;
+  }
+  .awards-tray-body {
+    flex: 1;
+    min-width: 0;
+    padding: 0 0 0 0.9rem;
+    border-left: 1px solid rgba(180, 156, 116, 0.4);
+  }
+  .awards-tray-year {
+    font-family: var(--font-playfair-display), Georgia, serif;
+    font-style: italic;
+    font-size: 1.375rem;
+    font-weight: 400;
+  }
+  .awards-tray-latest {
+    display: inline-flex;
+    align-items: center;
+    margin-left: 0.6rem;
+    padding: 0.2rem 0.65rem;
+    border-radius: 9999px;
+    background: rgba(180, 156, 116, 0.25);
+    color: rgb(133, 108, 61);
+    font-size: 0.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .awards-tray-title {
+    font-family: var(--font-playfair-display), Georgia, serif;
+    font-size: 1.1rem;
+  }
+  .awards-tray-arrow {
+    align-self: center;
+    flex-shrink: 0;
+    margin: 0;
+    width: 2.5rem;
+    height: 2.5rem;
   }
 }
 @media (prefers-reduced-motion: reduce) {
   .awards-showcase-slide,
-  .awards-showcase-dot,
-  .awards-showcase-caption {
+  .awards-showcase-arrow,
+  .awards-tray-card {
     transition: none;
   }
 }
