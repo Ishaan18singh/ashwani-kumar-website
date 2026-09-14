@@ -133,13 +133,27 @@ export default function HomePage() {
 
       <section className="home-section-leadership border-t border-slate-200 py-24 dark:border-slate-800">
         <div className="shell">
-          <Reveal className="stack-center max-w-2xl">
-            <p className="eyebrow">{t('home.leadershipEyebrow')}</p>
-            <h2 className="section-title">{t('home.leadershipTitle')}</h2>
-            <p className="section-copy">{t('home.leadershipText')}</p>
-            <Link className="button-primary mt-8" href="/projects" prefetch={false}>
-              <span>{t('home.exploreBtn')}</span> <span aria-hidden="true">→</span>
-            </Link>
+          <Reveal className="leadership-content">
+            <p className="leadership-eyebrow">
+              <span aria-hidden="true" />
+              {t('home.leadershipEyebrow')}
+            </p>
+            <Html as="h2" className="leadership-title" html={t('home.leadershipTitleHtml')} />
+            <p className="leadership-text">{t('home.leadershipText')}</p>
+            <div className="leadership-actions">
+              <Link className="leadership-btn" href="/projects" prefetch={false}>
+                {t('home.exploreBtn')} <span aria-hidden="true">→</span>
+              </Link>
+              <div className="leadership-tags">
+                {t('home.leadershipTags')
+                  .split('|')
+                  .map((word) => (
+                    <span key={word} className="leadership-tag-item">
+                      {word}
+                    </span>
+                  ))}
+              </div>
+            </div>
           </Reveal>
         </div>
       </section>
