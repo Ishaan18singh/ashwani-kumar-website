@@ -12,6 +12,19 @@ export function MailIcon(props) {
   );
 }
 
+export function LinkIcon(props) {
+  return (
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.7" {...props}>
+      <path d="M9.5 14.5 14.5 9.5" strokeLinecap="round" />
+      <path
+        d="M11 7.5 12.3 6.2a3.8 3.8 0 0 1 5.5 5.5l-1.3 1.3M13 16.5 11.7 17.8a3.8 3.8 0 0 1-5.5-5.5l1.3-1.3"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
 export function PersonIcon(props) {
   return (
     <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.7" {...props}>

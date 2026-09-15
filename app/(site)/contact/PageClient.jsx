@@ -4,7 +4,7 @@ import { useI18n } from '@/lib/i18n/context';
 import ContactForm from '@/components/ContactForm';
 import Reveal from '@/components/Reveal';
 import SocialIcon from '@/components/SocialIcon';
-import { MailIcon, InstitutionIcon, MicIcon, PressIcon, IdeaIcon } from '@/components/ContactIcons';
+import { MailIcon, LinkIcon, InstitutionIcon, MicIcon, PressIcon, IdeaIcon } from '@/components/ContactIcons';
 import { SITE_DATA } from '@/lib/data';
 
 const ENQUIRIES = [
@@ -62,6 +62,21 @@ export default function ContactPage() {
                 </a>
                 <a href={`mailto:${SITE_DATA.profile.email}`} className="contact-text-link">
                   {t('contact.writeEmailLink')} <span aria-hidden="true">→</span>
+                </a>
+              </div>
+            </div>
+
+            <div className="contact-info-row mt-6">
+              <span className="contact-icon-badge">
+                <LinkIcon />
+              </span>
+              <div>
+                <p className="contact-info-label">{t('contact.linktreeLabel')}</p>
+                <a href={SITE_DATA.profile.linktree} target="_blank" rel="noopener noreferrer" className="contact-info-value">
+                  {SITE_DATA.profile.linktree.replace(/^https?:\/\//, '')}
+                </a>
+                <a href={SITE_DATA.profile.linktree} target="_blank" rel="noopener noreferrer" className="contact-text-link">
+                  {t('contact.visitLinktreeLink')} <span aria-hidden="true">→</span>
                 </a>
               </div>
             </div>
