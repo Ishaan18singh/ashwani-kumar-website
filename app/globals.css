@@ -79,6 +79,37 @@ html.dark .header-brand-name { color: #fff; }
 html.dark .lang-select { color: #fff; border-color: hsla(0,0%,100%,.25); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='%23ffffff' stroke-width='1.6'%3E%3Cpath d='M5 8l5 5 5-5'/%3E%3C/svg%3E"); }
 .lang-select option { color: #0B2545; background: #fff; }
 @media (max-width: 420px) { .lang-select { font-size: .72rem; padding: .35rem 1.5rem .35rem .65rem; } }
+/* Theme toggle: a small circular swatch button next to the language
+   picker. The swatch itself always shows a gold/taupe split so it
+   reads as a color picker regardless of which theme is currently
+   active; the ring highlights when the taupe theme is on. */
+.theme-toggle {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(11, 37, 69, 0.2);
+  background: none;
+  cursor: pointer;
+  transition: border-color 200ms ease, transform 200ms ease;
+}
+.theme-toggle:hover {
+  transform: scale(1.06);
+}
+.theme-toggle.is-active {
+  border-color: #62564b;
+}
+.theme-toggle-swatch {
+  width: 1.1rem;
+  height: 1.1rem;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, rgb(var(--c-gold-500)) 50%, #988c82 50%);
+}
+html.dark .theme-toggle {
+  border-color: hsla(0, 0%, 100%, 0.25);
+}
 .header-link { position: relative; padding-bottom: 3px; font-family: "Atkinson Hyperlegible", Inter, system-ui, sans-serif; font-weight: 500; font-size: .95rem; color: #0B2545; text-decoration: none; }
 html.dark .header-link { color: #fff; }
 .header-link::after { content: ""; position: absolute; left: 0; bottom: 0; width: 100%; height: 1px; background: rgb(var(--c-gold-500)); transform: scaleX(0); transform-origin: left; transition: transform 200ms ease; }
@@ -3552,4 +3583,180 @@ html.dark .awards-featured-title {
 .contact-elsewhere-link:hover {
   background-color: rgb(var(--c-gold-500));
   transform: translateY(-2px);
+}
+
+/* ============================================================
+   "Taupe" theme — an alternate, switchable palette (Luxury Warm
+   Taupe / Champagne Greige) toggled via the ThemeToggle component,
+   which sets html[data-theme="taupe"] and persists the choice to
+   localStorage. Two layers:
+
+   1. Redefine the --c-gold-* tokens the site already threads through
+      ~80 buttons/eyebrows/accents via rgb(var(--c-gold-*)) — those
+      switch automatically, no per-selector work needed.
+   2. Explicit overrides for every selector found hard-coding the
+      site's navy/charcoal/slate literals (#0b2545, #1d1d1f, #14110d,
+      #0d2534/#061c2c, rgb(11,37,69), rgb(100,116,139),
+      rgb(71,85,105)), grouped by the role that hex played, so the
+      whole site repaints consistently rather than just the pieces
+      already using variables. Accessible focus-ring outlines are
+      deliberately left on the original dark navy for contrast.
+   ============================================================ */
+html[data-theme='taupe'] {
+  --c-gold-500: 98 86 75; /* warm taupe (#62564B) — was the deep antique gold */
+  --c-gold-400: 152 140 130; /* soft stone taupe (#988C82) */
+  --c-gold-300: 227 217 206; /* champagne ivory (#E3D9CE) */
+  background-color: #e3d9ce;
+  color: #3d3a3f;
+}
+html[data-theme='taupe'] .bg-ivory {
+  background-color: #e3d9ce !important;
+}
+html[data-theme='taupe'] h1,
+html[data-theme='taupe'] h2,
+html[data-theme='taupe'] h3,
+html[data-theme='taupe'] .text-navy-900,
+html[data-theme='taupe'] .text-navy-950 {
+  color: #3d3a3f;
+}
+
+/* Group: former #0b2545/#0B2545 "ink" text color */
+html[data-theme='taupe'] .button-ghost,
+html[data-theme='taupe'] .pub-card-link,
+html[data-theme='taupe'] .pub-list-title,
+html[data-theme='taupe'] .pub-list-link,
+html[data-theme='taupe'] .pub-hero-title,
+html[data-theme='taupe'] .pub-hero-quote p:first-child,
+html[data-theme='taupe'] .pub-featured-title,
+html[data-theme='taupe'] .pub-cta-title,
+html[data-theme='taupe'] .pub-newsletter-title,
+html[data-theme='taupe'] .journey-heading,
+html[data-theme='taupe'] .journey-cta,
+html[data-theme='taupe'] .leadership-title,
+html[data-theme='taupe'] .header-menu-btn,
+html[data-theme='taupe'] .header-brand-name,
+html[data-theme='taupe'] .lang-select,
+html[data-theme='taupe'] .lang-select option,
+html[data-theme='taupe'] .header-link,
+html[data-theme='taupe'] .fullscreen-menu-link,
+html[data-theme='taupe'] .fullscreen-menu-social-link,
+html[data-theme='taupe'] .film-detail-share-dialog {
+  color: #3d3a3f;
+}
+html[data-theme='taupe'] .header-menu-btn:hover {
+  background-color: rgba(98, 86, 75, 0.08);
+}
+html[data-theme='taupe'] .lang-select {
+  border-color: rgba(98, 86, 75, 0.25);
+}
+html[data-theme='taupe'] .fullscreen-menu-link {
+  border-bottom-color: rgba(98, 86, 75, 0.15);
+}
+html[data-theme='taupe'] .film-detail-share-dialog {
+  border-color: rgba(98, 86, 75, 0.18);
+}
+
+/* Group: former #1d1d1f "ink-strong" text/background */
+html[data-theme='taupe'] .text-navy-950,
+html[data-theme='taupe'] .pub-card-lang-badge,
+html[data-theme='taupe'] .pub-card-link-arrow,
+html[data-theme='taupe'] .pub-featured-badge,
+html[data-theme='taupe'] .pub-featured-btn:hover,
+html[data-theme='taupe'] .pub-featured-arrow,
+html[data-theme='taupe'] .pub-newsletter-btn:hover,
+html[data-theme='taupe'] .leadership-btn:hover,
+html[data-theme='taupe'] .awards-group-heading,
+html[data-theme='taupe'] .awards-hero-title,
+html[data-theme='taupe'] .awards-showcase-arrow,
+html[data-theme='taupe'] .awards-showcase-arrow.is-accent:hover,
+html[data-theme='taupe'] .awards-featured-title,
+html[data-theme='taupe'] .awards-featured-btn:hover,
+html[data-theme='taupe'] .awards-tray-title,
+html[data-theme='taupe'] .contact-heading,
+html[data-theme='taupe'] .contact-info-value,
+html[data-theme='taupe'] .contact-enquiry-title,
+html[data-theme='taupe'] .contact-field-input,
+html[data-theme='taupe'] .contact-cta-title {
+  color: #3d3a3f;
+}
+html[data-theme='taupe'] .contact-elsewhere-link {
+  background-color: #3d3a3f;
+}
+
+/* Group: former #14110d dark button/backdrop backgrounds */
+html[data-theme='taupe'] .pub-featured-btn,
+html[data-theme='taupe'] .pub-newsletter-btn,
+html[data-theme='taupe'] .leadership-btn,
+html[data-theme='taupe'] .aspirants-hero,
+html[data-theme='taupe'] .aspirants-cta-btn,
+html[data-theme='taupe'] .awards-showcase-year-badge,
+html[data-theme='taupe'] .awards-showcase-arrow.is-accent,
+html[data-theme='taupe'] .awards-featured-btn {
+  background-color: #3d3a3f;
+}
+
+/* Group: former #0d2534/#061c2c dark photo-frame surfaces */
+html[data-theme='taupe'] .pub-featured-frame,
+html[data-theme='taupe'] .awards-showcase-frame {
+  background-color: #534941;
+}
+html[data-theme='taupe'] .awards-showcase-fallback,
+html[data-theme='taupe'] .awards-tray-thumb {
+  background: linear-gradient(135deg, #534941, #3d3a3f);
+}
+
+/* Group: former rgb(11, 37, 69) ink used in rgb()/rgba() contexts */
+html[data-theme='taupe'] .update-card-title,
+html[data-theme='taupe'] .film-detail-trailer,
+html[data-theme='taupe'] .film-detail-press-title,
+html[data-theme='taupe'] .aspirants-cta-feature-label,
+html[data-theme='taupe'] .aspirants-cta-link {
+  color: #3d3a3f;
+}
+html[data-theme='taupe'] .film-detail-share-btn--embed .film-detail-share-icon {
+  background: #3d3a3f;
+}
+
+/* Group: former rgb(100, 116, 139) muted body/meta text */
+html[data-theme='taupe'] .pub-card-meta,
+html[data-theme='taupe'] .pub-list-meta,
+html[data-theme='taupe'] .pub-list-desc,
+html[data-theme='taupe'] .pub-hero-subtitle,
+html[data-theme='taupe'] .pub-hero-quote-author,
+html[data-theme='taupe'] .pub-featured-meta,
+html[data-theme='taupe'] .pub-featured-summary,
+html[data-theme='taupe'] .pub-cta-tag,
+html[data-theme='taupe'] .pub-newsletter-text,
+html[data-theme='taupe'] .update-card-meta,
+html[data-theme='taupe'] .film-detail-back,
+html[data-theme='taupe'] .film-detail-press-domain,
+html[data-theme='taupe'] .film-detail-share-btn span,
+html[data-theme='taupe'] .leadership-tag-item,
+html[data-theme='taupe'] .aspirants-moves-eyebrow,
+html[data-theme='taupe'] .aspirants-moves-item-text,
+html[data-theme='taupe'] .aspirants-cta-text,
+html[data-theme='taupe'] .awards-showcase-counter,
+html[data-theme='taupe'] .awards-showcase-eyebrow,
+html[data-theme='taupe'] .awards-tray-text {
+  color: #746963;
+}
+html[data-theme='taupe'] .film-detail-share-btn--mail .film-detail-share-icon {
+  background: #746963;
+}
+
+/* Group: former rgb(71, 85, 105) slightly darker muted text */
+html[data-theme='taupe'] .journey-copy,
+html[data-theme='taupe'] .leadership-text,
+html[data-theme='taupe'] .awards-featured-body {
+  color: #62564b;
+}
+
+/* Group: former rgba(11/100/71, ..., 0.x) hairline borders and washes,
+   re-tinted to the palette's warm taupe rather than cool navy/slate. */
+html[data-theme='taupe'] .awards-moves-grid,
+html[data-theme='taupe'] .awards-moves-item,
+html[data-theme='taupe'] .aspirants-moves-grid,
+html[data-theme='taupe'] .aspirants-moves-item,
+html[data-theme='taupe'] .pub-list-row {
+  border-color: rgba(98, 86, 75, 0.18);
 }

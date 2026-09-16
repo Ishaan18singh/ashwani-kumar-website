@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import { useI18n } from '@/lib/i18n/context';
 import { NAV_PAGES, HEADER_PICKS } from '@/lib/nav';
+import ThemeToggle from '@/components/ThemeToggle';
 
 // Pages whose hero is dark behind the transparent header: the nav needs
 // light text there, or it renders dark-on-dark until the user scrolls.
@@ -164,6 +165,7 @@ export default function Header() {
                 ))}
               </select>
             </div>
+            <ThemeToggle />
           </div>
         </div>
       </header>

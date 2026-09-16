@@ -93,6 +93,15 @@ export default function RootLayout({ children }) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
         />
+        {/* Applies the saved color-theme choice before paint, so switching
+            to the taupe theme doesn't flash the default palette first on
+            reload. Reads the same localStorage key ThemeToggle writes. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "try{if(localStorage.getItem('colorTheme')==='taupe'){document.documentElement.setAttribute('data-theme','taupe')}}catch(e){}"
+          }}
+        />
       </head>
       <body className={GeistSans.className}>{children}</body>
     </html>
