@@ -21,10 +21,20 @@ const STEPS = [
 ];
 
 const PHOTOS = [
-  { src: '/images/ias-aspirants-internship-photo.webp', alt: 'Ashwani Kumar with a group of interns in a conference room' },
-  { src: '/images/ias-aspirants-hero.webp', alt: 'Ashwani Kumar addressing students at a school event' },
-  { src: '/images/gallery-01.webp', alt: 'Ashwani Kumar in a blue suit, full-length portrait' },
-  { src: '/images/gallery-04.webp', alt: 'Ashwani Kumar in a formal portrait' }
+  { src: '/images/internship-photo-01.webp', alt: 'Interns at their workstations during a session' },
+  { src: '/images/internship-photo-02.webp', alt: 'Interns working together in the office' },
+  { src: '/images/internship-photo-03.webp', alt: 'Ashwani Kumar interacting with interns' },
+  { src: '/images/internship-photo-04.webp', alt: 'Interns during a discussion' },
+  { src: '/images/internship-photo-05.webp', alt: 'Interns at work in the conference room' },
+  { src: '/images/internship-photo-06.webp', alt: 'Ashwani Kumar with the interns' },
+  { src: '/images/internship-photo-07.webp', alt: 'Interns in a group session' },
+  { src: '/images/internship-photo-08.webp', alt: 'Interns presenting their work' },
+  { src: '/images/internship-photo-09.webp', alt: 'Group photo of interns with Ashwani Kumar' },
+  { src: '/images/internship-photo-10.webp', alt: 'Interns posing for a group photo' },
+  { src: '/images/internship-photo-11.webp', alt: 'Interns at the office' },
+  { src: '/images/internship-photo-12.webp', alt: 'Interns during the programme' },
+  { src: '/images/internship-photo-13.webp', alt: 'Interns in conversation' },
+  { src: '/images/internship-photo-14.webp', alt: 'Interns wrapping up a session' }
 ];
 
 export default function InternshipPage() {
