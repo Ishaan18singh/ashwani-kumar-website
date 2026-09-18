@@ -3699,6 +3699,18 @@ html.dark .internship-pillar-title {
     animation: none;
   }
 }
+.internship-lightbox {
+  padding: 0;
+  border: 0;
+}
+.internship-photo-item-btn {
+  display: block;
+  flex-shrink: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
 .internship-photo-item {
   height: 140px;
   width: 220px;
@@ -3756,6 +3768,65 @@ html.dark .internship-step-title {
   font-size: 1.1rem;
   line-height: 1.7;
   color: rgb(71, 85, 105);
+}
+.internship-testimonials-heading {
+  margin-top: 0.75rem;
+  max-width: 36rem;
+  font-family: var(--font-playfair-display), Georgia, serif;
+  font-size: 2rem;
+  line-height: 1.2;
+  color: #0b2545;
+}
+html.dark .internship-testimonials-heading {
+  color: #fff;
+}
+.internship-testimonials-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-top: 2.5rem;
+}
+.internship-testimonial-video {
+  width: 220px;
+  aspect-ratio: 16 / 9;
+  border-radius: 0.75rem;
+  background-color: rgba(11, 37, 69, 0.06);
+  object-fit: cover;
+}
+@media (min-width: 768px) {
+  .internship-testimonial-video {
+    width: 280px;
+  }
+}
+.internship-testimonial-name {
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #0b2545;
+}
+html.dark .internship-testimonial-name {
+  color: #fff;
+}
+.internship-testimonials-viewall {
+  display: block;
+  margin: 2rem auto 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: rgb(11, 37, 69);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  cursor: pointer;
+}
+html.dark .internship-testimonials-viewall {
+  color: #fff;
+}
+.internship-testimonials-empty {
+  margin-top: 2rem;
+  font-size: 0.95rem;
+  color: rgb(100, 116, 139);
 }
 .internship-apply {
   max-width: 40rem;
@@ -3845,6 +3916,8 @@ html[data-theme='taupe'] .internship-pillar-title,
 html[data-theme='taupe'] .internship-step-title,
 html[data-theme='taupe'] .internship-apply-title,
 html[data-theme='taupe'] .internship-apply-link,
+html[data-theme='taupe'] .internship-testimonials-heading,
+html[data-theme='taupe'] .internship-testimonial-name,
 html[data-theme='taupe'] .header-menu-btn,
 html[data-theme='taupe'] .header-brand-name,
 html[data-theme='taupe'] .lang-select,
@@ -3922,7 +3995,8 @@ html[data-theme='taupe'] .update-card-title,
 html[data-theme='taupe'] .film-detail-trailer,
 html[data-theme='taupe'] .film-detail-press-title,
 html[data-theme='taupe'] .aspirants-cta-feature-label,
-html[data-theme='taupe'] .aspirants-cta-link {
+html[data-theme='taupe'] .aspirants-cta-link,
+html[data-theme='taupe'] .internship-testimonials-viewall {
   color: #3d3a3f;
 }
 html[data-theme='taupe'] .film-detail-share-btn--embed .film-detail-share-icon {
@@ -3953,6 +4027,7 @@ html[data-theme='taupe'] .internship-hero-subtitle,
 html[data-theme='taupe'] .internship-pillar-text,
 html[data-theme='taupe'] .internship-step-text,
 html[data-theme='taupe'] .internship-apply-text,
+html[data-theme='taupe'] .internship-testimonials-empty,
 html[data-theme='taupe'] .awards-tray-text {
   color: #746963;
 }

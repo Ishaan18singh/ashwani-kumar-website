@@ -1,5 +1,6 @@
 'use client';
 
+import { useRef, useState } from 'react';
 import Link from 'next/link';
 import { useI18n } from '@/lib/i18n/context';
 import Html from '@/components/Html';
@@ -20,6 +21,8 @@ const STEPS = [
   { titleKey: 'internship.step4Title', textKey: 'internship.step4Text' }
 ];
 
+const TESTIMONIALS = [];
+
 const PHOTOS = [
   { src: '/images/internship-photo-01.webp', alt: 'Interns at their workstations during a session' },
   { src: '/images/internship-photo-02.webp', alt: 'Interns working together in the office' },
@@ -39,6 +42,17 @@ const PHOTOS = [
 
 export default function InternshipPage() {
   const { t } = useI18n();
+  const dialogRef = useRef(null);
+  const [activePhoto, setActivePhoto] = useState(null);
+  const [showAllTestimonials, setShowAllTestimonials] = useState(false);
+
+  const openPhoto = (photo) => {
+    setActivePhoto(photo);
+    dialogRef.current?.showModal();
+  };
+  const closePhoto = () => dialogRef.current?.close();
+
+  const visibleTestimonials = showAllTestimonials ? TESTIMONIALS : TESTIMONIALS.slice(0, 3);
 
   return (
     <>
@@ -89,19 +103,45 @@ export default function InternshipPage() {
           {[...PHOTOS, ...PHOTOS].map((photo, i) => {
             const isDuplicate = i >= PHOTOS.length;
             return (
-              /* eslint-disable-next-line @next/next/no-img-element */
-              <img
+              <button
                 key={`${photo.src}-${i}`}
-                src={photo.src}
-                alt={isDuplicate ? '' : photo.alt}
+                type="button"
+                onClick={() => openPhoto(photo)}
                 aria-hidden={isDuplicate}
-                loading="lazy"
-                className="internship-photo-item"
-              />
+                tabIndex={isDuplicate ? -1 : undefined}
+                className="internship-photo-item-btn"
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={photo.src}
+                  alt={isDuplicate ? '' : photo.alt}
+                  loading="lazy"
+                  className="internship-photo-item"
+                />
+              </button>
             );
           })}
         </div>
       </Reveal>
+
+      <dialog
+        ref={dialogRef}
+        className="internship-lightbox m-auto w-[min(94vw,1000px)] bg-transparent text-white backdrop:bg-black/80"
+        onClick={(e) => {
+          if (e.target === dialogRef.current) closePhoto();
+        }}
+      >
+        <button
+          type="button"
+          onClick={closePhoto}
+          className="absolute right-5 top-5 z-10 grid h-10 w-10 place-items-center rounded-full bg-black/60 text-xl"
+          aria-label="Close image"
+        >
+          ×
+        </button>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={activePhoto?.src} alt={activePhoto?.alt || ''} className="block max-h-[90vh] w-full object-contain" />
+      </dialog>
 
       <section className="py-16 sm:py-24">
         <div className="shell">
@@ -130,6 +170,48 @@ export default function InternshipPage() {
             </p>
             <p className="internship-who-text">{t('internship.whoText')}</p>
           </Reveal>
+        </div>
+      </section>
+
+      <section className="py-16 sm:py-24">
+        <div className="shell">
+          <Reveal className="aspirants-moves-eyebrow">
+            <span aria-hidden="true" />
+            {t('internship.testimonialsEyebrow')}
+          </Reveal>
+          <Reveal as="h2" className="internship-testimonials-heading" transition={{ duration: 0.7, ease: 'easeOut', delay: 0.05 }}>
+            {t('internship.testimonialsTitle')}
+          </Reveal>
+          {TESTIMONIALS.length > 0 ? (
+            <>
+              <div className="internship-testimonials-grid">
+                {visibleTestimonials.map((item, i) => (
+                  <Reveal key={item.src} className="internship-testimonial-card" transition={{ duration: 0.6, ease: 'easeOut', delay: i * 0.08 }}>
+                    {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
+                    <video
+                      className="internship-testimonial-video"
+                      src={item.src}
+                      poster={item.poster}
+                      controls
+                      preload="metadata"
+                    />
+                    <p className="internship-testimonial-name">{item.name}</p>
+                  </Reveal>
+                ))}
+              </div>
+              {TESTIMONIALS.length > 3 && !showAllTestimonials && (
+                <button
+                  type="button"
+                  onClick={() => setShowAllTestimonials(true)}
+                  className="internship-testimonials-viewall"
+                >
+                  {t('internship.testimonialsViewAll')} <span aria-hidden="true">→</span>
+                </button>
+              )}
+            </>
+          ) : (
+            <Reveal className="internship-testimonials-empty">{t('internship.testimonialsEmpty')}</Reveal>
+          )}
         </div>
       </section>
 
