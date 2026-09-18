@@ -21,7 +21,15 @@ const STEPS = [
   { titleKey: 'internship.step4Title', textKey: 'internship.step4Text' }
 ];
 
-const TESTIMONIALS = [];
+const TESTIMONIALS = [
+  { src: '/videos/internship-testimonial-01.mp4', poster: '/images/internship-testimonial-01.webp' },
+  { src: '/videos/internship-testimonial-02.mp4', poster: '/images/internship-testimonial-02.webp' },
+  { src: '/videos/internship-testimonial-03.mp4', poster: '/images/internship-testimonial-03.webp' },
+  { src: '/videos/internship-testimonial-04.mp4', poster: '/images/internship-testimonial-04.webp' },
+  { src: '/videos/internship-testimonial-05.mp4', poster: '/images/internship-testimonial-05.webp' },
+  { src: '/videos/internship-testimonial-06.mp4', poster: '/images/internship-testimonial-06.webp' },
+  { src: '/videos/internship-testimonial-07.mp4', poster: '/images/internship-testimonial-07.webp' }
+];
 
 const PHOTOS = [
   { src: '/images/internship-photo-01.webp', alt: 'Interns at their workstations during a session' },
@@ -195,7 +203,6 @@ export default function InternshipPage() {
                       controls
                       preload="metadata"
                     />
-                    <p className="internship-testimonial-name">{item.name}</p>
                   </Reveal>
                 ))}
               </div>

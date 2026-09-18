@@ -3798,15 +3798,6 @@ html.dark .internship-testimonials-heading {
     width: 280px;
   }
 }
-.internship-testimonial-name {
-  margin-top: 0.75rem;
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #0b2545;
-}
-html.dark .internship-testimonial-name {
-  color: #fff;
-}
 .internship-testimonials-viewall {
   display: block;
   margin: 2rem auto 0;
@@ -3917,7 +3908,6 @@ html[data-theme='taupe'] .internship-step-title,
 html[data-theme='taupe'] .internship-apply-title,
 html[data-theme='taupe'] .internship-apply-link,
 html[data-theme='taupe'] .internship-testimonials-heading,
-html[data-theme='taupe'] .internship-testimonial-name,
 html[data-theme='taupe'] .header-menu-btn,
 html[data-theme='taupe'] .header-brand-name,
 html[data-theme='taupe'] .lang-select,
