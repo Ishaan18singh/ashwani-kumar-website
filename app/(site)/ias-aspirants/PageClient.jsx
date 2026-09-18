@@ -99,7 +99,7 @@ export default function IasAspirantsPage() {
               ))}
             </div>
             <div className="aspirants-cta-actions">
-              <Link href="/contact" className="aspirants-cta-btn" prefetch={false}>
+              <Link href="/internship" className="aspirants-cta-btn" prefetch={false}>
                 {t('iasAspirants.ctaPrimaryBtn')} <span aria-hidden="true">→</span>
               </Link>
               <a href="#four-moves" className="aspirants-cta-link">

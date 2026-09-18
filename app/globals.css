@@ -3585,6 +3585,213 @@ html.dark .awards-featured-title {
   transform: translateY(-2px);
 }
 
+/* Internship page: a hero (text + photo), a three-pillar row reusing
+   the IAS Aspirants icon set, a numbered "how it works" list, a plain
+   "who it's for" statement, and a closing apply CTA. */
+.internship-hero {
+  padding: 9rem 0 4rem;
+}
+.internship-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+@media (min-width: 1024px) {
+  .internship-hero-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 3.5rem;
+  }
+}
+.internship-hero-title {
+  margin-top: 1rem;
+  font-weight: 500;
+  font-size: clamp(2.25rem, 4.5vw, 3.25rem);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: #0b2545;
+}
+html.dark .internship-hero-title {
+  color: #fff;
+}
+.internship-hero-subtitle {
+  margin-top: 1.25rem;
+  max-width: 34rem;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgb(100, 116, 139);
+}
+.internship-hero-photo-wrap {
+  position: relative;
+}
+.internship-hero-photo {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 1.5rem;
+  box-shadow: 0 30px 60px -30px rgba(20, 17, 13, 0.4);
+}
+.internship-pillars {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  margin-top: 2.5rem;
+}
+@media (min-width: 768px) {
+  .internship-pillars {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.internship-pillar-icon {
+  display: grid;
+  place-items: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 9999px;
+  background: rgba(180, 156, 116, 0.22);
+  color: rgb(133, 108, 61);
+}
+.internship-pillar-title {
+  margin-top: 1.25rem;
+  font-weight: 600;
+  font-size: 1.15rem;
+  color: #0b2545;
+}
+html.dark .internship-pillar-title {
+  color: #fff;
+}
+.internship-pillar-text {
+  margin-top: 0.6rem;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: rgb(100, 116, 139);
+}
+/* Slim continuously-scrolling photo strip, same seamless-loop technique
+   as .updates-marquee: the track renders the photo list twice back-to-back
+   and animates exactly -50%, so the second copy lines up perfectly with the
+   first as it loops. Paused on hover/focus and disabled under prefers-reduced-motion. */
+.internship-photo-banner {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+}
+.internship-photo-track {
+  display: flex;
+  width: max-content;
+  gap: 1rem;
+  animation: internship-photo-scroll 28s linear infinite;
+}
+.internship-photo-banner:hover .internship-photo-track,
+.internship-photo-banner:focus-within .internship-photo-track {
+  animation-play-state: paused;
+}
+@keyframes internship-photo-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .internship-photo-track {
+    animation: none;
+  }
+}
+.internship-photo-item {
+  height: 140px;
+  width: 220px;
+  flex-shrink: 0;
+  border-radius: 0.75rem;
+  object-fit: cover;
+}
+@media (min-width: 768px) {
+  .internship-photo-item {
+    height: 180px;
+    width: 280px;
+  }
+}
+.internship-steps {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  margin-top: 2.5rem;
+}
+@media (min-width: 768px) {
+  .internship-steps {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+.internship-step {
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(11, 37, 69, 0.1);
+}
+.internship-step-number {
+  font-family: var(--font-playfair-display), Georgia, serif;
+  font-style: italic;
+  font-size: 1.5rem;
+  color: rgb(var(--c-gold-500));
+}
+.internship-step-title {
+  margin-top: 0.75rem;
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: #0b2545;
+}
+html.dark .internship-step-title {
+  color: #fff;
+}
+.internship-step-text {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: rgb(100, 116, 139);
+}
+.internship-who {
+  max-width: 44rem;
+}
+.internship-who-text {
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: rgb(71, 85, 105);
+}
+.internship-apply {
+  max-width: 40rem;
+}
+.internship-apply-title {
+  font-weight: 500;
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  color: #0b2545;
+}
+html.dark .internship-apply-title {
+  color: #fff;
+}
+.internship-apply-text {
+  margin-top: 1rem;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgb(100, 116, 139);
+}
+.internship-apply-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+.internship-apply-link {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #0b2545;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+html.dark .internship-apply-link {
+  color: #fff;
+}
+
 /* ============================================================
    "Taupe" theme — an alternate, switchable palette (Luxury Warm
    Taupe / Champagne Greige) toggled via the ThemeToggle component,
@@ -3633,6 +3840,11 @@ html[data-theme='taupe'] .pub-newsletter-title,
 html[data-theme='taupe'] .journey-heading,
 html[data-theme='taupe'] .journey-cta,
 html[data-theme='taupe'] .leadership-title,
+html[data-theme='taupe'] .internship-hero-title,
+html[data-theme='taupe'] .internship-pillar-title,
+html[data-theme='taupe'] .internship-step-title,
+html[data-theme='taupe'] .internship-apply-title,
+html[data-theme='taupe'] .internship-apply-link,
 html[data-theme='taupe'] .header-menu-btn,
 html[data-theme='taupe'] .header-brand-name,
 html[data-theme='taupe'] .lang-select,
@@ -3737,6 +3949,10 @@ html[data-theme='taupe'] .aspirants-moves-item-text,
 html[data-theme='taupe'] .aspirants-cta-text,
 html[data-theme='taupe'] .awards-showcase-counter,
 html[data-theme='taupe'] .awards-showcase-eyebrow,
+html[data-theme='taupe'] .internship-hero-subtitle,
+html[data-theme='taupe'] .internship-pillar-text,
+html[data-theme='taupe'] .internship-step-text,
+html[data-theme='taupe'] .internship-apply-text,
 html[data-theme='taupe'] .awards-tray-text {
   color: #746963;
 }
@@ -3747,6 +3963,7 @@ html[data-theme='taupe'] .film-detail-share-btn--mail .film-detail-share-icon {
 /* Group: former rgb(71, 85, 105) slightly darker muted text */
 html[data-theme='taupe'] .journey-copy,
 html[data-theme='taupe'] .leadership-text,
+html[data-theme='taupe'] .internship-who-text,
 html[data-theme='taupe'] .awards-featured-body {
   color: #62564b;
 }
@@ -3757,6 +3974,7 @@ html[data-theme='taupe'] .awards-moves-grid,
 html[data-theme='taupe'] .awards-moves-item,
 html[data-theme='taupe'] .aspirants-moves-grid,
 html[data-theme='taupe'] .aspirants-moves-item,
+html[data-theme='taupe'] .internship-step,
 html[data-theme='taupe'] .pub-list-row {
   border-color: rgba(98, 86, 75, 0.18);
 }
