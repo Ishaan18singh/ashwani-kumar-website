@@ -3783,6 +3783,7 @@ html.dark .internship-testimonials-heading {
 .internship-testimonials-grid {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 2rem;
   margin-top: 2.5rem;
 }
