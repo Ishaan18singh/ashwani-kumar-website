@@ -1,12 +1,23 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import { GeistSans } from 'geist/font/sans';
-import { Playfair_Display } from 'next/font/google';
+import { Mulish, Source_Serif_4 } from 'next/font/google';
 import './globals.css';
 
-const playfairDisplay = Playfair_Display({
+// Mirrors the sans-headings/serif-body split used on mikebloomberg.com
+// (proxima-nova headings, minion-pro body). Proxima Nova and Minion Pro
+// are commercial fonts unavailable without an Adobe Fonts license, so
+// these are the closest free open-license look-alikes: Mulish is widely
+// cited as the nearest free match for Proxima Nova's proportions, and
+// Source Serif 4 is Adobe's own open-license text serif in the same
+// family of book-serifs as Minion Pro.
+const mulish = Mulish({
   subsets: ['latin'],
-  variable: '--font-playfair-display',
+  variable: '--font-mulish',
+  display: 'swap'
+});
+const sourceSerif = Source_Serif_4({
+  subsets: ['latin'],
+  variable: '--font-source-serif',
   display: 'swap'
 });
 
@@ -86,7 +97,7 @@ const personJsonLd = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${GeistSans.variable} ${playfairDisplay.variable}`}>
+    <html lang="en" className={`${mulish.variable} ${sourceSerif.variable}`}>
       <head>
         {/* JSON-LD is exempt from CSP script-src (non-executable data block), so no nonce needed. */}
         <script
@@ -103,7 +114,7 @@ export default function RootLayout({ children }) {
           }}
         />
       </head>
-      <body className={GeistSans.className}>{children}</body>
+      <body>{children}</body>
     </html>
   );
 }
