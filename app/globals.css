@@ -241,7 +241,7 @@ html.dark footer .nav-link.active { color: rgb(var(--c-gold-500)); }
 
 /* Fluid type-scale utility classes. */
 .text-display-xl { font-size: var(--fs-display-xl); line-height: 1.05; }
-.text-hero-headline { font-size: var(--fs-hero-headline); line-height: 1.02; }
+.text-hero-headline { font-size: 40px; line-height: 1.02; }
 .text-display-l { font-size: var(--fs-display-l); line-height: 1.08; }
 .text-display-m { font-size: var(--fs-display-m); line-height: 1.1; }
 .text-heading-l { font-size: var(--fs-heading-l); line-height: 1.2; }
@@ -1443,7 +1443,7 @@ html.dark .pub-newsletter-title {
 .hero-fullbleed-content {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-end;
   padding-top: 8rem;
   padding-bottom: 4rem;
 }
@@ -1515,7 +1515,7 @@ html.dark .pub-newsletter-title {
   .hero-mobile-content {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-end;
     min-height: 100vh;
     min-height: 100dvh;
     max-width: 70%;

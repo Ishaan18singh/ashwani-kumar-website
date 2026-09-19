@@ -134,11 +134,6 @@ export default function Header() {
             </span>
             <span className="header-menu-label">{t('common.menu')}</span>
           </button>
-          <Link href="/" className="header-brand" aria-label="Ashwani Kumar home">
-            <span className="header-brand-text">
-              <strong className="header-brand-name">Ashwani Kumar</strong>
-            </span>
-          </Link>
           <div className="header-right">
             <nav className="header-links" aria-label="Quick links">
               {headerLinks.map(([href, key]) => (

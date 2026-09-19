@@ -89,44 +89,21 @@ export default function HomePage() {
         />
         <div className="hero-fullbleed-overlay" aria-hidden="true" />
         <div className="shell hero-fullbleed-content hero-desktop-content relative z-10 min-h-screen">
-          <div className="hero-fullbleed-top">
-            <p className="eyebrow">{t('home.eyebrow')}</p>
-            <Html as="h1" className="text-hero-headline max-w-2xl font-normal" html={t('home.titleHtml')} />
-          </div>
           <div className="hero-fullbleed-bottom">
-            <p className="hero-fullbleed-text mt-7 max-w-xl">{t('home.subtitle')}</p>
-            <blockquote className="hero-fullbleed-quote mt-10 max-w-xl pl-5 font-display text-xl italic">
-              {t('home.quote')}
-            </blockquote>
-            <a
-              href="#introduction"
-              className="hero-fullbleed-scroll absolute bottom-5 left-1/2 -translate-x-1/2 text-xs uppercase tracking-[.2em] text-white"
-            >
-              {t('home.scroll')}
-            </a>
+            <p className="eyebrow">{t('home.eyebrow')}</p>
+            <h1 className="text-hero-headline max-w-2xl font-normal">{t('home.heroName')}</h1>
+            <p className="hero-fullbleed-text mt-7 max-w-xl">{t('home.heroRole')}</p>
+            <p className="hero-fullbleed-text max-w-xl">{t('home.heroDept')}</p>
           </div>
         </div>
 
         <div className="hero-mobile-content relative z-10">
-          <div className="hero-mobile-top">
-            <p className="hero-mobile-eyebrow">Indian Administrative Service</p>
-            <p className="hero-mobile-eyebrow hero-mobile-eyebrow-sub">Assam-Meghalaya Cadre</p>
-            <h1 className="hero-mobile-heading">
-              <span className="block">Digital governance.</span>
-              <span className="block">Public purpose.</span>
-            </h1>
-            <div className="hero-mobile-divider" />
-          </div>
           <div className="hero-mobile-bottom">
-            <p className="hero-mobile-name">Ashwani Kumar, IAS</p>
-            <p className="hero-mobile-role">Director, DITEC</p>
-            <p className="hero-mobile-role">Government of Assam</p>
-            <p className="hero-mobile-subtitle">
-              From leading flood relief and grassroots reform in Assam’s field districts to driving statewide digital governance through e-Prastuti, PGRS and citizen-first public services.
-            </p>
-            <div className="hero-mobile-scroll">
-              <span>Scroll</span> <span aria-hidden="true">↓</span>
-            </div>
+            <p className="hero-mobile-eyebrow">{t('home.eyebrow')}</p>
+            <h1 className="hero-mobile-heading">{t('home.heroName')}</h1>
+            <div className="hero-mobile-divider" />
+            <p className="hero-mobile-role">{t('home.heroRole')}</p>
+            <p className="hero-mobile-role">{t('home.heroDept')}</p>
           </div>
         </div>
       </section>
