@@ -287,6 +287,13 @@ body,
   font-size: var(--fs-body-l);
   line-height: 1.8;
 }
+/* Matches mikebloomberg.com: paragraph-to-paragraph gap equals one line
+   of body text, so consecutive paragraphs read as evenly spaced lines
+   rather than an arbitrary gap. Overrides the space-y-5 utility's
+   default 20px with this rhythm's 32px wherever both classes combine. */
+.body-copy.space-y-5 > :not([hidden]) ~ :not([hidden]) {
+  margin-top: 2rem;
+}
 
 /* Shared section-title class: consolidated here as the single source of
    truth (previously split across this rule, the minified Tailwind base,
@@ -338,6 +345,10 @@ h1,
   font-size: var(--step-h1-size);
   font-weight: var(--step-h1-weight);
   line-height: var(--step-h1-line);
+  /* Matches mikebloomberg.com: H1-to-body-paragraph gap equals the body
+     text's own line-height (32px), so the heading sits exactly one
+     text-line above the copy that follows it. */
+  margin-bottom: 2rem;
 }
 
 h2,
