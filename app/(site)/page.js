@@ -94,7 +94,7 @@ export default function HomePage() {
             <p className="eyebrow">{t('home.eyebrow')}</p>
           </div>
           <div className="hero-fullbleed-bottom">
-            <p className="hero-fullbleed-text max-w-xl">{t('home.heroRole')}</p>
+            <Html as="p" className="hero-fullbleed-text max-w-xl" html={t('home.heroRole')} />
             <p className="hero-fullbleed-text max-w-xl">{t('home.heroDept')}</p>
           </div>
         </div>
@@ -106,7 +106,7 @@ export default function HomePage() {
           </div>
           <div className="hero-mobile-bottom">
             <div className="hero-mobile-divider" />
-            <p className="hero-mobile-role">{t('home.heroRole')}</p>
+            <p className="hero-mobile-role">{t('home.heroRole').replace(/<br\s*\/?>/i, ' ')}</p>
             <p className="hero-mobile-role">{t('home.heroDept')}</p>
           </div>
         </div>

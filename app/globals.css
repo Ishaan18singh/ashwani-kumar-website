@@ -244,7 +244,7 @@ html.dark footer .nav-link.active { color: rgb(var(--c-gold-500)); }
 
 /* Fluid type-scale utility classes. */
 .text-display-xl { font-size: var(--fs-display-xl); line-height: 1.05; }
-.text-hero-headline { font-family: var(--font-sans); font-size: 40px; line-height: 1.02; font-weight: 700 !important; }
+.text-hero-headline { font-family: var(--font-sans); font-size: 40px; line-height: 1.02; font-weight: 700 !important; margin-bottom: 0; }
 .text-display-l { font-size: var(--fs-display-l); line-height: 1.08; }
 .text-display-m { font-size: var(--fs-display-m); line-height: 1.1; }
 .text-heading-l { font-size: var(--fs-heading-l); line-height: 1.2; }
@@ -1358,7 +1358,8 @@ html.dark .pub-newsletter-title {
 
 /* Footer background: solid black, with light text/link colors to match. */
 .footer-black {
-  background-color: #000;
+  background-color: #222;
+  font-family: var(--font-sans);
 }
 .footer-black-rule {
   border-top: 1px solid rgba(255, 255, 255, 0.15);
@@ -1446,17 +1447,19 @@ html.dark .pub-newsletter-title {
 .hero-fullbleed-content {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: flex-start;
   padding-top: 8rem;
   padding-bottom: 4rem;
 }
 .hero-fullbleed-name-wrap {
   display: flex;
   flex-direction: column;
+  margin-top: 282px;
   margin-bottom: 28px;
 }
 .hero-fullbleed-name-wrap .eyebrow {
-  margin-top: 0.75rem;
+  margin-top: 4px;
+  white-space: nowrap;
 }
 .hero-fullbleed-overlay {
   position: absolute;
@@ -1469,6 +1472,9 @@ html.dark .pub-newsletter-title {
   font-size: var(--fs-body-l);
   line-height: 1.7;
   color: rgba(247, 244, 236, 0.85);
+}
+.hero-fullbleed-text + .hero-fullbleed-text {
+  margin-top: 1.5em;
 }
 /* h1's base rule sets an explicit dark color, which otherwise wins
    over the inherited .text-white on the section (class beats type
@@ -1535,10 +1541,11 @@ html.dark .pub-newsletter-title {
   .hero-mobile-name-wrap {
     display: flex;
     flex-direction: column;
-    margin-bottom: 40px;
+    margin-bottom: 28px;
   }
   .hero-mobile-name-wrap .hero-mobile-eyebrow {
-    margin-top: 0.75rem;
+    margin-top: 4px;
+    white-space: nowrap;
   }
   .hero-mobile-eyebrow {
     font-size: 10px;
@@ -1555,6 +1562,7 @@ html.dark .pub-newsletter-title {
   }
   .hero-mobile-heading {
     margin-top: 1.25rem;
+    margin-bottom: 0;
     font-family: var(--font-sans);
     font-size: 26px;
     line-height: 1.22;
@@ -1577,6 +1585,9 @@ html.dark .pub-newsletter-title {
     margin-top: 0.25rem;
     font-size: 13px;
     color: rgba(247, 245, 241, 0.7);
+  }
+  .hero-mobile-role + .hero-mobile-role {
+    margin-top: 1.5em;
   }
   .hero-mobile-subtitle {
     margin-top: 1.25rem;
