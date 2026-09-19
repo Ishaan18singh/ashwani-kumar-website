@@ -89,18 +89,22 @@ export default function HomePage() {
         />
         <div className="hero-fullbleed-overlay" aria-hidden="true" />
         <div className="shell hero-fullbleed-content hero-desktop-content relative z-10 min-h-screen">
-          <div className="hero-fullbleed-bottom">
+          <div className="hero-fullbleed-name-wrap">
+            <h1 className="text-hero-headline max-w-2xl font-bold">{t('home.heroName')}</h1>
             <p className="eyebrow">{t('home.eyebrow')}</p>
-            <h1 className="text-hero-headline max-w-2xl font-normal">{t('home.heroName')}</h1>
-            <p className="hero-fullbleed-text mt-7 max-w-xl">{t('home.heroRole')}</p>
+          </div>
+          <div className="hero-fullbleed-bottom">
+            <p className="hero-fullbleed-text max-w-xl">{t('home.heroRole')}</p>
             <p className="hero-fullbleed-text max-w-xl">{t('home.heroDept')}</p>
           </div>
         </div>
 
         <div className="hero-mobile-content relative z-10">
-          <div className="hero-mobile-bottom">
+          <div className="hero-mobile-name-wrap">
+            <h1 className="hero-mobile-heading font-bold">{t('home.heroName')}</h1>
             <p className="hero-mobile-eyebrow">{t('home.eyebrow')}</p>
-            <h1 className="hero-mobile-heading">{t('home.heroName')}</h1>
+          </div>
+          <div className="hero-mobile-bottom">
             <div className="hero-mobile-divider" />
             <p className="hero-mobile-role">{t('home.heroRole')}</p>
             <p className="hero-mobile-role">{t('home.heroDept')}</p>

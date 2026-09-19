@@ -17,32 +17,17 @@ export default function Header() {
 
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [hidden, setHidden] = useState(false);
 
   const toggleRef = useRef(null);
   const panelRef = useRef(null);
   const lastFocused = useRef(null);
 
   useEffect(() => {
-    let lastY = window.scrollY;
     let ticking = false;
     const GLASS_AT = 24;
-    const HIDE_AFTER = 96;
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     const onScroll = () => {
-      const y = window.scrollY;
-      setScrolled(y > GLASS_AT);
-      if (!menuOpen) {
-        if (reduceMotion) {
-          setHidden(false);
-        } else if (y > lastY && y > HIDE_AFTER) {
-          setHidden(true);
-        } else {
-          setHidden(false);
-        }
-      }
-      lastY = y;
+      setScrolled(window.scrollY > GLASS_AT);
       ticking = false;
     };
 
@@ -55,13 +40,12 @@ export default function Header() {
     onScroll();
     window.addEventListener('scroll', handler, { passive: true });
     return () => window.removeEventListener('scroll', handler);
-  }, [menuOpen]);
+  }, []);
 
   const setMenu = (open) => {
     setMenuOpen(open);
     if (open) {
       lastFocused.current = document.activeElement;
-      setHidden(false);
       document.body.classList.add('overflow-hidden');
       requestAnimationFrame(() => {
         const first = panelRef.current?.querySelector('a[href], button:not([disabled])');
@@ -112,8 +96,8 @@ export default function Header() {
       <header
         id="site-header-bar"
         className={`site-header fixed inset-x-0 top-0 z-40${scrolled ? ' is-scrolled' : ''}${
-          hidden ? ' header-hidden' : ''
-        }${DARK_HERO_ROUTES.includes(pathname) ? ' on-dark-hero' : ''}`}
+          DARK_HERO_ROUTES.includes(pathname) ? ' on-dark-hero' : ''
+        }`}
       >
         <div className="header-inner shell">
           <button
