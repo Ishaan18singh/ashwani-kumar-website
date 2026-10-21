@@ -18,10 +18,10 @@ export default function AboutPage() {
             <div className="about-portrait-frame">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/ashwani-kumar-portrait-bw.webp"
-                alt="Ashwani Kumar, IAS, standing in a formal interior"
-                width={1000}
-                height={1500}
+                src="/images/ashwani-kumar-portrait-lbsnaa.webp"
+                alt="Ashwani Kumar, IAS, at the Lal Bahadur Shastri National Academy of Administration, Mussoorie"
+                width={1200}
+                height={1600}
                 loading="lazy"
               />
             </div>
