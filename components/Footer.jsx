@@ -4,6 +4,10 @@ import { useI18n } from '@/lib/i18n/context';
 import { SITE_DATA } from '@/lib/data';
 import SocialIcon from '@/components/SocialIcon';
 
+// Kept out of the footer icon row: Mail already appears as the email link
+// above it, and these two channels aren't ones to surface site-wide.
+const FOOTER_HIDDEN = ['Mail', 'Threads', 'Pinterest'];
+
 export default function Footer() {
   const { t } = useI18n();
   const year = new Date().getFullYear();
@@ -20,22 +24,21 @@ export default function Footer() {
           ) : null;
         })()}
         <div className="footer-social-list">
-          {SITE_DATA.profile.social.map((s) => {
-            const isMail = s.url.startsWith('mailto:');
-            return (
+          {SITE_DATA.profile.social
+            .filter((s) => !FOOTER_HIDDEN.includes(s.label))
+            .map((s) => (
               <a
                 key={s.label}
                 href={s.url}
-                target={isMail ? undefined : '_blank'}
-                rel={isMail ? undefined : 'noopener noreferrer'}
-                aria-label={isMail ? s.label : `${s.label} (opens in new tab)`}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${s.label} (opens in new tab)`}
                 title={s.label}
                 className="footer-social-link"
               >
                 <SocialIcon label={s.label} />
               </a>
-            );
-          })}
+            ))}
         </div>
       </div>
       <div className="shell footer-black-rule mt-12 pt-6 text-center text-xs">
