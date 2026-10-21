@@ -37,7 +37,7 @@ export default function ProjectDetailPage() {
       <div className="shell max-w-4xl">
         <Reveal className="project-detail-body" blur>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img className="project-detail-img" src={`/images/${cardImage(index)}.webp`} alt="" />
+          <img className="project-detail-img" src={`/images/${cardImage(index, project)}.webp`} alt="" />
           <p className="eyebrow">{t('project.initiative')}</p>
           <h1 className="max-w-3xl text-4xl font-semibold sm:text-6xl">{project.title}</h1>
           <p className="mt-4 text-sm font-bold uppercase tracking-[.15em] text-gold-500">{project.tag}</p>

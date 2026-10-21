@@ -124,7 +124,7 @@ export default function InitiativesRail({ projects, mode = 'marquee' }) {
           {projects.map((x, i) => (
             <Link key={x.title} href={`/projects/${slugify(x.title)}`} prefetch={false} className={cardClass} aria-label={`${x.title}, read more`}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img className="initiative-card-img" src={`/images/${cardImage(i)}.webp`} alt="" loading="lazy" />
+              <img className="initiative-card-img" src={`/images/${cardImage(i, x)}.webp`} alt="" loading="lazy" />
               <span className="corner corner-tl" aria-hidden="true" />
               <span className="corner corner-br" aria-hidden="true" />
               <span className="initiative-content">

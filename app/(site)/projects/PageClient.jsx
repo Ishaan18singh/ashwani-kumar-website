@@ -28,7 +28,7 @@ export default function ProjectsPage() {
               }`}
             >
               <img
-                src={`/images/${cardImage(i)}.webp`}
+                src={`/images/${cardImage(i, x)}.webp`}
                 alt=""
                 loading="lazy"
                 className="initiative-row-img w-full rounded-2xl object-contain shadow-2xl"
