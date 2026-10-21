@@ -13,34 +13,38 @@ export default function AboutPage() {
       <PageHero eyebrow={t('about.eyebrow')} />
 
       <section className="about-journey-section">
-        <div className="shell grid gap-14 lg:grid-cols-[.8fr_1.2fr]">
-          <Reveal>
-            <div className="about-portrait-frame">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/images/ashwani-kumar-portrait-lbsnaa.webp"
-                alt="Ashwani Kumar, IAS, at the Lal Bahadur Shastri National Academy of Administration, Mussoorie"
-                width={1200}
-                height={1600}
-                loading="lazy"
-              />
-            </div>
-            <h1 className="mt-6 text-2xl font-semibold tracking-tight text-navy-900 dark:text-white">
-              {t('about.title')}
-            </h1>
-            <p className="mt-3 text-slate-600 dark:text-slate-300">{t('about.subtitle')}</p>
-          </Reveal>
+        <div className="shell">
           <Reveal>
             <h2 className="section-title">{t('about.journeyTitle')}</h2>
-            <div className="body-copy about-journey-copy mt-7 space-y-5">
-              <p>{t('about.journeyP1')}</p>
-              <p>{t('about.journeyP2')}</p>
-              <p>{t('about.journeyP3')}</p>
-            </div>
-            <blockquote className="mt-10 border-l-2 border-gold-400 pl-6 font-display text-3xl italic text-navy-900 dark:text-white">
-              {t('about.journeyQuote')}
-            </blockquote>
           </Reveal>
+          <div className="mt-7 grid gap-14 lg:grid-cols-[.8fr_1.2fr]">
+            <Reveal>
+              <div className="about-portrait-frame">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/images/ashwani-kumar-about-office.webp"
+                  alt="Ashwani Kumar, IAS, at his desk in the DITEC office"
+                  width={1600}
+                  height={900}
+                  loading="lazy"
+                />
+              </div>
+              <h1 className="mt-6 text-2xl font-semibold tracking-tight text-navy-900 dark:text-white">
+                {t('about.title')}
+              </h1>
+              <p className="mt-3 text-slate-600 dark:text-slate-300">{t('about.subtitle')}</p>
+            </Reveal>
+            <Reveal>
+              <div className="body-copy about-journey-copy space-y-5">
+                <p>{t('about.journeyP1')}</p>
+                <p>{t('about.journeyP2')}</p>
+                <p>{t('about.journeyP3')}</p>
+              </div>
+              <blockquote className="mt-10 border-l-2 border-gold-400 pl-6 font-display text-3xl italic text-navy-900 dark:text-white">
+                {t('about.journeyQuote')}
+              </blockquote>
+            </Reveal>
+          </div>
         </div>
       </section>
 

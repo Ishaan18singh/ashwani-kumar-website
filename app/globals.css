@@ -2879,12 +2879,12 @@ html.dark .aspirants-moves-item-text {
   }
 }
 
-/* About page portrait: same framing as the portfolio site's About page
-   (3:4 crop, thin neutral border, no rounded corners). */
+/* About page photo: 16:9 in the narrow left column, so the journey copy
+   sits beside it. Thin neutral border, no rounded corners. */
 .about-portrait-frame {
   position: relative;
   width: 100%;
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 16 / 9;
   overflow: hidden;
   border: 1px solid #ebeae2;
   background-color: #f2f1ec;
