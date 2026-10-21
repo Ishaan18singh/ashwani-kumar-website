@@ -599,6 +599,21 @@ html.dark .initiative-row-img {
   .stack-center .flex {
     justify-content: center;
   }
+
+  /* Body copy centered to match the headings above it. Forms stay
+     left-aligned - centered labels and inputs are hard to scan. */
+  .body-copy,
+  .about-portrait-frame ~ h1,
+  .about-portrait-frame ~ p {
+    text-align: center;
+  }
+  .body-copy :is(p, li) {
+    text-align: center;
+  }
+  #contact-form,
+  #contact-form :is(label, input, select, textarea) {
+    text-align: start;
+  }
 }
 @media (max-width: 639px) {
   footer .shell {
