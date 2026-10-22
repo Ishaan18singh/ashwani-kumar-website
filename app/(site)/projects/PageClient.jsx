@@ -23,16 +23,17 @@ export default function ProjectsPage() {
             <Reveal
               as="article"
               key={x.title}
-              className={`initiative-row grid items-center gap-8 lg:grid-cols-2 lg:gap-14${
-                i % 2 === 1 ? ' initiative-row-reverse' : ''
-              }`}
+              className="initiative-row grid gap-8"
             >
-              <img
-                src={`/images/${cardImage(i, x)}.webp`}
-                alt=""
-                loading="lazy"
-                className="initiative-row-img w-full rounded-2xl object-contain shadow-2xl"
-              />
+              {cardImage(i, x) ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={`/images/${cardImage(i, x)}.webp`}
+                  alt=""
+                  loading="lazy"
+                  className="initiative-row-img w-full rounded-2xl object-cover shadow-2xl"
+                />
+              ) : null}
               <div>
                 <p className="eyebrow">{x.tag}</p>
                 <h2 className="text-3xl font-semibold text-navy-900 dark:text-white sm:text-4xl">{x.title}</h2>

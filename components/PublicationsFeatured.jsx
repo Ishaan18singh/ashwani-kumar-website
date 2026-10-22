@@ -15,7 +15,9 @@ function langFor(item) {
 
 function PubImage({ item, className }) {
   const [failed, setFailed] = useState(false);
-  if (failed) {
+  // No image at all falls back too, otherwise src={undefined} leaves an
+  // empty box with no error event to catch.
+  if (failed || !item.image) {
     return <div className="pub-fallback">{item.publication}</div>;
   }
   // eslint-disable-next-line @next/next/no-img-element
@@ -30,6 +32,9 @@ export default function PublicationsFeatured({ items }) {
       {items.map((x, i) => (
         <a key={x.url || x.title} href={x.url} target="_blank" rel="noopener noreferrer" className="pub-list-row">
           <span className="pub-list-number">{String(i + 1).padStart(2, '0')}</span>
+          <span className="pub-list-thumb">
+            <PubImage item={x} className="pub-list-thumb-img" />
+          </span>
           <span className="pub-list-content">
             <span className="pub-list-meta">
               {x.date.toUpperCase()} <span aria-hidden="true">|</span> {langFor(x).toUpperCase()} <span aria-hidden="true">|</span>{' '}
@@ -42,9 +47,6 @@ export default function PublicationsFeatured({ items }) {
               <span className="pub-list-link-line" aria-hidden="true" />
               <span aria-hidden="true">→</span>
             </span>
-          </span>
-          <span className="pub-list-thumb">
-            <PubImage item={x} className="pub-list-thumb-img" />
           </span>
         </a>
       ))}
