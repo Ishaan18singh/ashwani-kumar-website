@@ -142,11 +142,11 @@ export default function HomePage() {
           <Reveal className="journey-image-wrap">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/images/ashwani-kumar-portrait-sm.webp"
+              src="/images/ashwani-kumar-home-journey-desk.webp"
               alt="Ashwani Kumar, IAS at his desk"
               className="journey-image"
-              width={800}
-              height={1200}
+              width={1189}
+              height={682}
               loading="lazy"
             />
           </Reveal>
