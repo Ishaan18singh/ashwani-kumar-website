@@ -2493,11 +2493,41 @@ html.dark .leadership-title {
   padding-left: 0;
   border-left: none;
 }
+/* Narrow screens center this section like every other one, at the same
+   1023px breakpoint the site-wide centering rules use. The eyebrow and
+   tag row are flex, so they need justify-content, not text-align. */
+@media (max-width: 1023px) {
+  .leadership-content {
+    text-align: center;
+  }
+  .leadership-eyebrow {
+    justify-content: center;
+  }
+  .leadership-text {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .leadership-tags {
+    justify-content: center;
+  }
+}
 @media (max-width: 767px) {
   .leadership-actions {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     gap: 1.5rem;
+  }
+  /* Keep all four tags on one line rather than dropping IMPACT onto a
+     second row: the type and dividers scale down with the viewport. */
+  .leadership-tags {
+    flex-wrap: nowrap;
+    gap: 0.6rem;
+  }
+  .leadership-tag-item {
+    padding-left: 0.6rem;
+    font-size: clamp(0.62rem, 3vw, 0.75rem);
+    letter-spacing: 0.06em;
+    white-space: nowrap;
   }
 }
 
