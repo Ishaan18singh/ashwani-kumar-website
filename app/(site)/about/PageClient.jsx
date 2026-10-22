@@ -22,10 +22,10 @@ export default function AboutPage() {
               <div className="about-portrait-frame">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="/images/ashwani-kumar-about-desk.webp"
+                  src="/images/ashwani-kumar-about-desk-navy.webp"
                   alt="Ashwani Kumar, IAS, at his desk in the DITEC office"
-                  width={1536}
-                  height={864}
+                  width={1600}
+                  height={900}
                   loading="lazy"
                 />
               </div>

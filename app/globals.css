@@ -545,7 +545,9 @@ html.dark .text-navy-950 {
 }
 
 .initiative-row-img {
-  aspect-ratio: 4 / 3;
+  /* Same 16:9 frame as the About page photo, so picture sizes match
+     across the site. */
+  aspect-ratio: 16 / 9;
   height: auto;
   background-color: #f1f5f9;
 }
