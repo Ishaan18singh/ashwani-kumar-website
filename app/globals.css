@@ -2494,14 +2494,12 @@ html.dark .leadership-title {
   border-left: none;
 }
 /* Narrow screens center this section like every other one, at the same
-   1023px breakpoint the site-wide centering rules use. The eyebrow and
-   tag row are flex, so they need justify-content, not text-align. */
+   1023px breakpoint the site-wide centering rules use. The tag row is
+   flex, so it needs justify-content, not text-align. The eyebrow stays
+   pinned left, where it reads as a section marker rather than a title. */
 @media (max-width: 1023px) {
   .leadership-content {
     text-align: center;
-  }
-  .leadership-eyebrow {
-    justify-content: center;
   }
   .leadership-text {
     margin-left: auto;
