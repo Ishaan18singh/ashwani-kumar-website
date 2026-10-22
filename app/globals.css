@@ -972,12 +972,6 @@ html.dark .pub-card-link {
 html.dark .pub-list-title {
   color: #fff;
 }
-.pub-list-desc {
-  margin-top: 0.35rem;
-  font-size: 0.85rem;
-  line-height: 1.5;
-  color: rgb(100, 116, 139);
-}
 .pub-list-link {
   display: inline-flex;
   align-items: center;
@@ -1273,6 +1267,21 @@ html.dark .pub-featured-arrow {
   width: 1.5rem;
   height: 1px;
   background: currentColor;
+}
+
+/* "In the press": coverage written about him, a sibling list to the articles
+   he writes. A rule separates the two rather than another colour band, since
+   the CTA below already sits on cream. */
+.pub-press-section {
+  padding: 3.5rem 0 4rem;
+  border-top: 1px solid rgba(226, 232, 240, 0.9);
+}
+.pub-press-intro {
+  max-width: 34rem;
+  margin-top: 0.9rem;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: rgb(100, 116, 139);
 }
 
 /* Publications closing CTA + newsletter signup. */
@@ -4056,7 +4065,6 @@ html[data-theme='taupe'] .film-detail-share-btn--embed .film-detail-share-icon {
 /* Group: former rgb(100, 116, 139) muted body/meta text */
 html[data-theme='taupe'] .pub-card-meta,
 html[data-theme='taupe'] .pub-list-meta,
-html[data-theme='taupe'] .pub-list-desc,
 html[data-theme='taupe'] .pub-hero-subtitle,
 html[data-theme='taupe'] .pub-hero-quote-author,
 html[data-theme='taupe'] .pub-featured-meta,

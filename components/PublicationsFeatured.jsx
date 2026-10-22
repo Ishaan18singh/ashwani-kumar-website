@@ -41,7 +41,6 @@ export default function PublicationsFeatured({ items }) {
               {x.publication.toUpperCase()}
             </span>
             <span className="pub-list-title">{x.title}</span>
-            {x.summary ? <span className="pub-list-desc">{x.summary}</span> : null}
             <span className="pub-list-link">
               {t('publications.readArticle')}
               <span className="pub-list-link-line" aria-hidden="true" />

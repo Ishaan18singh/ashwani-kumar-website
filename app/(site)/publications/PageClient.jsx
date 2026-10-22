@@ -55,6 +55,19 @@ export default function PublicationsPage() {
         </div>
       </section>
 
+      {data.press?.length ? (
+        <section className="pub-press-section">
+          <div className="shell">
+            <p className="pub-more-eyebrow">
+              <span aria-hidden="true" />
+              {t('publications.pressCoverage')}
+            </p>
+            <p className="pub-press-intro">{t('publications.pressCoverageText')}</p>
+            <PublicationsFeatured items={data.press} />
+          </div>
+        </section>
+      ) : null}
+
       <section className="pub-cta">
         <div className="shell pub-cta-grid">
           <Reveal>

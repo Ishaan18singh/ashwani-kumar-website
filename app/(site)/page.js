@@ -7,25 +7,12 @@ import Reveal from '@/components/Reveal';
 
 const LATEST_UPDATES = [
   {
-    image: '/images/ashwani-kumar-initiatives.webp',
-    width: 520,
-    height: 716,
-    title: 'Phase 3 Mid-Career Training Programme',
-    date: '12 May – 6 June 2025 · LBSNAA, Mussoorie'
-  },
-  {
-    image: '/images/ashwani-kumar-hero-new.webp',
-    width: 520,
-    height: 778,
-    title: 'Distinguished Panelist, 18th DigiTech Conclave',
-    date: '2025 · Delhi'
-  },
-  {
-    image: '/images/ashwani-kumar-hero-new2.webp',
-    width: 520,
-    height: 692,
-    title: 'Aadhaar Samvaad: National Stakeholder Conference, UIDAI',
-    date: '8 April 2025 · Bharat Mandapam, New Delhi'
+    image: '/images/publications/press-jamui-et-government.webp',
+    width: 513,
+    height: 283,
+    title: 'Ashwani Kumar on Jamui Incident: Moving Beyond Viral Outrage to Real Reform',
+    date: '25 September 2026 · ET Government',
+    url: 'https://government.economictimes.indiatimes.com/blog/ashwani-kumar-on-jamui-incident-moving-beyond-viral-outrage-to-real-reform/134474437'
   },
   {
     image: '/images/press-devyani-nbsb.jpg',
