@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useI18n } from '@/lib/i18n/context';
+import { formatArticleDate } from '@/lib/i18n/formatDate';
 import { getSupabaseClient } from '@/lib/supabase';
 import Reveal from '@/components/Reveal';
 
@@ -9,7 +10,7 @@ import Reveal from '@/components/Reveal';
 // language shown is derived from the publication name for outlets that
 // publish in a language other than English (rather than always falling
 // back to "English").
-const NON_ENGLISH_PUBLICATIONS = { 'Dainik Bhaskar': 'Hindi' };
+const NON_ENGLISH_PUBLICATIONS = { 'Dainik Bhaskar': 'lang.hindi' };
 
 function PubImage({ item }) {
   const [failed, setFailed] = useState(false);
@@ -21,7 +22,7 @@ function PubImage({ item }) {
 }
 
 export default function PublicationsList({ fallback }) {
-  const { t } = useI18n();
+  const { t, lang } = useI18n();
   const [publications, setPublications] = useState(fallback);
 
   useEffect(() => {
@@ -47,7 +48,8 @@ export default function PublicationsList({ fallback }) {
           </span>
           <div className="pub-card-body">
             <p className="pub-card-meta">
-              {x.date} · {x.language || NON_ENGLISH_PUBLICATIONS[x.publication] || 'English'}
+              {formatArticleDate(x.iso, lang, x.date)} ·{' '}
+              {t(x.language === 'Hindi' ? 'lang.hindi' : NON_ENGLISH_PUBLICATIONS[x.publication] || 'lang.english')}
             </p>
             <p className="pub-card-source">{x.publication}</p>
             <a href={x.url} target="_blank" rel="noopener noreferrer" className="button-primary">

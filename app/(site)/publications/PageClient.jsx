@@ -10,7 +10,11 @@ export default function PublicationsPage() {
   const { t, data } = useI18n();
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
-  const [publications, setPublications] = useState(data.publications || []);
+  // Supabase rows win when the table has any, otherwise the bundled list.
+  // Held separately rather than seeded into state, so switching language
+  // re-reads the translated titles instead of keeping the first render.
+  const [remotePublications, setRemotePublications] = useState(null);
+  const publications = remotePublications || data.publications || [];
 
   useEffect(() => {
     const sb = getSupabaseClient();
@@ -20,7 +24,7 @@ export default function PublicationsPage() {
       .order('sort_order', { ascending: true })
       .then(({ data: rows, error }) => {
         if (error || !rows || !rows.length) return;
-        setPublications(rows);
+        setRemotePublications(rows);
       });
   }, []);
 

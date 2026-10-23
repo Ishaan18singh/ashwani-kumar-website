@@ -31,14 +31,14 @@ export default function ContactForm() {
     const honeypot = form.company?.value;
 
     if (honeypot || Date.now() - loadedAtRef.current < 1500) {
-      setStatus('Thank you, your message has been sent.');
+      setStatus(t('contact.statusSent'));
       form.reset();
       return;
     }
 
     const sb = getSupabaseClient();
     if (!sb) {
-      setStatus('Form is not connected yet. Please contact via email directly.');
+      setStatus(t('contact.statusNotConnected'));
       statusRef.current?.focus();
       return;
     }
@@ -55,9 +55,9 @@ export default function ContactForm() {
     setSending(false);
 
     if (error) {
-      setStatus('Something went wrong sending your message. Please try again or email directly.');
+      setStatus(t('contact.statusError'));
     } else {
-      setStatus('Thank you, your message has been sent.');
+      setStatus(t('contact.statusSent'));
       form.reset();
     }
     statusRef.current?.focus();

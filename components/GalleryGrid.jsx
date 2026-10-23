@@ -2,18 +2,22 @@
 
 import { useRef, useState } from 'react';
 import Reveal from '@/components/Reveal';
+import { useI18n } from '@/lib/i18n/context';
 
+// `altKey` rather than literal alt text, so screen readers hear the
+// description in the language the reader picked.
 const ITEMS = [
-  { src: '/images/gallery-01.webp', alt: 'Ashwani Kumar in a blue suit, full-length portrait' },
-  { src: '/images/gallery-03.webp', alt: 'Close portrait of Ashwani Kumar' },
-  { src: '/images/gallery-04.webp', alt: 'Ashwani Kumar in a formal portrait' },
-  { src: '/images/gallery-05.webp', alt: 'Black and white portrait of Ashwani Kumar' },
-  { src: '/images/screen-style-01.webp', alt: 'Studio portrait of Ashwani Kumar in a cream knit polo' },
-  { src: '/images/screen-style-02.webp', alt: 'Black and white studio portrait of Ashwani Kumar' },
-  { src: '/images/screen-style-03.webp', alt: 'Studio portrait of Ashwani Kumar in white linen' }
+  { src: '/images/gallery-01.webp', altKey: 'gallery.fullLength' },
+  { src: '/images/gallery-03.webp', altKey: 'gallery.closePortrait' },
+  { src: '/images/gallery-04.webp', altKey: 'gallery.formalPortrait' },
+  { src: '/images/gallery-05.webp', altKey: 'gallery.blackWhite' },
+  { src: '/images/screen-style-01.webp', altKey: 'gallery.creamPolo' },
+  { src: '/images/screen-style-02.webp', altKey: 'gallery.studioBw' },
+  { src: '/images/screen-style-03.webp', altKey: 'gallery.whiteLinen' }
 ];
 
 export default function GalleryGrid() {
+  const { t } = useI18n();
   const dialogRef = useRef(null);
   const [active, setActive] = useState(null);
 
@@ -39,7 +43,7 @@ export default function GalleryGrid() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={item.src}
-                alt={item.alt}
+                alt={t(item.altKey)}
                 loading="lazy"
                 className="film-card-img w-full object-center transition duration-500 group-hover:scale-105"
               />
@@ -64,7 +68,7 @@ export default function GalleryGrid() {
         </button>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={active?.src} alt="" className="max-h-[82vh] w-full rounded-xl object-contain" />
-        <p className="p-3 text-center text-sm text-slate-300">{active?.alt}</p>
+        <p className="p-3 text-center text-sm text-slate-300">{active ? t(active.altKey) : ''}</p>
       </dialog>
     </>
   );

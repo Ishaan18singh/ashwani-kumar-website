@@ -111,8 +111,8 @@ export default function FilmDetailPage() {
       </Reveal>
       {film.press?.length > 0 && (
         <div className="film-detail-press">
-          <p className="eyebrow">Press &amp; Reactions</p>
-          <h2 className="section-title">In the News</h2>
+          <p className="eyebrow">{t('acting.pressReactions')}</p>
+          <h2 className="section-title">{t('acting.inTheNews')}</h2>
           <div className="film-detail-press-grid">
             {film.press.map((item, i) => {
               let domain = item.source;
@@ -157,7 +157,7 @@ export default function FilmDetailPage() {
           }}
           onClose={() => setTrailerPlaying(false)}
         >
-          <button type="button" onClick={closeTrailer} className="film-detail-trailer-close" aria-label="Close trailer">
+          <button type="button" onClick={closeTrailer} className="film-detail-trailer-close" aria-label={t('share.closeTrailer')}>
             ×
           </button>
           <div className="film-detail-trailer-frame">
@@ -180,8 +180,8 @@ export default function FilmDetailPage() {
         }}
       >
         <div className="film-detail-share-header">
-          <h3>Share</h3>
-          <button type="button" onClick={closeShare} className="film-detail-share-close" aria-label="Close share">
+          <h3>{t('share.title')}</h3>
+          <button type="button" onClick={closeShare} className="film-detail-share-close" aria-label={t('share.close')}>
             ×
           </button>
         </div>
@@ -254,7 +254,7 @@ export default function FilmDetailPage() {
             <span className="film-detail-share-icon">
               <SocialIcon label="Messages" />
             </span>
-            <span>Messages</span>
+            <span>{t('share.messages')}</span>
           </a>
           <a
             className="film-detail-share-btn film-detail-share-btn--mail"
@@ -263,7 +263,7 @@ export default function FilmDetailPage() {
             <span className="film-detail-share-icon">
               <SocialIcon label="Mail" />
             </span>
-            <span>Email</span>
+            <span>{t('share.email')}</span>
           </a>
           {film.trailerYoutubeId && (
             <button
@@ -274,7 +274,7 @@ export default function FilmDetailPage() {
               <span className="film-detail-share-icon">
                 <SocialIcon label="Embed" />
               </span>
-              <span>Embed</span>
+              <span>{t('share.embed')}</span>
             </button>
           )}
         </div>
@@ -282,14 +282,14 @@ export default function FilmDetailPage() {
           <div className="film-detail-share-linkrow film-detail-share-linkrow--embed">
             <textarea readOnly value={embedCode} onFocus={(e) => e.target.select()} />
             <button type="button" onClick={copyEmbedCode} className="film-detail-share-copy">
-              {embedCopied ? 'Copied' : 'Copy'}
+              {embedCopied ? t('share.copied') : t('share.copy')}
             </button>
           </div>
         ) : (
           <div className="film-detail-share-linkrow">
             <input type="text" readOnly value={film.watchUrl} onFocus={(e) => e.target.select()} />
             <button type="button" onClick={copyShareLink} className="film-detail-share-copy">
-              {shareCopied ? 'Copied' : 'Copy'}
+              {shareCopied ? t('share.copied') : t('share.copy')}
             </button>
           </div>
         )}

@@ -2,15 +2,20 @@
 
 import { useState } from 'react';
 import { useI18n } from '@/lib/i18n/context';
+import { formatArticleDate } from '@/lib/i18n/formatDate';
 
 // The Supabase "publications" table has no language column, so the
 // language shown is derived from the publication name for outlets that
 // publish in a language other than English (rather than always falling
-// back to "English").
-const NON_ENGLISH_PUBLICATIONS = { 'Dainik Bhaskar': 'Hindi' };
+// back to "English"). The values are string keys so the label itself
+// renders in the reader's language.
+const NON_ENGLISH_PUBLICATIONS = { 'Dainik Bhaskar': 'lang.hindi' };
 
-function langFor(item) {
-  return item.language || NON_ENGLISH_PUBLICATIONS[item.publication] || 'English';
+function langKeyFor(item) {
+  if (item.language === 'Hindi') return 'lang.hindi';
+  // A language we have no key for falls through and prints as stored.
+  if (item.language && item.language !== 'English') return null;
+  return NON_ENGLISH_PUBLICATIONS[item.publication] || 'lang.english';
 }
 
 function PubImage({ item, className }) {
@@ -25,30 +30,34 @@ function PubImage({ item, className }) {
 }
 
 export default function PublicationsFeatured({ items }) {
-  const { t } = useI18n();
+  const { t, lang } = useI18n();
 
   return (
     <div className="pub-list">
-      {items.map((x, i) => (
-        <a key={x.url || x.title} href={x.url} target="_blank" rel="noopener noreferrer" className="pub-list-row">
-          <span className="pub-list-number">{String(i + 1).padStart(2, '0')}</span>
-          <span className="pub-list-thumb">
-            <PubImage item={x} className="pub-list-thumb-img" />
-          </span>
-          <span className="pub-list-content">
-            <span className="pub-list-meta">
-              {x.date.toUpperCase()} <span aria-hidden="true">|</span> {langFor(x).toUpperCase()} <span aria-hidden="true">|</span>{' '}
-              {x.publication.toUpperCase()}
+      {items.map((x, i) => {
+        const langKey = langKeyFor(x);
+        return (
+          <a key={x.url || x.title} href={x.url} target="_blank" rel="noopener noreferrer" className="pub-list-row">
+            <span className="pub-list-number">{String(i + 1).padStart(2, '0')}</span>
+            <span className="pub-list-thumb">
+              <PubImage item={x} className="pub-list-thumb-img" />
             </span>
-            <span className="pub-list-title">{x.title}</span>
-            <span className="pub-list-link">
-              {t('publications.readArticle')}
-              <span className="pub-list-link-line" aria-hidden="true" />
-              <span aria-hidden="true">→</span>
+            <span className="pub-list-content">
+              <span className="pub-list-meta">
+                {formatArticleDate(x.iso, lang, x.date).toUpperCase()} <span aria-hidden="true">|</span>{' '}
+                {(langKey ? t(langKey) : x.language).toUpperCase()} <span aria-hidden="true">|</span>{' '}
+                {x.publication.toUpperCase()}
+              </span>
+              <span className="pub-list-title">{x.title}</span>
+              <span className="pub-list-link">
+                {t('publications.readArticle')}
+                <span className="pub-list-link-line" aria-hidden="true" />
+                <span aria-hidden="true">→</span>
+              </span>
             </span>
-          </span>
-        </a>
-      ))}
+          </a>
+        );
+      })}
     </div>
   );
 }

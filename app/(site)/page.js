@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useI18n } from '@/lib/i18n/context';
+import { formatArticleDate } from '@/lib/i18n/formatDate';
 import Html from '@/components/Html';
 import Reveal from '@/components/Reveal';
 
@@ -10,46 +11,51 @@ const LATEST_UPDATES = [
     image: '/images/publications/press-jamui-et-government.webp',
     width: 513,
     height: 283,
-    title: 'Ashwani Kumar on Jamui Incident: Moving Beyond Viral Outrage to Real Reform',
-    date: '25 September 2026 · ET Government',
+    titleKey: 'updates.jamui',
+    iso: '2026-09-25',
+    source: 'ET Government',
     url: 'https://government.economictimes.indiatimes.com/blog/ashwani-kumar-on-jamui-incident-moving-beyond-viral-outrage-to-real-reform/134474437'
   },
   {
     image: '/images/press-devyani-nbsb.jpg',
     width: 885,
     height: 484,
-    title: 'IAS Officer Ashwani Kumar Steps Into Acting With Devyani',
-    date: '24 August 2026 · North Block South Block',
+    titleKey: 'updates.devyani',
+    iso: '2026-08-24',
+    source: 'North Block South Block',
     url: 'https://www.northblocksouthblock.com/ias-officer-ashwani-kumar-steps-into-acting-with-devyani/'
   },
   {
     image: '/images/press-bhedbhav-rninews.jpg',
     width: 700,
     height: 400,
-    title: 'Bhedbhav with Girls: Punishment for Being a Girl in India',
-    date: '5 May 2025 · RNI News',
+    titleKey: 'updates.bhedbhav',
+    iso: '2025-05-05',
+    source: 'RNI News',
     url: 'https://www.rninews.co.in/bhedbhav-with-girls-punishment-for-being-a-girl-in-india-when-will-the-thinking-change-179904-4/'
   },
   {
     image: '/images/press-cybersecurity-etgov.jpg',
     width: 1200,
     height: 627,
-    title: 'Cyber Security: Are We Misunderstanding It and Exaggerating Its Risks?',
-    date: '15 January 2024 · ET Government',
+    titleKey: 'updates.cyber',
+    iso: '2024-01-15',
+    source: 'ET Government',
     url: 'https://government.economictimes.indiatimes.com/news/secure-india/cyber-security-are-we-misunderstanding-it-and-exaggerating-its-risks/106853720'
   },
   {
     image: '/images/press-coaching-etgov.jpg',
     width: 1198,
     height: 627,
-    title: 'Opinion: Are Coaching Institutes Really Responsible for Rote Learning?',
-    date: '20 November 2022 · ET Government',
+    titleKey: 'updates.coaching',
+    iso: '2022-11-20',
+    source: 'ET Government',
     url: 'https://government.economictimes.indiatimes.com/news/education/opinion-how-coaching-institutes-are-responsible-for-deteriorating-education-quality-of-top-level-aspirants/95638030'
   }
 ];
 
 export default function HomePage() {
-  const { t } = useI18n();
+  const { t, lang } = useI18n();
 
   return (
     <div className="home-sections">
@@ -129,21 +135,18 @@ export default function HomePage() {
       <section id="introduction" className="home-section-intro journey-section">
         <div className="journey-grid">
           <Reveal className="journey-text">
-            <h2 className="journey-heading">A Journey of Purpose and Progress</h2>
+            <h2 className="journey-heading">{t('home.journeyTitle')}</h2>
             <div className="journey-divider" />
-            <p className="journey-copy">
-              From a small town with big dreams to the journey of serving lakhs of people, every step has been
-              driven by purpose.
-            </p>
+            <p className="journey-copy">{t('home.journeyText')}</p>
             <Link className="journey-cta" href="/about" prefetch={false}>
-              Read My Story <span aria-hidden="true">→</span>
+              {t('home.journeyCta')} <span aria-hidden="true">→</span>
             </Link>
           </Reveal>
           <Reveal className="journey-image-wrap">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/images/ashwani-kumar-home-journey-desk.webp"
-              alt="Ashwani Kumar, IAS at his desk"
+              alt={t('home.journeyAlt')}
               className="journey-image"
               width={1189}
               height={682}
@@ -155,7 +158,7 @@ export default function HomePage() {
 
       <section className="home-section-updates border-t border-slate-200 py-24">
         <div className="shell">
-          <h2 className="section-title">Latest Updates</h2>
+          <h2 className="section-title">{t('home.latestUpdates')}</h2>
           <div className="mt-10 updates-marquee">
             <div className="updates-track">
               {[...LATEST_UPDATES, ...LATEST_UPDATES].map((update, i) => {
@@ -171,9 +174,11 @@ export default function HomePage() {
                       height={update.height}
                     />
                     <div className="update-card-body">
-                      <p className="update-card-title">{update.title}</p>
+                      <p className="update-card-title">{t(update.titleKey)}</p>
                       <div className="update-card-meta">
-                        <span>{update.date}</span>
+                        <span>
+                          {formatArticleDate(update.iso, lang)} <span aria-hidden="true">·</span> {update.source}
+                        </span>
                         <span aria-hidden="true">→</span>
                       </div>
                     </div>
