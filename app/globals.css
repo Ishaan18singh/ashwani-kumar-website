@@ -555,6 +555,18 @@ html.dark .initiative-row-img {
   background-color: rgb(30, 41, 59);
 }
 
+/* The reserved slot for an initiative with no photo yet: the same 16:9
+   frame as a real one, outlined rather than shadowed so it reads as
+   waiting for a picture instead of being a flat grey card. */
+.initiative-row-placeholder {
+  border: 1px solid #ebeae2;
+  background-color: #f2f1ec;
+}
+html.dark .initiative-row-placeholder {
+  border-color: rgb(51, 65, 85);
+  background-color: rgb(30, 41, 59);
+}
+
 .initiative-rows-gap {
   gap: 4rem;
 }

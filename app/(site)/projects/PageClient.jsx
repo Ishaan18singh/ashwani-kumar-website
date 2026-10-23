@@ -21,13 +21,12 @@ export default function ProjectsPage() {
         <div className="shell flex flex-col initiative-rows-gap">
           {data.projects.map((x, i) => {
             const image = cardImage(i, x);
-            // Only a row with a photo splits into two columns on desktop;
-            // without one the copy would sit in half an empty grid. Narrow
-            // screens keep the stacked picture-on-top order either way.
+            // Every row keeps the same two-column rhythm; an initiative
+            // without its own photo yet shows an empty 16:9 slot rather
+            // than letting the copy run the full width.
             const className = [
-              'initiative-row grid gap-8',
-              image ? 'items-center lg:grid-cols-2 lg:gap-14' : '',
-              image && i % 2 === 1 ? 'initiative-row-reverse' : ''
+              'initiative-row grid items-center gap-8 lg:grid-cols-2 lg:gap-14',
+              i % 2 === 1 ? 'initiative-row-reverse' : ''
             ]
               .filter(Boolean)
               .join(' ');
@@ -42,7 +41,9 @@ export default function ProjectsPage() {
                   loading="lazy"
                   className="initiative-row-img w-full rounded-2xl object-cover shadow-2xl"
                 />
-              ) : null}
+              ) : (
+                <div className="initiative-row-img initiative-row-placeholder w-full rounded-2xl" aria-hidden="true" />
+              )}
               <div>
                 <p className="eyebrow">{x.tag}</p>
                 <h2 className="text-3xl font-semibold text-navy-900 dark:text-white sm:text-4xl">{x.name || x.title}</h2>
