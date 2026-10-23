@@ -7,10 +7,6 @@ import { useI18n } from '@/lib/i18n/context';
 // `altKey` rather than literal alt text, so screen readers hear the
 // description in the language the reader picked.
 const ITEMS = [
-  { src: '/images/gallery-01.webp', altKey: 'gallery.fullLength' },
-  { src: '/images/gallery-03.webp', altKey: 'gallery.closePortrait' },
-  { src: '/images/gallery-04.webp', altKey: 'gallery.formalPortrait' },
-  { src: '/images/gallery-05.webp', altKey: 'gallery.blackWhite' },
   { src: '/images/screen-style-01.webp', altKey: 'gallery.creamPolo' },
   { src: '/images/screen-style-02.webp', altKey: 'gallery.studioBw' },
   { src: '/images/screen-style-03.webp', altKey: 'gallery.whiteLinen' }
