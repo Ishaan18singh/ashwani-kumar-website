@@ -19,16 +19,25 @@ export default function ProjectsPage() {
       />
       <section className="py-12 sm:py-24">
         <div className="shell flex flex-col initiative-rows-gap">
-          {data.projects.map((x, i) => (
-            <Reveal
-              as="article"
-              key={x.title}
-              className="initiative-row grid gap-8"
-            >
-              {cardImage(i, x) ? (
+          {data.projects.map((x, i) => {
+            const image = cardImage(i, x);
+            // Only a row with a photo splits into two columns on desktop;
+            // without one the copy would sit in half an empty grid. Narrow
+            // screens keep the stacked picture-on-top order either way.
+            const className = [
+              'initiative-row grid gap-8',
+              image ? 'items-center lg:grid-cols-2 lg:gap-14' : '',
+              image && i % 2 === 1 ? 'initiative-row-reverse' : ''
+            ]
+              .filter(Boolean)
+              .join(' ');
+
+            return (
+            <Reveal as="article" key={x.title} className={className}>
+              {image ? (
                 // eslint-disable-next-line @next/next/no-img-element
                 <img
-                  src={`/images/${cardImage(i, x)}.webp`}
+                  src={`/images/${image}.webp`}
                   alt=""
                   loading="lazy"
                   className="initiative-row-img w-full rounded-2xl object-cover shadow-2xl"
@@ -48,7 +57,8 @@ export default function ProjectsPage() {
                 </Link>
               </div>
             </Reveal>
-          ))}
+            );
+          })}
         </div>
       </section>
       <section className="bg-ivory border-t border-slate-200 py-20 text-navy-900 dark:bg-slate-900 dark:text-white">
