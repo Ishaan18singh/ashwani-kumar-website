@@ -41,7 +41,7 @@ export default function ProjectDetailPage() {
             <img className="project-detail-img" src={`/images/${cardImage(index, project)}.webp`} alt="" />
           ) : null}
           <p className="eyebrow">{t('project.initiative')}</p>
-          <h1 className="max-w-3xl text-4xl font-semibold sm:text-6xl">{project.title}</h1>
+          <h1 className="max-w-3xl text-4xl font-semibold sm:text-6xl">{project.name || project.title}</h1>
           <p className="mt-4 text-sm font-bold uppercase tracking-[.15em] text-gold-500">{project.tag}</p>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600 dark:text-slate-300">{project.summary}</p>
           <p className="body-copy mt-4 max-w-2xl text-slate-600 dark:text-slate-300">{project.detail}</p>
@@ -50,7 +50,7 @@ export default function ProjectDetailPage() {
               {t('project.allInitiatives')}
             </Link>
             <Link href={`/projects/${slugify(nextProject.title)}`} prefetch={false} className="button-ghost inline-flex w-fit">
-              {t('project.nextInitiative')} {nextProject.title} →
+              {t('project.nextInitiative')} {nextProject.name || nextProject.title} →
             </Link>
           </div>
         </Reveal>

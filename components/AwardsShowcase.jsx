@@ -131,7 +131,7 @@ export default function AwardsShowcase({ items, titleHtml }) {
             <span className="awards-tray-body">
               <span className="awards-tray-year-row">
                 <span className="awards-tray-year">{tile.year}</span>
-                {i === 0 ? <span className="awards-tray-latest">Latest</span> : null}
+                {i === 0 ? <span className="awards-tray-latest">{t('awards.latestBadge')}</span> : null}
               </span>
               <span className="awards-tray-title">{tile.title}</span>
               <span className="awards-tray-text">{tile.body}</span>

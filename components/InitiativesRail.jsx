@@ -122,7 +122,7 @@ export default function InitiativesRail({ projects, mode = 'marquee' }) {
       >
         <div ref={trackRef} className={trackClass}>
           {projects.map((x, i) => (
-            <Link key={x.title} href={`/projects/${slugify(x.title)}`} prefetch={false} className={cardClass} aria-label={`${x.title}, read more`}>
+            <Link key={x.title} href={`/projects/${slugify(x.title)}`} prefetch={false} className={cardClass} aria-label={x.name || x.title}>
               {cardImage(i, x) ? (
                 // eslint-disable-next-line @next/next/no-img-element
                 <img className="initiative-card-img" src={`/images/${cardImage(i, x)}.webp`} alt="" loading="lazy" />
@@ -132,7 +132,7 @@ export default function InitiativesRail({ projects, mode = 'marquee' }) {
               <span className="initiative-content">
                 <span className="initiative-eyebrow">{t('project.initiative')}</span>
                 <span className="initiative-title">
-                  {x.title}
+                  {x.name || x.title}
                   <span className="initiative-arrow" aria-hidden="true">→</span>
                 </span>
                 {mode === 'carousel' ? <span className="initiative-summary">{x.summary}</span> : null}
