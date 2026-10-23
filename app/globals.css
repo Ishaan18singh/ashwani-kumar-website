@@ -1748,8 +1748,16 @@ html.dark .pub-newsletter-title {
     padding: 3rem 1.5rem;
     order: 2;
   }
+  /* The gold rule is a desktop flourish; on a phone it reads as a stray
+     mark under the headline, so it goes and the CTA carries the weight. */
+  .journey-divider {
+    display: none;
+  }
   .journey-cta {
     align-self: center;
+    background-color: #000;
+    border-color: #000;
+    color: #fff;
   }
   .journey-image-wrap {
     order: 1;
