@@ -616,6 +616,17 @@ html.dark .initiative-row-img {
   #contact-form :is(label, input, select, textarea) {
     text-align: start;
   }
+
+  /* Initiative rows: the headline uses utility classes rather than
+     .section-title, and the CTA is an inline-flex link, so neither is
+     caught by the rules above. Centering the column catches both. */
+  .initiative-row > div {
+    text-align: center;
+  }
+  .initiative-row .body-copy {
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 @media (max-width: 639px) {
   footer .shell {
@@ -995,7 +1006,7 @@ html.dark .pub-list-link {
   width: 2.5rem;
 }
 .pub-list-thumb {
-  display: none;
+  display: block;
   flex-shrink: 0;
   width: 9rem;
   aspect-ratio: 16 / 10;
@@ -1006,9 +1017,18 @@ html.dark .pub-list-link {
 html.dark .pub-list-thumb {
   background-color: rgb(30, 41, 59);
 }
-@media (min-width: 640px) {
+/* Phones keep the thumbnail, at a size that still leaves the headline
+   room to breathe: a smaller frame, tighter gaps and a smaller number. */
+@media (max-width: 639px) {
+  .pub-list-row {
+    gap: 0.75rem;
+  }
+  .pub-list-number {
+    font-size: 1.25rem;
+  }
   .pub-list-thumb {
-    display: block;
+    width: 5rem;
+    border-radius: 0.5rem;
   }
 }
 .pub-list-thumb-img {
@@ -2494,12 +2514,19 @@ html.dark .leadership-title {
   border-left: none;
 }
 /* Narrow screens center this section like every other one, at the same
-   1023px breakpoint the site-wide centering rules use. The tag row is
-   flex, so it needs justify-content, not text-align. The eyebrow stays
-   pinned left, where it reads as a section marker rather than a title. */
+   1023px breakpoint the site-wide centering rules use. The eyebrow and
+   tag row are flex, so they need justify-content, not text-align. The
+   eyebrow drops its leading rule here - centered, it reads as a stray
+   mark rather than a lead-in. */
 @media (max-width: 1023px) {
   .leadership-content {
     text-align: center;
+  }
+  .leadership-eyebrow {
+    justify-content: center;
+  }
+  .leadership-eyebrow span {
+    display: none;
   }
   .leadership-text {
     margin-left: auto;
