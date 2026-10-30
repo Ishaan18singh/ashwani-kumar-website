@@ -1537,23 +1537,23 @@ html.dark .pub-newsletter-title {
     linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.35) 55%, rgba(0, 0, 0, 0.7) 100%),
     linear-gradient(90deg, rgba(0, 0, 0, 0.72) 0%, rgba(0, 0, 0, 0.4) 38%, rgba(0, 0, 0, 0.05) 68%);
 }
-/* The personal tagline, sitting under the name and eyebrow. Lighter than
-   the name but brighter than the role lines, so it reads as a statement
-   rather than another caption. */
+/* The personal tagline, closing the hero under the department line. Gold
+   rather than the role lines' off-white, so it reads as a statement
+   instead of a third line of job title. */
 .hero-tagline {
-  margin-top: 1rem;
-  max-width: 30rem;
+  margin-top: 0.6rem;
+  max-width: 48rem;
   font-size: clamp(0.95rem, 1.35vw, 1.15rem);
   line-height: 1.55;
   font-weight: 500;
   letter-spacing: 0.01em;
-  color: rgba(247, 244, 236, 0.95);
+  color: rgb(var(--c-gold-400));
 }
-/* One sentence per line. Block rather than nowrap, so an unusually long
-   sentence still wraps inside its own line instead of running off the
-   edge in the languages that need more room. */
+/* Each sentence stays whole, so where the line does have to wrap it wraps
+   between sentences rather than mid-phrase. The break opportunities are
+   the zero-width spaces between the spans in the markup. */
 .hero-tagline-part {
-  display: block;
+  white-space: nowrap;
 }
 
 .hero-fullbleed-text {
@@ -1659,10 +1659,10 @@ html.dark .pub-newsletter-title {
     font-weight: 700 !important;
   }
   .hero-tagline-mobile {
-    margin-top: 0.75rem;
+    margin-top: 0.6rem;
     /* The hero text column is capped at 70% so it clears the subject's
-       face. The tagline sits lower, over the desk, so it may run wider
-       and keep "Empowering Women." on a line of its own. */
+       face. The tagline sits at the very bottom, over the desk, so it may
+       run wider and fit more sentences per line. */
     max-width: none;
     width: calc(100vw - 2.5rem);
     font-size: 12px;

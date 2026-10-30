@@ -94,12 +94,20 @@ export default function HomePage() {
           <div className="hero-fullbleed-name-wrap">
             <h1 className="text-hero-headline max-w-2xl font-bold">{t('home.heroName')}</h1>
             <p className="eyebrow">{t('home.eyebrow')}</p>
+          </div>
+          <div className="hero-fullbleed-bottom">
+            <Html as="p" className="hero-fullbleed-text max-w-xl" html={t('home.heroRole')} />
+            <p className="hero-fullbleed-text max-w-xl">{t('home.heroDept')}</p>
             <p className="hero-tagline">
-              {taglineParts(t('home.tagline')).map((part) => (
+              {taglineParts(t('home.tagline')).flatMap((part, i) => [
+                // A zero-width space between the spans gives the line
+                // somewhere to break without adding a visible character,
+                // which matters for the languages that use no space here.
+                i > 0 ? '​' : null,
                 <span key={part} className="hero-tagline-part">
                   {part}
                 </span>
-              ))}
+              ])}
             </p>
           </div>
         </div>
@@ -108,65 +116,23 @@ export default function HomePage() {
           <div className="hero-mobile-name-wrap">
             <h1 className="hero-mobile-heading font-bold">{t('home.heroName')}</h1>
             <p className="hero-mobile-eyebrow">{t('home.eyebrow')}</p>
+          </div>
+          <div className="hero-mobile-bottom">
+            <div className="hero-mobile-divider" />
+            <p className="hero-mobile-role">{t('home.heroRole').replace(/<br\s*\/?>/i, ' ')}</p>
+            <p className="hero-mobile-role">{t('home.heroDept')}</p>
             <p className="hero-tagline hero-tagline-mobile">
-              {taglineParts(t('home.tagline')).map((part) => (
+              {taglineParts(t('home.tagline')).flatMap((part, i) => [
+                // A zero-width space between the spans gives the line
+                // somewhere to break without adding a visible character,
+                // which matters for the languages that use no space here.
+                i > 0 ? '​' : null,
                 <span key={part} className="hero-tagline-part">
                   {part}
                 </span>
-              ))}
+              ])}
             </p>
           </div>
-        </div>
-      </section>
-
-      <section className="home-section-leadership border-t border-slate-200 py-24 dark:border-slate-800">
-        <div className="shell">
-          <Reveal className="leadership-content">
-            <p className="leadership-eyebrow">
-              <span aria-hidden="true" />
-              {t('home.leadershipEyebrow')}
-            </p>
-            <Html as="h2" className="leadership-title" html={t('home.leadershipTitleHtml')} />
-            <p className="leadership-text">{t('home.leadershipText')}</p>
-            <div className="leadership-actions">
-              <Link className="leadership-btn" href="/projects" prefetch={false}>
-                {t('home.exploreBtn')} <span aria-hidden="true">→</span>
-              </Link>
-              <div className="leadership-tags">
-                {t('home.leadershipTags')
-                  .split('|')
-                  .map((word) => (
-                    <span key={word} className="leadership-tag-item">
-                      {word}
-                    </span>
-                  ))}
-              </div>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      <section id="introduction" className="home-section-intro journey-section">
-        <div className="journey-grid">
-          <Reveal className="journey-text">
-            <h2 className="journey-heading">{t('home.journeyTitle')}</h2>
-            <div className="journey-divider" />
-            <p className="journey-copy">{t('home.journeyText')}</p>
-            <Link className="journey-cta" href="/about" prefetch={false}>
-              {t('home.journeyCta')} <span aria-hidden="true">→</span>
-            </Link>
-          </Reveal>
-          <Reveal className="journey-image-wrap">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/images/ashwani-kumar-home-journey-desk.webp"
-              alt={t('home.journeyAlt')}
-              className="journey-image"
-              width={1189}
-              height={682}
-              loading="lazy"
-            />
-          </Reveal>
         </div>
       </section>
 
@@ -226,6 +192,57 @@ export default function HomePage() {
               })}
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="home-section-leadership border-t border-slate-200 py-24 dark:border-slate-800">
+        <div className="shell">
+          <Reveal className="leadership-content">
+            <p className="leadership-eyebrow">
+              <span aria-hidden="true" />
+              {t('home.leadershipEyebrow')}
+            </p>
+            <Html as="h2" className="leadership-title" html={t('home.leadershipTitleHtml')} />
+            <p className="leadership-text">{t('home.leadershipText')}</p>
+            <div className="leadership-actions">
+              <Link className="leadership-btn" href="/projects" prefetch={false}>
+                {t('home.exploreBtn')} <span aria-hidden="true">→</span>
+              </Link>
+              <div className="leadership-tags">
+                {t('home.leadershipTags')
+                  .split('|')
+                  .map((word) => (
+                    <span key={word} className="leadership-tag-item">
+                      {word}
+                    </span>
+                  ))}
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      <section id="introduction" className="home-section-intro journey-section">
+        <div className="journey-grid">
+          <Reveal className="journey-text">
+            <h2 className="journey-heading">{t('home.journeyTitle')}</h2>
+            <div className="journey-divider" />
+            <p className="journey-copy">{t('home.journeyText')}</p>
+            <Link className="journey-cta" href="/about" prefetch={false}>
+              {t('home.journeyCta')} <span aria-hidden="true">→</span>
+            </Link>
+          </Reveal>
+          <Reveal className="journey-image-wrap">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/ashwani-kumar-home-journey-desk.webp"
+              alt={t('home.journeyAlt')}
+              className="journey-image"
+              width={1189}
+              height={682}
+              loading="lazy"
+            />
+          </Reveal>
         </div>
       </section>
     </div>
