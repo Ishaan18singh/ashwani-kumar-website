@@ -54,6 +54,15 @@ const LATEST_UPDATES = [
   }
 ];
 
+// Breaks the tagline between sentences rather than mid-phrase. Each part
+// keeps the space that followed it, so nothing is added to the text; CJK
+// needs its own pattern because nothing follows the full stop there.
+const SENTENCE_END = /(?<=。)|(?<=[.।]\s)/;
+
+function taglineParts(tagline) {
+  return tagline.split(SENTENCE_END).filter(Boolean);
+}
+
 export default function HomePage() {
   const { t, lang } = useI18n();
 
@@ -85,10 +94,13 @@ export default function HomePage() {
           <div className="hero-fullbleed-name-wrap">
             <h1 className="text-hero-headline max-w-2xl font-bold">{t('home.heroName')}</h1>
             <p className="eyebrow">{t('home.eyebrow')}</p>
-          </div>
-          <div className="hero-fullbleed-bottom">
-            <Html as="p" className="hero-fullbleed-text max-w-xl" html={t('home.heroRole')} />
-            <p className="hero-fullbleed-text max-w-xl">{t('home.heroDept')}</p>
+            <p className="hero-tagline">
+              {taglineParts(t('home.tagline')).map((part) => (
+                <span key={part} className="hero-tagline-part">
+                  {part}
+                </span>
+              ))}
+            </p>
           </div>
         </div>
 
@@ -96,11 +108,13 @@ export default function HomePage() {
           <div className="hero-mobile-name-wrap">
             <h1 className="hero-mobile-heading font-bold">{t('home.heroName')}</h1>
             <p className="hero-mobile-eyebrow">{t('home.eyebrow')}</p>
-          </div>
-          <div className="hero-mobile-bottom">
-            <div className="hero-mobile-divider" />
-            <p className="hero-mobile-role">{t('home.heroRole').replace(/<br\s*\/?>/i, ' ')}</p>
-            <p className="hero-mobile-role">{t('home.heroDept')}</p>
+            <p className="hero-tagline hero-tagline-mobile">
+              {taglineParts(t('home.tagline')).map((part) => (
+                <span key={part} className="hero-tagline-part">
+                  {part}
+                </span>
+              ))}
+            </p>
           </div>
         </div>
       </section>

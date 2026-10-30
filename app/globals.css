@@ -1537,6 +1537,25 @@ html.dark .pub-newsletter-title {
     linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.35) 55%, rgba(0, 0, 0, 0.7) 100%),
     linear-gradient(90deg, rgba(0, 0, 0, 0.72) 0%, rgba(0, 0, 0, 0.4) 38%, rgba(0, 0, 0, 0.05) 68%);
 }
+/* The personal tagline, sitting under the name and eyebrow. Lighter than
+   the name but brighter than the role lines, so it reads as a statement
+   rather than another caption. */
+.hero-tagline {
+  margin-top: 1rem;
+  max-width: 30rem;
+  font-size: clamp(0.95rem, 1.35vw, 1.15rem);
+  line-height: 1.55;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: rgba(247, 244, 236, 0.95);
+}
+/* One sentence per line. Block rather than nowrap, so an unusually long
+   sentence still wraps inside its own line instead of running off the
+   edge in the languages that need more room. */
+.hero-tagline-part {
+  display: block;
+}
+
 .hero-fullbleed-text {
   font-size: var(--fs-body-l);
   line-height: 1.7;
@@ -1638,6 +1657,16 @@ html.dark .pub-newsletter-title {
     letter-spacing: -0.01em;
     color: #f7f5f1;
     font-weight: 700 !important;
+  }
+  .hero-tagline-mobile {
+    margin-top: 0.75rem;
+    /* The hero text column is capped at 70% so it clears the subject's
+       face. The tagline sits lower, over the desk, so it may run wider
+       and keep "Empowering Women." on a line of its own. */
+    max-width: none;
+    width: calc(100vw - 2.5rem);
+    font-size: 12px;
+    line-height: 1.5;
   }
   .hero-mobile-divider {
     margin-top: 1.25rem;
